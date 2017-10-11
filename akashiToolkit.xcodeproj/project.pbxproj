@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D10F9DE1F8EA96400EA8FC1 /* manuscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */; };
+		1D10F9E01F8EB14000EA8FC1 /* ATTabPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D10F9DF1F8EB14000EA8FC1 /* ATTabPageViewController.swift */; };
+		1D10F9E21F8EB17100EA8FC1 /* ATTabScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D10F9E11F8EB17100EA8FC1 /* ATTabScrollView.swift */; };
 		47CC33E81F8B929400B7CFB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */; };
 		47CC33EF1F8B929400B7CFB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47CC33EE1F8B929400B7CFB1 /* Assets.xcassets */; };
 		47CC33F21F8B929400B7CFB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47CC33F01F8B929400B7CFB1 /* LaunchScreen.storyboard */; };
@@ -189,6 +192,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manuscript.swift; sourceTree = "<group>"; };
+		1D10F9DF1F8EB14000EA8FC1 /* ATTabPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTabPageViewController.swift; sourceTree = "<group>"; };
+		1D10F9E11F8EB17100EA8FC1 /* ATTabScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTabScrollView.swift; sourceTree = "<group>"; };
 		47CC33E41F8B929400B7CFB1 /* akashiToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = akashiToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47CC33EE1F8B929400B7CFB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -964,7 +970,10 @@
 				47CC33F31F8B929400B7CFB1 /* Info.plist */,
 				47CC33F91F8B954700B7CFB1 /* ATHomeViewController.swift */,
 				47CC33FB1F8B992800B7CFB1 /* ATBaseNavigationController.swift */,
+				1D10F9DF1F8EB14000EA8FC1 /* ATTabPageViewController.swift */,
+				1D10F9E11F8EB17100EA8FC1 /* ATTabScrollView.swift */,
 				47CC34CB1F8BB86200B7CFB1 /* Lib */,
+				1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */,
 			);
 			path = akashiToolkit;
 			sourceTree = "<group>";
@@ -2832,7 +2841,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		47CC386B1F8BB9BA00B7CFB1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -2842,7 +2851,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
@@ -2853,8 +2862,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D10F9E01F8EB14000EA8FC1 /* ATTabPageViewController.swift in Sources */,
 				47CC33E81F8B929400B7CFB1 /* AppDelegate.swift in Sources */,
+				1D10F9DE1F8EA96400EA8FC1 /* manuscript.swift in Sources */,
 				47CC33FA1F8B954700B7CFB1 /* ATHomeViewController.swift in Sources */,
+				1D10F9E21F8EB17100EA8FC1 /* ATTabScrollView.swift in Sources */,
 				47CC33FC1F8B992800B7CFB1 /* ATBaseNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

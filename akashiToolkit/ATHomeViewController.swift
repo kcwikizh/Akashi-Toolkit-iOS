@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ATHomeViewController: UIViewController {
     
@@ -14,9 +15,31 @@ class ATHomeViewController: UIViewController {
         title = "ATHomeViewController"
         view.backgroundColor = .lightGray
         
-        let hwLbl = UILabel(frame: view.bounds)
-        hwLbl.font = UIFont.boldSystemFont(ofSize: 30.0)
-        hwLbl.textAlignment = .center
-        hwLbl.text = "Hello World !"
+        let tableview = UITableView(frame: .zero, style: .plain)
+        tableview.register(UITableViewCell.self, forCellReuseIdentifier: "testCell")
+        tableview.dataSource = self
+        tableview.delegate = self
+        view.addSubview(tableview)
+        
+        tableview.snp.makeConstraints { (make) in
+            make.left.right.top.bottom.equalTo(0)
+        }
     }
+}
+
+extension ATHomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 50;
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "testCell", for: indexPath)
+        
+        cell.textLabel?.text = "\(indexPath.row)"
+        
+        return cell
+    }
+}
+
+extension ATHomeViewController: UITableViewDelegate {
+    
 }
