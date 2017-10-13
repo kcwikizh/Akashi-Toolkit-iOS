@@ -952,13 +952,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		472C6AC11F8F400E0027C6B3 /* Component  */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Component ";
-			sourceTree = "<group>";
-		};
 		472C6ADB1F90D6410027C6B3 /* ManualFile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1014,7 +1007,6 @@
 				47CC33FB1F8B992800B7CFB1 /* ATBaseNavigationController.swift */,
 				472C6AE31F90E1080027C6B3 /* Extension */,
 				472C6ADE1F90D9CF0027C6B3 /* Tools */,
-				472C6AC11F8F400E0027C6B3 /* Component  */,
 				47CC34CB1F8BB86200B7CFB1 /* Lib */,
 				1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */,
 			);

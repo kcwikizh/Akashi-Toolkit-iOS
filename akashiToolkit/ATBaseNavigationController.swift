@@ -13,11 +13,10 @@ class ATBaseNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationBar.backgroundColor = .darkGray
+        navigationBar.barTintColor = .brown
         
         let navBar = UINavigationBar.appearance()
-        navBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         navBar.shadowImage = UIImage()
-        navBar.isTranslucent = false
+        navBar.isTranslucent = true;
     }
 }
