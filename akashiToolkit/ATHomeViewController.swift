@@ -15,31 +15,19 @@ class ATHomeViewController: UIViewController {
         title = "ATHomeViewController"
         view.backgroundColor = .lightGray
         
-        let tableview = UITableView(frame: .zero, style: .plain)
-        tableview.register(UITableViewCell.self, forCellReuseIdentifier: "testCell")
-        tableview.dataSource = self
-        tableview.delegate = self
-        view.addSubview(tableview)
+        let pageTabView = LSPageTabView(type: .stationary, tabCount: 3)
+        pageTabView.tabBarColor = .orange
+        view.addSubview(pageTabView)
         
-        tableview.snp.makeConstraints { (make) in
+        pageTabView.snp.makeConstraints { (make) in
             make.left.right.top.bottom.equalTo(0)
         }
     }
 }
 
-extension ATHomeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50;
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "testCell", for: indexPath)
-        
-        cell.textLabel?.text = "\(indexPath.row)"
-        
-        return cell
-    }
-}
 
-extension ATHomeViewController: UITableViewDelegate {
-    
-}
+
+
+
+
+

@@ -13,10 +13,11 @@ class ATBaseNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 11.0, *) {
-            navigationBar.prefersLargeTitles = true
-            navigationItem.largeTitleDisplayMode = .automatic
-        }
         navigationBar.backgroundColor = .darkGray
+        
+        let navBar = UINavigationBar.appearance()
+        navBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        navBar.shadowImage = UIImage()
+        navBar.isTranslucent = false
     }
 }
