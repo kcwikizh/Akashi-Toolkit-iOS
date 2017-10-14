@@ -12,14 +12,16 @@ import SnapKit
 class ATHomeViewController: UIViewController {
     
     private lazy var pageTabView: LSPageTabView = {
-        let view = LSPageTabView(type: .stationary, tabCount: 3)
+        let view = LSPageTabView(type: .stationary)
+        
+        view.dataSource = self
         
         return view
     }()
     
     override func viewDidLoad() {
         title = "ATHomeViewController"
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .blue
         
         view.addSubview(pageTabView)
         
@@ -33,6 +35,26 @@ class ATHomeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         pageTabView.selectedTab(at: 1, animated: false)
+    }
+}
+
+extension ATHomeViewController: LSPageTabViewDatasource {
+    func numberOfTab(in pageTabView: LSPageTabView) -> Int {
+        return 3
+    }
+    
+    func pageTabView(_ pageTabView: LSPageTabView, childViewAt index: Int) -> UIView {
+        let view = UIView()
+        
+        if index == 0 {
+            view.backgroundColor = .orange
+        } else if index == 1 {
+            view.backgroundColor = .brown
+        } else {
+            view.backgroundColor = .lightGray
+        }
+        
+        return view
     }
 }
 

@@ -14,6 +14,7 @@
 		472C6AE51F90E1260027C6B3 /* ExtensionUIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6AE41F90E1260027C6B3 /* ExtensionUIScreen.swift */; };
 		472C6AE71F90F2350027C6B3 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6AE61F90F2350027C6B3 /* Function.swift */; };
 		472C6AE91F90F2D70027C6B3 /* ExtensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6AE81F90F2D70027C6B3 /* ExtensionUIColor.swift */; };
+		47894F611F92031900E55E4D /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47894F601F92031900E55E4D /* ExtensionUIView.swift */; };
 		47CC33E81F8B929400B7CFB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */; };
 		47CC33EF1F8B929400B7CFB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47CC33EE1F8B929400B7CFB1 /* Assets.xcassets */; };
 		47CC33F21F8B929400B7CFB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47CC33F01F8B929400B7CFB1 /* LaunchScreen.storyboard */; };
@@ -203,6 +204,7 @@
 		472C6AE41F90E1260027C6B3 /* ExtensionUIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIScreen.swift; sourceTree = "<group>"; };
 		472C6AE61F90F2350027C6B3 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		472C6AE81F90F2D70027C6B3 /* ExtensionUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIColor.swift; sourceTree = "<group>"; };
+		47894F601F92031900E55E4D /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		47CC33E41F8B929400B7CFB1 /* akashiToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = akashiToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47CC33EE1F8B929400B7CFB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -972,9 +974,10 @@
 		472C6AE31F90E1080027C6B3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				472C6AE81F90F2D70027C6B3 /* ExtensionUIColor.swift */,
 				472C6AE11F90E0FD0027C6B3 /* ExtensionUIDevice.swift */,
 				472C6AE41F90E1260027C6B3 /* ExtensionUIScreen.swift */,
-				472C6AE81F90F2D70027C6B3 /* ExtensionUIColor.swift */,
+				47894F601F92031900E55E4D /* ExtensionUIView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2900,6 +2903,7 @@
 			files = (
 				472C6AE71F90F2350027C6B3 /* Function.swift in Sources */,
 				47CC33E81F8B929400B7CFB1 /* AppDelegate.swift in Sources */,
+				47894F611F92031900E55E4D /* ExtensionUIView.swift in Sources */,
 				1D10F9DE1F8EA96400EA8FC1 /* manuscript.swift in Sources */,
 				472C6AE91F90F2D70027C6B3 /* ExtensionUIColor.swift in Sources */,
 				472C6ADD1F90D6DC0027C6B3 /* LSPageTabView.swift in Sources */,
