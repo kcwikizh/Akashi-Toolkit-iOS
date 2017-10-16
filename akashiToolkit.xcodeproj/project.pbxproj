@@ -977,7 +977,7 @@
 		472C6ADB1F90D6410027C6B3 /* ManualFile */ = {
 			isa = PBXGroup;
 			children = (
-				472C6ADC1F90D6DC0027C6B3 /* LSPageTabView.swift */,
+				47F3BF7F1F94CE3500CC4398 /* LSPageTabView */,
 			);
 			path = ManualFile;
 			sourceTree = "<group>";
@@ -2640,6 +2640,14 @@
 				47CC33FB1F8B992800B7CFB1 /* ATBaseNavigationController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		47F3BF7F1F94CE3500CC4398 /* LSPageTabView */ = {
+			isa = PBXGroup;
+			children = (
+				472C6ADC1F90D6DC0027C6B3 /* LSPageTabView.swift */,
+			);
+			path = LSPageTabView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

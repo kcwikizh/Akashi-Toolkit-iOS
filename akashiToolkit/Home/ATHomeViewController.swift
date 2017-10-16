@@ -8,8 +8,6 @@
 
 import UIKit
 import SnapKit
-import Alamofire
-import SDWebImage
 
 class ATHomeViewController: UIViewController {
     
@@ -27,7 +25,7 @@ class ATHomeViewController: UIViewController {
     
     private var currentPageIndex: Int = 1 {
         willSet {
-            if currentPageIndex != newValue  {
+            if currentPageIndex != newValue && newValue <= dataList.count - 1 {
                 title = dataList[newValue].title
             }
         }
@@ -53,10 +51,6 @@ class ATHomeViewController: UIViewController {
             make.left.right.bottom.equalTo(0)
             make.top.equalTo(0)
         }
-        
-        let ges = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(panOnScreenEdge))
-        ges.edges = .left
-        view.addGestureRecognizer(ges)
     }
     
     override func viewDidAppear(_ animated: Bool) {

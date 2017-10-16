@@ -46,7 +46,13 @@ class LSPageTabView: UIView {
                     tabBtn.tag = i
                     tabBtn.addTarget(self, action: #selector(tapOnTabBtn), for: .touchUpInside)
                     tabs.append(tabBtn)
-                    tabBar.addSubview(tabBtn)
+                    
+                    switch type {
+                    case .stationary:
+                        tabBar.addSubview(tabBtn)
+                    case .scrollable:
+                        tabScrollBar.addSubview(tabBtn)
+                    }
                     
                     if let childView = dataSource?.pageTabView(self, childViewAt: i) {
                         childViews.append(childView)
@@ -77,7 +83,14 @@ class LSPageTabView: UIView {
                         }
                     }
                 }
-                tabBar.addSubview(slider)
+                switch type {
+                case .stationary:
+                    tabBar.addSubview(slider)
+                    break
+                case .scrollable:
+                    tabScrollBar.addSubview(slider)
+                    break
+                }
             }
         }
     }
@@ -91,12 +104,20 @@ class LSPageTabView: UIView {
         }
     }
     
-    ///标签栏
+    ///固定式标签栏
     private lazy var tabBar: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.masksToBounds = true
         return view
+    }()
+    ///可滚动标签栏
+    private lazy var tabScrollBar: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .white
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.layer.masksToBounds = true
+        return scrollView
     }()
     ///标签组
     private var tabs: [UIButton] = []
@@ -106,12 +127,15 @@ class LSPageTabView: UIView {
             return tabs.count
         }
     }
+    ///标签宽度 仅可滑动模式下有效
+    public var tabWidth: CGFloat = 100.0
     ///标签栏高度
     public var tabBarHeight: CGFloat = 35
     ///标签栏底色
     public var tabBarColor: UIColor? {
         didSet {
             tabBar.backgroundColor = tabBarColor
+            tabScrollBar.backgroundColor = tabBarColor
         }
     }
     ///标签附件组
@@ -208,7 +232,15 @@ class LSPageTabView: UIView {
         
         self.type = type
         
-        addSubview(tabBar)
+        switch type {
+        case .stationary:
+            addSubview(tabBar)
+            break
+        case .scrollable:
+            addSubview(tabScrollBar)
+            break
+        }
+        
         addSubview(mainScrollView)
     }
     
@@ -217,22 +249,35 @@ class LSPageTabView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        tabBar.frame.origin = CGPoint(x: 0, y: 0)
-        tabBar.frame.size = CGSize(width: width, height: tabBarHeight)
+        switch type {
+        case .stationary:
+            tabBar.frame = CGRect(x: 0, y: 0, width: width, height: tabBarHeight)
         
-        let tabWidth = width / CGFloat(tabsCount)
-        for (idx, tab) in tabs.enumerated() {
-            tab.frame = CGRect(x: CGFloat(idx) * tabWidth, y: 0, width: tabWidth, height: tabBarHeight)
+            let tabWidth = width / CGFloat(tabsCount)
+            for (idx, tab) in tabs.enumerated() {
+                tab.frame = CGRect(x: CGFloat(idx) * tabWidth, y: 0, width: tabWidth, height: tabBarHeight)
+            }
+            slider.frame = CGRect(x: CGFloat(selectedIndex) * tabWidth, y: tabBarHeight - sliderVisibleHeight, width: tabWidth, height: sliderRealHeight)
+            break
+        case .scrollable:
+            tabScrollBar.frame = CGRect(x: 0, y: 0, width: width, height: tabBarHeight)
+            tabScrollBar.contentSize = CGSize(width: CGFloat(tabsCount) * tabWidth, height: tabBarHeight)
+            tabScrollBar.contentOffset = CGPoint(x: CGFloat(selectedIndex) * tabWidth, y: 0)
+            
+            for (idx, tab) in tabs.enumerated() {
+                tab.frame = CGRect(x: CGFloat(idx) * tabWidth, y: 0, width: tabWidth, height: tabBarHeight)
+            }
+            slider.frame = CGRect(x: CGFloat(selectedIndex) * tabWidth, y: tabBarHeight - sliderVisibleHeight, width: tabWidth, height: sliderRealHeight)
+            break
         }
-        slider.frame = CGRect(x: CGFloat(selectedIndex) * tabWidth, y: tabBar.height - sliderVisibleHeight, width: tabWidth, height: sliderRealHeight)
-        
-        mainScrollView.frame = CGRect(x: 0, y: tabBar.height, width: width, height: height - tabBar.height)
-        mainScrollView.contentSize = CGSize(width: CGFloat(tabsCount) * width, height: height - tabBar.height)
+        mainScrollView.frame = CGRect(x: 0, y: tabBarHeight, width: width, height: height - tabScrollBar.height)
+        mainScrollView.contentSize = CGSize(width: CGFloat(tabsCount) * width, height: height - tabBarHeight)
         mainScrollView.contentOffset = CGPoint(x: CGFloat(selectedIndex) * width, y: 0)
-
+    
         for (idx, childView) in childViews.enumerated() {
-            childView.frame = CGRect(x: CGFloat(idx) * width, y: 0, width: width, height: height - tabBar.height)
+            childView.frame = CGRect(x: CGFloat(idx) * width, y: 0, width: width, height: height - tabBarHeight)
         }
+    
         for titleView in titleViews {
             titleView.frame = (titleView.superview?.bounds)!
         }
@@ -268,8 +313,16 @@ extension LSPageTabView: UIScrollViewDelegate {
         
         selectedIndex = Int(x / width + 0.5)
         
-        slider.transform = CGAffineTransform(translationX: x / CGFloat(tabsCount), y: 0)
-        
+        switch type {
+        case .stationary:
+            slider.transform = CGAffineTransform(translationX: x / CGFloat(tabsCount), y: 0)
+        case .scrollable:
+            let sliderOffset = (x / width) * tabWidth
+            slider.transform = CGAffineTransform(translationX: sliderOffset, y: 0)
+            if sliderOffset > (width - tabWidth) * 0.5 && sliderOffset < tabScrollBar.contentSize.width - (width + tabWidth) * 0.5 {
+                tabScrollBar.setContentOffset(CGPoint(x: sliderOffset - (width - tabWidth) * 0.5, y: 0), animated: false)
+            }
+        }
         delegate?.pageTabViewDidScroll?(self)
     }
 }

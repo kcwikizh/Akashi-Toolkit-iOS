@@ -16,6 +16,7 @@ extension UIColor {
         self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
     
+    ///随机色
     class func random() -> UIColor {
         let r = akashiToolkit.random(from: 0, to: 255.0, decimal: 1)
         let g = akashiToolkit.random(from: 0, to: 255.0, decimal: 1)
