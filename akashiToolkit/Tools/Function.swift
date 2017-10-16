@@ -6,7 +6,6 @@
 //  Copyright © 2017年 kcwikizh. All rights reserved.
 //
 
-import Foundation
 import CoreGraphics
 
 public func random(from lowerBound: Double, to upperBound: Double, decimal precision: UInt) -> Double {

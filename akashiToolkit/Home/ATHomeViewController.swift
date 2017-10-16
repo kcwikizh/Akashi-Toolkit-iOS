@@ -8,15 +8,19 @@
 
 import UIKit
 import SnapKit
+import Alamofire
+import SDWebImage
 
 class ATHomeViewController: UIViewController {
+    
+    /// MARK: *** 属性 ***
     
     private var dataList: [ATHomeDataModel] = {
         var list: [ATHomeDataModel] = []
         
-        list.append(ATHomeDataModel(imageName: "selectedSign", title: "推特"))
-        list.append(ATHomeDataModel(imageName: "selectedSign", title: "主页"))
-        list.append(ATHomeDataModel(imageName: "selectedSign", title: "活动"))
+        list.append(ATHomeDataModel(imageName: "sign", title: "推特"))
+        list.append(ATHomeDataModel(imageName: "sign", title: "主页"))
+        list.append(ATHomeDataModel(imageName: "sign", title: "活动"))
         
         return list
     }()
@@ -38,6 +42,8 @@ class ATHomeViewController: UIViewController {
         return view
     }()
     
+    /// MARK: *** 周期 ***
+    
     override func viewDidLoad() {
         title = "主页"
         
@@ -45,15 +51,24 @@ class ATHomeViewController: UIViewController {
         
         pageTabView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalTo(0)
-//            make.top.equalTo(UITopHeight)
             make.top.equalTo(0)
         }
+        
+        let ges = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(panOnScreenEdge))
+        ges.edges = .left
+        view.addGestureRecognizer(ges)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         pageTabView.selectedTab(at: currentPageIndex, animated: false)
+    }
+    
+    /// MARK: *** 回调 ***
+    
+    @objc private func panOnScreenEdge(gesture: UIScreenEdgePanGestureRecognizer) {
+        print("larry sue : \(gesture.state)")
     }
 }
 

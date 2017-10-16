@@ -3,13 +3,16 @@
 //  akashiToolkit
 //
 //  Created by LarrySue on 2017/10/13.
-//  Copyright © 2017年 kcwikizh. All rights reserved.
+//  Copyright © 2017年 LarrySue. All rights reserved.
 //
 
 import UIKit
 
+///顶部标签栏类型
 public enum LSPageTabViewType: Int {
+    ///固定
     case stationary
+    ///可滑动
     case scrollable
 }
 
@@ -163,6 +166,7 @@ class LSPageTabView: UIView {
         let scrollView = UIScrollView()
         
         scrollView.isPagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
         scrollView.delegate = self
         
         return scrollView
@@ -240,7 +244,6 @@ class LSPageTabView: UIView {
         }
     }
     
-    
     // MARK: *** 回调 ***
     
     @objc private func tapOnTabBtn(sender: UIButton) {
@@ -267,9 +270,7 @@ extension LSPageTabView: UIScrollViewDelegate {
         
         slider.transform = CGAffineTransform(translationX: x / CGFloat(tabsCount), y: 0)
         
-        if let _ = delegate?.pageTabViewDidScroll?(self) {
-            print("larry sue : pageTabViewDidScroll")
-        }
+        delegate?.pageTabViewDidScroll?(self)
     }
 }
 
