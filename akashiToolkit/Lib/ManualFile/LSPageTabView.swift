@@ -13,9 +13,18 @@ public enum LSPageTabViewType: Int {
     case scrollable
 }
 
-protocol LSPageTabViewDatasource {
+@objc protocol LSPageTabViewDataSource {
     func numberOfTab(in pageTabView: LSPageTabView) -> Int
     func pageTabView(_ pageTabView: LSPageTabView, childViewAt index: Int) -> UIView
+    
+    @objc optional func pageTabView(_ pageTabView: LSPageTabView, titleForTabAt index: Int) -> String
+    @objc optional func pageTabView(_ pageTabView: LSPageTabView, attributedTitleForTabAt index: Int) -> NSAttributedString
+    @objc optional func pageTabView(_ pageTabView: LSPageTabView, selectedTitleViewForTabAt index: Int) -> UIView
+    @objc optional func pageTabView(_ pageTabView: LSPageTabView, unselectedTitleViewForTabAt index: Int) -> UIView
+}
+
+@objc protocol LSPageTabViewDelegate {
+    @objc optional func pageTabViewDidScroll(_ pageTabView: LSPageTabView)
 }
 
 class LSPageTabView: UIView {
@@ -25,35 +34,64 @@ class LSPageTabView: UIView {
     ///当前类型 固定/可滚动
     private var type: LSPageTabViewType = .stationary
     
-    ///代理
-    public var dataSource: LSPageTabViewDatasource? {
+    ///DataSource
+    public var dataSource: LSPageTabViewDataSource? {
         didSet {
             if let tabCount = dataSource?.numberOfTab(in: self) {
                 for i in 0 ..< tabCount {
-                    let tab = UIButton(type: .custom)
-                    tab.tag = i
-                    tab.addTarget(self, action: #selector(tapOnTabBtn), for: .touchUpInside)
-                    tab.backgroundColor = UIColor.random()
-                    tabs.append(tab)
-                    tabBar.addSubview(tab)
+                    let tabBtn = UIButton(type: .custom)
+                    tabBtn.tag = i
+                    tabBtn.addTarget(self, action: #selector(tapOnTabBtn), for: .touchUpInside)
+                    tabs.append(tabBtn)
+                    tabBar.addSubview(tabBtn)
                     
                     if let childView = dataSource?.pageTabView(self, childViewAt: i) {
-                        chileViews.append(childView)
+                        childViews.append(childView)
                         mainScrollView.addSubview(childView)
+                        if let selectedTitleView = dataSource?.pageTabView?(self, selectedTitleViewForTabAt: i) {
+                            selectedTitleViews.append(selectedTitleView)
+                            tabBtn.addSubview(selectedTitleView)
+                            if let unselectedTitleView = dataSource?.pageTabView?(self, unselectedTitleViewForTabAt: i) {
+                                selectedTitleView.isHidden = true
+                                unselectedTitleViews.append(unselectedTitleView)
+                                tabBtn.addSubview(unselectedTitleView)
+                            }
+                        } else {
+                            let titleLbl = UILabel()
+                            titleLbl.textAlignment = .center
+                            titleLbl.font = UIFont.boldSystemFont(ofSize: 15.0)
+                            if let  attributedTitle = dataSource?.pageTabView?(self, attributedTitleForTabAt: i) {
+                                titleLbl.attributedText = attributedTitle
+                            } else {
+                                if let  title = dataSource?.pageTabView?(self, titleForTabAt: i) {
+                                    titleLbl.text = title
+                                } else {
+                                    titleLbl.text = "\(i)"
+                                }
+                            }
+                            titleViews.append(titleLbl)
+                            tabBtn.addSubview(titleLbl)
+                        }
                     }
                 }
                 tabBar.addSubview(slider)
             }
         }
     }
+    ///Delegate
+    public var delegate: LSPageTabViewDelegate?
     
-    ///切换动画时长
-    private let animationDuration = 0.5
+    ///移动距离
+    public var contentOffset: CGPoint {
+        get {
+            return mainScrollView.contentOffset
+        }
+    }
     
     ///标签栏
     private lazy var tabBar: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         view.layer.masksToBounds = true
         return view
     }()
@@ -73,11 +111,21 @@ class LSPageTabView: UIView {
             tabBar.backgroundColor = tabBarColor
         }
     }
+    ///标签附件组
+    private var titleViews: [UIView] = []
+    ///外部定义标签附件组(选择
+    private var selectedTitleViews: [UIView] = []
+    ///外部定义标签附件组(未选择
+    private var unselectedTitleViews: [UIView] = []
+    ///标签附件染色(选中
+    public var selectedTitleColor: UIColor = UIColor.black
+    ///标签附件染色(未选择
+    public var unselectedTitleColor: UIColor = UIColor.lightGray
     
     ///滑块
     private lazy var slider: UIView = {
         let view = UIView()
-        view.backgroundColor = .orange
+        view.backgroundColor = .black
         view.layer.cornerRadius = sliderCornerRadius
         view.layer.masksToBounds = true
         return view
@@ -121,10 +169,33 @@ class LSPageTabView: UIView {
     }()
     
     ///子View列表
-    private var chileViews: [UIView] = []
+    private var childViews: [UIView] = []
     
     ///当前所选索引
-    private var selectedIndex: Int = 0
+    private var selectedIndex: Int = 0 {
+        willSet {
+            if selectedIndex != newValue  {
+                for (idx, lbl) in titleViews.enumerated() {
+                    if let lbl = lbl as? UILabel {
+                        if idx != newValue {
+                            lbl.textColor = unselectedTitleColor
+                        } else {
+                            lbl.textColor = selectedTitleColor
+                        }
+                    }
+                }
+                for (idx, view) in unselectedTitleViews.enumerated() {
+                    if idx != newValue {
+                        selectedTitleViews[idx].isHidden = true
+                        view.isHidden = false
+                    } else {
+                        selectedTitleViews[idx].isHidden = false
+                        view.isHidden = true
+                    }
+                }
+            }
+        }
+    }
     
     // MARK: *** 构造方法 ***
     
@@ -155,8 +226,17 @@ class LSPageTabView: UIView {
         mainScrollView.contentSize = CGSize(width: CGFloat(tabsCount) * width, height: height - tabBar.height)
         mainScrollView.contentOffset = CGPoint(x: CGFloat(selectedIndex) * width, y: 0)
 
-        for (idx, childView) in chileViews.enumerated() {
+        for (idx, childView) in childViews.enumerated() {
             childView.frame = CGRect(x: CGFloat(idx) * width, y: 0, width: width, height: height - tabBar.height)
+        }
+        for titleView in titleViews {
+            titleView.frame = (titleView.superview?.bounds)!
+        }
+        for view in selectedTitleViews {
+            view.frame = (view.superview?.bounds)!
+        }
+        for view in unselectedTitleViews {
+            view.frame = (view.superview?.bounds)!
         }
     }
     
@@ -175,28 +255,21 @@ class LSPageTabView: UIView {
     // MARK: *** 逻辑 ***
     
     public func selectedTab(at index: Int, animated: Bool) {
-        selectedIndex = index
-        mainScrollView.setContentOffset(CGPoint(x: CGFloat(index) * UIScreen.width, y: 0), animated: true)
+        mainScrollView.setContentOffset(CGPoint(x: CGFloat(index) * width, y: 0), animated: animated)
     }
-//    ///移动滑块
-//    private func moveSlider(animated: Bool) {
-//        var duration = TimeInterval(0)
-//
-//        if animated {
-//            duration = animationDuration
-//        }
-//
-//        UIView.animate(withDuration: duration) {
-//            self.slider.transform = CGAffineTransform(translationX: CGFloat(self.selectedIndex) * (UIScreen.width / CGFloat(self.tabsCount)), y: 0)
-//        }
-//    }
 }
 
 extension LSPageTabView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let x = scrollView.contentOffset.x
-        selectedIndex = Int(x / UIScreen.width)
-        self.slider.transform = CGAffineTransform(translationX: x / CGFloat(tabsCount), y: 0)
+        
+        selectedIndex = Int(x / width + 0.5)
+        
+        slider.transform = CGAffineTransform(translationX: x / CGFloat(tabsCount), y: 0)
+        
+        if let _ = delegate?.pageTabViewDidScroll?(self) {
+            print("larry sue : pageTabViewDidScroll")
+        }
     }
 }
 
