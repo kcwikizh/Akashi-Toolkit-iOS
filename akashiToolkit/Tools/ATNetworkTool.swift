@@ -103,6 +103,7 @@ private struct ATAPI {
         }
         ///官推最新头像
         static let latestTwitterAvatar = URL(string: "\(base)/avatar/latest")
+        static let twitterAvatarList = URL(string: "\(base)/avatars")
     }
 }
 

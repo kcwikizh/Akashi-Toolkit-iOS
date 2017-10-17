@@ -1019,6 +1019,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		47C5FEB51F962F3A005B4073 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */,
+				47CC33F31F8B929400B7CFB1 /* Info.plist */,
+				47CC33F01F8B929400B7CFB1 /* LaunchScreen.storyboard */,
+				47CC33EE1F8B929400B7CFB1 /* Assets.xcassets */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
 		47CC33DB1F8B929400B7CFB1 = {
 			isa = PBXGroup;
 			children = (
@@ -1039,16 +1050,13 @@
 		47CC33E61F8B929400B7CFB1 /* akashiToolkit */ = {
 			isa = PBXGroup;
 			children = (
-				47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */,
-				47CC33EE1F8B929400B7CFB1 /* Assets.xcassets */,
-				47CC33F01F8B929400B7CFB1 /* LaunchScreen.storyboard */,
-				47CC33F31F8B929400B7CFB1 /* Info.plist */,
-				47F3BF751F94AFD200CC4398 /* Base */,
 				47F3BF741F949E0B00CC4398 /* Home */,
-				472C6AE31F90E1080027C6B3 /* Extension */,
+				47F3BF751F94AFD200CC4398 /* Base */,
 				47C5FEB11F962D6F005B4073 /* Model */,
 				472C6ADE1F90D9CF0027C6B3 /* Tools */,
 				47CC34CB1F8BB86200B7CFB1 /* Lib */,
+				472C6AE31F90E1080027C6B3 /* Extension */,
+				47C5FEB51F962F3A005B4073 /* Support */,
 				1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */,
 			);
 			path = akashiToolkit;

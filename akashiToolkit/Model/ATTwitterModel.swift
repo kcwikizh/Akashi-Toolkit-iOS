@@ -9,20 +9,25 @@
 import UIKit
 
 struct ATTwitterModel: ATDictCreatable {
-    let id: Int
     let jpContent: String
     let zhContent: String
-    let date: Date
+    let dateStr: String
+    let imageURLStr: String?
     
     init?(dict: [AnyHashable : Any]) {
-        guard let id = dict["id"] as? Int else { return nil }
-        guard let jpContent = dict["jp"] as? String else { return nil }
-        guard let zhContent = dict["zh"] as? String else { return nil }
-        guard let date = dict["date"] as? Date else { return nil }
+        guard let jpContent = dict["jp"] as? String else {
+            return nil
+        }
+        guard let zhContent = dict["zh"] as? String else {
+            return nil
+        }
+        guard let date = dict["date"] as? String else {
+            return nil
+        }
         
-        self.id = id
         self.jpContent = jpContent
         self.zhContent = zhContent
-        self.date = date
+        self.dateStr = date
+        self.imageURLStr = dict["img"] as? String
     }
 }

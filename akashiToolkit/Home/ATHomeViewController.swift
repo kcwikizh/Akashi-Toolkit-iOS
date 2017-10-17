@@ -52,13 +52,22 @@ class ATHomeViewController: UIViewController {
             make.top.equalTo(0)
         }
         
-        ATAPIClient<ATTwitterModel>().fetchTwitterList(count: 3) { (twitterList, error) in
-            if let list = twitterList {
-                for tw in list {
-                    print("\(tw.id) - \(tw.date) - \(tw.jpContent) - \(tw.zhContent)")
-                }
-            }
-        }
+        let btn = UIButton(type: .custom)
+        btn.frame = CGRect(x: 100, y: 200, width: 50, height: 50)
+        btn.backgroundColor = .red
+        btn.addTarget(self, action: #selector(touchesBtn), for: .touchUpInside)
+        view.addSubview(btn)
+    }
+    
+    @objc func touchesBtn() {
+//        ATAPIClient<ATTwitterModel>().fetchTwitterList(count: 3) { (twitterList, error) in
+//            if let list = twitterList {
+//                for tw in list {
+//                    print("\(tw.dateStr) - \(tw.jpContent) - \(tw.zhContent)")
+//                    print("\(tw.imageURLStr)")
+//                }
+//            }
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
