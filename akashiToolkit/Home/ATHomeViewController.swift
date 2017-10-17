@@ -51,6 +51,14 @@ class ATHomeViewController: UIViewController {
             make.left.right.bottom.equalTo(0)
             make.top.equalTo(0)
         }
+        
+        ATAPIClient<ATTwitterModel>().fetchTwitterList(count: 3) { (twitterList, error) in
+            if let list = twitterList {
+                for tw in list {
+                    print("\(tw.id) - \(tw.date) - \(tw.jpContent) - \(tw.zhContent)")
+                }
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

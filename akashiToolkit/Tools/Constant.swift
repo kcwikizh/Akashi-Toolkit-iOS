@@ -17,12 +17,10 @@ let UIStatusBarHeight: CGFloat = {
         return 20.0
     }
 }()
-
 ///导航栏标题高度
 let UINavTitleBarHeight: CGFloat = 44.0
 ///导航栏大标题高度
 let UINavLargeTitleBarHeight: CGFloat = 52.0
-
 ///状态栏+导航栏高度
 let UITopHeight = UIStatusBarHeight + UINavTitleBarHeight
 
@@ -34,3 +32,7 @@ let UIBottomSafePadding: CGFloat = {
         return 0.0
     }
 }()
+///TabBar高度
+let UITabBarHeight: CGFloat = 49.0
+///底部总高度
+let UIBottomHeight = UIBottomSafePadding + UITabBarHeight
