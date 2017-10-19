@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import SDWebImage
 
 class ATHomeViewController: UIViewController {
     
@@ -65,12 +64,12 @@ class ATHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         title = "主页"
+        view.backgroundColor = ATUILightPageBackgroundColor
         
         view.addSubview(pageTabView)
         
         pageTabView.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(0)
-            make.top.equalTo(0)
+            make.left.right.top.bottom.equalTo(0)
         }
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: avatarListPageBtn)

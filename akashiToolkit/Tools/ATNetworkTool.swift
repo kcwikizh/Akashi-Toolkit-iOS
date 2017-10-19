@@ -67,6 +67,20 @@ class ATAPIClient {
             }
         }
     }
+    ///获取官推历史头像列表
+    class func getAvatarList(_ completionHandler: @escaping ([URL?]?, Error?) -> Void) {
+        getItems(for: ATAPI.home.twitterAvatarList) { (result, error) in
+            if let result = result as? [String : AnyObject] {
+                if let baseURL = result["base"] as? String, let archives = result["archives"] as? [String] {
+                    completionHandler(archives.reversed().map({ itemURL in
+                        return URL(string: baseURL + itemURL)
+                    }), nil)
+                }
+            } else {
+                completionHandler(nil, error)
+            }
+        }
+    }
 }
 
 private struct ATAPI {
