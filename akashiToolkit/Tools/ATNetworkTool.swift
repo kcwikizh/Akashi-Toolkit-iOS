@@ -7,82 +7,65 @@
 //
 
 import UIKit
+import Alamofire
 
-struct ATAPIClient<DataType: ATDictCreatable> {
+class ATAPIClient {
     
-    typealias ATAPIClientCompletionHandler = (_ items: [DataType]?, _ error: Error?) -> Void
+    private typealias ATAPIClientCompletionHandler = (_ items: AnyObject?, _ error: Error?) -> Void
     
     /// MARK: *** 请求 ***
     
-    ///简易API请求
-    private func fetchItems(forURL url: URL, inDictionaryForKey key: String?, _ completionHandler: @escaping ATAPIClientCompletionHandler) {
+    ///GET
+    private class func getItems(for API: String, with parameter: [String : AnyObject]? = nil, _ handler: @escaping ATAPIClientCompletionHandler) {
         
-        var outputItems: [DataType]? = nil
+        guard let url = URL(string: API) else {
+            let outputError = ATNetworkError.invalidURL
+            handler(nil, outputError)
+            return
+        }
+        
+        var outputItem: AnyObject? = nil
         var outputError: Error? = nil
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        request(url, method: .get, parameters: parameter).responseJSON { (response) in
             
             defer {
                 DispatchQueue.main.async(execute: {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                    completionHandler(outputItems, outputError)
+                    handler(outputItem, outputError)
                 })
             }
             
-            outputError = error
+            outputError = response.error
             
-            guard let data = data else { return }
+            guard let data = response.data else { return }
             
             do {
-                var items: [[String: AnyObject]] = []
-                
-                if let key = key {
-                    guard let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] else  {
-                        outputError = ATNetworkError.invalidResponse
-                        return
-                    }
-                    guard let array = dict[key] as? [[String: AnyObject]] else {
-                        outputError = ATNetworkError.invalidResponse
-                        return
-                    }
-                    items = array
-                } else {
-                    guard let array = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: AnyObject]] else {
-                        outputError = ATNetworkError.invalidResponse
-                        return
-                    }
-                    items = array
-                }
-                
-                var tempItems = [DataType]()
-                
-                for dict in items {
-                    if let item = DataType(dict: dict as [AnyHashable: AnyObject]) {
-                        tempItems.append(item)
-                    }
-                }
-                
-                outputItems = tempItems
+                outputItem = try JSONSerialization.jsonObject(with: data) as AnyObject
                 return
-                
             } catch {
                 outputError = error
             }
-        }.resume()
+        }
     }
     
     /// MARK: *** 首页 ***
     
     ///获取官推
-    func fetchTwitterList(count: Int, completionHandler: @escaping ATAPIClientCompletionHandler) {
-        guard let url = ATAPI.home.twitter(count) else {
-            let outputError = ATNetworkError.invalidParameter
-            completionHandler(nil, outputError)
-            return
+    class func fetchTwitterList(count: Int, completionHandler: @escaping (_ items: AnyObject?, _ error: Error?) -> Void) {
+        
+    }
+    ///获取当前官推头像
+    class func getCurrentAvatar(_ completionHandler: @escaping (URL?, Error?) -> Void) {
+        getItems(for: ATAPI.home.latestTwitterAvatar) { (result, error) in
+            if let result = result as? [String : String] {
+                completionHandler(URL(string: result["latest"]!), nil)
+            } else {
+                completionHandler(nil, error)
+            }
         }
-        fetchItems(forURL: url, inDictionaryForKey: nil, completionHandler)
     }
 }
 
@@ -92,18 +75,17 @@ private struct ATAPI {
     
     /// MARK: *** BASE ***
     
-    private static let base = "http://api.kcwiki.moe"
+    private static let base = "https://t.kcwiki.moe/api"
     
     /// MARK: *** 主页 ***
     
-    struct home {
+    fileprivate struct home {
         ///官推
-        static func twitter(_ count: Int) -> URL? {
-            return URL(string: "\(base)/tweet/\(count)")
-        }
+        static let twitter = "\(base)/flow/get"
         ///官推最新头像
-        static let latestTwitterAvatar = URL(string: "\(base)/avatar/latest")
-        static let twitterAvatarList = URL(string: "\(base)/avatars")
+        static let latestTwitterAvatar = "http://api.kcwiki.moe/avatar/latest"
+        ///官推头像列表
+        static let twitterAvatarList = "http://api.kcwiki.moe/avatars"
     }
 }
 
@@ -113,6 +95,6 @@ private struct ATNetworkError {
     
     /// MARK: *** 网络请求错误 ***
     
-    static let invalidParameter = NSError(domain: "Invalid parameter", code: 111, userInfo: nil)
-    static let invalidResponse = NSError(domain: "Invalid response", code: 112, userInfo: nil)
+    fileprivate static let invalidURL = NSError(domain: "Invalid URL", code: 111, userInfo: nil)
+    fileprivate static let invalidResponse = NSError(domain: "Invalid response", code: 112, userInfo: nil)
 }

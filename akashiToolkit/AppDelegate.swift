@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = vc;
         window?.makeKeyAndVisible()
         
+        UIApplication.shared.statusBarStyle = .lightContent;
+        
         return true
     }
 }

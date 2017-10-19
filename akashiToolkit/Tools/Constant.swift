@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 ///状态栏高度
-let UIStatusBarHeight: CGFloat = {
+let ATUIStatusBarHeight: CGFloat = {
 	if UIDevice.isFuckedX() {
         return 44.0
     } else {
@@ -18,14 +18,14 @@ let UIStatusBarHeight: CGFloat = {
     }
 }()
 ///导航栏标题高度
-let UINavTitleBarHeight: CGFloat = 44.0
+let ATUINavTitleBarHeight: CGFloat = 44.0
 ///导航栏大标题高度
-let UINavLargeTitleBarHeight: CGFloat = 52.0
+let ATUINavLargeTitleBarHeight: CGFloat = 52.0
 ///状态栏+导航栏高度
-let UITopHeight = UIStatusBarHeight + UINavTitleBarHeight
+let ATUITopHeight = ATUIStatusBarHeight + ATUINavTitleBarHeight
 
 ///底部安全距离
-let UIBottomSafePadding: CGFloat = {
+let ATUIBottomSafePadding: CGFloat = {
     if UIDevice.isFuckedX() {
         return 34.0
     } else {
@@ -33,6 +33,13 @@ let UIBottomSafePadding: CGFloat = {
     }
 }()
 ///TabBar高度
-let UITabBarHeight: CGFloat = 49.0
+let ATUITabBarHeight: CGFloat = 49.0
 ///底部总高度
-let UIBottomHeight = UIBottomSafePadding + UITabBarHeight
+let ATUIBottomHeight = ATUIBottomSafePadding + ATUITabBarHeight
+
+///导航栏主色
+let ATUINavigationBarColor = UIColor(234.0, 0.0, 100.0)
+///浅色页面背景色
+let ATUILightPageBackgroundColor = UIColor(233.0, 233.0, 233.0)
+///深色页面背景色
+let ATUIDarkPageBackgroundColor = UIColor(100.0, 100.0, 100.0)

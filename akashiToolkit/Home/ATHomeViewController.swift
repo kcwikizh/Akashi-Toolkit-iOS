@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 class ATHomeViewController: UIViewController {
     
@@ -16,7 +17,7 @@ class ATHomeViewController: UIViewController {
     private var dataList: [ATHomeDataModel] = {
         var list: [ATHomeDataModel] = []
         
-        list.append(ATHomeDataModel(imageName: "sign", title: "推特"))
+        list.append(ATHomeDataModel(imageName: "sign", title: "官推"))
         list.append(ATHomeDataModel(imageName: "sign", title: "主页"))
         list.append(ATHomeDataModel(imageName: "sign", title: "活动"))
         
@@ -24,9 +25,15 @@ class ATHomeViewController: UIViewController {
     }()
     
     private var currentPageIndex: Int = 1 {
-        willSet {
-            if currentPageIndex != newValue && newValue <= dataList.count - 1 {
-                title = dataList[newValue].title
+        didSet {
+            if oldValue != currentPageIndex && currentPageIndex <= dataList.count - 1 {
+                title = dataList[currentPageIndex].title
+                
+                if currentPageIndex == 0 {
+                    avatarListPageBtn.isHidden = false
+                } else {
+                    avatarListPageBtn.isHidden = true
+                }
             }
         }
     }
@@ -34,10 +41,24 @@ class ATHomeViewController: UIViewController {
     private lazy var pageTabView: LSPageTabView = {
         let view = LSPageTabView(type: .stationary)
         
+        view.tabBarColor = ATUINavigationBarColor
+        view.sliderColor = .white
         view.dataSource = self
         view.delegate = self
         
         return view
+    }()
+    
+    private lazy var avatarListPageBtn: UIButton = {
+        let btn = UIButton(type: .custom)
+        
+        btn.isHidden = true
+        btn.setTitle("历史头像", for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
+        btn.addTarget(self, action: #selector(avatarListPageBtnDidClick), for: .touchUpInside)
+        
+        return btn
     }()
     
     /// MARK: *** 周期 ***
@@ -52,22 +73,7 @@ class ATHomeViewController: UIViewController {
             make.top.equalTo(0)
         }
         
-        let btn = UIButton(type: .custom)
-        btn.frame = CGRect(x: 100, y: 200, width: 50, height: 50)
-        btn.backgroundColor = .red
-        btn.addTarget(self, action: #selector(touchesBtn), for: .touchUpInside)
-        view.addSubview(btn)
-    }
-    
-    @objc func touchesBtn() {
-//        ATAPIClient<ATTwitterModel>().fetchTwitterList(count: 3) { (twitterList, error) in
-//            if let list = twitterList {
-//                for tw in list {
-//                    print("\(tw.dateStr) - \(tw.jpContent) - \(tw.zhContent)")
-//                    print("\(tw.imageURLStr)")
-//                }
-//            }
-//        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: avatarListPageBtn)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -81,6 +87,9 @@ class ATHomeViewController: UIViewController {
     @objc private func panOnScreenEdge(gesture: UIScreenEdgePanGestureRecognizer) {
         print("larry sue : \(gesture.state)")
     }
+    @objc private func avatarListPageBtnDidClick() {
+        navigationController?.pushViewController(ATAvatarListViewController(), animated: true)
+    }
 }
 
 extension ATHomeViewController: LSPageTabViewDataSource {
@@ -92,9 +101,9 @@ extension ATHomeViewController: LSPageTabViewDataSource {
         let view = UIView()
         
         if index % 2 == 0 {
-            view.backgroundColor = .darkGray
+            view.backgroundColor = ATUILightPageBackgroundColor
         } else {
-            view.backgroundColor = .brown
+            view.backgroundColor = ATUIDarkPageBackgroundColor
         }
         
         return view
@@ -105,7 +114,7 @@ extension ATHomeViewController: LSPageTabViewDataSource {
         
         imv.image = dataList[index].icon?.scaleImage(scaleSize: 0.2).withRenderingMode(.alwaysTemplate)
         imv.contentMode = .center
-        imv.tintColor = .black
+        imv.tintColor = .white
         
         return imv
     }
@@ -114,7 +123,8 @@ extension ATHomeViewController: LSPageTabViewDataSource {
         
         imv.image = dataList[index].icon?.scaleImage(scaleSize: 0.2).withRenderingMode(.alwaysTemplate)
         imv.contentMode = .center
-        imv.tintColor = .lightGray
+        imv.tintColor = .white
+        imv.alpha = 0.7
         
         return imv
     }

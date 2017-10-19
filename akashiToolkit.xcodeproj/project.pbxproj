@@ -14,6 +14,7 @@
 		472C6AE51F90E1260027C6B3 /* ExtensionUIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6AE41F90E1260027C6B3 /* ExtensionUIScreen.swift */; };
 		472C6AE71F90F2350027C6B3 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6AE61F90F2350027C6B3 /* Function.swift */; };
 		472C6AE91F90F2D70027C6B3 /* ExtensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6AE81F90F2D70027C6B3 /* ExtensionUIColor.swift */; };
+		47671BB71F98CCDB00426CBC /* ATAvatarListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47671BB61F98CCDB00426CBC /* ATAvatarListViewController.swift */; };
 		47894F611F92031900E55E4D /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47894F601F92031900E55E4D /* ExtensionUIView.swift */; };
 		47C5FEAF1F962D54005B4073 /* ATNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5FE941F962D54005B4073 /* ATNetworkTool.swift */; };
 		47C5FEB01F962D54005B4073 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5FEAE1F962D54005B4073 /* Protocol.swift */; };
@@ -226,6 +227,7 @@
 		472C6AE41F90E1260027C6B3 /* ExtensionUIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIScreen.swift; sourceTree = "<group>"; };
 		472C6AE61F90F2350027C6B3 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		472C6AE81F90F2D70027C6B3 /* ExtensionUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIColor.swift; sourceTree = "<group>"; };
+		47671BB61F98CCDB00426CBC /* ATAvatarListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAvatarListViewController.swift; sourceTree = "<group>"; };
 		47894F601F92031900E55E4D /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		47C5FE941F962D54005B4073 /* ATNetworkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATNetworkTool.swift; sourceTree = "<group>"; };
 		47C5FEAE1F962D54005B4073 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
@@ -2655,6 +2657,7 @@
 			isa = PBXGroup;
 			children = (
 				47CC33F91F8B954700B7CFB1 /* ATHomeViewController.swift */,
+				47671BB61F98CCDB00426CBC /* ATAvatarListViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -2976,6 +2979,7 @@
 				472C6AE71F90F2350027C6B3 /* Function.swift in Sources */,
 				47CC33E81F8B929400B7CFB1 /* AppDelegate.swift in Sources */,
 				47894F611F92031900E55E4D /* ExtensionUIView.swift in Sources */,
+				47671BB71F98CCDB00426CBC /* ATAvatarListViewController.swift in Sources */,
 				47C5FEB01F962D54005B4073 /* Protocol.swift in Sources */,
 				47F3BF5A1F94688100CC4398 /* ExtensionUIImage.swift in Sources */,
 				1D10F9DE1F8EA96400EA8FC1 /* manuscript.swift in Sources */,
