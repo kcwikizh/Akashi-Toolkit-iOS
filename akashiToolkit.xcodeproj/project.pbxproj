@@ -27,6 +27,7 @@
 		47CC38681F8BB88300B7CFB1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CC38271F8BB86500B7CFB1 /* Alamofire.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		47CC38691F8BB88300B7CFB1 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CC385A1F8BB86500B7CFB1 /* SDWebImage.framework */; };
 		47CC386A1F8BB88300B7CFB1 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CC38641F8BB86500B7CFB1 /* SnapKit.framework */; };
+		47D4E7A71F9A2B2000C9D27F /* ATImagePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D4E7A61F9A2B2000C9D27F /* ATImagePageViewController.swift */; };
 		47F3BF5A1F94688100CC4398 /* ExtensionUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F3BF591F94688100CC4398 /* ExtensionUIImage.swift */; };
 		47F3BF7C1F94BB2500CC4398 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 47CC38271F8BB86500B7CFB1 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		47F3BF7D1F94BB4800CC4398 /* SDWebImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 47CC34DD1F8BB86200B7CFB1 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -965,6 +966,7 @@
 		47CC381A1F8BB86400B7CFB1 /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
 		47CC381C1F8BB86400B7CFB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47CC381D1F8BB86400B7CFB1 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		47D4E7A61F9A2B2000C9D27F /* ATImagePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATImagePageViewController.swift; sourceTree = "<group>"; };
 		47F3BF591F94688100CC4398 /* ExtensionUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1053,7 +1055,7 @@
 			isa = PBXGroup;
 			children = (
 				47F3BF741F949E0B00CC4398 /* Home */,
-				47F3BF751F94AFD200CC4398 /* Base */,
+				47F3BF751F94AFD200CC4398 /* Globe */,
 				47C5FEB11F962D6F005B4073 /* Model */,
 				472C6ADE1F90D9CF0027C6B3 /* Tools */,
 				47CC34CB1F8BB86200B7CFB1 /* Lib */,
@@ -2662,12 +2664,13 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		47F3BF751F94AFD200CC4398 /* Base */ = {
+		47F3BF751F94AFD200CC4398 /* Globe */ = {
 			isa = PBXGroup;
 			children = (
 				47CC33FB1F8B992800B7CFB1 /* ATBaseNavigationController.swift */,
+				47D4E7A61F9A2B2000C9D27F /* ATImagePageViewController.swift */,
 			);
-			path = Base;
+			path = Globe;
 			sourceTree = "<group>";
 		};
 		47F3BF7F1F94CE3500CC4398 /* LSPageTabView */ = {
@@ -2712,6 +2715,7 @@
 				TargetAttributes = {
 					47CC33E31F8B929400B7CFB1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -2985,6 +2989,7 @@
 				1D10F9DE1F8EA96400EA8FC1 /* manuscript.swift in Sources */,
 				472C6AE91F90F2D70027C6B3 /* ExtensionUIColor.swift in Sources */,
 				472C6ADD1F90D6DC0027C6B3 /* LSPageTabView.swift in Sources */,
+				47D4E7A71F9A2B2000C9D27F /* ATImagePageViewController.swift in Sources */,
 				47C5FEAF1F962D54005B4073 /* ATNetworkTool.swift in Sources */,
 				472C6AE21F90E0FD0027C6B3 /* ExtensionUIDevice.swift in Sources */,
 				47CC33FA1F8B954700B7CFB1 /* ATHomeViewController.swift in Sources */,
@@ -3191,6 +3196,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FAHA792R32;
 				INFOPLIST_FILE = akashiToolkit/Info.plist;
@@ -3198,6 +3204,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kcwikizh.akashiToolkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3207,6 +3214,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FAHA792R32;
 				INFOPLIST_FILE = akashiToolkit/Info.plist;

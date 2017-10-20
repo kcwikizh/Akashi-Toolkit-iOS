@@ -23,7 +23,7 @@ class ATAvatarListViewController: UIViewController {
         layout.minimumInteritemSpacing = 0
         
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.backgroundColor = ATUILightPageBackgroundColor
+        view.backgroundColor = Constant.ui.color.lightPageBackground
         view.showsVerticalScrollIndicator = false
         view.dataSource = self
         view.delegate = self
@@ -33,7 +33,7 @@ class ATAvatarListViewController: UIViewController {
     
     override func viewDidLoad() {
         title = "历史头像"
-        view.backgroundColor = ATUILightPageBackgroundColor
+        view.backgroundColor = Constant.ui.color.lightPageBackground
         
         view.addSubview(collectionView)
         
@@ -49,6 +49,13 @@ class ATAvatarListViewController: UIViewController {
                 self.collectionView.reloadData()
             }
         }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+        SDImageCache.shared().clearDisk()
+        SDImageCache.shared().clearMemory()
     }
 }
 
@@ -67,11 +74,17 @@ extension ATAvatarListViewController: UICollectionViewDataSource {
 
 extension ATAvatarListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("larry sue : \(String(describing: avatarURLList[indexPath.row]?.absoluteString))")
+        let vc = ATImagePageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        
+        vc.avatarURLList = avatarURLList
+        vc.currentIndex = indexPath.row
+        
+        present(vc, animated: true)
     }
 }
 
 private class ATAvatarListViewCell: UICollectionViewCell {
+    ///图片链接
     var imageURL: URL? {
         didSet {
             imageView.sd_setImage(with: imageURL)
@@ -81,7 +94,7 @@ private class ATAvatarListViewCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let imv = UIImageView()
         
-        imv.backgroundColor = ATUILightPageBackgroundColor
+        imv.backgroundColor = Constant.ui.color.lightPageBackground
         
         return imv
     }()
@@ -100,3 +113,4 @@ private class ATAvatarListViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+

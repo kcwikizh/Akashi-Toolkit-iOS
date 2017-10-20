@@ -40,7 +40,7 @@ class ATHomeViewController: UIViewController {
     private lazy var pageTabView: LSPageTabView = {
         let view = LSPageTabView(type: .stationary)
         
-        view.tabBarColor = ATUINavigationBarColor
+        view.tabBarColor = Constant.ui.color.navigationBar
         view.sliderColor = .white
         view.dataSource = self
         view.delegate = self
@@ -64,7 +64,7 @@ class ATHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         title = "主页"
-        view.backgroundColor = ATUILightPageBackgroundColor
+        view.backgroundColor = Constant.ui.color.lightPageBackground
         
         view.addSubview(pageTabView)
         
@@ -100,9 +100,9 @@ extension ATHomeViewController: LSPageTabViewDataSource {
         let view = UIView()
         
         if index % 2 == 0 {
-            view.backgroundColor = ATUILightPageBackgroundColor
+            view.backgroundColor = Constant.ui.color.lightPageBackground
         } else {
-            view.backgroundColor = ATUIDarkPageBackgroundColor
+            view.backgroundColor = Constant.ui.color.darkPageBackground
         }
         
         return view
