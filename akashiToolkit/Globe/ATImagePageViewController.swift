@@ -13,6 +13,8 @@ import Photos
 
 class ATImagePageViewController: UIPageViewController {
     
+    // MARK: *** 属性 ***
+    
     ///图片URL列表
     var avatarURLList: [URL?] = []
     ///最初所选URL索引
@@ -34,13 +36,21 @@ class ATImagePageViewController: UIPageViewController {
             let latterPart = " / \(avatarURLList.count)"
             
             let attStr = NSMutableAttributedString(string: frontPart + latterPart)
-            attStr.addAttributes([NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 35.0)], range: NSRange(location: 0, length: frontPart.count))
-            attStr.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 25.0)], range: NSRange(location: frontPart.count, length: latterPart.count))
+            
+            ///设置字体
+            attStr.addAttribute(NSAttributedStringKey.font, value: UIFont.boldSystemFont(ofSize: 35.0), range: NSRange(location: 0, length: frontPart.count))
+            attStr.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 25.0), range: NSRange(location: frontPart.count, length: latterPart.count))
+            ///设置阴影
+            let shadow = NSShadow()
+            shadow.shadowColor = UIColor(white: 0, alpha: 0.5)
+            shadow.shadowOffset = CGSize(width: 2.0, height: 2.0)
+            shadow.shadowBlurRadius = 2.0
+            attStr.addAttribute(NSAttributedStringKey.shadow, value: shadow, range: NSRange(location: 0, length: attStr.string.count))
             
             indexLbl.attributedText = attStr
         }
     }
-    
+    ///索引文字
     private lazy var indexLbl: UILabel = {
         let label = UILabel()
         
@@ -49,6 +59,40 @@ class ATImagePageViewController: UIPageViewController {
         
         return label
     }()
+    ///下载图片按钮
+    private lazy var downloadImageBtn: UIButton = {
+        let button = UIButton(type: .custom)
+        button.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        button.layer.cornerRadius = 20.0
+        button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(downloadImageBtnDidClick), for: .touchUpInside)
+        
+        let saveImageIcon = UIImage(named: "download")?.reSizeImage(reSize: CGSize(width: 20.0, height: 20.0)).withRenderingMode(.alwaysTemplate)
+        button.setImage(saveImageIcon, for: .normal)
+        button.tintColor = .white
+        
+        return button
+    }()
+    ///菊花
+    private lazy var chrysanthemum: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .white)
+    ///下载状态
+    private var isDownloading: Bool = false {
+        didSet {
+            if isDownloading {
+                DispatchQueue.main.async(execute: {
+                    self.downloadImageBtn.isHidden = true
+                    self.chrysanthemum.startAnimating()
+                })
+            } else {
+                DispatchQueue.main.async(execute: {
+                    self.downloadImageBtn.isHidden = false
+                    self.chrysanthemum.stopAnimating()
+                })
+            }
+        }
+    }
+    
+    // MARK: *** 周期 ***
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,32 +103,41 @@ class ATImagePageViewController: UIPageViewController {
         self.delegate = self
         
         let dismissBtn = UIButton(type: .custom)
-        dismissBtn.backgroundColor = .gray
+        dismissBtn.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        dismissBtn.layer.cornerRadius = 20.0
+        dismissBtn.layer.masksToBounds = true
         dismissBtn.addTarget(self, action: #selector(dismissBtnDidClick), for: .touchUpInside)
         
-        let saveImageBtn = UIButton(type: .custom)
-        saveImageBtn.backgroundColor = .gray
-        saveImageBtn.addTarget(self, action: #selector(saveImageBtnDidClick), for: .touchUpInside)
+        let dismissIcon = UIImage(named: "close")?.reSizeImage(reSize: CGSize(width: 15.0, height: 15.0)).withRenderingMode(.alwaysTemplate)
+        dismissBtn.setImage(dismissIcon, for: .normal)
+        dismissBtn.tintColor = .white
         
         view.addSubview(dismissBtn)
         view.addSubview(indexLbl)
-        view.addSubview(saveImageBtn)
+        view.addSubview(downloadImageBtn)
+        view.addSubview(chrysanthemum)
         
         dismissBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(Constant.ui.size.statusBarHeight)
-            make.left.equalTo(10.0)
-            make.size.equalTo(CGSize(width: 50.0, height: 50.0))
+            make.top.equalTo(Constant.ui.size.statusBarHeight + 10)
+            make.left.equalTo(15.0)
+            make.size.equalTo(CGSize(width: 40.0, height: 40.0))
         }
         indexLbl.snp.makeConstraints { (make) in
-            make.left.equalTo(10.0)
-            make.bottom.equalTo(-Constant.ui.size.bottomSafePadding - 10.0)
+            make.left.equalTo(15.0)
+            make.bottom.equalTo(-Constant.ui.size.bottomSafePadding - 15.0)
         }
-        saveImageBtn.snp.makeConstraints { (make) in
-            make.right.equalTo(-10.0)
-            make.bottom.equalTo(-Constant.ui.size.bottomSafePadding - 10.0)
-            make.size.equalTo(CGSize(width: 50.0, height: 50.0))
+        downloadImageBtn.snp.makeConstraints { (make) in
+            make.right.equalTo(-15.0)
+            make.bottom.equalTo(-Constant.ui.size.bottomSafePadding - 15.0)
+            make.size.equalTo(CGSize(width: 40.0, height: 40.0))
+        }
+        chrysanthemum.snp.makeConstraints { (make) in
+            make.size.equalTo(downloadImageBtn)
+            make.center.equalTo(downloadImageBtn)
         }
     }
+    
+    // MARK: *** 内存警告 ***
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -93,11 +146,15 @@ class ATImagePageViewController: UIPageViewController {
         SDImageCache.shared().clearDisk()
     }
     
+    // MARK: *** 回调 ***
+    
     @objc private func dismissBtnDidClick(_ sender: UIButton) {
         dismiss(animated: true)
     }
     
-    @objc private func saveImageBtnDidClick(_ sender: UIButton) {
+    @objc private func downloadImageBtnDidClick(_ sender: UIButton) {
+        isDownloading = true
+        
         ATPermissionsTool.getPhotoPermissions { (status) in
             if status == .authorized || status == .notDetermined {
                 let url = self.avatarURLList[self.currentIndex]
@@ -111,17 +168,23 @@ class ATImagePageViewController: UIPageViewController {
                                     print("保存成功")
                                 } else {
                                     print("保存失败")
-                                    print(String(describing: saveError?.localizedDescription))
                                 }
+                                self.isDownloading = false
                             })
+                        } else {
+                            print("图片下载错误")
+                            self.isDownloading = false
                         }
                     }
                 })
             } else {
                 print("无权保存")
+                self.isDownloading = false
             }
         }
     }
+    
+    // MARK: *** 逻辑 ***
     
     private func index(of viewController: ATImageViewController) -> Int? {
         return avatarURLList.index(where: { (url) -> Bool in
@@ -179,6 +242,7 @@ private class ATImageViewController: UIViewController {
     private lazy var imageView: UIImageView = {
         let imv = UIImageView()
         
+        imv.backgroundColor = .black
         imv.contentMode = .scaleAspectFit
         
         return imv

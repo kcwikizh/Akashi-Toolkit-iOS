@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D10F9DE1F8EA96400EA8FC1 /* manuscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */; };
+		1D61FA981F9BC0E00062FD60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */; };
 		472C6ADD1F90D6DC0027C6B3 /* LSPageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6ADC1F90D6DC0027C6B3 /* LSPageTabView.swift */; };
 		472C6AE01F90DA420027C6B3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6ADF1F90DA420027C6B3 /* Constant.swift */; };
 		472C6AE21F90E0FD0027C6B3 /* ExtensionUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6AE11F90E0FD0027C6B3 /* ExtensionUIDevice.swift */; };
@@ -20,7 +21,6 @@
 		47C5FEB01F962D54005B4073 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5FEAE1F962D54005B4073 /* Protocol.swift */; };
 		47C5FEB31F962E1E005B4073 /* ATTwitterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5FEB21F962D6F005B4073 /* ATTwitterModel.swift */; };
 		47CC33E81F8B929400B7CFB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */; };
-		47CC33EF1F8B929400B7CFB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47CC33EE1F8B929400B7CFB1 /* Assets.xcassets */; };
 		47CC33F21F8B929400B7CFB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47CC33F01F8B929400B7CFB1 /* LaunchScreen.storyboard */; };
 		47CC33FA1F8B954700B7CFB1 /* ATHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC33F91F8B954700B7CFB1 /* ATHomeViewController.swift */; };
 		47CC33FC1F8B992800B7CFB1 /* ATBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC33FB1F8B992800B7CFB1 /* ATBaseNavigationController.swift */; };
@@ -225,6 +225,7 @@
 
 /* Begin PBXFileReference section */
 		1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manuscript.swift; sourceTree = "<group>"; };
+		1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		472C6ADC1F90D6DC0027C6B3 /* LSPageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSPageTabView.swift; sourceTree = "<group>"; };
 		472C6ADF1F90DA420027C6B3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		472C6AE11F90E0FD0027C6B3 /* ExtensionUIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIDevice.swift; sourceTree = "<group>"; };
@@ -238,7 +239,6 @@
 		47C5FEB21F962D6F005B4073 /* ATTwitterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTwitterModel.swift; sourceTree = "<group>"; };
 		47CC33E41F8B929400B7CFB1 /* akashiToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = akashiToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		47CC33EE1F8B929400B7CFB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47CC33F11F8B929400B7CFB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47CC33F31F8B929400B7CFB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47CC33F91F8B954700B7CFB1 /* ATHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATHomeViewController.swift; sourceTree = "<group>"; };
@@ -1038,7 +1038,7 @@
 				47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */,
 				47CC33F31F8B929400B7CFB1 /* Info.plist */,
 				47CC33F01F8B929400B7CFB1 /* LaunchScreen.storyboard */,
-				47CC33EE1F8B929400B7CFB1 /* Assets.xcassets */,
+				1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -2957,8 +2957,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D61FA981F9BC0E00062FD60 /* Assets.xcassets in Resources */,
 				47CC33F21F8B929400B7CFB1 /* LaunchScreen.storyboard in Resources */,
-				47CC33EF1F8B929400B7CFB1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3212,7 +3212,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FAHA792R32;
 				INFOPLIST_FILE = akashiToolkit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kcwikizh.akashiToolkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3230,7 +3230,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FAHA792R32;
 				INFOPLIST_FILE = akashiToolkit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kcwikizh.akashiToolkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
