@@ -54,8 +54,8 @@ class ATAvatarListViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
-        SDImageCache.shared().clearDisk()
         SDImageCache.shared().clearMemory()
+        SDImageCache.shared().clearDisk()
     }
 }
 
@@ -77,7 +77,7 @@ extension ATAvatarListViewController: UICollectionViewDelegate {
         let vc = ATImagePageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         
         vc.avatarURLList = avatarURLList
-        vc.currentIndex = indexPath.row
+        vc.initialIndex = indexPath.row
         
         present(vc, animated: true)
     }

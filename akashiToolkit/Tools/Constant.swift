@@ -58,4 +58,10 @@ struct Constant {
             static let darkPageBackground = UIColor(100.0, 100.0, 100.0)
         }
     }
+    
+    /// MARK: *** AppDelegate ***
+    
+    static let appDelegate: AppDelegate = {
+        return UIApplication.shared.delegate as! AppDelegate
+    }()
 }

@@ -28,6 +28,9 @@
 		47CC38691F8BB88300B7CFB1 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CC385A1F8BB86500B7CFB1 /* SDWebImage.framework */; };
 		47CC386A1F8BB88300B7CFB1 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CC38641F8BB86500B7CFB1 /* SnapKit.framework */; };
 		47D4E7A71F9A2B2000C9D27F /* ATImagePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D4E7A61F9A2B2000C9D27F /* ATImagePageViewController.swift */; };
+		47D4E7D51F9B272100C9D27F /* ATPermissionsTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D4E7D41F9B272100C9D27F /* ATPermissionsTool.swift */; };
+		47D4E7F01F9B453900C9D27F /* ExtensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D4E7EF1F9B453900C9D27F /* ExtensionUIViewController.swift */; };
+		47D4E7F21F9B4C0400C9D27F /* ATToastMessageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D4E7F11F9B4C0400C9D27F /* ATToastMessageTool.swift */; };
 		47F3BF5A1F94688100CC4398 /* ExtensionUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F3BF591F94688100CC4398 /* ExtensionUIImage.swift */; };
 		47F3BF7C1F94BB2500CC4398 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 47CC38271F8BB86500B7CFB1 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		47F3BF7D1F94BB4800CC4398 /* SDWebImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 47CC34DD1F8BB86200B7CFB1 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -967,6 +970,9 @@
 		47CC381C1F8BB86400B7CFB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47CC381D1F8BB86400B7CFB1 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		47D4E7A61F9A2B2000C9D27F /* ATImagePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATImagePageViewController.swift; sourceTree = "<group>"; };
+		47D4E7D41F9B272100C9D27F /* ATPermissionsTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATPermissionsTool.swift; sourceTree = "<group>"; };
+		47D4E7EF1F9B453900C9D27F /* ExtensionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIViewController.swift; sourceTree = "<group>"; };
+		47D4E7F11F9B4C0400C9D27F /* ATToastMessageTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATToastMessageTool.swift; sourceTree = "<group>"; };
 		47F3BF591F94688100CC4398 /* ExtensionUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -995,9 +1001,11 @@
 		472C6ADE1F90D9CF0027C6B3 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				47C5FE941F962D54005B4073 /* ATNetworkTool.swift */,
+				47D4E7D41F9B272100C9D27F /* ATPermissionsTool.swift */,
+				47D4E7F11F9B4C0400C9D27F /* ATToastMessageTool.swift */,
 				472C6ADF1F90DA420027C6B3 /* Constant.swift */,
 				472C6AE61F90F2350027C6B3 /* Function.swift */,
-				47C5FE941F962D54005B4073 /* ATNetworkTool.swift */,
 				47C5FEAE1F962D54005B4073 /* Protocol.swift */,
 			);
 			path = Tools;
@@ -1011,6 +1019,7 @@
 				472C6AE41F90E1260027C6B3 /* ExtensionUIScreen.swift */,
 				47894F601F92031900E55E4D /* ExtensionUIView.swift */,
 				47F3BF591F94688100CC4398 /* ExtensionUIImage.swift */,
+				47D4E7EF1F9B453900C9D27F /* ExtensionUIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2984,9 +2993,11 @@
 				47CC33E81F8B929400B7CFB1 /* AppDelegate.swift in Sources */,
 				47894F611F92031900E55E4D /* ExtensionUIView.swift in Sources */,
 				47671BB71F98CCDB00426CBC /* ATAvatarListViewController.swift in Sources */,
+				47D4E7F01F9B453900C9D27F /* ExtensionUIViewController.swift in Sources */,
 				47C5FEB01F962D54005B4073 /* Protocol.swift in Sources */,
 				47F3BF5A1F94688100CC4398 /* ExtensionUIImage.swift in Sources */,
 				1D10F9DE1F8EA96400EA8FC1 /* manuscript.swift in Sources */,
+				47D4E7D51F9B272100C9D27F /* ATPermissionsTool.swift in Sources */,
 				472C6AE91F90F2D70027C6B3 /* ExtensionUIColor.swift in Sources */,
 				472C6ADD1F90D6DC0027C6B3 /* LSPageTabView.swift in Sources */,
 				47D4E7A71F9A2B2000C9D27F /* ATImagePageViewController.swift in Sources */,
@@ -2995,6 +3006,7 @@
 				47CC33FA1F8B954700B7CFB1 /* ATHomeViewController.swift in Sources */,
 				472C6AE51F90E1260027C6B3 /* ExtensionUIScreen.swift in Sources */,
 				47CC33FC1F8B992800B7CFB1 /* ATBaseNavigationController.swift in Sources */,
+				47D4E7F21F9B4C0400C9D27F /* ATToastMessageTool.swift in Sources */,
 				472C6AE01F90DA420027C6B3 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

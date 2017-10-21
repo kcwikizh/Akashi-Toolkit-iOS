@@ -9,23 +9,38 @@
 import UIKit
 import SDWebImage
 import SnapKit
+import Photos
 
 class ATImagePageViewController: UIPageViewController {
     
     ///图片URL列表
     var avatarURLList: [URL?] = []
-    ///当前所选URL索引
-    var currentIndex: Int = 0 {
+    ///最初所选URL索引
+    var initialIndex: Int = 0 {
         didSet {
-            if currentIndex < 0 {
-                currentIndex = 0
-            } else if currentIndex >= avatarURLList.count - 1 {
-                currentIndex = avatarURLList.count - 1
+            if initialIndex < 0 {
+                initialIndex = 0
+            } else if initialIndex >= avatarURLList.count - 1 {
+                initialIndex = avatarURLList.count - 1
             }
-            setViewControllers([ATImageViewController(image: avatarURLList[currentIndex])], direction: .forward, animated: true)
-            setIndexLblText(currentIndex)
+            setViewControllers([ATImageViewController(image: avatarURLList[initialIndex])], direction: .forward, animated: true)
+            currentIndex = initialIndex
         }
     }
+    ///当前所选URL索引
+    private var currentIndex: Int = 0 {
+        didSet {
+            let frontPart = "\(currentIndex + 1)"
+            let latterPart = " / \(avatarURLList.count)"
+            
+            let attStr = NSMutableAttributedString(string: frontPart + latterPart)
+            attStr.addAttributes([NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 35.0)], range: NSRange(location: 0, length: frontPart.count))
+            attStr.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 25.0)], range: NSRange(location: frontPart.count, length: latterPart.count))
+            
+            indexLbl.attributedText = attStr
+        }
+    }
+    
     private lazy var indexLbl: UILabel = {
         let label = UILabel()
         
@@ -47,8 +62,13 @@ class ATImagePageViewController: UIPageViewController {
         dismissBtn.backgroundColor = .gray
         dismissBtn.addTarget(self, action: #selector(dismissBtnDidClick), for: .touchUpInside)
         
+        let saveImageBtn = UIButton(type: .custom)
+        saveImageBtn.backgroundColor = .gray
+        saveImageBtn.addTarget(self, action: #selector(saveImageBtnDidClick), for: .touchUpInside)
+        
         view.addSubview(dismissBtn)
         view.addSubview(indexLbl)
+        view.addSubview(saveImageBtn)
         
         dismissBtn.snp.makeConstraints { (make) in
             make.top.equalTo(Constant.ui.size.statusBarHeight)
@@ -57,19 +77,53 @@ class ATImagePageViewController: UIPageViewController {
         }
         indexLbl.snp.makeConstraints { (make) in
             make.left.equalTo(10.0)
-            make.bottom.equalTo(Constant.ui.size.bottomSafePadding - 10.0)
+            make.bottom.equalTo(-Constant.ui.size.bottomSafePadding - 10.0)
+        }
+        saveImageBtn.snp.makeConstraints { (make) in
+            make.right.equalTo(-10.0)
+            make.bottom.equalTo(-Constant.ui.size.bottomSafePadding - 10.0)
+            make.size.equalTo(CGSize(width: 50.0, height: 50.0))
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
-        SDImageCache.shared().clearDisk()
         SDImageCache.shared().clearMemory()
+        SDImageCache.shared().clearDisk()
     }
     
     @objc private func dismissBtnDidClick(_ sender: UIButton) {
         dismiss(animated: true)
+    }
+    
+    @objc private func saveImageBtnDidClick(_ sender: UIButton) {
+        ATPermissionsTool.getPhotoPermissions { (status) in
+            if status == .authorized || status == .notDetermined {
+                guard let vc = UIViewController.currentPresented as? ATImageViewController else {
+                    print("保存失败")
+                    return
+                }
+                SDWebImageManager.shared().imageDownloader?.downloadImage(with: vc.imageURL, options: [.continueInBackground, .progressiveDownload], progress: nil, completed: { (image, data, error, finished) in
+                    if finished {
+                        if let image = image {
+                            PHPhotoLibrary.shared().performChanges({
+                                PHAssetChangeRequest.creationRequestForAsset(from: image)
+                            }, completionHandler: { (success, saveError) in
+                                if success {
+                                    print("保存成功")
+                                } else {
+                                    print("保存失败")
+                                    print(String(describing: saveError?.localizedDescription))
+                                }
+                            })
+                        }
+                    }
+                })
+            } else {
+                print("无权保存")
+            }
+        }
     }
     
     private func index(of viewController: ATImageViewController) -> Int? {
@@ -77,23 +131,11 @@ class ATImagePageViewController: UIPageViewController {
             viewController.imageURL == url
         })
     }
-    
-    private func setIndexLblText(_ index: Int) {
-        let frontPart = "\(index + 1)"
-        let latterPart = " / \(avatarURLList.count)"
-        
-        let attStr = NSMutableAttributedString(string: frontPart + latterPart)
-        attStr.addAttributes([NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 35.0)], range: NSRange(location: 0, length: frontPart.count))
-        attStr.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 25.0)], range: NSRange(location: frontPart.count, length: latterPart.count))
-        
-        indexLbl.attributedText = attStr
-    }
 }
 
 extension ATImagePageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         if let currentIndex = index(of: viewController as! ATImageViewController) {
-            setIndexLblText(currentIndex)
             if currentIndex >= avatarURLList.count - 1 {
                 return nil
             } else {
@@ -105,7 +147,6 @@ extension ATImagePageViewController: UIPageViewControllerDataSource {
     }
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if let currentIndex = index(of: viewController as! ATImageViewController) {
-            setIndexLblText(currentIndex)
             if currentIndex <= 0 {
                 return nil
             } else {
@@ -115,10 +156,22 @@ extension ATImagePageViewController: UIPageViewControllerDataSource {
             return nil
         }
     }
+    
 }
 
 extension ATImagePageViewController: UIPageViewControllerDelegate {
-    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        if let willIndex = index(of: pendingViewControllers.first as! ATImageViewController) {
+            currentIndex = willIndex
+        }
+    }
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if !completed {
+            if let willIndex = index(of: previousViewControllers.first as! ATImageViewController) {
+                currentIndex = willIndex
+            }
+        }
+    }
 }
 
 private class ATImageViewController: UIViewController {
@@ -142,7 +195,7 @@ private class ATImageViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        view.backgroundColor = .black
         
         view.addSubview(imageView)
         
