@@ -100,11 +100,8 @@ class ATImagePageViewController: UIPageViewController {
     @objc private func saveImageBtnDidClick(_ sender: UIButton) {
         ATPermissionsTool.getPhotoPermissions { (status) in
             if status == .authorized || status == .notDetermined {
-                guard let vc = UIViewController.currentPresented as? ATImageViewController else {
-                    print("保存失败")
-                    return
-                }
-                SDWebImageManager.shared().imageDownloader?.downloadImage(with: vc.imageURL, options: [.continueInBackground, .progressiveDownload], progress: nil, completed: { (image, data, error, finished) in
+                let url = self.avatarURLList[self.currentIndex]
+                SDWebImageManager.shared().imageDownloader?.downloadImage(with: url, options: [.continueInBackground, .progressiveDownload], progress: nil, completed: { (image, data, error, finished) in
                     if finished {
                         if let image = image {
                             PHPhotoLibrary.shared().performChanges({
