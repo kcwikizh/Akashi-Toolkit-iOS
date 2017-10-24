@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class ATHomeViewController: UIViewController {
+class ATHomeViewController: ATBaseViewController {
     
     /// MARK: *** 属性 ***
     
@@ -26,12 +26,14 @@ class ATHomeViewController: UIViewController {
     private var currentPageIndex: Int = 1 {
         didSet {
             if oldValue != currentPageIndex && currentPageIndex <= dataList.count - 1 {
-                title = dataList[currentPageIndex].title
+                titleLbl.text = dataList[currentPageIndex].title
                 
                 if currentPageIndex == 0 {
                     avatarListPageBtn.isHidden = false
+                    showRightBtn = true
                 } else {
                     avatarListPageBtn.isHidden = true
+                    showRightBtn = false
                 }
             }
         }
@@ -49,30 +51,40 @@ class ATHomeViewController: UIViewController {
     }()
     
     private lazy var avatarListPageBtn: UIButton = {
-        let btn = UIButton(type: .custom)
+        let button = UIButton(type: .custom)
         
-        btn.isHidden = true
-        btn.setTitle("历史头像", for: .normal)
-        btn.setTitleColor(.white, for: .normal)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
-        btn.addTarget(self, action: #selector(avatarListPageBtnDidClick), for: .touchUpInside)
+        button.isHidden = true
+        button.setTitle("历史头像", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .subheadline
+        button.addTarget(self, action: #selector(rightBtnDidClick), for: .touchUpInside)
+        button.backgroundColor = .orange
         
-        return btn
+        return button
     }()
     
     /// MARK: *** 周期 ***
     
     override func viewDidLoad() {
-        title = "主页"
+        super.viewDidLoad()
+        
+        titleLbl.text = "主页"
+        showBackBtn = false
+        showRightBtn = false
+        
         view.backgroundColor = Constant.ui.color.lightPageBackground
         
         view.addSubview(pageTabView)
-        
+        navView.addSubview(avatarListPageBtn)
+
         pageTabView.snp.makeConstraints { (make) in
-            make.left.right.top.bottom.equalTo(0)
+            make.left.right.bottom.equalTo(0)
+            make.top.equalTo(navView.snp.bottom)
         }
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: avatarListPageBtn)
+        avatarListPageBtn.snp.makeConstraints { (make) in
+            make.centerY.equalTo(titleLbl)
+            make.right.equalTo(Constant.ui.size.navItemHorizontalPadding)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,7 +98,8 @@ class ATHomeViewController: UIViewController {
     @objc private func panOnScreenEdge(gesture: UIScreenEdgePanGestureRecognizer) {
         print("larry sue : \(gesture.state)")
     }
-    @objc private func avatarListPageBtnDidClick() {
+    override func rightBtnDidClick() {
+        super.rightBtnDidClick()
         navigationController?.pushViewController(ATAvatarListViewController(), animated: true)
     }
 }

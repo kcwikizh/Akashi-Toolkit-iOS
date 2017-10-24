@@ -68,7 +68,7 @@ class LSPageTabView: UIView {
                         } else {
                             let titleLbl = UILabel()
                             titleLbl.textAlignment = .center
-                            titleLbl.font = UIFont.boldSystemFont(ofSize: 15.0)
+                            titleLbl.font = .body
                             if let  attributedTitle = dataSource?.pageTabView?(self, attributedTitleForTabAt: i) {
                                 titleLbl.attributedText = attributedTitle
                             } else {

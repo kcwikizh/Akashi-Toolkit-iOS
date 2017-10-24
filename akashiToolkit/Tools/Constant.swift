@@ -20,7 +20,7 @@ struct Constant {
         struct size {
             ///状态栏高度
             static let statusBarHeight: CGFloat = {
-                if UIDevice.isFuckedX() {
+                if UIDevice.isFuckedX {
                     return 44.0
                 } else {
                     return 20.0
@@ -35,7 +35,7 @@ struct Constant {
             
             ///底部安全距离
             static let bottomSafePadding: CGFloat = {
-                if UIDevice.isFuckedX() {
+                if UIDevice.isFuckedX {
                     return 34.0
                 } else {
                     return 0.0
@@ -45,6 +45,9 @@ struct Constant {
             static let tabBarHeight: CGFloat = 49.0
             ///底部总高度
             static let bottomHeight = bottomSafePadding + tabBarHeight
+            
+            ///导航栏按钮距离屏幕侧边的距离
+            static let navItemHorizontalPadding = 12.0
         }
         
         /// MARK: *** 色彩 ***
@@ -56,12 +59,16 @@ struct Constant {
             static let lightPageBackground = UIColor(233.0, 233.0, 233.0)
             ///深色页面背景色
             static let darkPageBackground = UIColor(100.0, 100.0, 100.0)
+            ///阴影色
+            static let shadow = UIColor(white: 0.3, alpha: 0.5)
         }
     }
     
     /// MARK: *** AppDelegate ***
     
-    static let appDelegate: AppDelegate = {
-        return UIApplication.shared.delegate as! AppDelegate
-    }()
+    static let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    /// MARK: *** Window ***
+    
+    static let window: UIWindow = appDelegate.window!
 }

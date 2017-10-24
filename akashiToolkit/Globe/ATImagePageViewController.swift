@@ -34,8 +34,8 @@ class ATImagePageViewController: UIPageViewController {
             let latterPart = " / \(avatarURLList.count)"
             
             let attStr = NSMutableAttributedString(string: frontPart + latterPart)
-            attStr.addAttributes([NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 35.0)], range: NSRange(location: 0, length: frontPart.count))
-            attStr.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 25.0)], range: NSRange(location: frontPart.count, length: latterPart.count))
+            attStr.addAttributes([NSAttributedStringKey.font: UIFont.largeTitle], range: NSRange(location: 0, length: frontPart.count))
+            attStr.addAttributes([NSAttributedStringKey.font: UIFont.title2], range: NSRange(location: frontPart.count, length: latterPart.count))
             
             indexLbl.attributedText = attStr
         }
