@@ -18,9 +18,9 @@ class ATAvatarListViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.width * 0.5, height: UIScreen.width * 0.5)
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
+        layout.itemSize = CGSize(width: UIScreen.width * 0.5 - 1, height: UIScreen.width * 0.5 - 1)
+        layout.minimumLineSpacing = 2
+        layout.minimumInteritemSpacing = 2
         
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = Constant.ui.color.lightPageBackground
