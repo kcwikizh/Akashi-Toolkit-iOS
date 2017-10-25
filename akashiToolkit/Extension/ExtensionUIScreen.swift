@@ -10,7 +10,15 @@ import UIKit
 
 extension UIScreen {
     ///屏幕宽度
-    static let width = UIScreen.main.bounds.width
+    class var width: CGFloat {
+        get {
+            return main.bounds.width
+        }
+    }
     ///屏幕高度
-    static let height = UIScreen.main.bounds.height
+    class var height: CGFloat {
+        get {
+            return main.bounds.height
+        }
+    }
 }

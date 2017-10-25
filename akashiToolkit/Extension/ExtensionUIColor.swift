@@ -17,11 +17,13 @@ extension UIColor {
     }
     
     ///随机色
-    class func random() -> UIColor {
-        let r = akashiToolkit.random(from: 0, to: 255.0, decimal: 1)
-        let g = akashiToolkit.random(from: 0, to: 255.0, decimal: 1)
-        let b = akashiToolkit.random(from: 0, to: 255.0, decimal: 1)
-        
-        return UIColor(CGFloat(r), CGFloat(g), CGFloat(b))
+    class var random: UIColor {
+        get {
+            let r = akashiToolkit.random(from: 0, to: 255.0, decimal: 1)
+            let g = akashiToolkit.random(from: 0, to: 255.0, decimal: 1)
+            let b = akashiToolkit.random(from: 0, to: 255.0, decimal: 1)
+            
+            return UIColor(CGFloat(r), CGFloat(g), CGFloat(b))
+        }
     }
 }

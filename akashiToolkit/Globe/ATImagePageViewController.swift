@@ -107,6 +107,7 @@ class ATImagePageViewController: UIPageViewController {
         dismissBtn.layer.cornerRadius = 20.0
         dismissBtn.layer.masksToBounds = true
         dismissBtn.addTarget(self, action: #selector(dismissBtnDidClick), for: .touchUpInside)
+        dismissBtn.adjustsImageWhenHighlighted = false
         
         let dismissIcon = UIImage(named: "close")?.reSizeImage(reSize: CGSize(width: 15.0, height: 15.0)).withRenderingMode(.alwaysTemplate)
         dismissBtn.setImage(dismissIcon, for: .normal)

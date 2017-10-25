@@ -44,7 +44,6 @@ class ATAPIClient {
             
             do {
                 outputItem = try JSONSerialization.jsonObject(with: data) as AnyObject
-                return
             } catch {
                 outputError = error
             }
@@ -97,9 +96,9 @@ private struct ATAPI {
         ///官推
         static let twitter = "\(base)/flow/get"
         ///官推最新头像
-        static let latestTwitterAvatar = "http://api.kcwiki.moe/avatar/latest"
+        static let latestTwitterAvatar = "https://api.kcwiki.moe/avatar/latest"
         ///官推头像列表
-        static let twitterAvatarList = "http://api.kcwiki.moe/avatars"
+        static let twitterAvatarList = "https://api.kcwiki.moe/avatars"
     }
 }
 

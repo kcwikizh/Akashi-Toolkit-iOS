@@ -12,7 +12,7 @@ import SDWebImage
 
 private let ATAvatarListViewCellIdentifier = "ATAvatarListViewCellIdentifier"
 
-class ATAvatarListViewController: UIViewController {
+class ATAvatarListViewController: ATBaseViewController {
     
     private var avatarURLList: [URL?] = []
     
@@ -32,13 +32,17 @@ class ATAvatarListViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
-        title = "历史头像"
+        super.viewDidLoad()
+        
+        titleLbl.text = "历史头像"
+        
         view.backgroundColor = Constant.ui.color.lightPageBackground
         
         view.addSubview(collectionView)
         
         collectionView.snp.makeConstraints { (make) in
-            make.left.right.top.bottom.equalTo(0)
+            make.left.right.bottom.equalTo(0)
+            make.top.equalTo(navView.snp.bottom)
         }
         
         collectionView.register(ATAvatarListViewCell.self, forCellWithReuseIdentifier: ATAvatarListViewCellIdentifier)
