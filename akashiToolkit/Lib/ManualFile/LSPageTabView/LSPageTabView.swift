@@ -112,8 +112,8 @@ class LSPageTabView: UIView {
         return view
     }()
     ///可滚动标签栏
-    private lazy var tabScrollBar: UIScrollView = {
-        let scrollView = UIScrollView()
+    private lazy var tabScrollBar: ATBaseScrollView = {
+        let scrollView = ATBaseScrollView()
         scrollView.backgroundColor = .white
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.layer.masksToBounds = true
@@ -186,8 +186,8 @@ class LSPageTabView: UIView {
     }
     
     ///主题ScrollView
-    private lazy var mainScrollView: UIScrollView = {
-        let scrollView = UIScrollView()
+    private lazy var mainScrollView: ATBaseScrollView = {
+        let scrollView = ATBaseScrollView()
         
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false

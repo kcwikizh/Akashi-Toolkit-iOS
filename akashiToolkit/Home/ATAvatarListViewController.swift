@@ -35,8 +35,6 @@ class ATAvatarListViewController: ATBaseViewController {
         super.viewDidLoad()
         
         titleLbl.text = "历史头像"
-        showBackBtn = true
-        showRightBtn = false
         
         view.backgroundColor = Constant.ui.color.lightPageBackground
         

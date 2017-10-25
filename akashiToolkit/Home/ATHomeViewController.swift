@@ -30,10 +30,10 @@ class ATHomeViewController: ATBaseViewController {
                 
                 if currentPageIndex == 0 {
                     avatarListPageBtn.isHidden = false
-                    showRightBtn = true
+                    rightBtn.isHidden = false
                 } else {
                     avatarListPageBtn.isHidden = true
-                    showRightBtn = false
+                    rightBtn.isHidden = true
                 }
             }
         }
@@ -69,8 +69,10 @@ class ATHomeViewController: ATBaseViewController {
         super.viewDidLoad()
         
         titleLbl.text = "主页"
-        showBackBtn = false
-        showRightBtn = false
+        rightBtn.isHidden = true
+        
+        let image = UIImage(named: "menu")?.reSizeImage(reSize: CGSize(width: 20.0, height: 15.0)).withRenderingMode(.alwaysTemplate)
+        leftBtn.setImage(image, for: .normal)
         
         view.backgroundColor = Constant.ui.color.lightPageBackground
         
@@ -83,8 +85,12 @@ class ATHomeViewController: ATBaseViewController {
         }
         avatarListPageBtn.snp.makeConstraints { (make) in
             make.centerY.equalTo(titleLbl)
-            make.right.equalTo(Constant.ui.size.navItemHorizontalPadding)
+            make.right.equalTo(-Constant.ui.size.navItemHorizontalPadding)
         }
+        
+        let pan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(panOnScreenEdge))
+        pan.edges = .left
+        view.addGestureRecognizer(pan)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,7 +102,10 @@ class ATHomeViewController: ATBaseViewController {
     /// MARK: *** 回调 ***
     
     @objc private func panOnScreenEdge(gesture: UIScreenEdgePanGestureRecognizer) {
-        print("larry sue : \(gesture.state)")
+        print("larry sue : panOnScreenEdge")
+    }
+    override func leftBtnDidClick() {
+        print("larry sue : \(#function)")
     }
     override func rightBtnDidClick() {
         super.rightBtnDidClick()

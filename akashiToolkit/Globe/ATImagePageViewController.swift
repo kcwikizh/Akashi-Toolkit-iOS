@@ -61,10 +61,12 @@ class ATImagePageViewController: UIPageViewController {
         let dismissBtn = UIButton(type: .custom)
         dismissBtn.backgroundColor = .gray
         dismissBtn.addTarget(self, action: #selector(dismissBtnDidClick), for: .touchUpInside)
+        dismissBtn.adjustsImageWhenHighlighted = false
         
         let saveImageBtn = UIButton(type: .custom)
         saveImageBtn.backgroundColor = .gray
         saveImageBtn.addTarget(self, action: #selector(saveImageBtnDidClick), for: .touchUpInside)
+        saveImageBtn.adjustsImageWhenHighlighted = false
         
         view.addSubview(dismissBtn)
         view.addSubview(indexLbl)
