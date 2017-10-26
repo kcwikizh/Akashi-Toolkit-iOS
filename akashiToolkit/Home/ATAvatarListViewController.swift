@@ -23,7 +23,7 @@ class ATAvatarListViewController: ATBaseViewController {
         layout.minimumInteritemSpacing = 2
         
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.backgroundColor = Constant.ui.color.lightPageBackground
+        view.backgroundColor = Constant.ui.color.lightBackground
         view.showsVerticalScrollIndicator = false
         view.dataSource = self
         view.delegate = self
@@ -36,7 +36,7 @@ class ATAvatarListViewController: ATBaseViewController {
         
         titleLbl.text = "历史头像"
         
-        view.backgroundColor = Constant.ui.color.lightPageBackground
+        view.backgroundColor = Constant.ui.color.lightBackground
         
         view.addSubview(collectionView)
         
@@ -98,7 +98,7 @@ private class ATAvatarListViewCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let imv = UIImageView()
         
-        imv.backgroundColor = Constant.ui.color.lightPageBackground
+        imv.backgroundColor = Constant.ui.color.darkBackground
         
         return imv
     }()

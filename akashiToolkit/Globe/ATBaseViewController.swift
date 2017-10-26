@@ -36,7 +36,7 @@ class ATBaseViewController: UIViewController {
         
         button.addTarget(self, action: #selector(leftBtnDidClick), for: .touchUpInside)
         
-        let image = UIImage(named: "back")?.reSizeImage(reSize: CGSize(width: 20.0, height: 20.0)).withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named: "back")?.resizeImage(to: CGSize(width: 20.0, height: 20.0)).withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.imageView?.contentMode = .center
         button.tintColor = .white
@@ -58,7 +58,7 @@ class ATBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = Constant.ui.color.darkPageBackground
+        view.backgroundColor = Constant.ui.color.darkBackground
         
         view.addSubview(navView)
         navView.addSubview(leftBtn)

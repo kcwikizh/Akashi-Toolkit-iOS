@@ -67,7 +67,7 @@ class ATImagePageViewController: UIPageViewController {
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(downloadImageBtnDidClick), for: .touchUpInside)
         
-        let saveImageIcon = UIImage(named: "download")?.reSizeImage(reSize: CGSize(width: 20.0, height: 20.0)).withRenderingMode(.alwaysTemplate)
+        let saveImageIcon = UIImage(named: "download")?.resizeImage(to: CGSize(width: 20.0, height: 20.0)).withRenderingMode(.alwaysTemplate)
         button.setImage(saveImageIcon, for: .normal)
         button.tintColor = .white
         
@@ -109,7 +109,7 @@ class ATImagePageViewController: UIPageViewController {
         dismissBtn.addTarget(self, action: #selector(dismissBtnDidClick), for: .touchUpInside)
         dismissBtn.adjustsImageWhenHighlighted = false
         
-        let dismissIcon = UIImage(named: "close")?.reSizeImage(reSize: CGSize(width: 15.0, height: 15.0)).withRenderingMode(.alwaysTemplate)
+        let dismissIcon = UIImage(named: "close")?.resizeImage(to: CGSize(width: 15.0, height: 15.0)).withRenderingMode(.alwaysTemplate)
         dismissBtn.setImage(dismissIcon, for: .normal)
         dismissBtn.tintColor = .white
         
@@ -166,20 +166,20 @@ class ATImagePageViewController: UIPageViewController {
                                 PHAssetChangeRequest.creationRequestForAsset(from: image)
                             }, completionHandler: { (success, saveError) in
                                 if success {
-                                    print("保存成功")
+                                    ATToastMessageTool.shared.show("保存成功")
                                 } else {
-                                    print("保存失败")
+                                    ATToastMessageTool.shared.show("保存失败")
                                 }
                                 self.isDownloading = false
                             })
                         } else {
-                            print("图片下载错误")
+                            ATToastMessageTool.shared.show("图片下载错误")
                             self.isDownloading = false
                         }
                     }
                 })
             } else {
-                print("无权保存")
+                ATToastMessageTool.shared.show("保存失败")
                 self.isDownloading = false
             }
         }

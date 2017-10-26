@@ -58,10 +58,29 @@ class ATHomeViewController: ATBaseViewController {
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .subheadline
         button.addTarget(self, action: #selector(rightBtnDidClick), for: .touchUpInside)
-        button.backgroundColor = .orange
         
         return button
     }()
+    
+    private lazy var menuView: ATHomeMenuView = ATHomeMenuView()
+    private lazy var maskView: UIView = {
+        let view = UIView()
+        
+        view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        view.alpha = 0.0
+        
+        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        view.addSubview(effectView)
+        
+        effectView.snp.makeConstraints({ (make) in
+            make.left.right.top.bottom.equalTo(0)
+        })
+        
+        return view
+    }()
+    
+    private var screenEdgePan: UIScreenEdgePanGestureRecognizer?
+    private var maskTap: UITapGestureRecognizer?
     
     /// MARK: *** 周期 ***
     
@@ -71,26 +90,38 @@ class ATHomeViewController: ATBaseViewController {
         titleLbl.text = "主页"
         rightBtn.isHidden = true
         
-        let image = UIImage(named: "menu")?.reSizeImage(reSize: CGSize(width: 20.0, height: 15.0)).withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named: "menu")?.resizeImage(to: CGSize(width: 20.0, height: 15.0)).withRenderingMode(.alwaysTemplate)
         leftBtn.setImage(image, for: .normal)
         
-        view.backgroundColor = Constant.ui.color.lightPageBackground
+        view.backgroundColor = Constant.ui.color.lightBackground
         
-        view.addSubview(pageTabView)
         navView.addSubview(avatarListPageBtn)
+        view.addSubview(pageTabView)
+        view.addSubview(maskView)
+        view.addSubview(menuView)
 
-        pageTabView.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(0)
-            make.top.equalTo(navView.snp.bottom)
-        }
         avatarListPageBtn.snp.makeConstraints { (make) in
             make.centerY.equalTo(titleLbl)
             make.right.equalTo(-Constant.ui.size.navItemHorizontalPadding)
         }
+        pageTabView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalTo(0)
+            make.top.equalTo(navView.snp.bottom)
+        }
+        maskView.snp.makeConstraints { (make) in
+            make.left.right.top.bottom.equalTo(0)
+        }
+        menuView.snp.makeConstraints { (make) in
+            make.top.bottom.equalTo(0)
+            make.left.equalTo(-UIScreen.width * 0.4)
+            make.width.equalTo(UIScreen.width * 0.4)
+        }
         
-        let pan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(panOnScreenEdge))
-        pan.edges = .left
-        view.addGestureRecognizer(pan)
+        screenEdgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(panOnScreenEdge))
+        maskTap = UITapGestureRecognizer(target: self, action: #selector(tapOnMaskView))
+        
+        view.addGestureRecognizer(screenEdgePan!)
+        maskView.addGestureRecognizer(maskTap!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -104,8 +135,27 @@ class ATHomeViewController: ATBaseViewController {
     @objc private func panOnScreenEdge(gesture: UIScreenEdgePanGestureRecognizer) {
         print("larry sue : panOnScreenEdge")
     }
+    @objc private func tapOnMaskView() {
+        self.maskTap!.isEnabled = false
+        UIView.animate(withDuration: 0.2, animations: {
+            self.menuView.transform = CGAffineTransform.identity
+            self.maskView.alpha = 0.0
+        }) { (finished) in
+            if finished {
+                self.screenEdgePan!.isEnabled = true
+            }
+        }
+    }
     override func leftBtnDidClick() {
-        print("larry sue : \(#function)")
+        self.screenEdgePan!.isEnabled = false
+        UIView.animate(withDuration: 0.2, animations: {
+            self.menuView.transform = CGAffineTransform(translationX: self.menuView.width, y: 0)
+            self.maskView.alpha = 1.0
+        }) { (finished) in
+            if finished {
+                self.maskTap!.isEnabled = true
+            }
+        }
     }
     override func rightBtnDidClick() {
         super.rightBtnDidClick()
@@ -122,9 +172,9 @@ extension ATHomeViewController: LSPageTabViewDataSource {
         let view = UIView()
         
         if index % 2 == 0 {
-            view.backgroundColor = Constant.ui.color.lightPageBackground
+            view.backgroundColor = Constant.ui.color.lightBackground
         } else {
-            view.backgroundColor = Constant.ui.color.darkPageBackground
+            view.backgroundColor = Constant.ui.color.darkBackground
         }
         
         return view
@@ -133,7 +183,7 @@ extension ATHomeViewController: LSPageTabViewDataSource {
     func pageTabView(_ pageTabView: LSPageTabView, selectedTitleViewForTabAt index: Int) -> UIView {
         let imv = UIImageView()
         
-        imv.image = dataList[index].icon?.scaleImage(scaleSize: 0.2).withRenderingMode(.alwaysTemplate)
+        imv.image = dataList[index].icon?.scaleImage(to: 0.2).withRenderingMode(.alwaysTemplate)
         imv.contentMode = .center
         imv.tintColor = .white
         
@@ -142,7 +192,7 @@ extension ATHomeViewController: LSPageTabViewDataSource {
     func pageTabView(_ pageTabView: LSPageTabView, unselectedTitleViewForTabAt index: Int) -> UIView {
         let imv = UIImageView()
         
-        imv.image = dataList[index].icon?.scaleImage(scaleSize: 0.2).withRenderingMode(.alwaysTemplate)
+        imv.image = dataList[index].icon?.scaleImage(to: 0.2).withRenderingMode(.alwaysTemplate)
         imv.contentMode = .center
         imv.tintColor = .white
         imv.alpha = 0.7

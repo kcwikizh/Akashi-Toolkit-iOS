@@ -3236,7 +3236,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FAHA792R32;
 				INFOPLIST_FILE = akashiToolkit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kcwikizh.akashiToolkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3254,7 +3254,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FAHA792R32;
 				INFOPLIST_FILE = akashiToolkit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kcwikizh.akashiToolkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";

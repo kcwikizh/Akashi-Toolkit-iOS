@@ -55,10 +55,14 @@ struct Constant {
         struct color {
             ///导航栏主色
             static let navigationBar = UIColor(234.0, 0.0, 100.0)
-            ///浅色页面背景色
-            static let lightPageBackground = UIColor(233.0, 233.0, 233.0)
-            ///深色页面背景色
-            static let darkPageBackground = UIColor(100.0, 100.0, 100.0)
+            ///浅背景色
+            static let lightBackground = UIColor(233.0, 233.0, 233.0)
+            ///深背景色
+            static let darkBackground = UIColor(120.0, 120.0, 120.0)
+            ///深前景色
+            static let darkForeground = UIColor(50.0, 50.0, 50.0)
+            ///浅前景色
+            static let lightForeground = UIColor.white
             ///阴影色
             static let shadow = UIColor(white: 0.3, alpha: 0.5)
         }
