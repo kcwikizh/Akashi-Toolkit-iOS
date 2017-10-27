@@ -13,20 +13,37 @@ class ATHomeViewController: ATBaseViewController {
     
     /// MARK: *** 属性 ***
     
-    private var dataList: [ATHomeDataModel] = {
-        var list: [ATHomeDataModel] = []
+    private var itemList: [ATHomeItemModel] = {
+        var list: [ATHomeItemModel] = []
         
-        list.append(ATHomeDataModel(imageName: "sign", title: "官推"))
-        list.append(ATHomeDataModel(imageName: "sign", title: "主页"))
-        list.append(ATHomeDataModel(imageName: "sign", title: "活动"))
+        list.append(ATHomeItemModel(imageName: "sign", title: "官推"))
+        list.append(ATHomeItemModel(imageName: "sign", title: "主页"))
+        list.append(ATHomeItemModel(imageName: "sign", title: "活动"))
+        
+        return list
+    }()
+    
+    private var menuItemList: [ATHomeMenuItemModel] = {
+        var list: [ATHomeMenuItemModel] = []
+        
+        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATImproveViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATEquipViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATShipViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATAreaViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATEnemyViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATMissionViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATExpeditionViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATToolboxViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATSettingViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATAboutViewController.self))
         
         return list
     }()
     
     private var currentPageIndex: Int = 1 {
         didSet {
-            if oldValue != currentPageIndex && currentPageIndex <= dataList.count - 1 {
-                titleLbl.text = dataList[currentPageIndex].title
+            if oldValue != currentPageIndex && currentPageIndex <= itemList.count - 1 {
+                title = itemList[currentPageIndex].title
                 
                 if currentPageIndex == 0 {
                     avatarListPageBtn.isHidden = false
@@ -87,7 +104,7 @@ class ATHomeViewController: ATBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLbl.text = "主页"
+        title = "主页"
         rightBtn.isHidden = true
         
         let image = UIImage(named: "menu")?.resizeImage(to: CGSize(width: 20.0, height: 15.0)).withRenderingMode(.alwaysTemplate)
@@ -101,7 +118,7 @@ class ATHomeViewController: ATBaseViewController {
         view.addSubview(menuView)
 
         avatarListPageBtn.snp.makeConstraints { (make) in
-            make.centerY.equalTo(titleLbl)
+            make.centerY.equalTo(rightBtn)
             make.right.equalTo(-Constant.ui.size.navItemHorizontalPadding)
         }
         pageTabView.snp.makeConstraints { (make) in
@@ -123,6 +140,8 @@ class ATHomeViewController: ATBaseViewController {
         
         view.addGestureRecognizer(screenEdgePan!)
         maskView.addGestureRecognizer(maskTap!)
+        
+        menuView.itemList = menuItemList
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -192,7 +211,7 @@ class ATHomeViewController: ATBaseViewController {
 
 extension ATHomeViewController: LSPageTabViewDataSource {
     func numberOfTab(in pageTabView: LSPageTabView) -> Int {
-        return dataList.count
+        return itemList.count
     }
     
     func pageTabView(_ pageTabView: LSPageTabView, childViewAt index: Int) -> UIView {
@@ -210,7 +229,7 @@ extension ATHomeViewController: LSPageTabViewDataSource {
     func pageTabView(_ pageTabView: LSPageTabView, selectedTitleViewForTabAt index: Int) -> UIView {
         let imv = UIImageView()
         
-        imv.image = dataList[index].icon?.scaleImage(to: 0.2).withRenderingMode(.alwaysTemplate)
+        imv.image = itemList[index].icon?.scaleImage(to: 0.2).withRenderingMode(.alwaysTemplate)
         imv.contentMode = .center
         imv.tintColor = .white
         
@@ -219,7 +238,7 @@ extension ATHomeViewController: LSPageTabViewDataSource {
     func pageTabView(_ pageTabView: LSPageTabView, unselectedTitleViewForTabAt index: Int) -> UIView {
         let imv = UIImageView()
         
-        imv.image = dataList[index].icon?.scaleImage(to: 0.2).withRenderingMode(.alwaysTemplate)
+        imv.image = itemList[index].icon?.scaleImage(to: 0.2).withRenderingMode(.alwaysTemplate)
         imv.contentMode = .center
         imv.tintColor = .white
         imv.alpha = 0.7
@@ -236,7 +255,7 @@ extension ATHomeViewController: LSPageTabViewDelegate {
     }
 }
 
-fileprivate class ATHomeDataModel: NSObject {
+fileprivate class ATHomeItemModel: NSObject {
     var icon: UIImage?
     var title: String?
     
@@ -245,6 +264,18 @@ fileprivate class ATHomeDataModel: NSObject {
         
         self.icon = UIImage(named: imageName)
         self.title = title
+    }
+}
+
+class ATHomeMenuItemModel: NSObject {
+    var icon: UIImage?
+    var kind: ATBaseViewController.Type?
+    
+    convenience init(imageName: String, kind: ATBaseViewController.Type) {
+        self.init()
+        
+        self.icon = UIImage(named: imageName)
+        self.kind = kind
     }
 }
 

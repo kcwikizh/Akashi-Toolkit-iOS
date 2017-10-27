@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		1D10F9DE1F8EA96400EA8FC1 /* manuscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */; };
 		1D61FA981F9BC0E00062FD60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */; };
+		47058B001FA36C2D00C8CECB /* ATImproveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */; };
+		47058B021FA36C5300C8CECB /* ATAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B011FA36C5300C8CECB /* ATAboutViewController.swift */; };
+		47058B041FA36CAC00C8CECB /* ATEquipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B031FA36CAC00C8CECB /* ATEquipViewController.swift */; };
+		47058B061FA36CBF00C8CECB /* ATShipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B051FA36CBF00C8CECB /* ATShipViewController.swift */; };
+		47058B081FA36CD300C8CECB /* ATAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B071FA36CD300C8CECB /* ATAreaViewController.swift */; };
+		47058B0A1FA36CEC00C8CECB /* ATEnemyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B091FA36CEC00C8CECB /* ATEnemyViewController.swift */; };
+		47058B0C1FA36D0800C8CECB /* ATMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B0B1FA36D0800C8CECB /* ATMissionViewController.swift */; };
+		47058B0E1FA36D1E00C8CECB /* ATExpeditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B0D1FA36D1E00C8CECB /* ATExpeditionViewController.swift */; };
+		47058B101FA36D4000C8CECB /* ATToolboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B0F1FA36D4000C8CECB /* ATToolboxViewController.swift */; };
+		47058B121FA36D5900C8CECB /* ATSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B111FA36D5900C8CECB /* ATSettingViewController.swift */; };
 		472C6ADD1F90D6DC0027C6B3 /* LSPageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6ADC1F90D6DC0027C6B3 /* LSPageTabView.swift */; };
 		472C6AE01F90DA420027C6B3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6ADF1F90DA420027C6B3 /* Constant.swift */; };
 		472C6AE21F90E0FD0027C6B3 /* ExtensionUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6AE11F90E0FD0027C6B3 /* ExtensionUIDevice.swift */; };
@@ -231,6 +241,16 @@
 /* Begin PBXFileReference section */
 		1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manuscript.swift; sourceTree = "<group>"; };
 		1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATImproveViewController.swift; sourceTree = "<group>"; };
+		47058B011FA36C5300C8CECB /* ATAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAboutViewController.swift; sourceTree = "<group>"; };
+		47058B031FA36CAC00C8CECB /* ATEquipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATEquipViewController.swift; sourceTree = "<group>"; };
+		47058B051FA36CBF00C8CECB /* ATShipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATShipViewController.swift; sourceTree = "<group>"; };
+		47058B071FA36CD300C8CECB /* ATAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAreaViewController.swift; sourceTree = "<group>"; };
+		47058B091FA36CEC00C8CECB /* ATEnemyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATEnemyViewController.swift; sourceTree = "<group>"; };
+		47058B0B1FA36D0800C8CECB /* ATMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMissionViewController.swift; sourceTree = "<group>"; };
+		47058B0D1FA36D1E00C8CECB /* ATExpeditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATExpeditionViewController.swift; sourceTree = "<group>"; };
+		47058B0F1FA36D4000C8CECB /* ATToolboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATToolboxViewController.swift; sourceTree = "<group>"; };
+		47058B111FA36D5900C8CECB /* ATSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATSettingViewController.swift; sourceTree = "<group>"; };
 		472C6ADC1F90D6DC0027C6B3 /* LSPageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSPageTabView.swift; sourceTree = "<group>"; };
 		472C6ADF1F90DA420027C6B3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		472C6AE11F90E0FD0027C6B3 /* ExtensionUIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIDevice.swift; sourceTree = "<group>"; };
@@ -1000,6 +1020,103 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47058ADB1FA36AF000C8CECB /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				47058AF51FA36B1200C8CECB /* Improve */,
+				47058AF61FA36B4500C8CECB /* Equip */,
+				47058AF71FA36B5300C8CECB /* Ship */,
+				47058AF81FA36B5A00C8CECB /* Area */,
+				47058AF91FA36B6000C8CECB /* Enemy */,
+				47058AFA1FA36B7C00C8CECB /* Mission */,
+				47058AFB1FA36B9C00C8CECB /* Expedition */,
+				47058AFC1FA36BAA00C8CECB /* Toolbox */,
+				47058AFD1FA36BCC00C8CECB /* Setting */,
+				47058AFE1FA36BD200C8CECB /* About */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		47058AF51FA36B1200C8CECB /* Improve */ = {
+			isa = PBXGroup;
+			children = (
+				47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */,
+			);
+			path = Improve;
+			sourceTree = "<group>";
+		};
+		47058AF61FA36B4500C8CECB /* Equip */ = {
+			isa = PBXGroup;
+			children = (
+				47058B031FA36CAC00C8CECB /* ATEquipViewController.swift */,
+			);
+			path = Equip;
+			sourceTree = "<group>";
+		};
+		47058AF71FA36B5300C8CECB /* Ship */ = {
+			isa = PBXGroup;
+			children = (
+				47058B051FA36CBF00C8CECB /* ATShipViewController.swift */,
+			);
+			path = Ship;
+			sourceTree = "<group>";
+		};
+		47058AF81FA36B5A00C8CECB /* Area */ = {
+			isa = PBXGroup;
+			children = (
+				47058B071FA36CD300C8CECB /* ATAreaViewController.swift */,
+			);
+			path = Area;
+			sourceTree = "<group>";
+		};
+		47058AF91FA36B6000C8CECB /* Enemy */ = {
+			isa = PBXGroup;
+			children = (
+				47058B091FA36CEC00C8CECB /* ATEnemyViewController.swift */,
+			);
+			path = Enemy;
+			sourceTree = "<group>";
+		};
+		47058AFA1FA36B7C00C8CECB /* Mission */ = {
+			isa = PBXGroup;
+			children = (
+				47058B0B1FA36D0800C8CECB /* ATMissionViewController.swift */,
+			);
+			path = Mission;
+			sourceTree = "<group>";
+		};
+		47058AFB1FA36B9C00C8CECB /* Expedition */ = {
+			isa = PBXGroup;
+			children = (
+				47058B0D1FA36D1E00C8CECB /* ATExpeditionViewController.swift */,
+			);
+			path = Expedition;
+			sourceTree = "<group>";
+		};
+		47058AFC1FA36BAA00C8CECB /* Toolbox */ = {
+			isa = PBXGroup;
+			children = (
+				47058B0F1FA36D4000C8CECB /* ATToolboxViewController.swift */,
+			);
+			path = Toolbox;
+			sourceTree = "<group>";
+		};
+		47058AFD1FA36BCC00C8CECB /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				47058B111FA36D5900C8CECB /* ATSettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		47058AFE1FA36BD200C8CECB /* About */ = {
+			isa = PBXGroup;
+			children = (
+				47058B011FA36C5300C8CECB /* ATAboutViewController.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
 		472C6ADB1F90D6410027C6B3 /* ManualFile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1075,6 +1192,7 @@
 		47CC33E61F8B929400B7CFB1 /* akashiToolkit */ = {
 			isa = PBXGroup;
 			children = (
+				47058ADB1FA36AF000C8CECB /* Section */,
 				47F3BF741F949E0B00CC4398 /* Home */,
 				47F3BF751F94AFD200CC4398 /* Globe */,
 				47C5FEB11F962D6F005B4073 /* Model */,
@@ -3004,11 +3122,16 @@
 			files = (
 				47C5FEB31F962E1E005B4073 /* ATTwitterModel.swift in Sources */,
 				472C6AE71F90F2350027C6B3 /* Function.swift in Sources */,
+				47058B121FA36D5900C8CECB /* ATSettingViewController.swift in Sources */,
 				47CC33E81F8B929400B7CFB1 /* AppDelegate.swift in Sources */,
 				47894F611F92031900E55E4D /* ExtensionUIView.swift in Sources */,
+				47058B0E1FA36D1E00C8CECB /* ATExpeditionViewController.swift in Sources */,
 				47671BB71F98CCDB00426CBC /* ATAvatarListViewController.swift in Sources */,
+				47058B061FA36CBF00C8CECB /* ATShipViewController.swift in Sources */,
 				47D4E7F01F9B453900C9D27F /* ExtensionUIViewController.swift in Sources */,
+				47058B101FA36D4000C8CECB /* ATToolboxViewController.swift in Sources */,
 				47C5FEB01F962D54005B4073 /* Protocol.swift in Sources */,
+				47058B0A1FA36CEC00C8CECB /* ATEnemyViewController.swift in Sources */,
 				47F3BF5A1F94688100CC4398 /* ExtensionUIImage.swift in Sources */,
 				47F555F71F9EEF7800B09AFA /* ExtensionString.swift in Sources */,
 				1D10F9DE1F8EA96400EA8FC1 /* manuscript.swift in Sources */,
@@ -3019,15 +3142,20 @@
 				472C6ADD1F90D6DC0027C6B3 /* LSPageTabView.swift in Sources */,
 				47DF9B5E1F9DCFD30075CF12 /* ExtensionGCD.swift in Sources */,
 				47D4E7A71F9A2B2000C9D27F /* ATImagePageViewController.swift in Sources */,
+				47058B021FA36C5300C8CECB /* ATAboutViewController.swift in Sources */,
+				47058B081FA36CD300C8CECB /* ATAreaViewController.swift in Sources */,
 				47C5FEAF1F962D54005B4073 /* ATNetworkTool.swift in Sources */,
 				47F555DC1F9EEA9200B09AFA /* ExtensionUIFont.swift in Sources */,
 				472C6AE21F90E0FD0027C6B3 /* ExtensionUIDevice.swift in Sources */,
 				4748C1761FA0C3BB005F5D2D /* ATHomeMenuView.swift in Sources */,
 				47CC33FA1F8B954700B7CFB1 /* ATHomeViewController.swift in Sources */,
+				47058B0C1FA36D0800C8CECB /* ATMissionViewController.swift in Sources */,
 				472C6AE51F90E1260027C6B3 /* ExtensionUIScreen.swift in Sources */,
+				47058B001FA36C2D00C8CECB /* ATImproveViewController.swift in Sources */,
 				47CC33FC1F8B992800B7CFB1 /* ATBaseNavigationController.swift in Sources */,
 				47D4E7F21F9B4C0400C9D27F /* ATToastMessageTool.swift in Sources */,
 				472C6AE01F90DA420027C6B3 /* Constant.swift in Sources */,
+				47058B041FA36CAC00C8CECB /* ATEquipViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

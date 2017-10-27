@@ -21,7 +21,7 @@ class ATBaseViewController: UIViewController {
         
         return view
     }()
-    lazy var titleLbl: UILabel = {
+    private lazy var titleLbl: UILabel = {
         let label = UILabel()
         
         label.font = .headline
@@ -54,11 +54,17 @@ class ATBaseViewController: UIViewController {
         
         return button
     }()
+    
+    override var title: String? {
+        didSet {
+            titleLbl.text = title
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = Constant.ui.color.darkBackground
+        view.backgroundColor = Constant.ui.color.lightBackground
         
         view.addSubview(navView)
         navView.addSubview(leftBtn)

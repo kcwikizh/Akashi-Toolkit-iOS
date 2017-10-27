@@ -34,7 +34,7 @@ class ATAvatarListViewController: ATBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLbl.text = "历史头像"
+        title = "历史头像"
         
         view.backgroundColor = Constant.ui.color.lightBackground
         
