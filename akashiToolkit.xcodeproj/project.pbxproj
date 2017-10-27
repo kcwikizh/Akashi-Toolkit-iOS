@@ -24,7 +24,6 @@
 		47C5FEB01F962D54005B4073 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5FEAE1F962D54005B4073 /* Protocol.swift */; };
 		47C5FEB31F962E1E005B4073 /* ATTwitterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5FEB21F962D6F005B4073 /* ATTwitterModel.swift */; };
 		47CC33E81F8B929400B7CFB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */; };
-		47CC33F21F8B929400B7CFB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47CC33F01F8B929400B7CFB1 /* LaunchScreen.storyboard */; };
 		47CC33FA1F8B954700B7CFB1 /* ATHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC33F91F8B954700B7CFB1 /* ATHomeViewController.swift */; };
 		47CC33FC1F8B992800B7CFB1 /* ATBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC33FB1F8B992800B7CFB1 /* ATBaseNavigationController.swift */; };
 		47CC38681F8BB88300B7CFB1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CC38271F8BB86500B7CFB1 /* Alamofire.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -248,7 +247,6 @@
 		47C5FEB21F962D6F005B4073 /* ATTwitterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTwitterModel.swift; sourceTree = "<group>"; };
 		47CC33E41F8B929400B7CFB1 /* akashiToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = akashiToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		47CC33F11F8B929400B7CFB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47CC33F31F8B929400B7CFB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47CC33F91F8B954700B7CFB1 /* ATHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATHomeViewController.swift; sourceTree = "<group>"; };
 		47CC33FB1F8B992800B7CFB1 /* ATBaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATBaseNavigationController.swift; sourceTree = "<group>"; };
@@ -1052,7 +1050,6 @@
 			children = (
 				47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */,
 				47CC33F31F8B929400B7CFB1 /* Info.plist */,
-				47CC33F01F8B929400B7CFB1 /* LaunchScreen.storyboard */,
 				1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */,
 			);
 			name = Support;
@@ -2976,7 +2973,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D61FA981F9BC0E00062FD60 /* Assets.xcassets in Resources */,
-				47CC33F21F8B929400B7CFB1 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3038,14 +3034,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		47CC33F01F8B929400B7CFB1 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				47CC33F11F8B929400B7CFB1 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		47CC356A1F8BB86300B7CFB1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3232,6 +3220,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImages;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FAHA792R32;
@@ -3250,6 +3239,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImages;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FAHA792R32;

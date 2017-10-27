@@ -118,6 +118,7 @@ class ATHomeViewController: ATBaseViewController {
         }
         
         screenEdgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(panOnScreenEdge))
+        screenEdgePan?.edges = .left
         maskTap = UITapGestureRecognizer(target: self, action: #selector(tapOnMaskView))
         
         view.addGestureRecognizer(screenEdgePan!)
@@ -133,22 +134,40 @@ class ATHomeViewController: ATBaseViewController {
     /// MARK: *** 回调 ***
     
     @objc private func panOnScreenEdge(gesture: UIScreenEdgePanGestureRecognizer) {
-        print("larry sue : panOnScreenEdge")
-    }
-    @objc private func tapOnMaskView() {
-        self.maskTap!.isEnabled = false
-        UIView.animate(withDuration: 0.2, animations: {
-            self.menuView.transform = CGAffineTransform.identity
-            self.maskView.alpha = 0.0
-        }) { (finished) in
-            if finished {
-                self.screenEdgePan!.isEnabled = true
+        
+        let maxOffset = menuView.width
+        let offsetX = min(gesture.location(in: view).x, maxOffset)
+        let offsetRate = offsetX / maxOffset
+        
+        switch gesture.state {
+        case .began, .changed, .possible:
+            menuView.transform = CGAffineTransform(translationX: offsetX, y: 0)
+            maskView.alpha = offsetRate
+        case .ended, .cancelled, .failed:
+            if offsetRate > 0.5 {
+                expandMenu(animaRate: offsetRate)
+            } else {
+                contractMenu(animaRate: offsetRate)
             }
         }
     }
+    @objc private func tapOnMaskView() {
+        contractMenu(animaRate: 1.0)
+    }
     override func leftBtnDidClick() {
+        expandMenu(animaRate: 1.0)
+    }
+    override func rightBtnDidClick() {
+        super.rightBtnDidClick()
+        navigationController?.pushViewController(ATAvatarListViewController(), animated: true)
+    }
+    
+    /// MARK: *** 逻辑 ***
+    
+    ///展开菜单
+    private func expandMenu(animaRate: CGFloat) {
         self.screenEdgePan!.isEnabled = false
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: TimeInterval(0.2 * animaRate), animations: {
             self.menuView.transform = CGAffineTransform(translationX: self.menuView.width, y: 0)
             self.maskView.alpha = 1.0
         }) { (finished) in
@@ -157,9 +176,17 @@ class ATHomeViewController: ATBaseViewController {
             }
         }
     }
-    override func rightBtnDidClick() {
-        super.rightBtnDidClick()
-        navigationController?.pushViewController(ATAvatarListViewController(), animated: true)
+    ///收起菜单
+    private func contractMenu(animaRate: CGFloat) {
+        self.maskTap!.isEnabled = false
+        UIView.animate(withDuration: TimeInterval(0.2 * animaRate), animations: {
+            self.menuView.transform = CGAffineTransform.identity
+            self.maskView.alpha = 0.0
+        }) { (finished) in
+            if finished {
+                self.screenEdgePan!.isEnabled = true
+            }
+        }
     }
 }
 

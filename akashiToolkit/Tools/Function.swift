@@ -22,3 +22,8 @@ public func random(from lowerBound: Float, to upperBound: Float, decimal precisi
 public func random(from lowerBound: CGFloat, to upperBound: CGFloat, decimal precision: UInt) -> Double {
     return random(from: Double(lowerBound), to: Double(upperBound), decimal: precision)
 }
+
+///在主线程执行 (主要用于刷新UI相关内容
+public func runInMain(_ closure: () -> ()) {
+    return DispatchQueue.main.sync(execute: closure)
+}

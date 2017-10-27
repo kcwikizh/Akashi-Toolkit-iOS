@@ -79,15 +79,11 @@ class ATImagePageViewController: UIPageViewController {
     private var isDownloading: Bool = false {
         didSet {
             if isDownloading {
-                DispatchQueue.main.async(execute: {
-                    self.downloadImageBtn.isHidden = true
-                    self.chrysanthemum.startAnimating()
-                })
+                self.downloadImageBtn.isHidden = true
+                self.chrysanthemum.startAnimating()
             } else {
-                DispatchQueue.main.async(execute: {
-                    self.downloadImageBtn.isHidden = false
-                    self.chrysanthemum.stopAnimating()
-                })
+                self.downloadImageBtn.isHidden = false
+                self.chrysanthemum.stopAnimating()
             }
         }
     }
@@ -166,21 +162,30 @@ class ATImagePageViewController: UIPageViewController {
                                 PHAssetChangeRequest.creationRequestForAsset(from: image)
                             }, completionHandler: { (success, saveError) in
                                 if success {
-                                    ATToastMessageTool.shared.show("保存成功")
+                                    runInMain {
+                                        ATToastMessageTool.shared.show("保存成功")
+                                        self.isDownloading = false
+                                    }
                                 } else {
-                                    ATToastMessageTool.shared.show("保存失败")
+                                    runInMain {
+                                        ATToastMessageTool.shared.show("保存失败")
+                                        self.isDownloading = false
+                                    }
                                 }
-                                self.isDownloading = false
                             })
                         } else {
-                            ATToastMessageTool.shared.show("图片下载错误")
-                            self.isDownloading = false
+                            runInMain {
+                                ATToastMessageTool.shared.show("图片下载错误")
+                                self.isDownloading = false
+                            }
                         }
                     }
                 })
             } else {
-                ATToastMessageTool.shared.show("保存失败")
-                self.isDownloading = false
+                runInMain {
+                    ATToastMessageTool.shared.show("保存失败")
+                    self.isDownloading = false
+                }
             }
         }
     }

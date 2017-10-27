@@ -32,7 +32,7 @@ class ATToastMessageTool {
         let label = UILabel()
         
         label.textColor = .white
-        label.font = .caption2
+        label.font = .footnote
         label.textAlignment = .center
         messageView.addSubview(label)
         
@@ -53,7 +53,7 @@ class ATToastMessageTool {
         }
         DispatchQueue.main.cancel(task)
         
-        let size = message.renderSize(font: .caption2)
+        let size = message.renderSize(font: .footnote)
         
         view?.addSubview(messageView)
         

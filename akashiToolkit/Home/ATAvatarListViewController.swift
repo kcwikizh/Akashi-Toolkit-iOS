@@ -98,7 +98,7 @@ private class ATAvatarListViewCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let imv = UIImageView()
         
-        imv.backgroundColor = Constant.ui.color.darkBackground
+        imv.backgroundColor = Constant.ui.color.lightForeground
         
         return imv
     }()
