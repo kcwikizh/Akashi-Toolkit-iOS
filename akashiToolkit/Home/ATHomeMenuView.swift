@@ -24,7 +24,7 @@ class ATHomeMenuView: UIView {
     
     var delegate: ATHomeMenuViewDelegate?
     
-    private lazy var listView: UITableView = {
+    lazy var listView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         
         tableView.backgroundColor = .clear

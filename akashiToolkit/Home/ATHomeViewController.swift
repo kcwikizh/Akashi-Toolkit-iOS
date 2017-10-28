@@ -153,6 +153,7 @@ class ATHomeViewController: ATBaseViewController {
         super.viewDidAppear(animated)
         
         menuView.transform = CGAffineTransform.identity
+        menuView.listView.contentOffset = CGPoint(x: 0, y: UIScreen.height * 0.5)
         maskView.alpha = 0.0
         screenEdgePan!.isEnabled = true
     }
@@ -211,6 +212,7 @@ class ATHomeViewController: ATBaseViewController {
         }) { (finished) in
             if finished {
                 self.screenEdgePan!.isEnabled = true
+                self.menuView.listView.contentOffset = CGPoint(x: 0, y: UIScreen.height * 0.5)
             }
         }
     }
