@@ -16,8 +16,8 @@ class ATHomeViewController: ATBaseViewController {
     private var itemList: [ATHomeItemModel] = {
         var list: [ATHomeItemModel] = []
         
-        list.append(ATHomeItemModel(imageName: "sign", title: "官推"))
         list.append(ATHomeItemModel(imageName: "sign", title: "主页"))
+        list.append(ATHomeItemModel(imageName: "sign", title: "官推"))
         list.append(ATHomeItemModel(imageName: "sign", title: "活动"))
         
         return list
@@ -26,26 +26,26 @@ class ATHomeViewController: ATBaseViewController {
     private var menuItemList: [ATHomeMenuItemModel] = {
         var list: [ATHomeMenuItemModel] = []
         
-        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATImproveViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATEquipViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATShipViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATAreaViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATEnemyViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATMissionViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATExpeditionViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATToolboxViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATSettingViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", kind: ATAboutViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", title: "改修工厂", controller: ATImproveViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", title: "装备", controller: ATEquipmentViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", title: "舰娘", controller: ATShipViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", title: "海域", controller: ATAreaViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", title: "深海栖舰", controller: ATEnemyViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", title: "任务", controller: ATMissionViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", title: "远征", controller: ATExpeditionViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", title: "工具箱", controller: ATToolboxViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", title: "设置", controller: ATSettingViewController.self))
+        list.append(ATHomeMenuItemModel(imageName: "sign", title: "关于", controller: ATAboutViewController.self))
         
         return list
     }()
     
-    private var currentPageIndex: Int = 1 {
+    private var currentPageIndex: Int = 0 {
         didSet {
             if oldValue != currentPageIndex && currentPageIndex <= itemList.count - 1 {
                 title = itemList[currentPageIndex].title
                 
-                if currentPageIndex == 0 {
+                if currentPageIndex == 1 {
                     avatarListPageBtn.isHidden = false
                     rightBtn.isHidden = false
                 } else {
@@ -79,19 +79,18 @@ class ATHomeViewController: ATBaseViewController {
         return button
     }()
     
-    private lazy var menuView: ATHomeMenuView = ATHomeMenuView()
+    private lazy var menuView: ATHomeMenuView = {
+        let menu = ATHomeMenuView()
+        
+        menu.delegate = self
+        
+        return menu
+    }()
     private lazy var maskView: UIView = {
         let view = UIView()
         
         view.backgroundColor = UIColor(white: 0, alpha: 0.5)
         view.alpha = 0.0
-        
-        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-        view.addSubview(effectView)
-        
-        effectView.snp.makeConstraints({ (make) in
-            make.left.right.top.bottom.equalTo(0)
-        })
         
         return view
     }()
@@ -148,6 +147,14 @@ class ATHomeViewController: ATBaseViewController {
         super.viewDidAppear(animated)
         
         pageTabView.selectedTab(at: currentPageIndex, animated: false)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        menuView.transform = CGAffineTransform.identity
+        maskView.alpha = 0.0
+        screenEdgePan!.isEnabled = true
     }
     
     /// MARK: *** 回调 ***
@@ -255,6 +262,15 @@ extension ATHomeViewController: LSPageTabViewDelegate {
     }
 }
 
+extension ATHomeViewController: ATHomeMenuViewDelegate {
+    func homeMenuView(_ homeMenuView: ATHomeMenuView, didSelectItemAt index: Int) {
+        let targetVc = menuItemList[index].controller!.init()
+        targetVc.title = menuItemList[index].title
+        
+        navigationController?.pushViewController(targetVc, animated: true)
+    }
+}
+
 fileprivate class ATHomeItemModel: NSObject {
     var icon: UIImage?
     var title: String?
@@ -269,13 +285,15 @@ fileprivate class ATHomeItemModel: NSObject {
 
 class ATHomeMenuItemModel: NSObject {
     var icon: UIImage?
-    var kind: ATBaseViewController.Type?
+    var title: String?
+    var controller: ATBaseViewController.Type?
     
-    convenience init(imageName: String, kind: ATBaseViewController.Type) {
+    convenience init(imageName: String, title: String, controller: ATBaseViewController.Type) {
         self.init()
         
         self.icon = UIImage(named: imageName)
-        self.kind = kind
+        self.title = title
+        self.controller = controller
     }
 }
 

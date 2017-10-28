@@ -12,7 +12,5 @@ class ATAboutViewController: ATBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "关于"
     }
 }

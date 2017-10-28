@@ -8,11 +8,9 @@
 
 import UIKit
 
-class ATEquipViewController: ATBaseViewController {
+class ATEquipmentViewController: ATBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "装备"
     }
 }

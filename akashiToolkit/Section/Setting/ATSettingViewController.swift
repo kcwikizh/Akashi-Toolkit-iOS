@@ -12,7 +12,5 @@ class ATSettingViewController: ATBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "设置"
     }
 }

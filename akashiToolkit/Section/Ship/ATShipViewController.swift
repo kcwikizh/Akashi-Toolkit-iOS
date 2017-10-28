@@ -12,7 +12,5 @@ class ATShipViewController: ATBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "舰娘"
     }
 }

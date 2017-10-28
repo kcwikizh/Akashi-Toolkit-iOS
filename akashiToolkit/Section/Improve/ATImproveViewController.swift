@@ -12,7 +12,5 @@ class ATImproveViewController: ATBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "改修工厂"
     }
 }

@@ -1024,7 +1024,7 @@
 			isa = PBXGroup;
 			children = (
 				47058AF51FA36B1200C8CECB /* Improve */,
-				47058AF61FA36B4500C8CECB /* Equip */,
+				47058AF61FA36B4500C8CECB /* Equipment */,
 				47058AF71FA36B5300C8CECB /* Ship */,
 				47058AF81FA36B5A00C8CECB /* Area */,
 				47058AF91FA36B6000C8CECB /* Enemy */,
@@ -1045,12 +1045,12 @@
 			path = Improve;
 			sourceTree = "<group>";
 		};
-		47058AF61FA36B4500C8CECB /* Equip */ = {
+		47058AF61FA36B4500C8CECB /* Equipment */ = {
 			isa = PBXGroup;
 			children = (
 				47058B031FA36CAC00C8CECB /* ATEquipViewController.swift */,
 			);
-			path = Equip;
+			path = Equipment;
 			sourceTree = "<group>";
 		};
 		47058AF71FA36B5300C8CECB /* Ship */ = {

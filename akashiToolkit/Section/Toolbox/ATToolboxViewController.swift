@@ -12,7 +12,5 @@ class ATToolboxViewController: ATBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "工具箱"
     }
 }

@@ -12,7 +12,5 @@ class ATExpeditionViewController: ATBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "远征"
     }
 }

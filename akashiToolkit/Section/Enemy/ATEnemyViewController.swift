@@ -12,7 +12,5 @@ class ATEnemyViewController: ATBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "深海栖舰"
     }
 }

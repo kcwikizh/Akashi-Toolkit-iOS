@@ -12,7 +12,5 @@ class ATMissionViewController: ATBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "任务"
     }
 }

@@ -64,6 +64,10 @@ class LSPageTabView: UIView {
                                 selectedTitleView.isHidden = true
                                 unselectedTitleViews.append(unselectedTitleView)
                                 tabBtn.addSubview(unselectedTitleView)
+                                if i == 0 {
+                                    selectedTitleView.isHidden = false
+                                    unselectedTitleView.isHidden = true
+                                }
                             }
                         } else {
                             let titleLbl = UILabel()
