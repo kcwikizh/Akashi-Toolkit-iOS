@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import SDWebImage
-import SnapKit
 import Photos
+import SDWebImage
 
 class ATImagePageViewController: UIPageViewController {
     
