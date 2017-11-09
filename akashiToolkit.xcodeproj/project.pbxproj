@@ -19,6 +19,8 @@
 		47058B0E1FA36D1E00C8CECB /* ATExpeditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B0D1FA36D1E00C8CECB /* ATExpeditionViewController.swift */; };
 		47058B101FA36D4000C8CECB /* ATToolboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B0F1FA36D4000C8CECB /* ATToolboxViewController.swift */; };
 		47058B121FA36D5900C8CECB /* ATSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B111FA36D5900C8CECB /* ATSettingViewController.swift */; };
+		470A5EAE1FB40216003ABF82 /* ATSettingTwitterLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470A5EAD1FB40216003ABF82 /* ATSettingTwitterLanguageViewController.swift */; };
+		470A5EB01FB4053B003ABF82 /* ATTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470A5EAF1FB4053B003ABF82 /* ATTableView.swift */; };
 		472C6ADD1F90D6DC0027C6B3 /* LSPageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6ADC1F90D6DC0027C6B3 /* LSPageTabView.swift */; };
 		472C6AE01F90DA420027C6B3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6ADF1F90DA420027C6B3 /* Constant.swift */; };
 		472C6AE21F90E0FD0027C6B3 /* ExtensionUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6AE11F90E0FD0027C6B3 /* ExtensionUIDevice.swift */; };
@@ -26,16 +28,17 @@
 		472C6AE71F90F2350027C6B3 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6AE61F90F2350027C6B3 /* Function.swift */; };
 		472C6AE91F90F2D70027C6B3 /* ExtensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C6AE81F90F2D70027C6B3 /* ExtensionUIColor.swift */; };
 		4748C1761FA0C3BB005F5D2D /* ATHomeMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4748C1751FA0C3BB005F5D2D /* ATHomeMenuView.swift */; };
-		4748C1781FA0C4B7005F5D2D /* ATBaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4748C1771FA0C4B7005F5D2D /* ATBaseScrollView.swift */; };
+		4748C1781FA0C4B7005F5D2D /* ATScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4748C1771FA0C4B7005F5D2D /* ATScrollView.swift */; };
 		47671BB71F98CCDB00426CBC /* ATAvatarListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47671BB61F98CCDB00426CBC /* ATAvatarListViewController.swift */; };
-		47829C921F9F22BA00523E75 /* ATBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47829C911F9F22BA00523E75 /* ATBaseViewController.swift */; };
+		4773D3F11FB48E2600AB5498 /* ATUserSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4773D3F01FB48E2600AB5498 /* ATUserSettingModel.swift */; };
+		47829C921F9F22BA00523E75 /* ATViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47829C911F9F22BA00523E75 /* ATViewController.swift */; };
 		47894F611F92031900E55E4D /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47894F601F92031900E55E4D /* ExtensionUIView.swift */; };
 		47C5FEAF1F962D54005B4073 /* ATNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5FE941F962D54005B4073 /* ATNetworkTool.swift */; };
 		47C5FEB01F962D54005B4073 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5FEAE1F962D54005B4073 /* Protocol.swift */; };
 		47C5FEB31F962E1E005B4073 /* ATTwitterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5FEB21F962D6F005B4073 /* ATTwitterModel.swift */; };
 		47CC33E81F8B929400B7CFB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */; };
 		47CC33FA1F8B954700B7CFB1 /* ATHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC33F91F8B954700B7CFB1 /* ATHomeViewController.swift */; };
-		47CC33FC1F8B992800B7CFB1 /* ATBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC33FB1F8B992800B7CFB1 /* ATBaseNavigationController.swift */; };
+		47CC33FC1F8B992800B7CFB1 /* ATNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC33FB1F8B992800B7CFB1 /* ATNavigationController.swift */; };
 		47CC38681F8BB88300B7CFB1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CC38271F8BB86500B7CFB1 /* Alamofire.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		47CC38691F8BB88300B7CFB1 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CC385A1F8BB86500B7CFB1 /* SDWebImage.framework */; };
 		47CC386A1F8BB88300B7CFB1 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CC38641F8BB86500B7CFB1 /* SnapKit.framework */; };
@@ -251,6 +254,8 @@
 		47058B0D1FA36D1E00C8CECB /* ATExpeditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATExpeditionViewController.swift; sourceTree = "<group>"; };
 		47058B0F1FA36D4000C8CECB /* ATToolboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATToolboxViewController.swift; sourceTree = "<group>"; };
 		47058B111FA36D5900C8CECB /* ATSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATSettingViewController.swift; sourceTree = "<group>"; };
+		470A5EAD1FB40216003ABF82 /* ATSettingTwitterLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATSettingTwitterLanguageViewController.swift; sourceTree = "<group>"; };
+		470A5EAF1FB4053B003ABF82 /* ATTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTableView.swift; sourceTree = "<group>"; };
 		472C6ADC1F90D6DC0027C6B3 /* LSPageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSPageTabView.swift; sourceTree = "<group>"; };
 		472C6ADF1F90DA420027C6B3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		472C6AE11F90E0FD0027C6B3 /* ExtensionUIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIDevice.swift; sourceTree = "<group>"; };
@@ -258,9 +263,10 @@
 		472C6AE61F90F2350027C6B3 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		472C6AE81F90F2D70027C6B3 /* ExtensionUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIColor.swift; sourceTree = "<group>"; };
 		4748C1751FA0C3BB005F5D2D /* ATHomeMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATHomeMenuView.swift; sourceTree = "<group>"; };
-		4748C1771FA0C4B7005F5D2D /* ATBaseScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATBaseScrollView.swift; sourceTree = "<group>"; };
+		4748C1771FA0C4B7005F5D2D /* ATScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATScrollView.swift; sourceTree = "<group>"; };
 		47671BB61F98CCDB00426CBC /* ATAvatarListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAvatarListViewController.swift; sourceTree = "<group>"; };
-		47829C911F9F22BA00523E75 /* ATBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATBaseViewController.swift; sourceTree = "<group>"; };
+		4773D3F01FB48E2600AB5498 /* ATUserSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATUserSettingModel.swift; sourceTree = "<group>"; };
+		47829C911F9F22BA00523E75 /* ATViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATViewController.swift; sourceTree = "<group>"; };
 		47894F601F92031900E55E4D /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		47C5FE941F962D54005B4073 /* ATNetworkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATNetworkTool.swift; sourceTree = "<group>"; };
 		47C5FEAE1F962D54005B4073 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
@@ -269,7 +275,7 @@
 		47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47CC33F31F8B929400B7CFB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47CC33F91F8B954700B7CFB1 /* ATHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATHomeViewController.swift; sourceTree = "<group>"; };
-		47CC33FB1F8B992800B7CFB1 /* ATBaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATBaseNavigationController.swift; sourceTree = "<group>"; };
+		47CC33FB1F8B992800B7CFB1 /* ATNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATNavigationController.swift; sourceTree = "<group>"; };
 		47CC34CD1F8BB86200B7CFB1 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		47CC34CE1F8BB86200B7CFB1 /* Cartfile.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		47CC34D11F8BB86200B7CFB1 /* .Alamofire.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = .Alamofire.version; sourceTree = "<group>"; };
@@ -1105,6 +1111,7 @@
 			isa = PBXGroup;
 			children = (
 				47058B111FA36D5900C8CECB /* ATSettingViewController.swift */,
+				470A5EAD1FB40216003ABF82 /* ATSettingTwitterLanguageViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1131,9 +1138,6 @@
 				47C5FE941F962D54005B4073 /* ATNetworkTool.swift */,
 				47D4E7D41F9B272100C9D27F /* ATPermissionsTool.swift */,
 				47D4E7F11F9B4C0400C9D27F /* ATToastMessageTool.swift */,
-				472C6ADF1F90DA420027C6B3 /* Constant.swift */,
-				472C6AE61F90F2350027C6B3 /* Function.swift */,
-				47C5FEAE1F962D54005B4073 /* Protocol.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1158,6 +1162,7 @@
 			isa = PBXGroup;
 			children = (
 				47C5FEB21F962D6F005B4073 /* ATTwitterModel.swift */,
+				4773D3F01FB48E2600AB5498 /* ATUserSettingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2807,10 +2812,14 @@
 		47F3BF751F94AFD200CC4398 /* Globe */ = {
 			isa = PBXGroup;
 			children = (
-				47CC33FB1F8B992800B7CFB1 /* ATBaseNavigationController.swift */,
+				47CC33FB1F8B992800B7CFB1 /* ATNavigationController.swift */,
 				47D4E7A61F9A2B2000C9D27F /* ATImagePageViewController.swift */,
-				47829C911F9F22BA00523E75 /* ATBaseViewController.swift */,
-				4748C1771FA0C4B7005F5D2D /* ATBaseScrollView.swift */,
+				47829C911F9F22BA00523E75 /* ATViewController.swift */,
+				4748C1771FA0C4B7005F5D2D /* ATScrollView.swift */,
+				470A5EAF1FB4053B003ABF82 /* ATTableView.swift */,
+				472C6ADF1F90DA420027C6B3 /* Constant.swift */,
+				472C6AE61F90F2350027C6B3 /* Function.swift */,
+				47C5FEAE1F962D54005B4073 /* Protocol.swift */,
 			);
 			path = Globe;
 			sourceTree = "<group>";
@@ -3128,6 +3137,7 @@
 				47058B0E1FA36D1E00C8CECB /* ATExpeditionViewController.swift in Sources */,
 				47671BB71F98CCDB00426CBC /* ATAvatarListViewController.swift in Sources */,
 				47058B061FA36CBF00C8CECB /* ATShipViewController.swift in Sources */,
+				470A5EAE1FB40216003ABF82 /* ATSettingTwitterLanguageViewController.swift in Sources */,
 				47D4E7F01F9B453900C9D27F /* ExtensionUIViewController.swift in Sources */,
 				47058B101FA36D4000C8CECB /* ATToolboxViewController.swift in Sources */,
 				47C5FEB01F962D54005B4073 /* Protocol.swift in Sources */,
@@ -3137,8 +3147,8 @@
 				1D10F9DE1F8EA96400EA8FC1 /* manuscript.swift in Sources */,
 				47D4E7D51F9B272100C9D27F /* ATPermissionsTool.swift in Sources */,
 				472C6AE91F90F2D70027C6B3 /* ExtensionUIColor.swift in Sources */,
-				47829C921F9F22BA00523E75 /* ATBaseViewController.swift in Sources */,
-				4748C1781FA0C4B7005F5D2D /* ATBaseScrollView.swift in Sources */,
+				47829C921F9F22BA00523E75 /* ATViewController.swift in Sources */,
+				4748C1781FA0C4B7005F5D2D /* ATScrollView.swift in Sources */,
 				472C6ADD1F90D6DC0027C6B3 /* LSPageTabView.swift in Sources */,
 				47DF9B5E1F9DCFD30075CF12 /* ExtensionGCD.swift in Sources */,
 				47D4E7A71F9A2B2000C9D27F /* ATImagePageViewController.swift in Sources */,
@@ -3147,12 +3157,14 @@
 				47C5FEAF1F962D54005B4073 /* ATNetworkTool.swift in Sources */,
 				47F555DC1F9EEA9200B09AFA /* ExtensionUIFont.swift in Sources */,
 				472C6AE21F90E0FD0027C6B3 /* ExtensionUIDevice.swift in Sources */,
+				4773D3F11FB48E2600AB5498 /* ATUserSettingModel.swift in Sources */,
 				4748C1761FA0C3BB005F5D2D /* ATHomeMenuView.swift in Sources */,
 				47CC33FA1F8B954700B7CFB1 /* ATHomeViewController.swift in Sources */,
+				470A5EB01FB4053B003ABF82 /* ATTableView.swift in Sources */,
 				47058B0C1FA36D0800C8CECB /* ATMissionViewController.swift in Sources */,
 				472C6AE51F90E1260027C6B3 /* ExtensionUIScreen.swift in Sources */,
 				47058B001FA36C2D00C8CECB /* ATImproveViewController.swift in Sources */,
-				47CC33FC1F8B992800B7CFB1 /* ATBaseNavigationController.swift in Sources */,
+				47CC33FC1F8B992800B7CFB1 /* ATNavigationController.swift in Sources */,
 				47D4E7F21F9B4C0400C9D27F /* ATToastMessageTool.swift in Sources */,
 				472C6AE01F90DA420027C6B3 /* Constant.swift in Sources */,
 				47058B041FA36CAC00C8CECB /* ATEquipViewController.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATImproveViewController: ATBaseViewController {
+class ATImproveViewController: ATViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,5 +1,5 @@
 //
-//  ATBaseScrollView.swift
+//  ATScrollView.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2017/10/25.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATBaseScrollView: UIScrollView {
+class ATScrollView: UIScrollView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -20,7 +20,7 @@ class ATBaseScrollView: UIScrollView {
     }
 }
 
-extension ATBaseScrollView: UIGestureRecognizerDelegate {
+extension ATScrollView: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if otherGestureRecognizer.isKind(of: UIScreenEdgePanGestureRecognizer.self) {
             gestureRecognizer.require(toFail: otherGestureRecognizer)

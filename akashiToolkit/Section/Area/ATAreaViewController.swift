@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATAreaViewController: ATBaseViewController {
+class ATAreaViewController: ATViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

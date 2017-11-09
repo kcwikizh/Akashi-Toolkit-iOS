@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATEnemyViewController: ATBaseViewController {
+class ATEnemyViewController: ATViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

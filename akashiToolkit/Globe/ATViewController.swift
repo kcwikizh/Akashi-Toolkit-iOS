@@ -1,5 +1,5 @@
 //
-//  ATBaseViewController.swift
+//  ATViewController.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2017/10/24.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATBaseViewController: UIViewController {
+class ATViewController: UIViewController {
     
     /// MARK: *** 属性 ***
     
@@ -16,7 +16,7 @@ class ATBaseViewController: UIViewController {
     lazy var navView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = Constant.ui.color.navigationBar
+        view.backgroundColor = Constant.ui.color.theme
         
         return view
     }()

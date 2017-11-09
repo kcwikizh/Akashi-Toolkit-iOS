@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATToolboxViewController: ATBaseViewController {
+class ATToolboxViewController: ATViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATShipViewController: ATBaseViewController {
+class ATShipViewController: ATViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

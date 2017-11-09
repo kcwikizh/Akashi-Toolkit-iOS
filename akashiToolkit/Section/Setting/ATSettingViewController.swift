@@ -8,12 +8,12 @@
 
 import UIKit
 
-private let ATSettingViewControllerCellIdentifier = "ATSettingViewControllerCellIdentifier"
-
-class ATSettingViewController: ATBaseViewController {
+class ATSettingViewController: ATViewController {
     
-    private lazy var listView: UITableView = {
-        let listView = UITableView(frame: .zero, style: .grouped)
+    private var settingModel = ATUserSettingModel.default
+    
+    private lazy var listView: ATTableView = {
+        let listView = ATTableView(frame: .zero, style: .grouped)
         
         listView.dataSource = self
         listView.delegate = self
@@ -30,8 +30,6 @@ class ATSettingViewController: ATBaseViewController {
             make.left.right.bottom.equalTo(0)
             make.top.equalTo(navView.snp.bottom)
         }
-        
-        listView.register(UITableViewCell.self, forCellReuseIdentifier: ATSettingViewControllerCellIdentifier)
     }
 }
 
@@ -56,29 +54,34 @@ extension ATSettingViewController: UITableViewDataSource {
         return ""
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ATSettingViewControllerCellIdentifier, for: indexPath)
         let section = indexPath.section
-        let row = indexPath.row
         
         if section == 0 {
-            if row == 0 {
-                cell.textLabel?.text = "官推语言"
-                cell.accessoryType = .none
-            }
-        } else if section == 1 {
-            if row == 0 {
-                cell.textLabel?.text = "清理缓存"
-                cell.accessoryType = .none
-            }
+            let cell = ATTableViewDisclosureIndicatorCell.forTableView(tableView as! ATTableView, at: indexPath)
+            cell.textLabel?.text = "官推语言"
+            return cell
+        } else {
+            let cell = ATTableViewNoneCell.forTableView(tableView as! ATTableView, at: indexPath)
+            cell.textLabel?.text = "清理缓存"
+            return cell
         }
-        
-        return cell
     }
 }
 
 extension ATSettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("larry sue : \(indexPath.section) - \(indexPath.row)")
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let section = indexPath.section
+        let row = indexPath.row
+        
+        if section == 0 {
+            if row == 0 {
+                let vc = ATSettingTwitterLanguageViewController()
+                vc.selectedLanguage = .jp
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
 }
 

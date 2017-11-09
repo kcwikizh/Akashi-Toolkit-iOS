@@ -1,5 +1,5 @@
 //
-//  ATBaseNavigationController.swift
+//  ATNavigationController.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2017/10/9.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATBaseNavigationController: UINavigationController {
+class ATNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

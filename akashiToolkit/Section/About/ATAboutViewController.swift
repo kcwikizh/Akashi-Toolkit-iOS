@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATAboutViewController: ATBaseViewController {
+class ATAboutViewController: ATViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

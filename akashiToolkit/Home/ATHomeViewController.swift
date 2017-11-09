@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATHomeViewController: ATBaseViewController {
+class ATHomeViewController: ATViewController {
     
     /// MARK: *** 属性 ***
     
@@ -58,7 +58,7 @@ class ATHomeViewController: ATBaseViewController {
     private lazy var pageTabView: LSPageTabView = {
         let view = LSPageTabView(type: .stationary)
         
-        view.tabBarColor = Constant.ui.color.navigationBar
+        view.tabBarColor = Constant.ui.color.theme
         view.sliderColor = .white
         view.dataSource = self
         view.delegate = self
@@ -287,9 +287,9 @@ fileprivate class ATHomeItemModel: NSObject {
 class ATHomeMenuItemModel: NSObject {
     var icon: UIImage?
     var title: String?
-    var controller: ATBaseViewController.Type?
+    var controller: ATViewController.Type?
     
-    convenience init(imageName: String, title: String, controller: ATBaseViewController.Type) {
+    convenience init(imageName: String, title: String, controller: ATViewController.Type) {
         self.init()
         
         self.icon = UIImage(named: imageName)
