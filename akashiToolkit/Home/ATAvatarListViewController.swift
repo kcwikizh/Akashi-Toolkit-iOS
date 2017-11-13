@@ -58,7 +58,6 @@ class ATAvatarListViewController: ATViewController {
         super.didReceiveMemoryWarning()
         
         SDImageCache.shared().clearMemory()
-        SDImageCache.shared().clearDisk()
     }
 }
 

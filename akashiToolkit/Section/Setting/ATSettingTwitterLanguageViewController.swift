@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ATSettingTwitterLanguageViewControllerDelegate {
+    func settingTwitterLanguageViewController(_ viewController: ATSettingTwitterLanguageViewController, didSelected language: ATUserSetting.twitter.language) -> Void
+}
+
 class ATSettingTwitterLanguageViewController: ATViewController {
     
     var selectedLanguage: ATUserSetting.twitter.language = .zh {
@@ -15,6 +19,8 @@ class ATSettingTwitterLanguageViewController: ATViewController {
             listView.reloadData()
         }
     }
+    
+    var delegate: ATSettingTwitterLanguageViewControllerDelegate?
     
     private let list = ATUserSetting.twitter.language.list
     
@@ -65,8 +71,9 @@ extension ATSettingTwitterLanguageViewController: UITableViewDelegate {
         selectedLanguage = list[indexPath.row]
         listView.reloadData()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
             self.navigationController?.popViewController(animated: true)
+            self.delegate?.settingTwitterLanguageViewController(self, didSelected: self.selectedLanguage)
         })
     }
 }

@@ -9,7 +9,10 @@
 import UIKit
 
 private let ATTableViewNoneCellIdentifier = "ATTableViewNoneCellIdentifier"
+private let ATTableViewChrysanthemumCellIdentifier = "ATTableViewChrysanthemumCellIdentifier"
+private let ATTableViewChrysanthemumWithLabelCellIdentifier = "ATTableViewChrysanthemumWithLabelCellIdentifier"
 private let ATTableViewDisclosureIndicatorCellIdentifier = "ATTableViewDisclosureIndicatorCellIdentifier"
+private let ATTableViewDisclosureIndicatorWithLabelCellIdentifier = "ATTableViewDisclosureIndicatorWithLabelCellIdentifier"
 private let ATTableViewCheckmarkCellIdentifier = "ATTableViewCheckmarkCellIdentifier"
 
 class ATTableView: UITableView {
@@ -27,7 +30,10 @@ class ATTableView: UITableView {
         }
         
         register(ATTableViewNoneCell.self, forCellReuseIdentifier: ATTableViewNoneCellIdentifier)
+        register(ATTableViewChrysanthemumCell.self, forCellReuseIdentifier: ATTableViewChrysanthemumCellIdentifier)
+        register(ATTableViewChrysanthemumWithLabelCell.self, forCellReuseIdentifier: ATTableViewChrysanthemumWithLabelCellIdentifier)
         register(ATTableViewDisclosureIndicatorCell.self, forCellReuseIdentifier: ATTableViewDisclosureIndicatorCellIdentifier)
+        register(ATTableViewDisclosureIndicatorWithLabelCell.self, forCellReuseIdentifier: ATTableViewDisclosureIndicatorWithLabelCellIdentifier)
         register(ATTableViewCheckmarkCell.self, forCellReuseIdentifier: ATTableViewCheckmarkCellIdentifier)
     }
     
@@ -42,6 +48,7 @@ class ATTableViewCell: UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ATTableViewCell
         
         cell.tintColor = Constant.ui.color.theme
+        cell.textLabel?.textColor = Constant.ui.color.majorText
         
         return cell
     }
@@ -49,8 +56,79 @@ class ATTableViewCell: UITableViewCell {
 
 ///原生空cell
 class ATTableViewNoneCell: ATTableViewCell {
-    class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewCell {
+    class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewNoneCell {
         let cell = cellForTableView(tableView, at: indexPath, identifier: ATTableViewNoneCellIdentifier) as! ATTableViewNoneCell
+        
+        cell.accessoryType = .none
+        
+        return cell
+    }
+}
+
+///右侧菊花cell
+class ATTableViewChrysanthemumCell: ATTableViewCell {
+    
+    lazy var chrysanthemum: UIActivityIndicatorView = {
+        let crs = UIActivityIndicatorView()
+        
+        crs.color = Constant.ui.color.auxiliaryText
+        
+        self.contentView.addSubview(crs)
+        
+        crs.snp.makeConstraints({ (make) in
+            make.centerY.equalTo(self.contentView)
+            make.right.equalTo(self.contentView).offset(-15.0)
+        })
+        
+        return crs
+    }()
+    
+    class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewChrysanthemumCell {
+        let cell = cellForTableView(tableView, at: indexPath, identifier: ATTableViewChrysanthemumCellIdentifier) as! ATTableViewChrysanthemumCell
+        
+        cell.accessoryType = .none
+        
+        return cell
+    }
+}
+
+///右侧菊花带文本cell
+class ATTableViewChrysanthemumWithLabelCell: ATTableViewCell {
+    
+    lazy var rightLabel: UILabel = {
+        let label = UILabel()
+        
+        label.font = UIFont.subheadline
+        label.textAlignment = .right
+        label.textColor = Constant.ui.color.auxiliaryText
+        
+        self.contentView.addSubview(label)
+        
+        label.snp.makeConstraints({ (make) in
+            make.centerY.equalTo(self.contentView)
+            make.right.equalTo(self.contentView).offset(-15.0)
+        })
+        
+        return label
+    }()
+    
+    lazy var chrysanthemum: UIActivityIndicatorView = {
+        let crs = UIActivityIndicatorView()
+        
+        crs.color = Constant.ui.color.auxiliaryText
+        
+        self.contentView.addSubview(crs)
+        
+        crs.snp.makeConstraints({ (make) in
+            make.centerY.equalTo(self.rightLabel)
+            make.right.equalTo(self.rightLabel.snp.left)
+        })
+        
+        return crs
+    }()
+    
+    class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewChrysanthemumWithLabelCell {
+        let cell = cellForTableView(tableView, at: indexPath, identifier: ATTableViewChrysanthemumWithLabelCellIdentifier) as! ATTableViewChrysanthemumWithLabelCell
         
         cell.accessoryType = .none
         
@@ -60,11 +138,39 @@ class ATTableViewNoneCell: ATTableViewCell {
 
 ///原生箭头cell
 class ATTableViewDisclosureIndicatorCell: ATTableViewCell {
-    class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewCell {
+    class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewDisclosureIndicatorCell {
         let cell = cellForTableView(tableView, at: indexPath, identifier: ATTableViewDisclosureIndicatorCellIdentifier) as! ATTableViewDisclosureIndicatorCell
         
         cell.accessoryType = .disclosureIndicator
-        cell.accessoryView?.tintColor = Constant.ui.color.theme
+        
+        return cell
+    }
+}
+
+///原生箭头带右侧文字标签cell
+class ATTableViewDisclosureIndicatorWithLabelCell: ATTableViewCell {
+    
+    lazy var rightLabel: UILabel = {
+        let label = UILabel()
+        
+        label.font = UIFont.subheadline
+        label.textAlignment = .right
+        label.textColor = Constant.ui.color.auxiliaryText
+        
+        self.contentView.addSubview(label)
+        
+        label.snp.makeConstraints({ (make) in
+            make.centerY.equalTo(self.contentView).offset(-1.0)
+            make.right.equalTo(self.textLabel!)
+        })
+        
+        return label
+    }()
+    
+    class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewDisclosureIndicatorWithLabelCell {
+        let cell = cellForTableView(tableView, at: indexPath, identifier: ATTableViewDisclosureIndicatorWithLabelCellIdentifier) as! ATTableViewDisclosureIndicatorWithLabelCell
+        
+        cell.accessoryType = .disclosureIndicator
         
         return cell
     }
@@ -72,7 +178,7 @@ class ATTableViewDisclosureIndicatorCell: ATTableViewCell {
 
 ///原生对勾cell
 class ATTableViewCheckmarkCell: ATTableViewCell {
-    class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewCell {
+    class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewCheckmarkCell {
         let cell = cellForTableView(tableView, at: indexPath, identifier: ATTableViewCheckmarkCellIdentifier) as! ATTableViewCheckmarkCell
         
         cell.accessoryType = .checkmark

@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ATSettingViewController: ATViewController {
     
-    private var settingModel = ATUserSettingModel.default
+    private var settingModel = ATUserSettingModel.shared
+    
+    ///彩蛋
+    private var clearCacheTimestamp: Date = Date()
+    private var clearCacheCount: Int = 0
     
     private lazy var listView: ATTableView = {
         let listView = ATTableView(frame: .zero, style: .grouped)
@@ -57,11 +62,12 @@ extension ATSettingViewController: UITableViewDataSource {
         let section = indexPath.section
         
         if section == 0 {
-            let cell = ATTableViewDisclosureIndicatorCell.forTableView(tableView as! ATTableView, at: indexPath)
+            let cell = ATTableViewDisclosureIndicatorWithLabelCell.forTableView(tableView as! ATTableView, at: indexPath)
             cell.textLabel?.text = "官推语言"
+            cell.rightLabel.text = settingModel.twitterLanguage.toString()
             return cell
         } else {
-            let cell = ATTableViewNoneCell.forTableView(tableView as! ATTableView, at: indexPath)
+            let cell = ATTableViewChrysanthemumCell.forTableView(tableView as! ATTableView, at: indexPath)
             cell.textLabel?.text = "清理缓存"
             return cell
         }
@@ -78,10 +84,55 @@ extension ATSettingViewController: UITableViewDelegate {
         if section == 0 {
             if row == 0 {
                 let vc = ATSettingTwitterLanguageViewController()
-                vc.selectedLanguage = .jp
+                vc.selectedLanguage = settingModel.twitterLanguage
+                vc.delegate = self
                 navigationController?.pushViewController(vc, animated: true)
             }
+        } else if section == 1 {
+            if row == 0 {
+                let cacheManager = SDImageCache.shared()
+                
+                let imgCount = cacheManager.getDiskCount()
+                let imgSize  = cacheManager.getSize()
+                
+                if imgSize == 0 {
+                    if clearCacheCount == 0 {
+                        ATToastMessageTool.show("没有缓存")
+                        clearCacheTimestamp = Date()
+                        clearCacheCount += 1
+                    } else if Date().timeIntervalSince(clearCacheTimestamp) > 5.0 {
+                        clearCacheCount = 0
+                    } else if clearCacheCount == 1 {
+                        ATToastMessageTool.show("真的没有缓存了 ╮(╯_╰)╭")
+                        clearCacheTimestamp = Date()
+                        clearCacheCount += 1
+                    } else if clearCacheCount == 2 {
+                        ATToastMessageTool.show("所以说真的没有缓存啦 >_<")
+                        clearCacheTimestamp = Date()
+                        clearCacheCount += 1
+                    }
+                } else {
+                    let cell = tableView.cellForRow(at: indexPath) as! ATTableViewChrysanthemumCell
+                    cell.chrysanthemum.startAnimating()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+                        cacheManager.clearDisk(onCompletion: {
+                            let mesg = NSString(format: "清理缓存图片: %zi张, 共%.1fMB", imgCount, Double(imgSize) / 1024.0 / 1024.0)
+                            ATToastMessageTool.show(mesg as String)
+                            cell.chrysanthemum.stopAnimating()
+                        })
+                    })
+                }
+            }
         }
+    }
+}
+
+extension ATSettingViewController: ATSettingTwitterLanguageViewControllerDelegate {
+    func settingTwitterLanguageViewController(_ viewController: ATSettingTwitterLanguageViewController, didSelected language: ATUserSetting.twitter.language) {
+        settingModel.twitterLanguage = language
+        
+        listView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
     }
 }
 

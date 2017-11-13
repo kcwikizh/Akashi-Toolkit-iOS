@@ -11,14 +11,11 @@ import SnapKit
 
 class ATToastMessageTool {
     
-    /// MARK: *** 单例 ***
-    
-    static let shared = ATToastMessageTool()
     private init() {}
     
     /// MARK: *** 属性 ***
     
-    private lazy var messageView: UIView = {
+    private static var messageView: UIView = {
         let view = UIView()
         
         view.backgroundColor = UIColor(white: 0, alpha: 0.8)
@@ -28,7 +25,7 @@ class ATToastMessageTool {
         
         return view
     }()
-    private lazy var messageLbl: UILabel = {
+    private static var messageLbl: UILabel = {
         let label = UILabel()
         
         label.textColor = .white
@@ -42,12 +39,12 @@ class ATToastMessageTool {
         
         return label
     }()
-    private var task: DispatchQueue.Task?
+    private static var task: DispatchQueue.Task?
     
     /// MARK: *** 逻辑 ***
     
     ///显示一条提示
-    func show(_ message: String, on view: UIView? = Constant.window, showDuration: TimeInterval = 1.0, disappearDuration: TimeInterval = 0.5, completed: ((Bool) -> Void)? = nil) {
+    class func show(_ message: String, on view: UIView? = Constant.window, showDuration: TimeInterval = 1.0, disappearDuration: TimeInterval = 0.5, completed: ((Bool) -> Void)? = nil) {
         if message.isEmpty {
             return
         }

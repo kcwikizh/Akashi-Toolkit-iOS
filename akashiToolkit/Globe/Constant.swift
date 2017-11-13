@@ -65,6 +65,12 @@ struct Constant {
             static let lightForeground = UIColor.white
             ///阴影色
             static let shadow = UIColor(white: 0.3, alpha: 0.5)
+            ///主要文案
+            static let majorText = UIColor(50.0, 50.0, 50.0)
+            ///次要文案
+            static let minorText = UIColor(102.0, 102.0, 102.0)
+            ///辅助文案
+            static let auxiliaryText = UIColor(136.0, 136.0, 136.0)
         }
     }
     

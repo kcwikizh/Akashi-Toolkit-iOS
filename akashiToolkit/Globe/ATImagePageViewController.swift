@@ -139,7 +139,6 @@ class ATImagePageViewController: UIPageViewController {
         super.didReceiveMemoryWarning()
         
         SDImageCache.shared().clearMemory()
-        SDImageCache.shared().clearDisk()
     }
     
     // MARK: *** 回调 ***
@@ -162,19 +161,19 @@ class ATImagePageViewController: UIPageViewController {
                             }, completionHandler: { (success, saveError) in
                                 if success {
                                     runInMain {
-                                        ATToastMessageTool.shared.show("保存成功")
+                                        ATToastMessageTool.show("保存成功")
                                         self.isDownloading = false
                                     }
                                 } else {
                                     runInMain {
-                                        ATToastMessageTool.shared.show("保存失败")
+                                        ATToastMessageTool.show("保存失败")
                                         self.isDownloading = false
                                     }
                                 }
                             })
                         } else {
                             runInMain {
-                                ATToastMessageTool.shared.show("图片下载错误")
+                                ATToastMessageTool.show("图片下载错误")
                                 self.isDownloading = false
                             }
                         }
@@ -182,7 +181,7 @@ class ATImagePageViewController: UIPageViewController {
                 })
             } else {
                 runInMain {
-                    ATToastMessageTool.shared.show("保存失败")
+                    ATToastMessageTool.show("保存失败")
                     self.isDownloading = false
                 }
             }

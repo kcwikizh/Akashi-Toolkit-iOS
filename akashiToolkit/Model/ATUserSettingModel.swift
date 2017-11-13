@@ -35,6 +35,7 @@ struct ATUserSettingModel {
     private init() {}
     
     static let `default` = ATUserSettingModel()
+    
     static let shared = {
         return `default`
     }()
