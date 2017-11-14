@@ -54,7 +54,7 @@ class ATToastMessageTool {
         
         view?.addSubview(messageView)
         
-        messageView.snp.makeConstraints { (make) in
+        messageView.snp.remakeConstraints { (make) in
             make.centerX.equalTo(UIScreen.width * 0.5)
             make.centerY.equalTo(UIScreen.height * 0.85)
             make.width.equalTo(min(UIScreen.width - 40, size.width + 20))

@@ -100,14 +100,20 @@ extension ATSettingViewController: UITableViewDelegate {
                         ATToastMessageTool.show("没有缓存")
                         clearCacheTimestamp = Date()
                         clearCacheCount += 1
-                    } else if Date().timeIntervalSince(clearCacheTimestamp) > 5.0 {
-                        clearCacheCount = 0
                     } else if clearCacheCount == 1 {
-                        ATToastMessageTool.show("真的没有缓存了 ╮(╯_╰)╭")
+                        ATToastMessageTool.show("真的没有缓存了 ╮(￣▽￣)╭")
                         clearCacheTimestamp = Date()
                         clearCacheCount += 1
                     } else if clearCacheCount == 2 {
-                        ATToastMessageTool.show("所以说真的没有缓存啦 >_<")
+                        ATToastMessageTool.show("所以说真的没有缓存啦 ⊙ˍ⊙")
+                        clearCacheTimestamp = Date()
+                        clearCacheCount += 1
+                    } else if clearCacheCount == 3 {
+                        ATToastMessageTool.show("哎呀不要点啦! ＞︿＜")
+                        clearCacheTimestamp = Date()
+                        clearCacheCount += 1
+                    } else if clearCacheCount >= 4 {
+                        ATToastMessageTool.show("别点啦!别点啦!别点啦! (>皿<)")
                         clearCacheTimestamp = Date()
                         clearCacheCount += 1
                     }
