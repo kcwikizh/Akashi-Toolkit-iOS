@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D10F9DE1F8EA96400EA8FC1 /* manuscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */; };
 		1D61FA981F9BC0E00062FD60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */; };
+		1D7BA9AE1FCB5CD7000BBC5B /* ATUserSettingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BA9AD1FCB5CD7000BBC5B /* ATUserSettingTool.swift */; };
 		47058B001FA36C2D00C8CECB /* ATImproveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */; };
 		47058B021FA36C5300C8CECB /* ATAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B011FA36C5300C8CECB /* ATAboutViewController.swift */; };
 		47058B041FA36CAC00C8CECB /* ATEquipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B031FA36CAC00C8CECB /* ATEquipViewController.swift */; };
@@ -244,6 +245,7 @@
 /* Begin PBXFileReference section */
 		1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manuscript.swift; sourceTree = "<group>"; };
 		1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1D7BA9AD1FCB5CD7000BBC5B /* ATUserSettingTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATUserSettingTool.swift; sourceTree = "<group>"; };
 		47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATImproveViewController.swift; sourceTree = "<group>"; };
 		47058B011FA36C5300C8CECB /* ATAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAboutViewController.swift; sourceTree = "<group>"; };
 		47058B031FA36CAC00C8CECB /* ATEquipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATEquipViewController.swift; sourceTree = "<group>"; };
@@ -1138,6 +1140,7 @@
 				47C5FE941F962D54005B4073 /* ATNetworkTool.swift */,
 				47D4E7D41F9B272100C9D27F /* ATPermissionsTool.swift */,
 				47D4E7F11F9B4C0400C9D27F /* ATToastMessageTool.swift */,
+				1D7BA9AD1FCB5CD7000BBC5B /* ATUserSettingTool.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -3152,6 +3155,7 @@
 				472C6ADD1F90D6DC0027C6B3 /* LSPageTabView.swift in Sources */,
 				47DF9B5E1F9DCFD30075CF12 /* ExtensionGCD.swift in Sources */,
 				47D4E7A71F9A2B2000C9D27F /* ATImagePageViewController.swift in Sources */,
+				1D7BA9AE1FCB5CD7000BBC5B /* ATUserSettingTool.swift in Sources */,
 				47058B021FA36C5300C8CECB /* ATAboutViewController.swift in Sources */,
 				47058B081FA36CD300C8CECB /* ATAreaViewController.swift in Sources */,
 				47C5FEAF1F962D54005B4073 /* ATNetworkTool.swift in Sources */,

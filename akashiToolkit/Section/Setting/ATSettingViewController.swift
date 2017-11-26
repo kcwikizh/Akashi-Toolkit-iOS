@@ -14,7 +14,7 @@ class ATSettingViewController: ATViewController {
     private var settingModel = ATUserSettingModel.shared
     
     ///彩蛋
-    private var clearCacheTimestamp: Date = Date()
+    private var clearCacheTimestamp: TimeInterval = Date().timeIntervalSince1970
     private var clearCacheCount: Int = 0
     
     private lazy var listView: ATTableView = {
@@ -96,25 +96,22 @@ extension ATSettingViewController: UITableViewDelegate {
                 let imgSize  = cacheManager.getSize()
                 
                 if imgSize == 0 {
-                    if clearCacheCount == 0 {
+                    let currentTimestamp = Date().timeIntervalSince1970
+                    if clearCacheCount == 0 || currentTimestamp - clearCacheTimestamp > 1.5 {
                         ATToastMessageTool.show("没有缓存")
-                        clearCacheTimestamp = Date()
-                        clearCacheCount += 1
-                    } else if clearCacheCount == 1 {
-                        ATToastMessageTool.show("真的没有缓存了 ╮(￣▽￣)╭")
-                        clearCacheTimestamp = Date()
-                        clearCacheCount += 1
-                    } else if clearCacheCount == 2 {
-                        ATToastMessageTool.show("所以说真的没有缓存啦 ⊙ˍ⊙")
-                        clearCacheTimestamp = Date()
-                        clearCacheCount += 1
-                    } else if clearCacheCount == 3 {
-                        ATToastMessageTool.show("哎呀不要点啦! ＞︿＜")
-                        clearCacheTimestamp = Date()
-                        clearCacheCount += 1
-                    } else if clearCacheCount >= 4 {
-                        ATToastMessageTool.show("别点啦!别点啦!别点啦! (>皿<)")
-                        clearCacheTimestamp = Date()
+                        clearCacheTimestamp = currentTimestamp
+                        clearCacheCount = 1;
+                    } else {
+                        if clearCacheCount == 1 {
+                            ATToastMessageTool.show("真的没有缓存了 ╮(￣▽￣)╭")
+                        } else if clearCacheCount == 2 {
+                            ATToastMessageTool.show("所以说真的没有缓存啦 ⊙ˍ⊙")
+                        } else if clearCacheCount == 3 {
+                            ATToastMessageTool.show("哎呀不要点啦! ＞︿＜")
+                        } else if clearCacheCount >= 4 {
+                            ATToastMessageTool.show("别点啦!别点啦!别点啦! (>皿<)")
+                        }
+                        clearCacheTimestamp = currentTimestamp
                         clearCacheCount += 1
                     }
                 } else {

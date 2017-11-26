@@ -33,7 +33,7 @@ enum ATPermissionsStatus {
     }
 }
 
-class ATPermissionsTool {
+final class ATPermissionsTool {
     
     typealias ATPermissionsCompletionHandler = (_ status: ATPermissionsStatus) -> Void
     

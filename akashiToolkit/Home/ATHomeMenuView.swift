@@ -33,9 +33,11 @@ class ATHomeMenuView: UIView {
         tableView.contentOffset = CGPoint(x: 0, y: UIScreen.height * 0.5)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.estimatedRowHeight = 0;
-        tableView.estimatedSectionHeaderHeight = 0;
-        tableView.estimatedSectionFooterHeight = 0;
+        if #available(iOS 11.0, *) {
+            tableView.estimatedRowHeight = 0;
+            tableView.estimatedSectionHeaderHeight = 0;
+            tableView.estimatedSectionFooterHeight = 0;
+        }
         
         return tableView
     }()
@@ -45,22 +47,26 @@ class ATHomeMenuView: UIView {
         
         backgroundColor = Constant.ui.color.darkForeground
         
-        let logoView = UIImageView(image: UIImage(named: "appLogo"))
+        let logoIcon = UIImage(named: "appLogo")?.resizeImage(to: CGSize(width: 75.0, height: 75.0))
+        let logoBtn = UIButton(type: .custom)
+        logoBtn.adjustsImageWhenHighlighted = false
+        logoBtn.setImage(logoIcon, for: .normal)
+        logoBtn.addTarget(self, action: #selector(didClickIcon), for: .touchUpInside)
         
-        addSubview(logoView)
+        addSubview(logoBtn)
         addSubview(listView)
         
-        logoView.snp.makeConstraints { (make) in
+        logoBtn.snp.makeConstraints { (make) in
             make.size.equalTo(CGSize(width: 75.0, height: 75.0))
             make.centerX.equalTo(self)
             
-            var top = 65
+            var top = 75
             if UIDevice.isFuckedX {
-                top = 120
+                top = 140
             } else if UIDevice.isLargeSize {
                 top = 100
             } else if UIDevice.isLittleSize {
-                top = 50
+                top = 80
             }
             
             make.top.equalTo(top)
@@ -75,10 +81,10 @@ class ATHomeMenuView: UIView {
             } else if UIDevice.isLargeSize {
                 topOffset = 60
             } else if UIDevice.isLittleSize {
-                topOffset = 20
+                topOffset = 30
             }
             
-            make.top.equalTo(logoView.snp.bottom).offset(topOffset)
+            make.top.equalTo(logoBtn.snp.bottom).offset(topOffset)
         }
         
         listView.register(ATHomeMenuViewCell.self, forCellReuseIdentifier: ATHomeMenuViewCellIdentifier)
@@ -87,6 +93,10 @@ class ATHomeMenuView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc private func didClickIcon() {
+        delegate?.homeMenuView(self, didSelectItemAt: itemList.count - 1)
+    }
 }
 
 extension ATHomeMenuView: UITableViewDataSource {
@@ -94,7 +104,7 @@ extension ATHomeMenuView: UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemList.count
+        return itemList.count - 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ATHomeMenuViewCellIdentifier, for: indexPath) as! ATHomeMenuViewCell

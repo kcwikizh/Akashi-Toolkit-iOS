@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class ATAPIClient {
+final class ATAPIClient {
     
     private typealias ATAPIClientCompletionHandler = (_ items: AnyObject?, _ error: Error?) -> Void
     
