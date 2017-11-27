@@ -67,8 +67,9 @@ extension ATSettingViewController: UITableViewDataSource {
             cell.rightLabel.text = settingModel.twitterLanguage.toString()
             return cell
         } else {
-            let cell = ATTableViewChrysanthemumCell.forTableView(tableView as! ATTableView, at: indexPath)
+            let cell = ATTableViewChrysanthemumWithLabelCell.forTableView(tableView as! ATTableView, at: indexPath)
             cell.textLabel?.text = "清理缓存"
+            cell.rightLabel.text = NSString(format: "%.1fMB", Double(SDImageCache.shared().getSize()) / 1024.0 / 1024.0) as String
             return cell
         }
     }
@@ -97,7 +98,7 @@ extension ATSettingViewController: UITableViewDelegate {
                 
                 if imgSize == 0 {
                     let currentTimestamp = Date().timeIntervalSince1970
-                    if clearCacheCount == 0 || currentTimestamp - clearCacheTimestamp > 1.5 {
+                    if clearCacheCount == 0 || currentTimestamp - clearCacheTimestamp > 2.5 {
                         ATToastMessageTool.show("没有缓存")
                         clearCacheTimestamp = currentTimestamp
                         clearCacheCount = 1;
@@ -109,20 +110,21 @@ extension ATSettingViewController: UITableViewDelegate {
                         } else if clearCacheCount == 3 {
                             ATToastMessageTool.show("哎呀不要点啦! ＞︿＜")
                         } else if clearCacheCount >= 4 {
-                            ATToastMessageTool.show("别点啦!别点啦!别点啦! (>皿<)")
+                            ATToastMessageTool.show("别点啦! 别点啦! 别点啦! (>皿<)")
                         }
                         clearCacheTimestamp = currentTimestamp
                         clearCacheCount += 1
                     }
                 } else {
-                    let cell = tableView.cellForRow(at: indexPath) as! ATTableViewChrysanthemumCell
-                    cell.chrysanthemum.startAnimating()
+                    let cell = tableView.cellForRow(at: indexPath) as! ATTableViewChrysanthemumWithLabelCell
+                    cell.isRolling = true
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
                         cacheManager.clearDisk(onCompletion: {
                             let mesg = NSString(format: "清理缓存图片: %zi张, 共%.1fMB", imgCount, Double(imgSize) / 1024.0 / 1024.0)
                             ATToastMessageTool.show(mesg as String)
-                            cell.chrysanthemum.stopAnimating()
+                            cell.isRolling = false
+                            self.listView.reloadRows(at: [self.listView.indexPath(for: cell)!], with: .none)
                         })
                     })
                 }

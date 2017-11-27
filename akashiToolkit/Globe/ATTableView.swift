@@ -21,11 +21,10 @@ class ATTableView: UITableView {
         
         backgroundColor = Constant.ui.color.lightBackground
         
-        estimatedRowHeight = 0
-        estimatedSectionFooterHeight = 0
-        estimatedSectionHeaderHeight = 0
-        
         if #available(iOS 11.0, *) {
+            estimatedRowHeight = 0
+            estimatedSectionFooterHeight = 0
+            estimatedSectionHeaderHeight = 0
             insetsContentViewsToSafeArea = false
         }
         
@@ -66,9 +65,19 @@ class ATTableViewNoneCell: ATTableViewCell {
 }
 
 ///右侧菊花cell
-class ATTableViewChrysanthemumCell: ATTableViewCell {
+class ATTableViewChrysanthemumCell: ATTableViewNoneCell {
     
-    lazy var chrysanthemum: UIActivityIndicatorView = {
+    var isRolling: Bool = false {
+        didSet {
+            if isRolling {
+                self.chrysanthemum.startAnimating()
+            } else {
+                self.chrysanthemum.stopAnimating()
+            }
+        }
+    }
+    
+    fileprivate lazy var chrysanthemum: UIActivityIndicatorView = {
         let crs = UIActivityIndicatorView()
         
         crs.color = Constant.ui.color.auxiliaryText
@@ -83,7 +92,7 @@ class ATTableViewChrysanthemumCell: ATTableViewCell {
         return crs
     }()
     
-    class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewChrysanthemumCell {
+    override class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewChrysanthemumCell {
         let cell = cellForTableView(tableView, at: indexPath, identifier: ATTableViewChrysanthemumCellIdentifier) as! ATTableViewChrysanthemumCell
         
         cell.accessoryType = .none
@@ -93,7 +102,17 @@ class ATTableViewChrysanthemumCell: ATTableViewCell {
 }
 
 ///右侧菊花带文本cell
-class ATTableViewChrysanthemumWithLabelCell: ATTableViewCell {
+class ATTableViewChrysanthemumWithLabelCell: ATTableViewChrysanthemumCell {
+    
+    override var isRolling: Bool {
+        didSet {
+            if isRolling {
+                self.rightLabel.isHidden = true
+            } else {
+                self.rightLabel.isHidden = false
+            }
+        }
+    }
     
     lazy var rightLabel: UILabel = {
         let label = UILabel()
@@ -112,22 +131,7 @@ class ATTableViewChrysanthemumWithLabelCell: ATTableViewCell {
         return label
     }()
     
-    lazy var chrysanthemum: UIActivityIndicatorView = {
-        let crs = UIActivityIndicatorView()
-        
-        crs.color = Constant.ui.color.auxiliaryText
-        
-        self.contentView.addSubview(crs)
-        
-        crs.snp.makeConstraints({ (make) in
-            make.centerY.equalTo(self.rightLabel)
-            make.right.equalTo(self.rightLabel.snp.left)
-        })
-        
-        return crs
-    }()
-    
-    class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewChrysanthemumWithLabelCell {
+    override class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewChrysanthemumWithLabelCell {
         let cell = cellForTableView(tableView, at: indexPath, identifier: ATTableViewChrysanthemumWithLabelCellIdentifier) as! ATTableViewChrysanthemumWithLabelCell
         
         cell.accessoryType = .none
@@ -148,7 +152,7 @@ class ATTableViewDisclosureIndicatorCell: ATTableViewCell {
 }
 
 ///原生箭头带右侧文字标签cell
-class ATTableViewDisclosureIndicatorWithLabelCell: ATTableViewCell {
+class ATTableViewDisclosureIndicatorWithLabelCell: ATTableViewDisclosureIndicatorCell {
     
     lazy var rightLabel: UILabel = {
         let label = UILabel()
@@ -167,7 +171,7 @@ class ATTableViewDisclosureIndicatorWithLabelCell: ATTableViewCell {
         return label
     }()
     
-    class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewDisclosureIndicatorWithLabelCell {
+    override class func forTableView(_ tableView: ATTableView, at indexPath: IndexPath) -> ATTableViewDisclosureIndicatorWithLabelCell {
         let cell = cellForTableView(tableView, at: indexPath, identifier: ATTableViewDisclosureIndicatorWithLabelCellIdentifier) as! ATTableViewDisclosureIndicatorWithLabelCell
         
         cell.accessoryType = .disclosureIndicator

@@ -11,6 +11,21 @@ import UIKit
 
 struct Constant {
     
+    // MARK: *** 官方资料 ***
+    
+    struct official {
+        ///官博
+        static let weibo = URL(string: "https://weibo.com/kcwikizh")!
+        ///微信号
+        static let weixin = ""
+        ///官方网址
+        static let website = URL(string: "https://zh.kcwiki.org")!
+        ///开发者邮箱
+        static let developerEmail = "larry.dancingfire@gmail.com"
+        ///数据反馈网址
+        static let dataFeedback = URL(string: "https://task.kcwiki.org/home/menu/view/17/")!
+    }
+    
     /// MARK: *** UI ***
     
     struct ui {
