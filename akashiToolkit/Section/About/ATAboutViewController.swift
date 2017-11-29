@@ -11,6 +11,8 @@ import MessageUI
 
 class ATAboutViewController: ATViewController {
     
+    // MARK: *** 属性 ***
+    
     private lazy var listView: ATTableView = {
         let listView = ATTableView(frame: .zero, style: .grouped)
         
@@ -85,8 +87,16 @@ class ATAboutViewController: ATViewController {
         return label
     }()
     
+    // MARK: *** 周期 ***
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        transitioningDelegate = self
+        modalPresentationStyle = .custom
+        
+        let image = UIImage(named: "close")?.resizeImage(to: CGSize(width: 15.0, height: 15.0)).withRenderingMode(.alwaysTemplate)
+        leftBtn.setImage(image, for: .normal)
         
         view.addSubview(listView)
         
@@ -95,6 +105,14 @@ class ATAboutViewController: ATViewController {
             make.top.equalTo(navView.snp.bottom)
         }
     }
+    
+    // MARK: *** 回调 ***
+    
+    override func leftBtnDidClick() {
+        dismiss(animated: true)
+    }
+    
+    // MARK: *** 逻辑 ***
     
     private func sendMail(to address: URL) {
         
@@ -175,5 +193,51 @@ extension ATAboutViewController: UITableViewDelegate {
 extension ATAboutViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         return true
+    }
+}
+
+extension ATAboutViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return ATAboutViewControllerPresent()
+    }
+}
+
+private class ATAboutViewControllerPresent: NSObject {}
+
+extension ATAboutViewControllerPresent: UIViewControllerAnimatedTransitioning {
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 1.0
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as! ATAboutViewController
+        let containerView = transitionContext.containerView
+        containerView.addSubview(toVC.view)
+        //画两个圆路径
+        let startCycle = UIBezierPath(arcCenter: CGPoint(x: UIScreen.width * 0.5, y: Constant.ui.size.topHeight + 40.0 + 150.0 * 0.5), radius: 30.0, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
+        let endCycle = UIBezierPath(arcCenter: CGPoint(x: UIScreen.width * 0.5, y: UIScreen.height * 0.5), radius: UIScreen.height * 0.8, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
+        //创建遮盖
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = endCycle.cgPath;
+        toVC.view.layer.mask = maskLayer;
+        //创建路径动画
+        let maskLayerAnimation = CABasicAnimation(keyPath: "path")
+        maskLayerAnimation.delegate = self;
+        maskLayerAnimation.fromValue = startCycle.cgPath
+        maskLayerAnimation.toValue = endCycle.cgPath
+        maskLayerAnimation.duration = self.transitionDuration(using: transitionContext)
+        maskLayerAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        
+        maskLayerAnimation.setValue(transitionContext, forKey: "transitionContext")
+        maskLayer.add(maskLayerAnimation, forKey: "path")
+    }
+}
+
+extension ATAboutViewControllerPresent: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        if let transitionContext = anim.value(forKey: "transitionContext") as? UIViewControllerContextTransitioning {
+            transitionContext.completeTransition(true)
+        }
     }
 }

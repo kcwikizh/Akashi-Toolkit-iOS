@@ -16,6 +16,8 @@ private let ATHomeMenuViewCellIdentifier = "ATHomeMenuViewCellIdentifier"
 
 class ATHomeMenuView: UIView {
     
+    // MARK: *** 属性 ***
+    
     var itemList: [ATHomeMenuItemModel] = [] {
         didSet {
             listView.reloadData()
@@ -41,20 +43,23 @@ class ATHomeMenuView: UIView {
         
         return tableView
     }()
+    
+    private lazy var logoBtn: UIButton = {
+        let button = UIButton(type: .custom)
+        let icon = UIImage(named: "appLogo")?.resizeImage(to: CGSize(width: 75.0, height: 75.0))
+        button.adjustsImageWhenHighlighted = false
+        button.setImage(icon, for: .normal)
+        button.addTarget(self, action: #selector(didClickIcon), for: .touchUpInside)
+        return button
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = Constant.ui.color.darkForeground
         
-        let logoIcon = UIImage(named: "appLogo")?.resizeImage(to: CGSize(width: 75.0, height: 75.0))
-        let logoBtn = UIButton(type: .custom)
-        logoBtn.adjustsImageWhenHighlighted = false
-        logoBtn.setImage(logoIcon, for: .normal)
-        logoBtn.addTarget(self, action: #selector(didClickIcon), for: .touchUpInside)
-        
-        addSubview(logoBtn)
         addSubview(listView)
+        addSubview(logoBtn)
         
         logoBtn.snp.makeConstraints { (make) in
             make.size.equalTo(CGSize(width: 75.0, height: 75.0))
@@ -95,7 +100,43 @@ class ATHomeMenuView: UIView {
     }
     
     @objc private func didClickIcon() {
-        delegate?.homeMenuView(self, didSelectItemAt: itemList.count - 1)
+        ///logo缩放
+        let scaleAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+        
+        scaleAnimation.values = [1.0, 2.0]
+        scaleAnimation.keyTimes = [0, 1]
+        scaleAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+        scaleAnimation.calculationMode = kCAAnimationLinear
+        
+        ///logo移动
+        let xAnimation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        
+        xAnimation.values = [0, UIScreen.width * 0.5 - logoBtn.center.x]
+        xAnimation.keyTimes = [0, 1]
+        xAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+        xAnimation.calculationMode = kCAAnimationLinear
+        
+        let yAnimation = CAKeyframeAnimation(keyPath: "transform.translation.y")
+        
+        yAnimation.values = [0, Constant.ui.size.topHeight + 40.0 + 150.0 * 0.5 - logoBtn.center.y]
+        yAnimation.keyTimes = [0, 1]
+        yAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+        yAnimation.calculationMode = kCAAnimationLinear
+        
+        let animationGroup = CAAnimationGroup()
+        animationGroup.animations = [scaleAnimation, xAnimation, yAnimation]
+        animationGroup.duration = 0.5
+        animationGroup.fillMode = kCAFillModeForwards
+        animationGroup.isRemovedOnCompletion = false
+        
+        logoBtn.layer.add(animationGroup, forKey: "anima.logo.group")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            self.delegate?.homeMenuView(self, didSelectItemAt: self.itemList.count - 1)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.logoBtn.layer.removeAllAnimations()
+            }
+        }
     }
 }
 

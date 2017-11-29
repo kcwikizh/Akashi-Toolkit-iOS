@@ -268,7 +268,13 @@ extension ATHomeViewController: ATHomeMenuViewDelegate {
         let targetVc = menuItemList[index].controller!.init()
         targetVc.title = menuItemList[index].title
         
-        navigationController?.pushViewController(targetVc, animated: true)
+        if index == menuItemList.count - 1 {
+            ///最后一项是about 用过场动画切换
+            present(targetVc, animated: true)
+        } else {
+            ///其他使用普通push
+            navigationController?.pushViewController(targetVc, animated: true)
+        }
     }
 }
 
