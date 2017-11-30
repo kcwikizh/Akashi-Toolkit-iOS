@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ATSettingTwitterLanguageViewControllerDelegate {
-    func settingTwitterLanguageViewController(_ viewController: ATSettingTwitterLanguageViewController, didSelected language: ATUserSetting.twitter.language) -> Void
+    func settingTwitterLanguageViewControllerDidSelectedLanguage(_ viewController: ATSettingTwitterLanguageViewController) -> Void
 }
 
 class ATSettingTwitterLanguageViewController: ATViewController {
@@ -69,11 +69,11 @@ extension ATSettingTwitterLanguageViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         selectedLanguage = list[indexPath.row]
-        listView.reloadData()
+        ATUserSettingTool.setTwitterLanguage(selectedLanguage)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
             self.navigationController?.popViewController(animated: true)
-            self.delegate?.settingTwitterLanguageViewController(self, didSelected: self.selectedLanguage)
+            self.delegate?.settingTwitterLanguageViewControllerDidSelectedLanguage(self)
         })
     }
 }

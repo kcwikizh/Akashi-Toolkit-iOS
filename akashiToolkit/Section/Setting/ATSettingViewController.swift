@@ -11,8 +11,6 @@ import SDWebImage
 
 class ATSettingViewController: ATViewController {
     
-    private var settingModel = ATUserSettingModel.shared
-    
     ///彩蛋
     private var clearCacheTimestamp: TimeInterval = Date().timeIntervalSince1970
     private var clearCacheCount: Int = 0
@@ -64,7 +62,7 @@ extension ATSettingViewController: UITableViewDataSource {
         if section == 0 {
             let cell = ATTableViewDisclosureIndicatorWithLabelCell.forTableView(tableView as! ATTableView, at: indexPath)
             cell.textLabel?.text = "官推语言"
-            cell.rightLabel.text = settingModel.twitterLanguage.toString()
+            cell.rightLabel.text = ATUserSettingTool.getTwitterLanguage().toString()
             return cell
         } else {
             let cell = ATTableViewChrysanthemumWithLabelCell.forTableView(tableView as! ATTableView, at: indexPath)
@@ -85,7 +83,7 @@ extension ATSettingViewController: UITableViewDelegate {
         if section == 0 {
             if row == 0 {
                 let vc = ATSettingTwitterLanguageViewController()
-                vc.selectedLanguage = settingModel.twitterLanguage
+                vc.selectedLanguage = ATUserSettingTool.getTwitterLanguage()
                 vc.delegate = self
                 navigationController?.pushViewController(vc, animated: true)
             }
@@ -134,9 +132,7 @@ extension ATSettingViewController: UITableViewDelegate {
 }
 
 extension ATSettingViewController: ATSettingTwitterLanguageViewControllerDelegate {
-    func settingTwitterLanguageViewController(_ viewController: ATSettingTwitterLanguageViewController, didSelected language: ATUserSetting.twitter.language) {
-        settingModel.twitterLanguage = language
-        
+    func settingTwitterLanguageViewControllerDidSelectedLanguage(_ viewController: ATSettingTwitterLanguageViewController) {
         listView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
     }
 }

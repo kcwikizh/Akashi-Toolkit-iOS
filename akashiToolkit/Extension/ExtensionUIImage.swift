@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIImage {
-    ///重设图片大小
+    ///重设图片尺寸
     func resizeImage(to size:CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale);
         draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))

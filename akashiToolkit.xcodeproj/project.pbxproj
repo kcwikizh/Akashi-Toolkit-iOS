@@ -31,7 +31,6 @@
 		4748C1761FA0C3BB005F5D2D /* ATHomeMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4748C1751FA0C3BB005F5D2D /* ATHomeMenuView.swift */; };
 		4748C1781FA0C4B7005F5D2D /* ATScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4748C1771FA0C4B7005F5D2D /* ATScrollView.swift */; };
 		47671BB71F98CCDB00426CBC /* ATAvatarListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47671BB61F98CCDB00426CBC /* ATAvatarListViewController.swift */; };
-		4773D3F11FB48E2600AB5498 /* ATUserSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4773D3F01FB48E2600AB5498 /* ATUserSettingModel.swift */; };
 		47829C921F9F22BA00523E75 /* ATViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47829C911F9F22BA00523E75 /* ATViewController.swift */; };
 		47894F611F92031900E55E4D /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47894F601F92031900E55E4D /* ExtensionUIView.swift */; };
 		47C5FEAF1F962D54005B4073 /* ATNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5FE941F962D54005B4073 /* ATNetworkTool.swift */; };
@@ -267,7 +266,6 @@
 		4748C1751FA0C3BB005F5D2D /* ATHomeMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATHomeMenuView.swift; sourceTree = "<group>"; };
 		4748C1771FA0C4B7005F5D2D /* ATScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATScrollView.swift; sourceTree = "<group>"; };
 		47671BB61F98CCDB00426CBC /* ATAvatarListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAvatarListViewController.swift; sourceTree = "<group>"; };
-		4773D3F01FB48E2600AB5498 /* ATUserSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATUserSettingModel.swift; sourceTree = "<group>"; };
 		47829C911F9F22BA00523E75 /* ATViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATViewController.swift; sourceTree = "<group>"; };
 		47894F601F92031900E55E4D /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		47C5FE941F962D54005B4073 /* ATNetworkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATNetworkTool.swift; sourceTree = "<group>"; };
@@ -1165,7 +1163,6 @@
 			isa = PBXGroup;
 			children = (
 				47C5FEB21F962D6F005B4073 /* ATTwitterModel.swift */,
-				4773D3F01FB48E2600AB5498 /* ATUserSettingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3161,7 +3158,6 @@
 				47C5FEAF1F962D54005B4073 /* ATNetworkTool.swift in Sources */,
 				47F555DC1F9EEA9200B09AFA /* ExtensionUIFont.swift in Sources */,
 				472C6AE21F90E0FD0027C6B3 /* ExtensionUIDevice.swift in Sources */,
-				4773D3F11FB48E2600AB5498 /* ATUserSettingModel.swift in Sources */,
 				4748C1761FA0C3BB005F5D2D /* ATHomeMenuView.swift in Sources */,
 				47CC33FA1F8B954700B7CFB1 /* ATHomeViewController.swift in Sources */,
 				470A5EB01FB4053B003ABF82 /* ATTableView.swift in Sources */,
