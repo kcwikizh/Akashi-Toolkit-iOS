@@ -105,7 +105,7 @@ class ATHomeMenuView: UIView {
         
         scaleAnimation.values = [1.0, 2.0]
         scaleAnimation.keyTimes = [0, 1]
-        scaleAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+        scaleAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)]
         scaleAnimation.calculationMode = kCAAnimationLinear
         
         ///logo移动
@@ -113,25 +113,25 @@ class ATHomeMenuView: UIView {
         
         xAnimation.values = [0, UIScreen.width * 0.5 - logoBtn.center.x]
         xAnimation.keyTimes = [0, 1]
-        xAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+        xAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)]
         xAnimation.calculationMode = kCAAnimationLinear
         
         let yAnimation = CAKeyframeAnimation(keyPath: "transform.translation.y")
         
         yAnimation.values = [0, Constant.ui.size.topHeight + 40.0 + 150.0 * 0.5 - logoBtn.center.y]
         yAnimation.keyTimes = [0, 1]
-        yAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+        yAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)]
         yAnimation.calculationMode = kCAAnimationLinear
         
         let animationGroup = CAAnimationGroup()
         animationGroup.animations = [scaleAnimation, xAnimation, yAnimation]
-        animationGroup.duration = 0.5
+        animationGroup.duration = 0.3
         animationGroup.fillMode = kCAFillModeForwards
         animationGroup.isRemovedOnCompletion = false
         
         logoBtn.layer.add(animationGroup, forKey: "anima.logo.group")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.delegate?.homeMenuView(self, didSelectItemAt: self.itemList.count - 1)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.logoBtn.layer.removeAllAnimations()

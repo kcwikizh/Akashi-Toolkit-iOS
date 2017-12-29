@@ -68,20 +68,18 @@ class ATAboutViewController: ATViewController {
         
         return label
     }()
-    private lazy var copyrightTipsLbl: UITextView = {
-        let label = UITextView()
+    private lazy var copyrightTipsLbl: UILabel = {
+        let label = UILabel()
         
         label.font = UIFont.footnote
         label.textAlignment = .center
         label.backgroundColor = .clear
-        label.isEditable = false
-        label.isSelectable = true
-        label.isScrollEnabled = false
-        label.showsVerticalScrollIndicator = false
-        label.delegate = self
-        let str = "本APP数据均由 舰娘百科 / kcwiki 提供"
+        label.isUserInteractionEnabled = true
+        let website = "舰娘百科 / kcwiki"
+        let str = "本APP数据均由 \(website) 提供"
         let attStr = NSMutableAttributedString(string: str)
-        attStr.addAttribute(.link, value: Constant.official.website, range: (str as NSString).range(of: "舰娘百科 / kcwiki"))
+        attStr.addAttribute(.foregroundColor, value: UIColor.blue, range: (str as NSString).range(of: website))
+        attStr.addAttribute(.underlineStyle, value: 1, range: (str as NSString).range(of: website))
         label.attributedText = attStr
         
         return label
@@ -104,6 +102,9 @@ class ATAboutViewController: ATViewController {
             make.left.right.bottom.equalTo(0)
             make.top.equalTo(navView.snp.bottom)
         }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapOnCopyrightTipsLbl))
+        copyrightTipsLbl.addGestureRecognizer(tap)
     }
     
     // MARK: *** 回调 ***
@@ -111,11 +112,45 @@ class ATAboutViewController: ATViewController {
     override func leftBtnDidClick() {
         dismiss(animated: true)
     }
+    @objc private func tapOnCopyrightTipsLbl() {
+        if UIApplication.shared.canOpenURL(Constant.official.website) {
+            UIApplication.shared.openURL(Constant.official.website)
+        }
+    }
     
     // MARK: *** 逻辑 ***
-    
-    private func sendMail(to address: URL) {
+    private lazy var mailVc: MFMailComposeViewController = {
+        let vc = MFMailComposeViewController()
+        vc.mailComposeDelegate = self
         
+        vc.setSubject("明石工具箱 问题反馈")
+        vc.setToRecipients([Constant.official.developerEmail])
+        vc.setMessageBody(" 设备型号: \(UIDevice.model) \n 系统版本: \(UIDevice.current.systemName) \(UIDevice.current.systemVersion) \n APP版本: \(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)", isHTML: false)
+        
+        return vc
+    }()
+    private func sendMail() {
+        if MFMailComposeViewController.canSendMail() {
+            present(mailVc, animated: true)
+        } else {
+            let alert = UIAlertController(title: "错误", message: "无法自动生成邮件, 请手动发送邮件至邮箱: \(Constant.official.developerEmail), 或联系QQ: \(Constant.official.developerQQ)", preferredStyle: .alert)
+            let copyEmail = UIAlertAction(title: "复制邮箱地址", style: .default, handler: { _ in
+                let pas = UIPasteboard.general
+                pas.string = Constant.official.developerEmail
+                ATToastMessageTool.show("邮箱地址已复制到剪贴板")
+            })
+            let copyQQ = UIAlertAction(title: "复制QQ", style: .default, handler: { _ in
+                let pas = UIPasteboard.general
+                pas.string = Constant.official.developerQQ
+                ATToastMessageTool.show("QQ已复制到剪贴板")
+            })
+            let done = UIAlertAction(title: "取消", style: .default)
+            
+            alert.addAction(copyEmail)
+            alert.addAction(copyQQ)
+            alert.addAction(done)
+            present(alert, animated: true)
+        }
     }
 }
 
@@ -166,7 +201,20 @@ extension ATAboutViewController: UITableViewDelegate {
                     UIApplication.shared.openURL(Constant.official.weibo)
                 }
             } else {
+                let alert = UIAlertController(title: "", message: "kcwiki舰娘百科公众号: \(Constant.official.weixin)", preferredStyle: .alert)
+                let copyAndOpenWeixin = UIAlertAction(title: "复制公众号并跳转至微信", style: .default, handler: { _ in
+                    let pas = UIPasteboard.general
+                    pas.string = Constant.official.weixin
+                    ATToastMessageTool.show("公众号已复制到剪贴板")
+                    if UIApplication.shared.canOpenURL(URL(string: "weixin://")!) {
+                        UIApplication.shared.openURL(URL(string: "weixin://")!)
+                    }
+                })
+                let done = UIAlertAction(title: "取消", style: .default)
                 
+                alert.addAction(copyAndOpenWeixin)
+                alert.addAction(done)
+                present(alert, animated: true)
             }
         } else {
             let alert = UIAlertController(title: "反馈", message: "请根据您遇到的问题类型选择", preferredStyle: .alert)
@@ -176,8 +224,8 @@ extension ATAboutViewController: UITableViewDelegate {
                     UIApplication.shared.openURL(Constant.official.dataFeedback)
                 }
             })
-            let appQuestion = UIAlertAction(title: "软件问题: 联系开发者", style: .default, handler: { (action) in
-                
+            let appQuestion = UIAlertAction(title: "软件问题: 联系开发者", style: .default, handler: { _ in
+                self.sendMail()
             })
             let cancel = UIAlertAction(title: "取消", style: .default)
             
@@ -190,9 +238,19 @@ extension ATAboutViewController: UITableViewDelegate {
     }
 }
 
-extension ATAboutViewController: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        return true
+extension ATAboutViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case .cancelled:
+            ATToastMessageTool.show("已取消")
+        case .saved:
+            ATToastMessageTool.show("已保存")
+        case .sent:
+            ATToastMessageTool.show("已发送")
+        case .failed:
+            ATToastMessageTool.show("发送失败")
+        }
+        mailVc.dismiss(animated: true)
     }
 }
 
@@ -207,7 +265,7 @@ private class ATAboutViewControllerPresent: NSObject {}
 extension ATAboutViewControllerPresent: UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 1.0
+        return 0.7
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -227,7 +285,7 @@ extension ATAboutViewControllerPresent: UIViewControllerAnimatedTransitioning {
         maskLayerAnimation.fromValue = startCycle.cgPath
         maskLayerAnimation.toValue = endCycle.cgPath
         maskLayerAnimation.duration = self.transitionDuration(using: transitionContext)
-        maskLayerAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        maskLayerAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         
         maskLayerAnimation.setValue(transitionContext, forKey: "transitionContext")
         maskLayer.add(maskLayerAnimation, forKey: "path")

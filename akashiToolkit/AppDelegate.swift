@@ -15,10 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        window?.rootViewController = ATNavigationController(rootViewController: ATHomeViewController());
+        window?.rootViewController = ATNavigationController(rootViewController: ATHomeViewController())
         window?.makeKeyAndVisible()
         
-        UIApplication.shared.statusBarStyle = .lightContent;
+        UIApplication.shared.statusBarStyle = .lightContent
         
         return true
     }

@@ -16,12 +16,14 @@ struct Constant {
     struct official {
         ///官博
         static let weibo = URL(string: "https://weibo.com/kcwikizh")!
-        ///微信号
-        static let weixin = ""
+        ///微信公众号
+        static let weixin = "kcwikizh"
         ///官方网址
         static let website = URL(string: "https://zh.kcwiki.org")!
         ///开发者邮箱
-        static let developerEmail = "larry.dancingfire@gmail.com"
+        static let developerEmail = "larry_su@icloud.com"
+        ///开发者QQ
+        static let developerQQ = "466322421"
         ///数据反馈网址
         static let dataFeedback = URL(string: "https://task.kcwiki.org/home/menu/view/17/")!
     }
@@ -96,4 +98,13 @@ struct Constant {
     /// MARK: *** Window ***
     
     static let window: UIWindow = appDelegate.window!
+    
+    // MARK: *** Dictionary ***
+    
+    struct path {
+        static let home = NSHomeDirectory()
+        static let temp = NSTemporaryDirectory()
+        static let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        static let caches = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
+    }
 }
