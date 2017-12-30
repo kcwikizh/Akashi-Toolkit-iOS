@@ -97,7 +97,7 @@ struct Constant {
     
     /// MARK: *** Window ***
     
-    static let window: UIWindow = appDelegate.window!
+    static let window: UIWindow = appDelegate.window
     
     // MARK: *** Dictionary ***
     

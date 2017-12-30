@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Area" representedClassName="Area" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="Enemy" representedClassName="Enemy" syncable="YES" codeGenerationType="class"/>
+    <entity name="EnemyType" representedClassName="EnemyType" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="Equipment" representedClassName="Equipment" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="EquipmentType" representedClassName="EquipmentType" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="zhName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Expedition" representedClassName="Expedition" syncable="YES" codeGenerationType="class"/>
+    <entity name="Map" representedClassName="Map" syncable="YES" codeGenerationType="class"/>
+    <entity name="Mission" representedClassName="Mission" syncable="YES" codeGenerationType="class"/>
+    <entity name="Ship" representedClassName="Ship" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isFinal" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="series" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="zhName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ShipType" representedClassName="ShipType" syncable="YES" codeGenerationType="class">
+        <attribute name="abbr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="zhName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ShipType" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="EquipmentType" positionX="-54" positionY="9" width="128" height="75"/>
+        <element name="Ship" positionX="-36" positionY="27" width="128" height="120"/>
+        <element name="Equipment" positionX="-18" positionY="54" width="128" height="75"/>
+        <element name="Area" positionX="0" positionY="63" width="128" height="60"/>
+        <element name="EnemyType" positionX="18" positionY="72" width="128" height="60"/>
+        <element name="Enemy" positionX="36" positionY="81" width="128" height="45"/>
+        <element name="Mission" positionX="-9" positionY="36" width="128" height="45"/>
+        <element name="Expedition" positionX="0" positionY="45" width="128" height="45"/>
+        <element name="Map" positionX="9" positionY="63" width="128" height="45"/>
+    </elements>
+</model>

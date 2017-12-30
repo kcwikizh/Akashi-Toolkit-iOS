@@ -10,6 +10,9 @@
 		1D10F9DE1F8EA96400EA8FC1 /* manuscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */; };
 		1D61FA981F9BC0E00062FD60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */; };
 		1D7BA9AE1FCB5CD7000BBC5B /* ATUserSettingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BA9AD1FCB5CD7000BBC5B /* ATUserSettingTool.swift */; };
+		1D93A5521FF8259700B65547 /* AkashiToolkit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A5501FF8259700B65547 /* AkashiToolkit.xcdatamodeld */; };
+		1D93A5551FF83B9800B65547 /* ATFirstUseGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A5541FF83B9800B65547 /* ATFirstUseGuideViewController.swift */; };
+		1D93A5571FF83BAD00B65547 /* ATNewVersionGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A5561FF83BAD00B65547 /* ATNewVersionGuideViewController.swift */; };
 		47058B001FA36C2D00C8CECB /* ATImproveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */; };
 		47058B021FA36C5300C8CECB /* ATAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B011FA36C5300C8CECB /* ATAboutViewController.swift */; };
 		47058B041FA36CAC00C8CECB /* ATEquipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B031FA36CAC00C8CECB /* ATEquipViewController.swift */; };
@@ -245,6 +248,9 @@
 		1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manuscript.swift; sourceTree = "<group>"; };
 		1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D7BA9AD1FCB5CD7000BBC5B /* ATUserSettingTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATUserSettingTool.swift; sourceTree = "<group>"; };
+		1D93A5511FF8259700B65547 /* AkashiToolkit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AkashiToolkit.xcdatamodel; sourceTree = "<group>"; };
+		1D93A5541FF83B9800B65547 /* ATFirstUseGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATFirstUseGuideViewController.swift; sourceTree = "<group>"; };
+		1D93A5561FF83BAD00B65547 /* ATNewVersionGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATNewVersionGuideViewController.swift; sourceTree = "<group>"; };
 		47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATImproveViewController.swift; sourceTree = "<group>"; };
 		47058B011FA36C5300C8CECB /* ATAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAboutViewController.swift; sourceTree = "<group>"; };
 		47058B031FA36CAC00C8CECB /* ATEquipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATEquipViewController.swift; sourceTree = "<group>"; };
@@ -1026,9 +1032,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		47058ADB1FA36AF000C8CECB /* Section */ = {
+		1D93A54F1FF8251B00B65547 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				1D93A5501FF8259700B65547 /* AkashiToolkit.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		1D93A5531FF83A6E00B65547 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				1D93A5541FF83B9800B65547 /* ATFirstUseGuideViewController.swift */,
+				1D93A5561FF83BAD00B65547 /* ATNewVersionGuideViewController.swift */,
+			);
+			path = Guide;
+			sourceTree = "<group>";
+		};
+		47058ADB1FA36AF000C8CECB /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				47F3BF741F949E0B00CC4398 /* Home */,
 				47058AF51FA36B1200C8CECB /* Improve */,
 				47058AF61FA36B4500C8CECB /* Equipment */,
 				47058AF71FA36B5300C8CECB /* Ship */,
@@ -1039,8 +1063,9 @@
 				47058AFC1FA36BAA00C8CECB /* Toolbox */,
 				47058AFD1FA36BCC00C8CECB /* Setting */,
 				47058AFE1FA36BD200C8CECB /* About */,
+				1D93A5531FF83A6E00B65547 /* Guide */,
 			);
-			path = Section;
+			path = Module;
 			sourceTree = "<group>";
 		};
 		47058AF51FA36B1200C8CECB /* Improve */ = {
@@ -1197,10 +1222,10 @@
 		47CC33E61F8B929400B7CFB1 /* akashiToolkit */ = {
 			isa = PBXGroup;
 			children = (
-				47058ADB1FA36AF000C8CECB /* Section */,
-				47F3BF741F949E0B00CC4398 /* Home */,
+				47058ADB1FA36AF000C8CECB /* Module */,
 				47F3BF751F94AFD200CC4398 /* Globe */,
 				47C5FEB11F962D6F005B4073 /* Model */,
+				1D93A54F1FF8251B00B65547 /* CoreData */,
 				472C6ADE1F90D9CF0027C6B3 /* Tools */,
 				47CC34CB1F8BB86200B7CFB1 /* Lib */,
 				472C6AE31F90E1080027C6B3 /* Extension */,
@@ -3135,9 +3160,11 @@
 				47CC33E81F8B929400B7CFB1 /* AppDelegate.swift in Sources */,
 				47894F611F92031900E55E4D /* ExtensionUIView.swift in Sources */,
 				47058B0E1FA36D1E00C8CECB /* ATExpeditionViewController.swift in Sources */,
+				1D93A5571FF83BAD00B65547 /* ATNewVersionGuideViewController.swift in Sources */,
 				47671BB71F98CCDB00426CBC /* ATAvatarListViewController.swift in Sources */,
 				47058B061FA36CBF00C8CECB /* ATShipViewController.swift in Sources */,
 				470A5EAE1FB40216003ABF82 /* ATSettingTwitterLanguageViewController.swift in Sources */,
+				1D93A5521FF8259700B65547 /* AkashiToolkit.xcdatamodeld in Sources */,
 				47D4E7F01F9B453900C9D27F /* ExtensionUIViewController.swift in Sources */,
 				47058B101FA36D4000C8CECB /* ATToolboxViewController.swift in Sources */,
 				47C5FEB01F962D54005B4073 /* Protocol.swift in Sources */,
@@ -3165,6 +3192,7 @@
 				472C6AE51F90E1260027C6B3 /* ExtensionUIScreen.swift in Sources */,
 				47058B001FA36C2D00C8CECB /* ATImproveViewController.swift in Sources */,
 				47CC33FC1F8B992800B7CFB1 /* ATNavigationController.swift in Sources */,
+				1D93A5551FF83B9800B65547 /* ATFirstUseGuideViewController.swift in Sources */,
 				47D4E7F21F9B4C0400C9D27F /* ATToastMessageTool.swift in Sources */,
 				472C6AE01F90DA420027C6B3 /* Constant.swift in Sources */,
 				47058B041FA36CAC00C8CECB /* ATEquipViewController.swift in Sources */,
@@ -3415,6 +3443,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1D93A5501FF8259700B65547 /* AkashiToolkit.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1D93A5511FF8259700B65547 /* AkashiToolkit.xcdatamodel */,
+			);
+			currentVersion = 1D93A5511FF8259700B65547 /* AkashiToolkit.xcdatamodel */;
+			path = AkashiToolkit.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 47CC33DC1F8B929400B7CFB1 /* Project object */;
 }

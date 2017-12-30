@@ -37,13 +37,50 @@ struct ATUserSetting {
 }
 
 final class ATUserSettingTool {
+    ///APP描述
+    private struct AppDesc: UserDefaultsSettable {
+        enum defaultKeys: String {
+            ///是否首次进入APP Bool
+            case notFirstUse
+            ///版本号 String
+            case versionString
+        }
+    }
     ///用户基础设置
     private struct Base: UserDefaultsSettable {
         enum defaultKeys: String {
+            ///推特语言 枚举 ATUserSetting.twitter.language
             case twitterLanguage
         }
     }
     
+    ///获取用户是否首次进入APP
+    class func getIsFirstUse() -> Bool {
+        if let notFirstUse = AppDesc.bool(forKey: .notFirstUse) {
+            return !notFirstUse
+        } else {
+            AppDesc.set(value: false, forKey: .notFirstUse)
+            return true
+        }
+    }
+    ///保存用户是否首次进入APP
+    class func setIsFirstUse(_ isFirstUse: Bool) {
+        AppDesc.set(value: !isFirstUse, forKey: .notFirstUse)
+    }
+    ///判断是否更新了版本
+    class func appIsUpdated() -> Bool {
+        let currentVersionString = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+        if let savedVersionString = AppDesc.string(forKey: .versionString) {
+            if savedVersionString == currentVersionString {
+                return false
+            } else {
+                return true
+            }
+        } else {
+            AppDesc.set(value: currentVersionString, forKey: .versionString)
+            return true
+        }
+    }
     ///获取推特语言设置
     class func getTwitterLanguage() -> ATUserSetting.twitter.language {
         if let langValue = Base.integer(forKey: .twitterLanguage) {
@@ -70,10 +107,22 @@ private extension UserDefaultsSettable where defaultKeys.RawValue == String {
     static func set(value: Int?, forKey key: defaultKeys) {
         UserDefaults.standard.set(value, forKey: key.rawValue)
     }
+    static func set(value: String?, forKey key: defaultKeys) {
+        UserDefaults.standard.set(value, forKey: key.rawValue)
+    }
+    static func set(value: Bool?, forKey key: defaultKeys) {
+        UserDefaults.standard.set(value, forKey: key.rawValue)
+    }
     static func value(forKey key: defaultKeys) -> Any? {
         return UserDefaults.standard.value(forKey: key.rawValue)
     }
     static func integer(forKey key: defaultKeys) -> Int? {
         return UserDefaults.standard.integer(forKey: key.rawValue)
+    }
+    static func string(forKey key: defaultKeys) -> String? {
+        return UserDefaults.standard.string(forKey: key.rawValue)
+    }
+    static func bool(forKey key: defaultKeys) -> Bool? {
+        return UserDefaults.standard.bool(forKey: key.rawValue)
     }
 }
