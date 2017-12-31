@@ -20,7 +20,8 @@ class ATViewController: UIViewController {
         
         return view
     }()
-    private lazy var titleLbl: UILabel = {
+    ///标题栏
+    lazy var titleLbl: UILabel = {
         let label = UILabel()
         
         label.font = .headline

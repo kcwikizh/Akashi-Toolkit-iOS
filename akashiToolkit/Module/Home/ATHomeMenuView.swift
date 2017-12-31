@@ -26,8 +26,8 @@ class ATHomeMenuView: UIView {
     
     var delegate: ATHomeMenuViewDelegate?
     
-    lazy var listView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+    lazy var listView: ATTableView = {
+        let tableView = ATTableView(frame: .zero, style: .grouped)
         
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
@@ -35,11 +35,6 @@ class ATHomeMenuView: UIView {
         tableView.contentOffset = CGPoint(x: 0, y: UIScreen.height * 0.5)
         tableView.dataSource = self
         tableView.delegate = self
-        if #available(iOS 11.0, *) {
-            tableView.estimatedRowHeight = 0;
-            tableView.estimatedSectionHeaderHeight = 0;
-            tableView.estimatedSectionFooterHeight = 0;
-        }
         
         return tableView
     }()

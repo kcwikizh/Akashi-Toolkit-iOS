@@ -14,6 +14,12 @@ class ATImagePageViewController: UIPageViewController {
     
     // MARK: *** 属性 ***
     
+    ///状态栏颜色
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return .lightContent
+        }
+    }
     ///图片URL列表
     var avatarURLList: [URL?] = []
     ///最初所选URL索引

@@ -13,6 +13,12 @@ class ATAboutViewController: ATViewController {
     
     // MARK: *** 属性 ***
     
+    ///状态栏颜色
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return .lightContent
+        }
+    }
     private lazy var listView: ATTableView = {
         let listView = ATTableView(frame: .zero, style: .grouped)
         
@@ -84,6 +90,16 @@ class ATAboutViewController: ATViewController {
         
         return label
     }()
+    private lazy var mailVc: MFMailComposeViewController = {
+        let vc = MFMailComposeViewController()
+        vc.mailComposeDelegate = self
+        
+        vc.setSubject("明石工具箱 问题反馈")
+        vc.setToRecipients([Constant.official.developerEmail])
+        vc.setMessageBody(" 设备型号: \(UIDevice.model) \n 系统版本: \(UIDevice.current.systemName) \(UIDevice.current.systemVersion) \n APP版本: \(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)", isHTML: false)
+        
+        return vc
+    }()
     
     // MARK: *** 周期 ***
     
@@ -119,16 +135,7 @@ class ATAboutViewController: ATViewController {
     }
     
     // MARK: *** 逻辑 ***
-    private lazy var mailVc: MFMailComposeViewController = {
-        let vc = MFMailComposeViewController()
-        vc.mailComposeDelegate = self
-        
-        vc.setSubject("明石工具箱 问题反馈")
-        vc.setToRecipients([Constant.official.developerEmail])
-        vc.setMessageBody(" 设备型号: \(UIDevice.model) \n 系统版本: \(UIDevice.current.systemName) \(UIDevice.current.systemVersion) \n APP版本: \(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)", isHTML: false)
-        
-        return vc
-    }()
+    
     private func sendMail() {
         if MFMailComposeViewController.canSendMail() {
             present(mailVc, animated: true)

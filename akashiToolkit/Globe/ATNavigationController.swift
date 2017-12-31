@@ -16,4 +16,11 @@ class ATNavigationController: UINavigationController {
         let navBar = UINavigationBar.appearance()
         navBar.isHidden = true
     }
+    
+    ///状态栏颜色
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return .lightContent
+        }
+    }
 }

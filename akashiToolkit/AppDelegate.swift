@@ -12,29 +12,34 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let window: UIWindow = UIWindow(frame: UIScreen.main.bounds)
-    var guideVc: ATViewController?
+    
+    ///首次使用引导页
+    var firstUseGuideVc: ATFirstUseGuideViewController?
+    ///新版本引导页
+    var newVersionGuideVc: ATNewVersionGuideViewController?
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         ///检查用户是否是首次进入APP
-        if ATUserSettingTool.getIsFirstUse() {
-            
-        }
+//        if ATUserSettingTool.isFirstUse() {
+            firstUseGuideVc = ATFirstUseGuideViewController()
+//        } else if ATUserSettingTool.isUpdated() {
+//            newVersionGuideVc = ATNewVersionGuideViewController()
+//        }
+        
         return true
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let homeVc = ATHomeViewController()
-        window.rootViewController = ATNavigationController(rootViewController:homeVc)
-        window.makeKeyAndVisible()
-        
-        if guideVc != nil {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                homeVc.present(self.guideVc!, animated: true)
-            })
+        if firstUseGuideVc != nil {
+//            homeVc.present(self.firstUseGuideVc!, animated: false)
+            window.rootViewController = firstUseGuideVc!
+        } else if newVersionGuideVc != nil {
+            window.rootViewController = newVersionGuideVc!
+        } else {
+            window.rootViewController = ATNavigationController(rootViewController:ATHomeViewController())
         }
-        
-        UIApplication.shared.statusBarStyle = .lightContent
+        window.makeKeyAndVisible()
         
         return true
     }

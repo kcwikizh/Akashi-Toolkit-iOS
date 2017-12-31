@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol UserDefaultsSettable {
+private protocol UserDefaultsSettable {
     associatedtype defaultKeys: RawRepresentable
 }
 
@@ -55,25 +55,27 @@ final class ATUserSettingTool {
     }
     
     ///获取用户是否首次进入APP
-    class func getIsFirstUse() -> Bool {
+    class func isFirstUse() -> Bool {
         if let notFirstUse = AppDesc.bool(forKey: .notFirstUse) {
-            return !notFirstUse
+            if notFirstUse {
+                return false
+            } else {
+                AppDesc.set(value: true, forKey: .notFirstUse)
+                return true
+            }
         } else {
             AppDesc.set(value: false, forKey: .notFirstUse)
             return true
         }
     }
-    ///保存用户是否首次进入APP
-    class func setIsFirstUse(_ isFirstUse: Bool) {
-        AppDesc.set(value: !isFirstUse, forKey: .notFirstUse)
-    }
     ///判断是否更新了版本
-    class func appIsUpdated() -> Bool {
+    class func isUpdated() -> Bool {
         let currentVersionString = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
         if let savedVersionString = AppDesc.string(forKey: .versionString) {
             if savedVersionString == currentVersionString {
                 return false
             } else {
+                AppDesc.set(value: currentVersionString, forKey: .versionString)
                 return true
             }
         } else {
