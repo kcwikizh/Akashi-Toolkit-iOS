@@ -6,6 +6,6 @@
 //  Copyright © 2017年 kcwikizh. All rights reserved.
 //
 
-protocol ATDictCreatable {
+public protocol ATDictCreatable {
     init?(dict: [AnyHashable: Any])
 }

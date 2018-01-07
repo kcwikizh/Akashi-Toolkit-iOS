@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         ///检查用户是否是首次进入APP
 //        if ATUserSettingTool.isFirstUse() {
-            firstUseGuideVc = ATFirstUseGuideViewController()
+//            firstUseGuideVc = ATFirstUseGuideViewController()
 //        } else if ATUserSettingTool.isUpdated() {
 //            newVersionGuideVc = ATNewVersionGuideViewController()
 //        }
@@ -32,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         if firstUseGuideVc != nil {
-//            homeVc.present(self.firstUseGuideVc!, animated: false)
             window.rootViewController = firstUseGuideVc!
         } else if newVersionGuideVc != nil {
             window.rootViewController = newVersionGuideVc!

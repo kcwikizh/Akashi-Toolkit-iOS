@@ -21,13 +21,13 @@ class ATAvatarListViewController: ATViewController {
         layout.minimumLineSpacing = 2
         layout.minimumInteritemSpacing = 2
         
-        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.backgroundColor = Constant.ui.color.lightBackground
-        view.showsVerticalScrollIndicator = false
-        view.dataSource = self
-        view.delegate = self
+        let collView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collView.backgroundColor = Constant.ui.color.lightBackground
+        collView.showsVerticalScrollIndicator = false
+        collView.dataSource = self
+        collView.delegate = self
         
-        return view
+        return collView
     }()
     
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class ATAvatarListViewController: ATViewController {
         
         collectionView.register(ATAvatarListViewCell.self, forCellWithReuseIdentifier: ATAvatarListViewCellIdentifier)
         
-        ATAPIClient.getAvatarList { (urlList, error) in
+        ATDataTool.getAvatarList { (urlList, error) in
             if let urlList = urlList {
                 self.avatarURLList = urlList
                 self.collectionView.reloadData()

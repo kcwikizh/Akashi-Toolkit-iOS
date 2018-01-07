@@ -46,6 +46,13 @@ final class ATUserSettingTool {
             case versionString
         }
     }
+    ///数据版本管理
+    private struct DataVersion: UserDefaultsSettable {
+        enum defaultKeys: String {
+            ///海域数据版本
+            case area
+        }
+    }
     ///用户基础设置
     private struct Base: UserDefaultsSettable {
         enum defaultKeys: String {

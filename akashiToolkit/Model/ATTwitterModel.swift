@@ -8,13 +8,13 @@
 
 import UIKit
 
-struct ATTwitterModel: ATDictCreatable {
+class ATTwitterModel: ATDictCreatable {
     let jpContent: String
     let zhContent: String
     let dateStr: String
     let imageURLStr: String?
     
-    init?(dict: [AnyHashable : Any]) {
+    required init?(dict: [AnyHashable : Any]) {
         guard let jpContent = dict["jp"] as? String else {
             return nil
         }

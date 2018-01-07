@@ -57,7 +57,7 @@ final class ATAPIClient {
         
     }
     ///获取当前官推头像
-    class func getCurrentAvatar(_ completionHandler: @escaping (URL?, Error?) -> Void) {
+    class func fetchCurrentAvatar(_ completionHandler: @escaping (URL?, Error?) -> Void) {
         getItems(for: ATAPI.home.latestTwitterAvatar) { (result, error) in
             if let result = result as? [String : String] {
                 completionHandler(URL(string: result["latest"]!), nil)
