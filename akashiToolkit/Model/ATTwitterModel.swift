@@ -6,9 +6,10 @@
 //  Copyright © 2017年 kcwikizh. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class ATTwitterModel: ATDictCreatable {
+    
     let jpContent: String
     let zhContent: String
     let dateStr: String

@@ -1,5 +1,5 @@
 //
-//  ATMapResourceModel.swift
+//  ATResourceModel.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2018/1/8.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc public class ATMapResourceModel: NSObject {
+@objc public class ATResourceModel: NSObject {
     
     var oil: Int
     var ammunition: Int

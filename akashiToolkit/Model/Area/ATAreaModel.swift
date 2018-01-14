@@ -1,5 +1,5 @@
 //
-//  ATDBTool.swift
+//  ATAreaModel.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2018/1/15.
@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import WCDBSwift
 
-final class ATDBTool {
+class ATAreaModel {
 
 }

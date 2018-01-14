@@ -13,7 +13,7 @@
 		1D93A5551FF83B9800B65547 /* ATFirstUseGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A5541FF83B9800B65547 /* ATFirstUseGuideViewController.swift */; };
 		1D93A5571FF83BAD00B65547 /* ATNewVersionGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A5561FF83BAD00B65547 /* ATNewVersionGuideViewController.swift */; };
 		1D93A5D020024BB900B65547 /* ATDataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A5CF20024BB900B65547 /* ATDataTool.swift */; };
-		1D93A60120029A5100B65547 /* ATMapResourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A60020029A5100B65547 /* ATMapResourceModel.swift */; };
+		1D93A60120029A5100B65547 /* ATResourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A60020029A5100B65547 /* ATResourceModel.swift */; };
 		1DDB9068200BEC6200396DE3 /* .Alamofire.version in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB9041200BEC6200396DE3 /* .Alamofire.version */; };
 		1DDB9069200BEC6200396DE3 /* sqlcipher.swift.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB9043200BEC6200396DE3 /* sqlcipher.swift.framework.dSYM */; };
 		1DDB906A200BEC6200396DE3 /* FC8A5980-8D4A-3573-9609-C0220568D283.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB9044200BEC6200396DE3 /* FC8A5980-8D4A-3573-9609-C0220568D283.bcsymbolmap */; };
@@ -52,6 +52,7 @@
 		1DDB908C200BEC6200396DE3 /* .SnapKit.version in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB9066200BEC6200396DE3 /* .SnapKit.version */; };
 		1DDB908D200BEC6200396DE3 /* .SDWebImage.version in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB9067200BEC6200396DE3 /* .SDWebImage.version */; };
 		1DDB908F200BEDAF00396DE3 /* ATDBTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB908E200BEDAF00396DE3 /* ATDBTool.swift */; };
+		1DDB9094200BEF7E00396DE3 /* ATAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB9093200BEF7E00396DE3 /* ATAreaModel.swift */; };
 		47058B001FA36C2D00C8CECB /* ATImproveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */; };
 		47058B021FA36C5300C8CECB /* ATAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B011FA36C5300C8CECB /* ATAboutViewController.swift */; };
 		47058B041FA36CAC00C8CECB /* ATEquipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058B031FA36CAC00C8CECB /* ATEquipViewController.swift */; };
@@ -110,7 +111,7 @@
 		1D93A5541FF83B9800B65547 /* ATFirstUseGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATFirstUseGuideViewController.swift; sourceTree = "<group>"; };
 		1D93A5561FF83BAD00B65547 /* ATNewVersionGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATNewVersionGuideViewController.swift; sourceTree = "<group>"; };
 		1D93A5CF20024BB900B65547 /* ATDataTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATDataTool.swift; sourceTree = "<group>"; };
-		1D93A60020029A5100B65547 /* ATMapResourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMapResourceModel.swift; sourceTree = "<group>"; };
+		1D93A60020029A5100B65547 /* ATResourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATResourceModel.swift; sourceTree = "<group>"; };
 		1DDB9041200BEC6200396DE3 /* .Alamofire.version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .Alamofire.version; sourceTree = "<group>"; };
 		1DDB9043200BEC6200396DE3 /* sqlcipher.swift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = sqlcipher.swift.framework.dSYM; sourceTree = "<group>"; };
 		1DDB9044200BEC6200396DE3 /* FC8A5980-8D4A-3573-9609-C0220568D283.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "FC8A5980-8D4A-3573-9609-C0220568D283.bcsymbolmap"; sourceTree = "<group>"; };
@@ -150,6 +151,7 @@
 		1DDB9066200BEC6200396DE3 /* .SnapKit.version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .SnapKit.version; sourceTree = "<group>"; };
 		1DDB9067200BEC6200396DE3 /* .SDWebImage.version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .SDWebImage.version; sourceTree = "<group>"; };
 		1DDB908E200BEDAF00396DE3 /* ATDBTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATDBTool.swift; sourceTree = "<group>"; };
+		1DDB9093200BEF7E00396DE3 /* ATAreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAreaModel.swift; sourceTree = "<group>"; };
 		47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATImproveViewController.swift; sourceTree = "<group>"; };
 		47058B011FA36C5300C8CECB /* ATAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAboutViewController.swift; sourceTree = "<group>"; };
 		47058B031FA36CAC00C8CECB /* ATEquipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATEquipViewController.swift; sourceTree = "<group>"; };
@@ -298,6 +300,14 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		1DDB9092200BEEAB00396DE3 /* Area */ = {
+			isa = PBXGroup;
+			children = (
+				1DDB9093200BEF7E00396DE3 /* ATAreaModel.swift */,
+			);
+			path = Area;
+			sourceTree = "<group>";
+		};
 		47058ADB1FA36AF000C8CECB /* Module */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,8 +446,9 @@
 		47C5FEB11F962D6F005B4073 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1DDB9092200BEEAB00396DE3 /* Area */,
 				47C5FEB21F962D6F005B4073 /* ATTwitterModel.swift */,
-				1D93A60020029A5100B65547 /* ATMapResourceModel.swift */,
+				1D93A60020029A5100B65547 /* ATResourceModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -680,6 +691,7 @@
 				47671BB71F98CCDB00426CBC /* ATAvatarListViewController.swift in Sources */,
 				47058B061FA36CBF00C8CECB /* ATShipViewController.swift in Sources */,
 				470A5EAE1FB40216003ABF82 /* ATSettingTwitterLanguageViewController.swift in Sources */,
+				1DDB9094200BEF7E00396DE3 /* ATAreaModel.swift in Sources */,
 				47D4E7F01F9B453900C9D27F /* ExtensionUIViewController.swift in Sources */,
 				47058B101FA36D4000C8CECB /* ATToolboxViewController.swift in Sources */,
 				47C5FEB01F962D54005B4073 /* Protocol.swift in Sources */,
@@ -708,7 +720,7 @@
 				472C6AE51F90E1260027C6B3 /* ExtensionUIScreen.swift in Sources */,
 				47058B001FA36C2D00C8CECB /* ATImproveViewController.swift in Sources */,
 				47CC33FC1F8B992800B7CFB1 /* ATNavigationController.swift in Sources */,
-				1D93A60120029A5100B65547 /* ATMapResourceModel.swift in Sources */,
+				1D93A60120029A5100B65547 /* ATResourceModel.swift in Sources */,
 				1D93A5551FF83B9800B65547 /* ATFirstUseGuideViewController.swift in Sources */,
 				47D4E7F21F9B4C0400C9D27F /* ATToastMessageTool.swift in Sources */,
 				472C6AE01F90DA420027C6B3 /* Constant.swift in Sources */,
