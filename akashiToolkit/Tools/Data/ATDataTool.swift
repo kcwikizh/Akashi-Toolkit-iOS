@@ -6,7 +6,7 @@
 //  Copyright © 2018年 kcwikizh. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 final class ATDataTool {
     
