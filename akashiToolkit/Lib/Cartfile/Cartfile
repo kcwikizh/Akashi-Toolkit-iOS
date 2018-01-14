@@ -4,3 +4,5 @@ github "rs/SDWebImage"
 github "SnapKit/SnapKit"
 
 github "Alamofire/Alamofire"
+
+github "Tencent/WCDB"

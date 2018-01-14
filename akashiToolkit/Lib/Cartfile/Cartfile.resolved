@@ -1,3 +1,4 @@
-github "Alamofire/Alamofire" "4.5.1"
+github "Alamofire/Alamofire" "4.6.0"
 github "SnapKit/SnapKit" "4.0.0"
-github "rs/SDWebImage" "4.1.2"
+github "Tencent/WCDB" "v1.0.6.1"
+github "rs/SDWebImage" "4.2.3"

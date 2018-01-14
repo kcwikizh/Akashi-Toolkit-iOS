@@ -1,0 +1,347 @@
+BCSymbolMap Version: 2.0
+_sqliterkDefaultLog
+_s_os
+Apple LLVM version 9.0.0 (clang-900.0.39.2)
+/Users/iBreezearrow/Desktop/Akashi-Toolkit-iOS/akashiToolkit/Lib/Cartfile/Carthage/Checkouts/WCDB/repair/sqliterk_os.c
+/Users/iBreezearrow/Desktop/Akashi-Toolkit-iOS/akashiToolkit/Lib/Cartfile/Carthage/Checkouts/WCDB/swift/source/util
+sqliterkDefaultLog
+sqliterkOSRegister
+sqliterkOSGetFilePath
+sqliterkOSFileSize
+sqliterkOSRead
+sqliterkOSFree
+sqliterkOSClose
+sqliterkOSLog
+sqliterkOSMalloc
+sqliterkOSReadOnlyOpen
+_sqliterkNotify_onBeginParsePage
+_sqliterkNotify_onEndParsePage
+_sqliterkNotify_onBeginParseBtree
+_sqliterkNotify_onEndParseBtree
+_sqliterkNotify_onParseColumn
+_sqliterkParseBtree
+/Users/iBreezearrow/Desktop/Akashi-Toolkit-iOS/akashiToolkit/Lib/Cartfile/Carthage/Checkouts/WCDB/repair/sqliterk.c
+sqliterkGetIntegrity
+sqliterkGetPageCount
+sqliterkGetValidPageCount
+sqliterkGetParsedPageCount
+sqliterkGetUserInfo
+sqliterkSetUserInfo
+sqliterkSetNotify
+sqliterkParseMaster
+sqliterkParseBtree
+sqliterkParsePage
+sqliterkParse
+sqliterk_set_recursive
+sqliterkClose
+sqliterkNotify_onParseColumn
+sqliterkNotify_onEndParseBtree
+sqliterkNotify_onBeginParseBtree
+sqliterkNotify_onEndParsePage
+sqliterkNotify_onBeginParsePage
+sqliterkOpen
+_sqliterkValuesAutoGrow
+/Users/iBreezearrow/Desktop/Akashi-Toolkit-iOS/akashiToolkit/Lib/Cartfile/Carthage/Checkouts/WCDB/repair/sqliterk_values.c
+sqliterkValuesAddNull
+sqliterkValuesAddBinary
+sqliterkValuesAddNoTerminatorText
+sqliterkValuesAddText
+sqliterkValuesAddNumber
+sqliterkValuesAddInteger
+sqliterkValuesAddInteger64
+sqliterkValuesGetBytes
+sqliterkValuesGetCount
+sqliterkValuesGetBinary
+sqliterkValuesGetText
+sqliterkValuesGetNumber
+sqliterkValuesGetType
+sqliterkValuesGetInteger
+sqliterkValuesGetInteger64
+sqliterkValuesClear
+sqliterkValueClear
+sqliterkValuesFree
+sqliterkValuesAutoGrow
+sqliterkValuesAlloc
+__ZL23dummyParseTableCallbackP8sqliterkP14sqliterk_table
+__ZL20master_onParseColumnP8sqliterkP14sqliterk_tableP15sqliterk_column
+__ZL23table_onBeginParseTableP8sqliterkP14sqliterk_table
+__ZL19table_onParseColumnP8sqliterkP14sqliterk_tableP15sqliterk_column
+__ZL11fini_insertP19sqliterk_output_ctx
+__ZN13CipherContext6cipherEPhj
+__ZL7pstrcmpPKvS0_
+__ZL12inflate_readP7__sFILEP10z_stream_sPvjP13CipherContext
+___clang_call_terminate
+__ZN22sqliterk_master_entityC2E13sqliterk_typePKci
+__ZN13CipherContextD2Ev
+__ZNSt3__14pairIKNS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEE22sqliterk_master_entityEC2ERKS9_
+__ZNSt3__1L19piecewise_constructE
+/Users/iBreezearrow/Desktop/Akashi-Toolkit-iOS/akashiToolkit/Lib/Cartfile/Carthage/Checkouts/WCDB/repair/sqliterk_output.cpp
+pair
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/utility
+~basic_string
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/string
+deallocate
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/memory
+__libcpp_deallocate
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/new
+__get_long_pointer
+__is_long
+sqliterk_master_entity
+__construct_node<const std::__1::pair<const std::__1::basic_string<char>, sqliterk_master_entity> &>
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/__tree
+~unique_ptr
+reset
+operator()
+operator->
+first
+construct<std::__1::pair<const std::__1::basic_string<char>, sqliterk_master_entity>, const std::__1::pair<const std::__1::basic_string<char>, sqliterk_master_entity> &>
+__construct<std::__1::pair<const std::__1::basic_string<char>, sqliterk_master_entity>, const std::__1::pair<const std::__1::basic_string<char>, sqliterk_master_entity> &>
+__get_ptr
+unique_ptr
+__compressed_pair
+__libcpp_compressed_pair_imp
+__tree_node_destructor
+allocate
+__allocate
+__node_alloc
+__emplace_multi<const std::__1::pair<const std::__1::basic_string<char>, sqliterk_master_entity> &>
+release
+get
+__get_key
+__find_leaf_high
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/map
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/__functional_base
+operator<<char, std::__1::char_traits<char>, std::__1::allocator<char> >
+compare
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/__string
+operator basic_string_view
+data
+__get_pointer
+__get_short_pointer
+min<unsigned long>
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/algorithm
+min<unsigned long, std::__1::__less<unsigned long, unsigned long> >
+size
+__get_short_size
+__get_long_size
+__root
+__end_node
+__detach
+__tree_leaf<std::__1::__tree_node_base<void *> *>
+__tree_is_left_child<std::__1::__tree_node_base<void *> *>
+__assign_multi<std::__1::__tree_const_iterator<std::__1::__value_type<std::__1::basic_string<char>, sqliterk_master_entity>, std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, sqliterk_master_entity>, void *> *, int> >
+operator!=
+operator++
+__tree_next_iter<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *> *, std::__1::__tree_node_base<void *> *>
+__parent_unsafe
+__tree_min<std::__1::__tree_node_base<void *> *>
+__insert_multi<const std::__1::pair<const std::__1::basic_string<char>, sqliterk_master_entity> &>
+__get_value
+operator*
+__get_np
+operator==
+__node_insert_multi
+operator=
+operator=<const std::__1::pair<const std::__1::basic_string<char>, sqliterk_master_entity> &, false>
+get<0, const std::__1::basic_string<char>, sqliterk_master_entity>
+get<const std::__1::basic_string<char>, sqliterk_master_entity>
+__begin_node
+__tree_right_rotate<std::__1::__tree_node_base<void *> *>
+__set_parent
+__tree_left_rotate<std::__1::__tree_node_base<void *> *>
+__tree_balance_after_insert<std::__1::__tree_node_base<void *> *>
+__insert_node_at
+__find_equal<std::__1::basic_string<char> >
+__root_ptr
+__emplace_unique_key_args<std::__1::basic_string<char>, const std::__1::piecewise_construct_t &, std::__1::tuple<std::__1::basic_string<char> &&>, std::__1::tuple<> >
+pair<std::__1::__tree_iterator<std::__1::__value_type<std::__1::basic_string<char>, sqliterk_master_entity>, std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, sqliterk_master_entity>, void *> *, int>, bool &, false>
+__tree_iterator
+__construct_node<const std::__1::piecewise_construct_t &, std::__1::tuple<std::__1::basic_string<char> &&>, std::__1::tuple<> >
+construct<std::__1::pair<const std::__1::basic_string<char>, sqliterk_master_entity>, const std::__1::piecewise_construct_t &, std::__1::tuple<std::__1::basic_string<char> &&>, std::__1::tuple<> >
+__construct<std::__1::pair<const std::__1::basic_string<char>, sqliterk_master_entity>, const std::__1::piecewise_construct_t &, std::__1::tuple<std::__1::basic_string<char> &&>, std::__1::tuple<> >
+pair<std::__1::basic_string<char> &&>
+pair<std::__1::basic_string<char> &&, 0>
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/tuple
+basic_string
+__zero
+destroy
+destroy<std::__1::pair<const std::__1::basic_string<char>, sqliterk_master_entity> >
+__destroy<std::__1::pair<const std::__1::basic_string<char>, sqliterk_master_entity> >
+~pair
+~sqliterk_master_entity
+~CipherContext
+__init
+assign
+copy
+__set_short_size
+__set_long_size
+__set_long_cap
+__set_long_pointer
+__recommend
+__align_it<16>
+length
+__split_buffer
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/__split_buffer
+__end_cap
+__throw_length_error
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/stdexcept
+length_error
+__swap_out_circular_buffer
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/vector
+swap<Mem **>
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/type_traits
+__construct_backward<Mem *>
+__push_back_slow_path<Mem *>
+~__split_buffer
+clear
+__destruct_at_end
+construct<Mem *, Mem *>
+__construct<Mem *, Mem *>
+max<unsigned long>
+max<unsigned long, std::__1::__less<unsigned long, unsigned long> >
+capacity
+__alloc
+second
+__lower_bound<std::__1::basic_string<char> >
+find<std::__1::basic_string<char> >
+sqliterk_free_master
+~map
+~__tree
+inflate_read
+pstrcmp
+sqliterk_load_master
+operator[]
+setKey
+map
+__tree
+__tree_end_node
+CipherContext
+cipher
+sqliterk_save_master
+sqliterk_make_master
+__move_assign
+shrink_to_fit
+sqliterk_cancel
+fini_insert
+table_onParseColumn
+init_insert
+c_str
+operator+=
+push_back
+append
+empty
+end
+table_onBeginParseTable
+master_onParseColumn
+find
+dummyParseTableCallback
+sqliterk_output_cb
+~sqliterk_output_ctx
+~vector
+~__vector_base
+begin
+__tree_const_iterator
+sqliterk_output_ctx
+__map_const_iterator
+vector
+__vector_base
+sqliterk_output
+/Users/iBreezearrow/Desktop/Akashi-Toolkit-iOS/akashiToolkit/Lib/Cartfile/Carthage/Checkouts/WCDB/repair/sqliterk_util.c
+sqliterkGetResultCodeDescription
+sqliterkParseNumber
+sqliterkGetMaxVarintLength
+sqliterkParseVarint64
+sqliterkParseVarint
+sqliterkParseInt64
+sqliterkParseInt
+_sqliterkBtreeParsePage
+_sqliterkBtreeGetLengthForSerialType.sqliterk_btree_serialtype_fixlengths
+/Users/iBreezearrow/Desktop/Akashi-Toolkit-iOS/akashiToolkit/Lib/Cartfile/Carthage/Checkouts/WCDB/repair/sqliterk_btree.c
+sqliterkBtreeGetRootPage
+sqliterkBtreeGetUserInfo
+sqliterkBtreeSetUserInfo
+sqliterkBtreeSetNotify
+sqliterkBtreeSetType
+sqliterkBtreeIsSystemType
+sqliterkBtreeGetType
+sqliterkBtreeGetName
+sqliterkBtreeGetTypeName
+sqliterkBtreeParsePage
+sqliterkBtreeParseCell
+sqliterkBtreeParsePayload
+sqliterkBtreeGetLengthForSerialType
+sqliterkBtreeParse
+sqliterkBtreeClose
+sqliterkBtreeSetMeta
+sqliterkBtreeOpen
+/Users/iBreezearrow/Desktop/Akashi-Toolkit-iOS/akashiToolkit/Lib/Cartfile/Carthage/Checkouts/WCDB/repair/sqliterk_column.c
+sqliterkColumnClear
+sqliterkColumnGetOverflowPages
+sqliterkColumnGetRowId
+sqliterkColumnSetRowId
+sqliterkColumnGetValues
+sqliterkColumnFree
+sqliterkColumnAlloc
+/Users/iBreezearrow/Desktop/Akashi-Toolkit-iOS/akashiToolkit/Lib/Cartfile/Carthage/Checkouts/WCDB/repair/sqliterk_crypto.c
+sqliterkCryptoDecode
+sqliterkCryptoFreeCodec
+sqliterkCryptoSetCipher
+sqliterkRead
+_sqliterkPagerParseHeader
+_sqliterkPageAcquireOne
+/Users/iBreezearrow/Desktop/Akashi-Toolkit-iOS/akashiToolkit/Lib/Cartfile/Carthage/Checkouts/WCDB/repair/sqliterk_pager.c
+sqliterkPagerGetIntegrity
+sqliterkPagerGetValidPageCount
+sqliterkPagerGetParsedPageCount
+sqliterkPagerGetStatus
+sqliterkPagerIsPagenoValid
+sqliterkPagerSetStatus
+sqliterkPageGetTypeName
+sqliterkPageHeaderOffset
+sqliterkPagenoHeaderOffset
+sqliterkPageGetType
+sqliterkPageGetPageno
+sqliterkPagerGetUsableSize
+sqliterkPagerGetSize
+sqliterkPageGetData
+sqliterkPageClearData
+sqliterkPageRelease
+sqliterkPageAcquireOverflow
+sqliterkPageAcquireOne
+sqliterkPageAcquire
+sqliterkPageAcquireType
+sqliterkPagerGetPageCount
+sqliterkPagerClose
+sqliterkPagerParseHeader
+sqliterkPagerOpen
+/Users/iBreezearrow/Desktop/Akashi-Toolkit-iOS/akashiToolkit/Lib/Cartfile/Carthage/Checkouts/WCDB/repair/sqliterk_api.c
+sqliterk_integrity
+sqliterk_page_count
+sqliterk_valid_page_count
+sqliterk_parsed_page_count
+sqliterk_description
+sqliterk_table_root
+sqliterk_register
+sqliterk_table_type
+sqliterk_table_get_user_info
+sqliterk_table_set_user_info
+sqliterk_table_name
+sqliterk_column_rowid
+sqliterk_column_bytes
+sqliterk_column_binary
+sqliterk_column_text
+sqliterk_column_number
+sqliterk_column_integer64
+sqliterk_column_integer
+sqliterk_column_type
+sqliterk_column_count
+sqliterk_set_user_info
+sqliterk_get_user_info
+sqliterk_close
+sqliterk_parse_master
+sqliterk_parse_page
+sqliterk_parse
+sqliterk_user_info
+sqliterk_open
+sqliterk_register_notify
+/Users/iBreezearrow/Library/Caches/org.carthage.CarthageKit/DerivedData/9.2_9C40b/WCDB/v1.0.6.1/Build/Intermediates.noindex/ArchiveIntermediates/sqliterk.swift/IntermediateBuildFilesPath/sqliterk.swift.build/Release-iphoneos/sqliterk.swift.build/DerivedSources/sqliterk.swift_vers.c
