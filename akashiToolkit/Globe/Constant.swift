@@ -104,7 +104,22 @@ struct Constant {
     struct path {
         static let home = NSHomeDirectory()
         static let temp = NSTemporaryDirectory()
-        static let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        static let caches = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
+        static let document = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        static let caches = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
+    }
+    
+    // MARK: *** 错误 ***
+    
+    struct error {
+        
+        // MARK: *** 域 ***
+        
+        struct domain {
+            static let base = "org.kcwiki."
+            ///数据库错误
+            static let database = base + "database"
+            ///网络错误
+            static let network = base + "network"
+        }
     }
 }

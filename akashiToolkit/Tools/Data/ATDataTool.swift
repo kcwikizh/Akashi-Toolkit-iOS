@@ -14,10 +14,15 @@ final class ATDataTool {
     
     ///获取官推历史头像列表
     class func getAvatarList(_ completionHandler: @escaping ([URL?]?, Error?) -> Void) {
-        ATAPIClient.getAvatarList(completionHandler)
+        ATNetworkTool.fetchAvatarList(completionHandler)
     }
     
-    // MARK: *** 海域 ***
+    // MARK: *** 初始化 ***
     
     ///获取海域全列表 初始本地ATArea ATMap ATMapCell三组数据 并保存版本号
+    class func getAllAreaList(_ completionHandler: @escaping (AnyObject?, Error?) -> Void) {
+        ATNetworkTool.fetchAllAreaList { (resObj, error) in
+            print("larry sue : \(String(describing: resObj))")
+        }
+    }
 }

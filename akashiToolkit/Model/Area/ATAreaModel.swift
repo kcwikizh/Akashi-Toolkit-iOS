@@ -7,7 +7,16 @@
 //
 
 import Foundation
+import WCDBSwift
 
-class ATAreaModel {
-
+class ATAreaModel: TableCodable {
+    
+    var identifier: Int?
+    
+    enum CodingKeys: String, CodingTableKey {
+        typealias Root = ATAreaModel
+        static let objectRelationalMapping = TableBinding(CodingKeys.self)
+        
+        case identifier = "id"
+    }
 }

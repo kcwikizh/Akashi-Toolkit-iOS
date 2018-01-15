@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		1D10F9DE1F8EA96400EA8FC1 /* manuscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */; };
+		1D445BC2200D11550007B177 /* WCDBSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB9054200BEC6200396DE3 /* WCDBSwift.framework */; };
+		1D445BC3200D11550007B177 /* WCDBSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB9054200BEC6200396DE3 /* WCDBSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D445BC4200D11550007B177 /* sqlcipher.swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB9056200BEC6200396DE3 /* sqlcipher.swift.framework */; };
+		1D445BC5200D11550007B177 /* sqlcipher.swift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB9056200BEC6200396DE3 /* sqlcipher.swift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D445BC6200D11550007B177 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB9059200BEC6200396DE3 /* SnapKit.framework */; };
+		1D445BC7200D11550007B177 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB9059200BEC6200396DE3 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D445BC8200D11550007B177 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB905B200BEC6200396DE3 /* Alamofire.framework */; };
+		1D445BC9200D11550007B177 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB905B200BEC6200396DE3 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D445BCA200D11550007B177 /* sqliterk.swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB905D200BEC6200396DE3 /* sqliterk.swift.framework */; };
+		1D445BCB200D11550007B177 /* sqliterk.swift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB905D200BEC6200396DE3 /* sqliterk.swift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D445BCC200D11550007B177 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB905E200BEC6200396DE3 /* SDWebImage.framework */; };
+		1D445BCD200D11550007B177 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB905E200BEC6200396DE3 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D445BCE200D11550007B177 /* WCDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB9060200BEC6200396DE3 /* WCDB.framework */; };
+		1D445BCF200D11550007B177 /* WCDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB9060200BEC6200396DE3 /* WCDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D61FA981F9BC0E00062FD60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */; };
 		1D7BA9AE1FCB5CD7000BBC5B /* ATUserSettingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BA9AD1FCB5CD7000BBC5B /* ATUserSettingTool.swift */; };
 		1D93A5551FF83B9800B65547 /* ATFirstUseGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A5541FF83B9800B65547 /* ATFirstUseGuideViewController.swift */; };
@@ -32,17 +46,11 @@
 		1DDB9077200BEC6200396DE3 /* 85C3E403-3D85-3DF2-84F4-19F1F1350D74.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB9051200BEC6200396DE3 /* 85C3E403-3D85-3DF2-84F4-19F1F1350D74.bcsymbolmap */; };
 		1DDB9078200BEC6200396DE3 /* A985C123-F1BA-3028-9DBD-1B2A125673E3.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB9052200BEC6200396DE3 /* A985C123-F1BA-3028-9DBD-1B2A125673E3.bcsymbolmap */; };
 		1DDB9079200BEC6200396DE3 /* WCDB.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB9053200BEC6200396DE3 /* WCDB.framework.dSYM */; };
-		1DDB907A200BEC6200396DE3 /* WCDBSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB9054200BEC6200396DE3 /* WCDBSwift.framework */; };
 		1DDB907B200BEC6200396DE3 /* WCDBSwift.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB9055200BEC6200396DE3 /* WCDBSwift.framework.dSYM */; };
-		1DDB907C200BEC6200396DE3 /* sqlcipher.swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB9056200BEC6200396DE3 /* sqlcipher.swift.framework */; };
 		1DDB907D200BEC6200396DE3 /* 67854825-D267-32DA-890F-659E40FDE90A.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB9057200BEC6200396DE3 /* 67854825-D267-32DA-890F-659E40FDE90A.bcsymbolmap */; };
 		1DDB907E200BEC6200396DE3 /* SDWebImage.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB9058200BEC6200396DE3 /* SDWebImage.framework.dSYM */; };
-		1DDB907F200BEC6200396DE3 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB9059200BEC6200396DE3 /* SnapKit.framework */; };
 		1DDB9080200BEC6200396DE3 /* 92814D90-A044-375D-BD6A-6EF85D058949.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB905A200BEC6200396DE3 /* 92814D90-A044-375D-BD6A-6EF85D058949.bcsymbolmap */; };
-		1DDB9081200BEC6200396DE3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB905B200BEC6200396DE3 /* Alamofire.framework */; };
 		1DDB9082200BEC6200396DE3 /* A5DF7216-1C47-38FC-B531-F2CCD2C7194C.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB905C200BEC6200396DE3 /* A5DF7216-1C47-38FC-B531-F2CCD2C7194C.bcsymbolmap */; };
-		1DDB9083200BEC6200396DE3 /* sqliterk.swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB905D200BEC6200396DE3 /* sqliterk.swift.framework */; };
-		1DDB9084200BEC6200396DE3 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB905E200BEC6200396DE3 /* SDWebImage.framework */; };
 		1DDB9085200BEC6200396DE3 /* D2A24820-1FAA-3089-9701-7E6BE25024D3.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB905F200BEC6200396DE3 /* D2A24820-1FAA-3089-9701-7E6BE25024D3.bcsymbolmap */; };
 		1DDB9087200BEC6200396DE3 /* 2E3F19BE-E5A3-359F-ACC0-A2CDBEFE5F05.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB9061200BEC6200396DE3 /* 2E3F19BE-E5A3-359F-ACC0-A2CDBEFE5F05.bcsymbolmap */; };
 		1DDB9088200BEC6200396DE3 /* Alamofire.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 1DDB9062200BEC6200396DE3 /* Alamofire.framework.dSYM */; };
@@ -93,13 +101,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		47F3BF7B1F94BB0800CC4398 /* CopyFiles */ = {
+		1D445BD0200D11550007B177 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1D445BC7200D11550007B177 /* SnapKit.framework in Embed Frameworks */,
+				1D445BC3200D11550007B177 /* WCDBSwift.framework in Embed Frameworks */,
+				1D445BCB200D11550007B177 /* sqliterk.swift.framework in Embed Frameworks */,
+				1D445BC5200D11550007B177 /* sqlcipher.swift.framework in Embed Frameworks */,
+				1D445BCF200D11550007B177 /* WCDB.framework in Embed Frameworks */,
+				1D445BCD200D11550007B177 /* SDWebImage.framework in Embed Frameworks */,
+				1D445BC9200D11550007B177 /* Alamofire.framework in Embed Frameworks */,
 			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -200,12 +216,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DDB907F200BEC6200396DE3 /* SnapKit.framework in Frameworks */,
-				1DDB907A200BEC6200396DE3 /* WCDBSwift.framework in Frameworks */,
-				1DDB9083200BEC6200396DE3 /* sqliterk.swift.framework in Frameworks */,
-				1DDB907C200BEC6200396DE3 /* sqlcipher.swift.framework in Frameworks */,
-				1DDB9084200BEC6200396DE3 /* SDWebImage.framework in Frameworks */,
-				1DDB9081200BEC6200396DE3 /* Alamofire.framework in Frameworks */,
+				1D445BC6200D11550007B177 /* SnapKit.framework in Frameworks */,
+				1D445BC2200D11550007B177 /* WCDBSwift.framework in Frameworks */,
+				1D445BCA200D11550007B177 /* sqliterk.swift.framework in Frameworks */,
+				1D445BC4200D11550007B177 /* sqlcipher.swift.framework in Frameworks */,
+				1D445BCE200D11550007B177 /* WCDB.framework in Frameworks */,
+				1D445BCC200D11550007B177 /* SDWebImage.framework in Frameworks */,
+				1D445BC8200D11550007B177 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,7 +582,7 @@
 				47CC33E11F8B929400B7CFB1 /* Frameworks */,
 				47CC33E21F8B929400B7CFB1 /* Resources */,
 				47CC386B1F8BB9BA00B7CFB1 /* ShellScript */,
-				47F3BF7B1F94BB0800CC4398 /* CopyFiles */,
+				1D445BD0200D11550007B177 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

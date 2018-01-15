@@ -181,6 +181,9 @@ class ATFirstUseGuideViewController: ATViewController {
             make.left.right.equalTo(shipLoadView)
             make.top.equalTo(enemyLoadView.snp.bottom).offset(UIDevice.isLittleSize ? 15.0 : 20.0)
         }
+        
+        ///初始化数据库
+        ATDBTool.initDatabase()
     }
     
     deinit {
@@ -223,7 +226,6 @@ class ATFirstUseGuideViewController: ATViewController {
             self.shipLoadView.loadDaisy.alpha = 1.0
         }, completion: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.9, execute: {
-                self.shipLoadView.loadCompleted = true
                 self.loadProcess += 1
             })
         })
@@ -233,7 +235,6 @@ class ATFirstUseGuideViewController: ATViewController {
             self.equipmentLoadView.loadDaisy.alpha = 1.0
         }, completion: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 8, execute: {
-                self.equipmentLoadView.loadCompleted = true
                 self.loadProcess += 1
             })
         })
@@ -243,7 +244,6 @@ class ATFirstUseGuideViewController: ATViewController {
             self.areaLoadView.loadDaisy.alpha = 1.0
         }, completion: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                self.areaLoadView.loadCompleted = true
                 self.loadProcess += 1
             })
         })
@@ -253,7 +253,6 @@ class ATFirstUseGuideViewController: ATViewController {
             self.missionLoadView.loadDaisy.alpha = 1.0
         }, completion: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 7, execute: {
-                self.missionLoadView.loadCompleted = true
                 self.loadProcess += 1
             })
         })
@@ -263,7 +262,6 @@ class ATFirstUseGuideViewController: ATViewController {
             self.expeditionLoadView.loadDaisy.alpha = 1.0
         }, completion: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                self.expeditionLoadView.loadCompleted = true
                 self.loadProcess += 1
             })
         })
@@ -273,7 +271,6 @@ class ATFirstUseGuideViewController: ATViewController {
             self.enemyLoadView.loadDaisy.alpha = 1.0
         }, completion: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                self.enemyLoadView.loadCompleted = true
                 self.loadProcess += 1
             })
         })
@@ -283,7 +280,6 @@ class ATFirstUseGuideViewController: ATViewController {
             self.improveLoadView.loadDaisy.alpha = 1.0
         }, completion: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                self.improveLoadView.loadCompleted = true
                 self.loadProcess += 1
             })
         })
@@ -294,9 +290,10 @@ private class ATCategoryCheckView: UIView {
     
     // MARK: *** 属性 ***
     
-    var loadCompleted: Bool = false {
+    ///数据下载完成
+    var dataInitCompleted: Bool = false {
         didSet {
-            if loadCompleted {
+            if dataInitCompleted {
                 UIView.animate(withDuration: 0.1, animations: {
                     self.loadDaisy.alpha = 0.0
                 }, completion: { (animaFinished) in

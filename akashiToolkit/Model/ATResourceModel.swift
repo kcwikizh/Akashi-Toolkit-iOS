@@ -10,9 +10,15 @@ import Foundation
 
 class ATResourceModel: ATDictCreatable {
 
+    // MARK: *** 属性 ***
+    
+    ///油
     var oil: Int = 0
+    ///弹
     var ammunition: Int = 0
+    ///钢
     var steel: Int = 0
+    ///铝
     var aluminium: Int = 0
     
     required init?(dict: [AnyHashable : Any]) {
