@@ -89,8 +89,14 @@ final class ATNetworkTool {
     // MARK: *** 初始化 ***
     
     ///获取海域全列表
-    class func fetchAllAreaList(_ completionHandler: @escaping (AnyObject?, Error?) -> Void) {
-        getItems(for: ATAPI.all.area, completionHandler)
+    class func fetchAllAreaList(_ completionHandler: @escaping ([[String : AnyObject]]?, Error?) -> Void) {
+        getItems(for: ATAPI.all.area) { (result, error) in
+            if let result = result as? [[String : AnyObject]] {
+                completionHandler(result, nil)
+            } else {
+                completionHandler(nil, error)
+            }
+        }
     }
 }
 

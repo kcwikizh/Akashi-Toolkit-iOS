@@ -243,8 +243,13 @@ class ATFirstUseGuideViewController: ATViewController {
             self.areaLoadView.titleLbl.alpha = 1.0
             self.areaLoadView.loadDaisy.alpha = 1.0
         }, completion: { (_) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                self.loadProcess += 1
+            ATDataTool.initArea({ (error) in
+                if error != nil {
+                    print("larry sue : \(String(describing: error?.localizedDescription))")
+                } else {
+                    self.loadProcess += 1
+                    self.areaLoadView.dataInitCompleted = true
+                }
             })
         })
         UIView.animate(withDuration: 0.3, delay: 0.6, options: .curveEaseOut, animations: {

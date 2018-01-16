@@ -19,10 +19,32 @@ final class ATDataTool {
     
     // MARK: *** 初始化 ***
     
-    ///获取海域全列表 初始本地ATArea ATMap ATMapCell三组数据 并保存版本号
-    class func getAllAreaList(_ completionHandler: @escaping (AnyObject?, Error?) -> Void) {
-        ATNetworkTool.fetchAllAreaList { (resObj, error) in
-            print("larry sue : \(String(describing: resObj))")
+    ///数据初始化回调
+    typealias ATDataInitCompletionHandler = (_ error: Error?) -> Void
+    
+    ///初始化海域数据 初始本地ATArea ATMap ATMapCell三组数据 并保存版本号
+    class func initArea(_ completionHandler: @escaping ATDataInitCompletionHandler) {
+        ///拉取数据
+        ATNetworkTool.fetchAllAreaList { (areaFetchResult, error) in
+            if let areaFetchResult = areaFetchResult {
+                
+                ///创建海域 海图 海图点列表
+                var areaList: [ATAreaModel] = []
+                
+                ///遍历拉取结果 对象化 填入对应列表
+                for area in areaFetchResult {
+                    if let serverId = area["id"] as? Int, let type = area["type"] as? Int32, let name = area["name"] as? String {
+                        let area = ATAreaModel(serverId: serverId, type: type, name: name)
+                        areaList.append(area)
+                    }
+//                    print("larry sue : \(String(describing: area["mapinfo"]))")
+                }
+                
+                ///插入数据库
+                ATDBTool.insert(areaList)
+            } else {
+                completionHandler(error)
+            }
         }
     }
 }
