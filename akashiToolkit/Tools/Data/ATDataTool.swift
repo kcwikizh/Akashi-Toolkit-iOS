@@ -24,24 +24,38 @@ final class ATDataTool {
     
     ///初始化海域数据 初始本地ATArea ATMap ATMapCell三组数据 并保存版本号
     class func initArea(_ completionHandler: @escaping ATDataInitCompletionHandler) {
+        
         ///拉取数据
         ATNetworkTool.fetchAllAreaList { (areaFetchResult, error) in
             if let areaFetchResult = areaFetchResult {
                 
                 ///创建海域 海图 海图点列表
                 var areaList: [ATAreaModel] = []
+                var areaMapList: [ATAreaMapModel] = []
+                
+                func hashmapToAreaMapModel(_ map: [String : AnyObject]) {
+                    if let mapModel = ATAreaMapModel(dict: map) {
+                        areaMapList.append(mapModel)
+                    }
+                }
+                func hashmapToAreaModel(_ area: [String : AnyObject]) {
+                    if let areaModel = ATAreaModel(dict: area) {
+                        areaList.append(areaModel)
+                    }
+                    if let mapList = area["mapinfo"] as? [[String : AnyObject]] {
+                        let _ = mapList.map(hashmapToAreaMapModel)
+                    }
+                }
                 
                 ///遍历拉取结果 对象化 填入对应列表
-                for area in areaFetchResult {
-                    if let serverId = area["id"] as? Int, let type = area["type"] as? Int32, let name = area["name"] as? String {
-                        let area = ATAreaModel(serverId: serverId, type: type, name: name)
-                        areaList.append(area)
-                    }
-//                    print("larry sue : \(String(describing: area["mapinfo"]))")
-                }
+                let _ = areaFetchResult.map(hashmapToAreaModel)
                 
                 ///插入数据库
                 ATDBTool.insert(areaList)
+                ATDBTool.insert(areaMapList)
+                
+                ///执行回调
+                completionHandler(nil)
             } else {
                 completionHandler(error)
             }

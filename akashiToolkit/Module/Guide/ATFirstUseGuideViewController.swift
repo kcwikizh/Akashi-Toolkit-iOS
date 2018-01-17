@@ -227,6 +227,7 @@ class ATFirstUseGuideViewController: ATViewController {
         }, completion: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.9, execute: {
                 self.loadProcess += 1
+                self.shipLoadView.dataInitCompleted = true
             })
         })
         UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseOut, animations: {
@@ -236,6 +237,7 @@ class ATFirstUseGuideViewController: ATViewController {
         }, completion: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 8, execute: {
                 self.loadProcess += 1
+                self.equipmentLoadView.dataInitCompleted = true
             })
         })
         UIView.animate(withDuration: 0.3, delay: 0.4, options: .curveEaseOut, animations: {
@@ -259,6 +261,7 @@ class ATFirstUseGuideViewController: ATViewController {
         }, completion: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 7, execute: {
                 self.loadProcess += 1
+                self.missionLoadView.dataInitCompleted = true
             })
         })
         UIView.animate(withDuration: 0.3, delay: 0.8, options: .curveEaseOut, animations: {
@@ -268,6 +271,7 @@ class ATFirstUseGuideViewController: ATViewController {
         }, completion: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                 self.loadProcess += 1
+                self.expeditionLoadView.dataInitCompleted = true
             })
         })
         UIView.animate(withDuration: 0.3, delay: 1.0, options: .curveEaseOut, animations: {
@@ -277,6 +281,7 @@ class ATFirstUseGuideViewController: ATViewController {
         }, completion: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
                 self.loadProcess += 1
+                self.enemyLoadView.dataInitCompleted = true
             })
         })
         UIView.animate(withDuration: 0.3, delay: 1.2, options: .curveEaseOut, animations: {
@@ -286,6 +291,7 @@ class ATFirstUseGuideViewController: ATViewController {
         }, completion: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
                 self.loadProcess += 1
+                self.improveLoadView.dataInitCompleted = true
             })
         })
     }

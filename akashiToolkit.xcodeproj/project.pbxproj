@@ -22,6 +22,8 @@
 		1D445BCD200D11550007B177 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB905E200BEC6200396DE3 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D445BCE200D11550007B177 /* WCDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB9060200BEC6200396DE3 /* WCDB.framework */; };
 		1D445BCF200D11550007B177 /* WCDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB9060200BEC6200396DE3 /* WCDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D445BD2200FD4AA0007B177 /* ATAreaMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D445BD1200FD4AA0007B177 /* ATAreaMapModel.swift */; };
+		1D445BD4200FEA340007B177 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D445BD3200FEA340007B177 /* Protocol.swift */; };
 		1D61FA981F9BC0E00062FD60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */; };
 		1D7BA9AE1FCB5CD7000BBC5B /* ATUserSettingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BA9AD1FCB5CD7000BBC5B /* ATUserSettingTool.swift */; };
 		1D93A5551FF83B9800B65547 /* ATFirstUseGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A5541FF83B9800B65547 /* ATFirstUseGuideViewController.swift */; };
@@ -85,7 +87,6 @@
 		47829C921F9F22BA00523E75 /* ATViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47829C911F9F22BA00523E75 /* ATViewController.swift */; };
 		47894F611F92031900E55E4D /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47894F601F92031900E55E4D /* ExtensionUIView.swift */; };
 		47C5FEAF1F962D54005B4073 /* ATNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5FE941F962D54005B4073 /* ATNetworkTool.swift */; };
-		47C5FEB01F962D54005B4073 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5FEAE1F962D54005B4073 /* Protocol.swift */; };
 		47C5FEB31F962E1E005B4073 /* ATTwitterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5FEB21F962D6F005B4073 /* ATTwitterModel.swift */; };
 		47CC33E81F8B929400B7CFB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */; };
 		47CC33FA1F8B954700B7CFB1 /* ATHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC33F91F8B954700B7CFB1 /* ATHomeViewController.swift */; };
@@ -122,6 +123,8 @@
 
 /* Begin PBXFileReference section */
 		1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manuscript.swift; sourceTree = "<group>"; };
+		1D445BD1200FD4AA0007B177 /* ATAreaMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAreaMapModel.swift; sourceTree = "<group>"; };
+		1D445BD3200FEA340007B177 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D7BA9AD1FCB5CD7000BBC5B /* ATUserSettingTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATUserSettingTool.swift; sourceTree = "<group>"; };
 		1D93A5541FF83B9800B65547 /* ATFirstUseGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATFirstUseGuideViewController.swift; sourceTree = "<group>"; };
@@ -192,7 +195,6 @@
 		47829C911F9F22BA00523E75 /* ATViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATViewController.swift; sourceTree = "<group>"; };
 		47894F601F92031900E55E4D /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		47C5FE941F962D54005B4073 /* ATNetworkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATNetworkTool.swift; sourceTree = "<group>"; };
-		47C5FEAE1F962D54005B4073 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		47C5FEB21F962D6F005B4073 /* ATTwitterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTwitterModel.swift; sourceTree = "<group>"; };
 		47CC33E41F8B929400B7CFB1 /* akashiToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = akashiToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47CC33E71F8B929400B7CFB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				1DDB9093200BEF7E00396DE3 /* ATAreaModel.swift */,
+				1D445BD1200FD4AA0007B177 /* ATAreaMapModel.swift */,
 			);
 			path = Area;
 			sourceTree = "<group>";
@@ -558,7 +561,7 @@
 				470A5EAF1FB4053B003ABF82 /* ATTableView.swift */,
 				472C6ADF1F90DA420027C6B3 /* Constant.swift */,
 				472C6AE61F90F2350027C6B3 /* Function.swift */,
-				47C5FEAE1F962D54005B4073 /* Protocol.swift */,
+				1D445BD3200FEA340007B177 /* Protocol.swift */,
 			);
 			path = Globe;
 			sourceTree = "<group>";
@@ -705,13 +708,13 @@
 				47058B0E1FA36D1E00C8CECB /* ATExpeditionViewController.swift in Sources */,
 				1D93A5D020024BB900B65547 /* ATDataTool.swift in Sources */,
 				1D93A5571FF83BAD00B65547 /* ATNewVersionGuideViewController.swift in Sources */,
+				1D445BD2200FD4AA0007B177 /* ATAreaMapModel.swift in Sources */,
 				47671BB71F98CCDB00426CBC /* ATAvatarListViewController.swift in Sources */,
 				47058B061FA36CBF00C8CECB /* ATShipViewController.swift in Sources */,
 				470A5EAE1FB40216003ABF82 /* ATSettingTwitterLanguageViewController.swift in Sources */,
 				1DDB9094200BEF7E00396DE3 /* ATAreaModel.swift in Sources */,
 				47D4E7F01F9B453900C9D27F /* ExtensionUIViewController.swift in Sources */,
 				47058B101FA36D4000C8CECB /* ATToolboxViewController.swift in Sources */,
-				47C5FEB01F962D54005B4073 /* Protocol.swift in Sources */,
 				1DDB908F200BEDAF00396DE3 /* ATDBTool.swift in Sources */,
 				47058B0A1FA36CEC00C8CECB /* ATEnemyViewController.swift in Sources */,
 				47F3BF5A1F94688100CC4398 /* ExtensionUIImage.swift in Sources */,
@@ -726,6 +729,7 @@
 				47D4E7A71F9A2B2000C9D27F /* ATImagePageViewController.swift in Sources */,
 				1D7BA9AE1FCB5CD7000BBC5B /* ATUserSettingTool.swift in Sources */,
 				47058B021FA36C5300C8CECB /* ATAboutViewController.swift in Sources */,
+				1D445BD4200FEA340007B177 /* Protocol.swift in Sources */,
 				47058B081FA36CD300C8CECB /* ATAreaViewController.swift in Sources */,
 				47C5FEAF1F962D54005B4073 /* ATNetworkTool.swift in Sources */,
 				47F555DC1F9EEA9200B09AFA /* ExtensionUIFont.swift in Sources */,

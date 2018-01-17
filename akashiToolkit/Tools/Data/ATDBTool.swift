@@ -22,6 +22,7 @@ final class ATDBTool {
     ///表名
     struct tableName {
         static let area = "area"
+        static let areaMap = "areaMap"
     }
     
     // MARK: *** 初始化 ***
@@ -49,18 +50,33 @@ final class ATDBTool {
             print("larry sue : \(error)")
             print("larry sue : \(ATDatabaseError.createAreaTableFailed)")
         }
-        ///创建地图表
-        ///创建地图点表
+        ///创建海图表
+        do {
+            try database.create(table: tableName.areaMap, of: ATAreaMapModel.self)
+        } catch {
+            print("larry sue : \(error)")
+            print("larry sue : \(ATDatabaseError.createAreaMapTableFailed)")
+        }
+        ///创建海图点表
     }
     ///插入海域数据
     class func insert(_ areaList: [ATAreaModel]) {
+        if areaList.count == 0 { return }
         do {
-            print("larry sue 2")
             try database.insert(objects: areaList, intoTable: tableName.area)
-            print("larry sue 3")
         } catch {
             print("larry sue : \(error)")
             print("larry sue : \(ATDatabaseError.insertAreaListFailed)")
+        }
+    }
+    ///插入海图数据
+    class func insert(_ areaMapList: [ATAreaMapModel]) {
+        if areaMapList.count == 0 { return }
+        do {
+            try database.insert(objects: areaMapList, intoTable: tableName.areaMap)
+        } catch {
+            print("larry sue : \(error)")
+            print("larry sue : \(ATDatabaseError.insertAreaMapListFailed)")
         }
     }
 }
@@ -74,13 +90,15 @@ private struct ATDatabaseError {
     
     ///创建海域表错误
     fileprivate static let createAreaTableFailed = NSError(domain: Constant.error.domain.database, code: 37130, userInfo: [NSLocalizedDescriptionKey: "Create Area Table Failed"])
-    ///创建地图表错误
+    ///创建海图表错误
     fileprivate static let createAreaMapTableFailed = NSError(domain: Constant.error.domain.database, code: 37131, userInfo: [NSLocalizedDescriptionKey: "Create Area Map Table Failed"])
-    ///创建地图点表错误
+    ///创建海图点表错误
     fileprivate static let createAreaMapCellTableFailed = NSError(domain: Constant.error.domain.database, code: 37132, userInfo: [NSLocalizedDescriptionKey: "Create Area Map Cell Table Failed"])
     
-    ///插入海域数据数组错误
+    ///插入海域数组错误
     fileprivate static let insertAreaListFailed = NSError(domain: Constant.error.domain.database, code: 37230, userInfo: [NSLocalizedDescriptionKey: "Insert Area List Failed"])
+    ///插入海图数组错误
+    fileprivate static let insertAreaMapListFailed = NSError(domain: Constant.error.domain.database, code: 37231, userInfo: [NSLocalizedDescriptionKey: "Insert Area Map List Failed"])
     
     // MARK: *** 其他操作 ***
     

@@ -11,12 +11,15 @@ import WCDBSwift
 
 ///海域类型
 enum ATAreaType: Int32, ColumnCodable {
-    typealias FundamentalType = Int32
     
     ///普通海域
     case normal = 0
     ///活动海域
     case event  = 1
+    
+    // MARK: *** WCDB.ColumnCodable ***
+    
+    typealias FundamentalType = Int32
     
     init?(with value: FundamentalType) {
         self.init(rawValue: value)
@@ -27,7 +30,7 @@ enum ATAreaType: Int32, ColumnCodable {
     }
 }
 
-class ATAreaModel: TableCodable {
+class ATAreaModel: TableCodable, ATDictCteateble {
     
     // MARK: *** 属性 ***
     
@@ -42,16 +45,21 @@ class ATAreaModel: TableCodable {
     
     // MARK: *** 构造 ***
     
-    convenience init(serverId: Int, type: Int32, name: String) {
+    convenience required init?(dict: [String : AnyObject]) {
         self.init()
         
-        self.serverId = serverId
-        self.name = name
-        
-        if let type = ATAreaType(rawValue: type) {
-            self.type = type
-        } else {
-            self.type = .normal
+        if let serverId = dict["id"] as? Int {
+            self.serverId = serverId
+        }
+        if let type = dict["type"] as? Int32 {
+            if let type = ATAreaType(rawValue: type) {
+                self.type = type
+            } else {
+                self.type = .normal
+            }
+        }
+        if let name = dict["name"] as? String {
+            self.name = name
         }
     }
     
