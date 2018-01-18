@@ -24,6 +24,7 @@
 		1D445BCF200D11550007B177 /* WCDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDB9060200BEC6200396DE3 /* WCDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D445BD2200FD4AA0007B177 /* ATAreaMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D445BD1200FD4AA0007B177 /* ATAreaMapModel.swift */; };
 		1D445BD4200FEA340007B177 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D445BD3200FEA340007B177 /* Protocol.swift */; };
+		1D445BD6201112530007B177 /* ATAreaMapCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D445BD5201112530007B177 /* ATAreaMapCellModel.swift */; };
 		1D61FA981F9BC0E00062FD60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */; };
 		1D7BA9AE1FCB5CD7000BBC5B /* ATUserSettingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BA9AD1FCB5CD7000BBC5B /* ATUserSettingTool.swift */; };
 		1D93A5551FF83B9800B65547 /* ATFirstUseGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A5541FF83B9800B65547 /* ATFirstUseGuideViewController.swift */; };
@@ -125,6 +126,7 @@
 		1D10F9DD1F8EA96300EA8FC1 /* manuscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manuscript.swift; sourceTree = "<group>"; };
 		1D445BD1200FD4AA0007B177 /* ATAreaMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAreaMapModel.swift; sourceTree = "<group>"; };
 		1D445BD3200FEA340007B177 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		1D445BD5201112530007B177 /* ATAreaMapCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAreaMapCellModel.swift; sourceTree = "<group>"; };
 		1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D7BA9AD1FCB5CD7000BBC5B /* ATUserSettingTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATUserSettingTool.swift; sourceTree = "<group>"; };
 		1D93A5541FF83B9800B65547 /* ATFirstUseGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATFirstUseGuideViewController.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 			children = (
 				1DDB9093200BEF7E00396DE3 /* ATAreaModel.swift */,
 				1D445BD1200FD4AA0007B177 /* ATAreaMapModel.swift */,
+				1D445BD5201112530007B177 /* ATAreaMapCellModel.swift */,
 			);
 			path = Area;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 				4748C1761FA0C3BB005F5D2D /* ATHomeMenuView.swift in Sources */,
 				47CC33FA1F8B954700B7CFB1 /* ATHomeViewController.swift in Sources */,
 				470A5EB01FB4053B003ABF82 /* ATTableView.swift in Sources */,
+				1D445BD6201112530007B177 /* ATAreaMapCellModel.swift in Sources */,
 				47058B0C1FA36D0800C8CECB /* ATMissionViewController.swift in Sources */,
 				472C6AE51F90E1260027C6B3 /* ExtensionUIScreen.swift in Sources */,
 				47058B001FA36C2D00C8CECB /* ATImproveViewController.swift in Sources */,

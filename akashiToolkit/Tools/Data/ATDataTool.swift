@@ -32,10 +32,20 @@ final class ATDataTool {
                 ///创建海域 海图 海图点列表
                 var areaList: [ATAreaModel] = []
                 var areaMapList: [ATAreaMapModel] = []
+                var areaMapCellList: [ATAreaMapCellModel] = []
                 
+                ///遍历拉取结果 对象化 填入对应列表
+                func hashmapToAreaMapCellModel(_ cell: [String : AnyObject]) {
+                    if let cellModel = ATAreaMapCellModel(dict: cell) {
+                        areaMapCellList.append(cellModel)
+                    }
+                }
                 func hashmapToAreaMapModel(_ map: [String : AnyObject]) {
                     if let mapModel = ATAreaMapModel(dict: map) {
                         areaMapList.append(mapModel)
+                    }
+                    if let cellList = map["mapcell"] as? [[String : AnyObject]] {
+                        let _ = cellList.map(hashmapToAreaMapCellModel)
                     }
                 }
                 func hashmapToAreaModel(_ area: [String : AnyObject]) {
@@ -46,13 +56,12 @@ final class ATDataTool {
                         let _ = mapList.map(hashmapToAreaMapModel)
                     }
                 }
-                
-                ///遍历拉取结果 对象化 填入对应列表
                 let _ = areaFetchResult.map(hashmapToAreaModel)
                 
                 ///插入数据库
                 ATDBTool.insert(areaList)
                 ATDBTool.insert(areaMapList)
+                ATDBTool.insert(areaMapCellList)
                 
                 ///执行回调
                 completionHandler(nil)

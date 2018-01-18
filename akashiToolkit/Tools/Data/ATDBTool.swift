@@ -23,6 +23,7 @@ final class ATDBTool {
     struct tableName {
         static let area = "area"
         static let areaMap = "areaMap"
+        static let areaMapCell = "areaMapCell"
     }
     
     // MARK: *** 初始化 ***
@@ -58,6 +59,12 @@ final class ATDBTool {
             print("larry sue : \(ATDatabaseError.createAreaMapTableFailed)")
         }
         ///创建海图点表
+        do {
+            try database.create(table: tableName.areaMapCell, of: ATAreaMapCellModel.self)
+        } catch {
+            print("larry sue : \(error)")
+            print("larry sue : \(ATDatabaseError.createAreaMapCellTableFailed)")
+        }
     }
     ///插入海域数据
     class func insert(_ areaList: [ATAreaModel]) {
@@ -77,6 +84,16 @@ final class ATDBTool {
         } catch {
             print("larry sue : \(error)")
             print("larry sue : \(ATDatabaseError.insertAreaMapListFailed)")
+        }
+    }
+    ///插入海图点数据
+    class func insert(_ areaMapCellList: [ATAreaMapCellModel]) {
+        if areaMapCellList.count == 0 { return }
+        do {
+            try database.insert(objects: areaMapCellList, intoTable: tableName.areaMapCell)
+        } catch {
+            print("larry sue : \(error)")
+            print("larry sue : \(ATDatabaseError.insertAreaMapCellListFailed)")
         }
     }
 }
@@ -99,6 +116,8 @@ private struct ATDatabaseError {
     fileprivate static let insertAreaListFailed = NSError(domain: Constant.error.domain.database, code: 37230, userInfo: [NSLocalizedDescriptionKey: "Insert Area List Failed"])
     ///插入海图数组错误
     fileprivate static let insertAreaMapListFailed = NSError(domain: Constant.error.domain.database, code: 37231, userInfo: [NSLocalizedDescriptionKey: "Insert Area Map List Failed"])
+    ///插入海图点数组错误
+    fileprivate static let insertAreaMapCellListFailed = NSError(domain: Constant.error.domain.database, code: 37232, userInfo: [NSLocalizedDescriptionKey: "Insert Area Map Cell List Failed"])
     
     // MARK: *** 其他操作 ***
     
