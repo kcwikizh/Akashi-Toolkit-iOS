@@ -30,7 +30,7 @@ enum ATAreaType: Int32, ColumnCodable {
     }
 }
 
-class ATAreaModel: TableCodable, ATDictCteateble {
+class ATAreaModel: TableCodable, ATDictCreatable {
     
     // MARK: *** 属性 ***
     
@@ -45,7 +45,7 @@ class ATAreaModel: TableCodable, ATDictCteateble {
     
     // MARK: *** 构造 ***
     
-    convenience required init?(dict: [String : AnyObject]) {
+    convenience required init?(dict: [AnyHashable : AnyObject]) {
         self.init()
         
         if let serverId = dict["id"] as? Int {

@@ -9,7 +9,7 @@
 import UIKit
 import WCDBSwift
 
-class ATAreaMapModel: TableCodable, ATDictCteateble {
+class ATAreaMapModel: TableCodable, ATDictCreatable {
     
     // MARK: *** 属性 ***
     
@@ -38,7 +38,7 @@ class ATAreaMapModel: TableCodable, ATDictCteateble {
     
     // MARK: *** 构造 ***
     
-    convenience required init?(dict: [String : AnyObject]) {
+    convenience required init?(dict: [AnyHashable : AnyObject]) {
         self.init()
         if let serverId = dict["id"] as? Int {
             self.serverId = serverId
