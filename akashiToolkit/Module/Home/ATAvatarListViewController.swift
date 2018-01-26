@@ -15,6 +15,12 @@ class ATAvatarListViewController: ATViewController {
     
     private var avatarURLList: [URL?] = []
     
+    private var is3DTouchEnabled: Bool {
+        get {
+            return self.traitCollection.forceTouchCapability == .available
+        }
+    }
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.width * 0.5 - 0.5, height: UIScreen.width * 0.5 - 0.5)
@@ -67,6 +73,9 @@ extension ATAvatarListViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ATAvatarListViewCellIdentifier, for: indexPath) as! ATAvatarListViewCell
         
         cell.imageURL = avatarURLList[indexPath.row]
+        if is3DTouchEnabled {
+            registerForPreviewing(with: self, sourceView: cell)
+        }
         
         return cell
     }
@@ -80,6 +89,25 @@ extension ATAvatarListViewController: UICollectionViewDelegate {
         vc.initialIndex = indexPath.row
         
         present(vc, animated: true)
+    }
+}
+
+extension ATAvatarListViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        if let cell = previewingContext.sourceView as? ATAvatarListViewCell {
+            if let indexPath = collectionView.indexPath(for: cell) {
+                let vc = ATImagePageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+                
+                vc.avatarURLList = avatarURLList
+                vc.initialIndex = indexPath.row
+                
+                return vc
+            }
+        }
+        return nil
+    }
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        present(viewControllerToCommit, animated: false)
     }
 }
 
