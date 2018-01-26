@@ -19,14 +19,14 @@ class ATAboutViewController: ATViewController {
             return .lightContent
         }
     }
-    private lazy var listView: ATTableView = {
-        let listView = ATTableView(frame: .zero, style: .grouped)
+    private lazy var tableView: ATTableView = {
+        let tableView = ATTableView(frame: .zero, style: .grouped)
         
-        listView.tableHeaderView = self.headerView
-        listView.dataSource = self
-        listView.delegate = self
+        tableView.tableHeaderView = self.headerView
+        tableView.dataSource = self
+        tableView.delegate = self
         
-        return listView
+        return tableView
     }()
     
     private lazy var headerView: UIView = {
@@ -112,9 +112,9 @@ class ATAboutViewController: ATViewController {
         let image = UIImage(named: "close")?.resizeImage(to: CGSize(width: 15.0, height: 15.0)).withRenderingMode(.alwaysTemplate)
         leftBtn.setImage(image, for: .normal)
         
-        view.addSubview(listView)
+        view.addSubview(tableView)
         
-        listView.snp.makeConstraints { (make) in
+        tableView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalTo(0)
             make.top.equalTo(navView.snp.bottom)
         }
@@ -213,8 +213,9 @@ extension ATAboutViewController: UITableViewDelegate {
                     let pas = UIPasteboard.general
                     pas.string = Constant.official.weixin
                     ATToastMessageTool.show("公众号已复制到剪贴板")
-                    if UIApplication.shared.canOpenURL(URL(string: "weixin://")!) {
-                        UIApplication.shared.openURL(URL(string: "weixin://")!)
+                    let wxURL = URL(string: "weixin://")!
+                    if UIApplication.shared.canOpenURL(wxURL) {
+                        UIApplication.shared.openURL(wxURL)
                     }
                 })
                 let done = UIAlertAction(title: "取消", style: .default)

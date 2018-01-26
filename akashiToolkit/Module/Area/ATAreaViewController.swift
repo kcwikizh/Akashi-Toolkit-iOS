@@ -16,7 +16,7 @@ class ATAreaViewController: ATViewController {
         let view = LSPageTabView(type: .stationary)
         
         view.tabBarColor = Constant.ui.color.theme
-        view.sliderColor = .white
+        view.sliderColor = Constant.ui.color.lightForeground
         view.dataSource = self
         view.delegate = self
         

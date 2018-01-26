@@ -17,9 +17,9 @@ class ATAvatarListViewController: ATViewController {
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.width * 0.5 - 1, height: UIScreen.width * 0.5 - 1)
-        layout.minimumLineSpacing = 2
-        layout.minimumInteritemSpacing = 2
+        layout.itemSize = CGSize(width: UIScreen.width * 0.5 - 0.5, height: UIScreen.width * 0.5 - 0.5)
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
         
         let collView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collView.backgroundColor = Constant.ui.color.lightBackground
@@ -34,8 +34,6 @@ class ATAvatarListViewController: ATViewController {
         super.viewDidLoad()
         
         title = "历史头像"
-        
-        view.backgroundColor = Constant.ui.color.lightBackground
         
         view.addSubview(collectionView)
         

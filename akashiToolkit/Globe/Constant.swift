@@ -73,7 +73,7 @@ struct Constant {
             ///导航栏主色
             static let theme = UIColor(233.0, 71.0, 123.0)
             ///浅背景色
-            static let lightBackground = UIColor(233.0, 233.0, 233.0)
+            static let lightBackground = UIColor(240.0, 240.0, 240.0)
             ///深背景色
             static let darkBackground = UIColor(120.0, 120.0, 120.0)
             ///深前景色

@@ -25,7 +25,7 @@ class ATViewController: UIViewController {
         let label = UILabel()
         
         label.font = .headline
-        label.textColor = .white
+        label.textColor = Constant.ui.color.lightForeground
         label.textAlignment = .center
         
         return label
@@ -39,7 +39,7 @@ class ATViewController: UIViewController {
         let image = UIImage(named: "back")?.resizeImage(to: CGSize(width: 20.0, height: 20.0)).withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.imageView?.contentMode = .center
-        button.tintColor = .white
+        button.tintColor = Constant.ui.color.lightForeground
         button.adjustsImageWhenHighlighted = false
         
         return button
@@ -49,7 +49,7 @@ class ATViewController: UIViewController {
         let button = UIButton(type: .custom)
         
         button.addTarget(self, action: #selector(rightBtnDidClick), for: .touchUpInside)
-        button.tintColor = .white
+        button.tintColor = Constant.ui.color.lightForeground
         button.adjustsImageWhenHighlighted = false
         
         return button

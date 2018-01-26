@@ -59,7 +59,7 @@ class ATHomeViewController: ATViewController {
         let view = LSPageTabView(type: .stationary)
         
         view.tabBarColor = Constant.ui.color.theme
-        view.sliderColor = .white
+        view.sliderColor = Constant.ui.color.lightForeground
         view.dataSource = self
         view.delegate = self
         
@@ -71,7 +71,7 @@ class ATHomeViewController: ATViewController {
         
         button.isHidden = true
         button.setTitle("历史头像", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(Constant.ui.color.lightForeground, for: .normal)
         button.titleLabel?.font = .subheadline
         button.addTarget(self, action: #selector(rightBtnDidClick), for: .touchUpInside)
         
@@ -107,8 +107,6 @@ class ATHomeViewController: ATViewController {
         
         let image = UIImage(named: "menu")?.resizeImage(to: CGSize(width: 20.0, height: 15.0)).withRenderingMode(.alwaysTemplate)
         leftBtn.setImage(image, for: .normal)
-        
-        view.backgroundColor = Constant.ui.color.lightBackground
         
         navView.addSubview(avatarListPageBtn)
         view.addSubview(pageTabView)
@@ -239,7 +237,7 @@ extension ATHomeViewController: LSPageTabViewDataSource {
         
         imv.image = itemList[index].icon?.scaleImage(to: 0.2).withRenderingMode(.alwaysTemplate)
         imv.contentMode = .center
-        imv.tintColor = .white
+        imv.tintColor = Constant.ui.color.lightForeground
         
         return imv
     }
@@ -248,7 +246,7 @@ extension ATHomeViewController: LSPageTabViewDataSource {
         
         imv.image = itemList[index].icon?.scaleImage(to: 0.2).withRenderingMode(.alwaysTemplate)
         imv.contentMode = .center
-        imv.tintColor = .white
+        imv.tintColor = Constant.ui.color.lightForeground
         imv.alpha = 0.7
         
         return imv
