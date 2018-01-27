@@ -90,16 +90,6 @@ class ATAboutViewController: ATViewController {
         
         return label
     }()
-    private lazy var mailVc: MFMailComposeViewController = {
-        let vc = MFMailComposeViewController()
-        vc.mailComposeDelegate = self
-        
-        vc.setSubject("明石工具箱 问题反馈")
-        vc.setToRecipients([Constant.official.developerEmail])
-        vc.setMessageBody(" 设备型号: \(UIDevice.model) \n 系统版本: \(UIDevice.current.systemName) \(UIDevice.current.systemVersion) \n APP版本: \(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)", isHTML: false)
-        
-        return vc
-    }()
     
     // MARK: *** 周期 ***
     
@@ -136,8 +126,15 @@ class ATAboutViewController: ATViewController {
     
     // MARK: *** 逻辑 ***
     
-    private func sendMail() {
+    private func presentMailController() {
         if MFMailComposeViewController.canSendMail() {
+            let mailVc = MFMailComposeViewController()
+            mailVc.mailComposeDelegate = self
+            
+            mailVc.setSubject("明石工具箱 问题反馈")
+            mailVc.setToRecipients([Constant.official.developerEmail])
+            mailVc.setMessageBody(" 设备型号: \(UIDevice.model) \n 系统版本: \(UIDevice.current.systemName) \(UIDevice.current.systemVersion) \n APP版本: \(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)", isHTML: false)
+            
             present(mailVc, animated: true)
         } else {
             let alert = UIAlertController(title: "错误", message: "无法自动生成邮件, 请手动发送邮件至邮箱: \(Constant.official.developerEmail), 或联系QQ: \(Constant.official.developerQQ)", preferredStyle: .alert)
@@ -233,7 +230,7 @@ extension ATAboutViewController: UITableViewDelegate {
                 }
             })
             let appQuestion = UIAlertAction(title: "软件问题: 联系开发者", style: .default, handler: { _ in
-                self.sendMail()
+                self.presentMailController()
             })
             let cancel = UIAlertAction(title: "取消", style: .default)
             
@@ -258,7 +255,7 @@ extension ATAboutViewController: MFMailComposeViewControllerDelegate {
         case .failed:
             ATToastMessageTool.show("发送失败")
         }
-        mailVc.dismiss(animated: true)
+        controller.dismiss(animated: true)
     }
 }
 

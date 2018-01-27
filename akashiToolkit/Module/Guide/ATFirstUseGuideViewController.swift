@@ -79,6 +79,7 @@ class ATFirstUseGuideViewController: ATViewController {
     private var loadProcess = 0 {
         didSet {
             if loadProcess == 7 {
+                ATUserSettingTool.setIsFirstTimeUseToFalse()
                 UIView.animate(withDuration: 0.4, delay: 0.8, animations: {
                     self.appLogoImv.alpha = 0.0
                     self.organizationLogoImv.alpha = 0.0

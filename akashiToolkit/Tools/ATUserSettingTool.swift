@@ -62,19 +62,16 @@ final class ATUserSettingTool {
     }
     
     ///获取用户是否首次进入APP
-    class func isFirstUse() -> Bool {
-        if let notFirstUse = AppDesc.bool(forKey: .notFirstUse) {
-            if notFirstUse {
-                return false
-            } else {
-                AppDesc.set(value: true, forKey: .notFirstUse)
-                return true
-            }
-        } else {
-            AppDesc.set(value: false, forKey: .notFirstUse)
-            return true
-        }
+    class func getIsFirstTimeUse() -> Bool {
+        let notFirstUse = AppDesc.bool(forKey: .notFirstUse)
+        
+        return !notFirstUse
     }
+    ///设置用户是否首次进入APP为false
+    class func setIsFirstTimeUseToFalse() {
+        AppDesc.set(true, forKey: .notFirstUse)
+    }
+    
     ///判断是否更新了版本
     class func isUpdated() -> Bool {
         let currentVersionString = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
@@ -82,56 +79,52 @@ final class ATUserSettingTool {
             if savedVersionString == currentVersionString {
                 return false
             } else {
-                AppDesc.set(value: currentVersionString, forKey: .versionString)
+                AppDesc.set(currentVersionString, forKey: .versionString)
                 return true
             }
         } else {
-            AppDesc.set(value: currentVersionString, forKey: .versionString)
+            AppDesc.set(currentVersionString, forKey: .versionString)
             return true
         }
     }
     ///获取推特语言设置
     class func getTwitterLanguage() -> ATUserSetting.twitter.language {
-        if let langValue = Base.integer(forKey: .twitterLanguage) {
-            if let lang = ATUserSetting.twitter.language(rawValue: langValue) {
-                return lang
-            } else {
-                return .zh
-            }
+        let langValue = Base.integer(forKey: .twitterLanguage)
+        if let lang = ATUserSetting.twitter.language(rawValue: langValue) {
+            return lang
         } else {
-            Base.set(value: ATUserSetting.twitter.language.zh.rawValue, forKey: .twitterLanguage)
             return .zh
         }
     }
     ///保存推特语言设置
     class func setTwitterLanguage(_ lang: ATUserSetting.twitter.language) {
-        Base.set(value: lang.rawValue, forKey: .twitterLanguage)
+        Base.set(lang.rawValue, forKey: .twitterLanguage)
     }
 }
 
 private extension UserDefaultsSettable where defaultKeys.RawValue == String {
-    static func set(value: Any?, forKey key: defaultKeys) {
+    static func set(_ value: Any?, forKey key: defaultKeys) {
         UserDefaults.standard.set(value, forKey: key.rawValue)
     }
-    static func set(value: Int?, forKey key: defaultKeys) {
+    static func set(_ value: Int, forKey key: defaultKeys) {
         UserDefaults.standard.set(value, forKey: key.rawValue)
     }
-    static func set(value: String?, forKey key: defaultKeys) {
+    static func set(_ value: String?, forKey key: defaultKeys) {
         UserDefaults.standard.set(value, forKey: key.rawValue)
     }
-    static func set(value: Bool?, forKey key: defaultKeys) {
+    static func set(_ value: Bool, forKey key: defaultKeys) {
         UserDefaults.standard.set(value, forKey: key.rawValue)
     }
     static func value(forKey key: defaultKeys) -> Any? {
         return UserDefaults.standard.value(forKey: key.rawValue)
     }
-    static func integer(forKey key: defaultKeys) -> Int? {
+    static func integer(forKey key: defaultKeys) -> Int {
         return UserDefaults.standard.integer(forKey: key.rawValue)
     }
     static func string(forKey key: defaultKeys) -> String? {
         return UserDefaults.standard.string(forKey: key.rawValue)
     }
-    static func bool(forKey key: defaultKeys) -> Bool? {
+    static func bool(forKey key: defaultKeys) -> Bool {
         return UserDefaults.standard.bool(forKey: key.rawValue)
     }
 }
