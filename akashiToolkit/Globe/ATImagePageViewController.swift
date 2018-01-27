@@ -156,40 +156,11 @@ class ATImagePageViewController: UIPageViewController {
     @objc private func downloadImageBtnDidClick(_ sender: UIButton) {
         isDownloading = true
         
-        ATPermissionsTool.getPhotoPermissions { (status) in
-            if status == .authorized || status == .notDetermined {
-                let url = self.avatarURLList[self.currentIndex]
-                SDWebImageManager.shared().imageDownloader?.downloadImage(with: url, options: [.continueInBackground, .progressiveDownload], progress: nil, completed: { (image, data, error, finished) in
-                    if finished {
-                        if let image = image {
-                            PHPhotoLibrary.shared().performChanges({
-                                PHAssetChangeRequest.creationRequestForAsset(from: image)
-                            }, completionHandler: { (success, saveError) in
-                                if success {
-                                    runInMain {
-                                        ATToastMessageTool.show("保存成功")
-                                        self.isDownloading = false
-                                    }
-                                } else {
-                                    runInMain {
-                                        ATToastMessageTool.show("保存失败")
-                                        self.isDownloading = false
-                                    }
-                                }
-                            })
-                        } else {
-                            runInMain {
-                                ATToastMessageTool.show("图片下载错误")
-                                self.isDownloading = false
-                            }
-                        }
-                    }
-                })
-            } else {
-                runInMain {
-                    ATToastMessageTool.show("保存失败")
-                    self.isDownloading = false
-                }
+        let url = self.avatarURLList[self.currentIndex]
+        ATPermissionsTool.saveImage(with: url) { (resultDescription) in
+            runInMain {
+                ATToastMessageTool.show(resultDescription)
+                self.isDownloading = false
             }
         }
     }

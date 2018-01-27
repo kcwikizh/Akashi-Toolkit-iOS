@@ -13,8 +13,6 @@ final class ATNetworkTool {
     
     private typealias ATAPIClientCompletionHandler = (_ items: AnyObject?, _ error: Error?) -> Void
     
-    /// MARK: *** 请求 ***
-    
     ///GET
     private class func getItems(for API: String, with parameter: [String : AnyObject]? = nil, _ handler: @escaping ATAPIClientCompletionHandler) {
         
@@ -32,10 +30,10 @@ final class ATNetworkTool {
         request(url, method: .get, parameters: parameter).responseJSON { (response) in
             
             defer {
-                DispatchQueue.main.async(execute: {
+                runInMain {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                    handler(outputItem, outputError)
-                })
+                }
+                handler(outputItem, outputError)
             }
             
             outputError = response.error
@@ -54,8 +52,11 @@ final class ATNetworkTool {
             }
         }
     }
-    
-    /// MARK: *** 首页 ***
+}
+
+// MARK: *** 首页 ***
+
+extension ATNetworkTool {
     
     ///获取官推
     class func fetchTwitterList(count: Int, completionHandler: @escaping (_ items: AnyObject?, _ error: Error?) -> Void) {
@@ -85,8 +86,11 @@ final class ATNetworkTool {
             }
         }
     }
-    
-    // MARK: *** 初始化 ***
+}
+
+// MARK: *** 初始化 ***
+
+extension ATNetworkTool {
     
     ///获取海域全列表
     class func fetchAllAreaList(_ completionHandler: @escaping ([[String : AnyObject]]?, Error?) -> Void) {
@@ -100,12 +104,18 @@ final class ATNetworkTool {
     }
 }
 
+// MARK: -
+
 private struct ATAPI {
     
     private init() {}
+}
+
+// MARK: *** 首页 ***
+
+extension ATAPI {
     
-    /// MARK: *** 主页 ***
-    
+    ///首页 包含官推等
     fileprivate struct home {
         ///官推
         static let twitter = "https://t.kcwiki.moe/api/flow/get"
@@ -114,8 +124,11 @@ private struct ATAPI {
         ///官推头像列表
         static let twitterAvatarList = "https://api.kcwiki.moe/avatars"
     }
-    
-    // MARK: *** 初始化 ***
+}
+
+// MARK: *** 初始化 ***
+
+extension ATAPI {
     
     private static let allBase = "http://api.kcwiki.moe"
     
@@ -134,11 +147,11 @@ private struct ATAPI {
     }
 }
 
+// MARK: -
+
 private struct ATNetworkError {
     
     private init() {}
-    
-    /// MARK: *** 网络请求错误 ***
     
     fileprivate static let invalidURL = NSError(domain: Constant.error.domain.network, code: 39011, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])
     fileprivate static let invalidResponse = NSError(domain: Constant.error.domain.network, code: 39012, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])

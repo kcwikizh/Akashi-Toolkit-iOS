@@ -25,12 +25,15 @@ final class ATDBTool {
         static let areaMap = "areaMap"
         static let areaMapCell = "areaMapCell"
     }
-    
-    // MARK: *** 初始化 ***
+}
+
+// MARK: *** 初始化 ***
+
+extension ATDBTool {
     
     ///初始化数据库并建表
     class func initDatabase() {
-        ///针对初始化数据失败过的情况 清空目录
+        ///针对初始化数据失败过的情况 清空数据库目录
         let fm = FileManager.default
         
         if fm.fileExists(atPath: databaseDictPath) {
@@ -98,12 +101,16 @@ final class ATDBTool {
     }
 }
 
-///数据库操作错误
+// MARK: -
+
 private struct ATDatabaseError {
     
     private init() {}
-    
-    // MARK: *** 初始化 ***
+}
+
+// MARK: *** 初始化 ***
+
+extension ATDatabaseError {
     
     ///创建海域表错误
     fileprivate static let createAreaTableFailed = NSError(domain: Constant.error.domain.database, code: 37130, userInfo: [NSLocalizedDescriptionKey: "Create Area Table Failed"])
@@ -118,8 +125,11 @@ private struct ATDatabaseError {
     fileprivate static let insertAreaMapListFailed = NSError(domain: Constant.error.domain.database, code: 37231, userInfo: [NSLocalizedDescriptionKey: "Insert Area Map List Failed"])
     ///插入海图点数组错误
     fileprivate static let insertAreaMapCellListFailed = NSError(domain: Constant.error.domain.database, code: 37232, userInfo: [NSLocalizedDescriptionKey: "Insert Area Map Cell List Failed"])
-    
-    // MARK: *** 其他操作 ***
+}
+
+// MARK: *** 其他操作 ***
+
+extension ATDatabaseError {
     
     ///清理未初始化完成的数据库目录失败
     fileprivate static let deleteDatabaseDictFailed = NSError(domain: Constant.error.domain.database, code: 37801, userInfo: [NSLocalizedDescriptionKey: "Delete Database Dictionary Failed"])

@@ -23,7 +23,9 @@ public func random(from lowerBound: CGFloat, to upperBound: CGFloat, decimal pre
     return random(from: Double(lowerBound), to: Double(upperBound), decimal: precision)
 }
 
-///在主线程执行 (主要用于刷新UI相关内容
-public func runInMain(_ closure: () -> ()) {
-    return DispatchQueue.main.sync(execute: closure)
+///在主线程执行 (主要用于刷新UI
+public func runInMain(_ closure: @escaping () -> Void) {
+    DispatchQueue.global().async {
+        DispatchQueue.main.sync(execute: closure)
+    }
 }

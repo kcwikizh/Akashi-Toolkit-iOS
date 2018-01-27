@@ -10,14 +10,11 @@ import Foundation
 
 final class ATDataTool {
     
-    // MARK: *** 官推 ***
-    
-    ///获取官推历史头像列表
-    class func getAvatarList(_ completionHandler: @escaping ([URL?]?, Error?) -> Void) {
-        ATNetworkTool.fetchAvatarList(completionHandler)
-    }
-    
-    // MARK: *** 初始化 ***
+}
+
+// MARK: *** 初始化 ***
+
+extension ATDataTool {
     
     ///数据初始化回调
     typealias ATDataInitCompletionHandler = (_ error: Error?) -> Void
@@ -69,5 +66,15 @@ final class ATDataTool {
                 completionHandler(error)
             }
         }
+    }
+}
+
+// MARK: *** 官推 ***
+
+extension ATDataTool {
+    
+    ///获取官推历史头像列表
+    class func getAvatarList(_ completionHandler: @escaping ([URL?]?, Error?) -> Void) {
+        ATNetworkTool.fetchAvatarList(completionHandler)
     }
 }

@@ -48,6 +48,8 @@ enum ATAreaMapCellType: Int32, ColumnCodable {
     }
 }
 
+// MARK: -
+
 class ATAreaMapCellModel: TableCodable, ATDictCreatable {
     
     // MARK: *** 属性 ***

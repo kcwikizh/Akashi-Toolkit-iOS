@@ -30,6 +30,8 @@ enum ATAreaType: Int32, ColumnCodable {
     }
 }
 
+// MARK: -
+
 class ATAreaModel: TableCodable, ATDictCreatable {
     
     // MARK: *** 属性 ***

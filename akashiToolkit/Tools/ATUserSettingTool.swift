@@ -12,6 +12,35 @@ private protocol UserDefaultsSettable {
     associatedtype defaultKeys: RawRepresentable
 }
 
+extension UserDefaultsSettable where defaultKeys.RawValue == String {
+    static func set(_ value: Any?, forKey key: defaultKeys) {
+        UserDefaults.standard.set(value, forKey: key.rawValue)
+    }
+    static func set(_ value: Int, forKey key: defaultKeys) {
+        UserDefaults.standard.set(value, forKey: key.rawValue)
+    }
+    static func set(_ value: String?, forKey key: defaultKeys) {
+        UserDefaults.standard.set(value, forKey: key.rawValue)
+    }
+    static func set(_ value: Bool, forKey key: defaultKeys) {
+        UserDefaults.standard.set(value, forKey: key.rawValue)
+    }
+    static func value(forKey key: defaultKeys) -> Any? {
+        return UserDefaults.standard.value(forKey: key.rawValue)
+    }
+    static func integer(forKey key: defaultKeys) -> Int {
+        return UserDefaults.standard.integer(forKey: key.rawValue)
+    }
+    static func string(forKey key: defaultKeys) -> String? {
+        return UserDefaults.standard.string(forKey: key.rawValue)
+    }
+    static func bool(forKey key: defaultKeys) -> Bool {
+        return UserDefaults.standard.bool(forKey: key.rawValue)
+    }
+}
+
+// MARK: -
+
 struct ATUserSetting {
     struct twitter {
         enum language: Int {
@@ -36,16 +65,41 @@ struct ATUserSetting {
     }
 }
 
+// MARK: -
+
 final class ATUserSettingTool {
-    ///APP描述
-    private struct AppDesc: UserDefaultsSettable {
+    
+}
+
+// MARK: *** 用户基础设置 ***
+
+extension ATUserSettingTool {
+    ///用户基础设置
+    private struct Base: UserDefaultsSettable {
         enum defaultKeys: String {
-            ///是否首次进入APP Bool
-            case notFirstUse
-            ///版本号 String
-            case versionString
+            ///推特语言 枚举 ATUserSetting.twitter.language
+            case twitterLanguage
         }
     }
+    
+    ///获取推特语言设置
+    class func getTwitterLanguage() -> ATUserSetting.twitter.language {
+        let langValue = Base.integer(forKey: .twitterLanguage)
+        if let lang = ATUserSetting.twitter.language(rawValue: langValue) {
+            return lang
+        } else {
+            return .zh
+        }
+    }
+    ///保存推特语言设置
+    class func setTwitterLanguage(_ lang: ATUserSetting.twitter.language) {
+        Base.set(lang.rawValue, forKey: .twitterLanguage)
+    }
+}
+
+// MARK: *** 数据版本管理 ***
+
+extension ATUserSettingTool {
     ///数据版本管理
     private struct DataVersion: UserDefaultsSettable {
         enum defaultKeys: String {
@@ -53,11 +107,18 @@ final class ATUserSettingTool {
             case area
         }
     }
-    ///用户基础设置
-    private struct Base: UserDefaultsSettable {
+}
+
+// MARK: *** APP描述 ***
+
+extension ATUserSettingTool {
+    ///APP描述
+    private struct AppDesc: UserDefaultsSettable {
         enum defaultKeys: String {
-            ///推特语言 枚举 ATUserSetting.twitter.language
-            case twitterLanguage
+            ///是否首次进入APP Bool
+            case notFirstUse
+            ///版本号 String
+            case versionString
         }
     }
     
@@ -86,45 +147,5 @@ final class ATUserSettingTool {
             AppDesc.set(currentVersionString, forKey: .versionString)
             return true
         }
-    }
-    ///获取推特语言设置
-    class func getTwitterLanguage() -> ATUserSetting.twitter.language {
-        let langValue = Base.integer(forKey: .twitterLanguage)
-        if let lang = ATUserSetting.twitter.language(rawValue: langValue) {
-            return lang
-        } else {
-            return .zh
-        }
-    }
-    ///保存推特语言设置
-    class func setTwitterLanguage(_ lang: ATUserSetting.twitter.language) {
-        Base.set(lang.rawValue, forKey: .twitterLanguage)
-    }
-}
-
-private extension UserDefaultsSettable where defaultKeys.RawValue == String {
-    static func set(_ value: Any?, forKey key: defaultKeys) {
-        UserDefaults.standard.set(value, forKey: key.rawValue)
-    }
-    static func set(_ value: Int, forKey key: defaultKeys) {
-        UserDefaults.standard.set(value, forKey: key.rawValue)
-    }
-    static func set(_ value: String?, forKey key: defaultKeys) {
-        UserDefaults.standard.set(value, forKey: key.rawValue)
-    }
-    static func set(_ value: Bool, forKey key: defaultKeys) {
-        UserDefaults.standard.set(value, forKey: key.rawValue)
-    }
-    static func value(forKey key: defaultKeys) -> Any? {
-        return UserDefaults.standard.value(forKey: key.rawValue)
-    }
-    static func integer(forKey key: defaultKeys) -> Int {
-        return UserDefaults.standard.integer(forKey: key.rawValue)
-    }
-    static func string(forKey key: defaultKeys) -> String? {
-        return UserDefaults.standard.string(forKey: key.rawValue)
-    }
-    static func bool(forKey key: defaultKeys) -> Bool {
-        return UserDefaults.standard.bool(forKey: key.rawValue)
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 import Photos
 
 enum ATPermissionsStatus {
@@ -36,8 +37,14 @@ enum ATPermissionsStatus {
 final class ATPermissionsTool {
     
     typealias ATPermissionsCompletionHandler = (_ status: ATPermissionsStatus) -> Void
+}
+
+// MARK: *** Photo ***
+
+extension ATPermissionsTool {
     
-    class func getPhotoPermissions(_ handler: @escaping ATPermissionsCompletionHandler) {
+    ///获取相册权限
+    private class func getPhotoPermissions(_ handler: @escaping ATPermissionsCompletionHandler) {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
         case .denied:
@@ -68,6 +75,33 @@ final class ATPermissionsTool {
             PHPhotoLibrary.requestAuthorization({ (status) in
                 handler(ATPermissionsStatus(status))
             })
+        }
+    }
+    
+    ///根据URL保存图片到本地相册
+    class func saveImage(with url: URL?, completed: @escaping (_ resultDescription: String) -> Void) {
+        getPhotoPermissions { (status) in
+            if status == .authorized || status == .notDetermined {
+                SDWebImageManager.shared().imageDownloader?.downloadImage(with: url, options: [.continueInBackground, .progressiveDownload], progress: nil, completed: { (image, data, error, finished) in
+                    if finished {
+                        if let image = image {
+                            PHPhotoLibrary.shared().performChanges({
+                                PHAssetChangeRequest.creationRequestForAsset(from: image)
+                            }, completionHandler: { (success, saveError) in
+                                if success {
+                                    completed("保存成功")
+                                } else {
+                                    completed("保存失败")
+                                }
+                            })
+                        } else {
+                            completed("图片下载错误")
+                        }
+                    }
+                })
+            } else {
+                completed("获取相册权限失败")
+            }
         }
     }
 }
