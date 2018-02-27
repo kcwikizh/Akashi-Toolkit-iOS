@@ -96,10 +96,11 @@ extension ATAvatarListViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         if let cell = previewingContext.sourceView as? ATAvatarListViewCell {
             if let indexPath = collectionView.indexPath(for: cell) {
-                let vc = ATImagePageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-                
-                vc.avatarURLList = avatarURLList
-                vc.initialIndex = indexPath.row
+                let vc = UIViewController()
+                vc.preferredContentSize = CGSize(width: UIScreen.width, height: UIScreen.width)
+                let imv = UIImageView()
+                imv.sd_setImage(with: avatarURLList[indexPath.row])
+                vc.view = imv
                 
                 return vc
             }
@@ -107,7 +108,15 @@ extension ATAvatarListViewController: UIViewControllerPreviewingDelegate {
         return nil
     }
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        present(viewControllerToCommit, animated: false)
+        if let cell = previewingContext.sourceView as? ATAvatarListViewCell {
+            if let indexPath = collectionView.indexPath(for: cell) {
+                let vc = ATImagePageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+
+                vc.avatarURLList = avatarURLList
+                vc.initialIndex = indexPath.row
+                present(vc, animated: false)
+            }
+        }
     }
 }
 
