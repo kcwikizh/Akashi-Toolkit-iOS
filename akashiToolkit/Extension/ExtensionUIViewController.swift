@@ -14,10 +14,10 @@ extension UIViewController {
         get {
             var window = UIApplication.shared.keyWindow
             
-            if window?.windowLevel != UIWindowLevelNormal {
+            if window?.windowLevel != .normal {
                 let windows = UIApplication.shared.windows
                 for tmpWin in windows {
-                    if tmpWin.windowLevel == UIWindowLevelNormal {
+                    if tmpWin.windowLevel == .normal {
                         window = tmpWin
                         break
                     }

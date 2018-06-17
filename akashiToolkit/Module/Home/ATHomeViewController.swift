@@ -70,10 +70,10 @@ class ATHomeViewController: ATViewController {
         let button = UIButton(type: .custom)
         
         button.isHidden = true
-        button.setTitle("历史头像", for: .normal)
-        button.setTitleColor(Constant.ui.color.lightForeground, for: .normal)
+        button.setTitle("历史头像", for: UIControl.State.normal)
+        button.setTitleColor(Constant.ui.color.lightForeground, for: UIControl.State.normal)
         button.titleLabel?.font = .subheadline
-        button.addTarget(self, action: #selector(rightBtnDidClick), for: .touchUpInside)
+        button.addTarget(self, action: #selector(rightBtnDidClick), for: UIControl.Event.touchUpInside)
         
         return button
     }()
@@ -106,7 +106,7 @@ class ATHomeViewController: ATViewController {
         rightBtn.isHidden = true
         
         let image = UIImage(named: "menu")?.resizeImage(to: CGSize(width: 20.0, height: 15.0)).withRenderingMode(.alwaysTemplate)
-        leftBtn.setImage(image, for: .normal)
+        leftBtn.setImage(image, for: UIControl.State.normal)
         
         navView.addSubview(avatarListPageBtn)
         view.addSubview(pageTabView)

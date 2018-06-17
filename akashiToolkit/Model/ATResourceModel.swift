@@ -31,10 +31,14 @@ class ATResourceModel: ColumnCodable {
     
     // MARK: *** WCDB.ColumnCodable ***
     
-    typealias FundamentalType = String
+    static var columnType: ColumnType {
+        get {
+            return .text
+        }
+    }
     
-    convenience required init?(with jsonStr: FundamentalType) {
-        if let data = jsonStr.data(using: .utf8) {
+    required convenience init?(with value: FundamentalValue) {
+        if let data = value.stringValue.data(using: .utf8) {
             do {
                 if let arr = try JSONSerialization.jsonObject(with: data) as? [Int], arr.count == 4 {
                     self.init(oil: arr[0], ammunition: arr[1], steel: arr[2], aluminium: arr[3])
@@ -49,12 +53,17 @@ class ATResourceModel: ColumnCodable {
         }
     }
     
-    func archivedValue() -> FundamentalType? {
+    func archivedValue() -> FundamentalValue {
         let arr = [oil, ammunition, steel, aluminium]
+        
         do {
-            return try String(data: JSONSerialization.data(withJSONObject: arr), encoding: .utf8)
+            if let str = try String(data: JSONSerialization.data(withJSONObject: arr), encoding: .utf8) {
+                return FundamentalValue(str)
+            } else {
+                return FundamentalValue()
+            }
         } catch {
-            return nil
+            return FundamentalValue()
         }
     }
 }

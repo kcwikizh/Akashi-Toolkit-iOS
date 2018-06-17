@@ -43,14 +43,14 @@ class ATImagePageViewController: UIPageViewController {
             let attStr = NSMutableAttributedString(string: frontPart + latterPart)
             
             ///设置字体
-            attStr.addAttribute(NSAttributedStringKey.font, value: UIFont.boldSystemFont(ofSize: 35.0), range: NSRange(location: 0, length: frontPart.count))
-            attStr.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 25.0), range: NSRange(location: frontPart.count, length: latterPart.count))
+            attStr.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 35.0), range: NSRange(location: 0, length: frontPart.count))
+            attStr.addAttribute(.font, value: UIFont.systemFont(ofSize: 25.0), range: NSRange(location: frontPart.count, length: latterPart.count))
             ///设置阴影
             let shadow = NSShadow()
             shadow.shadowColor = UIColor(white: 0, alpha: 0.5)
             shadow.shadowOffset = CGSize(width: 2.0, height: 2.0)
             shadow.shadowBlurRadius = 2.0
-            attStr.addAttribute(NSAttributedStringKey.shadow, value: shadow, range: NSRange(location: 0, length: attStr.string.count))
+            attStr.addAttribute(.shadow, value: shadow, range: NSRange(location: 0, length: attStr.string.count))
             
             indexLbl.attributedText = attStr
         }

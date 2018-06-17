@@ -43,8 +43,8 @@ class ATHomeMenuView: UIView {
         let button = UIButton(type: .custom)
         let icon = UIImage(named: "appLogo")?.resizeImage(to: CGSize(width: 75.0, height: 75.0))
         button.adjustsImageWhenHighlighted = false
-        button.setImage(icon, for: .normal)
-        button.addTarget(self, action: #selector(didClickIcon), for: .touchUpInside)
+        button.setImage(icon, for: UIControl.State.normal)
+        button.addTarget(self, action: #selector(didClickIcon), for: UIControl.Event.touchUpInside)
         return button
     }()
 
@@ -100,28 +100,28 @@ class ATHomeMenuView: UIView {
         
         scaleAnimation.values = [1.0, 2.0]
         scaleAnimation.keyTimes = [0, 1]
-        scaleAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)]
-        scaleAnimation.calculationMode = kCAAnimationLinear
+        scaleAnimation.timingFunctions = [CAMediaTimingFunction(name: convertToCAMediaTimingFunctionName(convertFromCAMediaTimingFunctionName(CAMediaTimingFunctionName.easeOut)))]
+        scaleAnimation.calculationMode = convertToCAAnimationCalculationMode(convertFromCAAnimationCalculationMode(CAAnimationCalculationMode.linear))
         
         ///logo移动
         let xAnimation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         
         xAnimation.values = [0, UIScreen.width * 0.5 - logoBtn.center.x]
         xAnimation.keyTimes = [0, 1]
-        xAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)]
-        xAnimation.calculationMode = kCAAnimationLinear
+        xAnimation.timingFunctions = [CAMediaTimingFunction(name: convertToCAMediaTimingFunctionName(convertFromCAMediaTimingFunctionName(CAMediaTimingFunctionName.easeOut)))]
+        xAnimation.calculationMode = convertToCAAnimationCalculationMode(convertFromCAAnimationCalculationMode(CAAnimationCalculationMode.linear))
         
         let yAnimation = CAKeyframeAnimation(keyPath: "transform.translation.y")
         
         yAnimation.values = [0, Constant.ui.size.topHeight + 40.0 + 150.0 * 0.5 - logoBtn.center.y]
         yAnimation.keyTimes = [0, 1]
-        yAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)]
-        yAnimation.calculationMode = kCAAnimationLinear
+        yAnimation.timingFunctions = [CAMediaTimingFunction(name: convertToCAMediaTimingFunctionName(convertFromCAMediaTimingFunctionName(CAMediaTimingFunctionName.easeOut)))]
+        yAnimation.calculationMode = convertToCAAnimationCalculationMode(convertFromCAAnimationCalculationMode(CAAnimationCalculationMode.linear))
         
         let animationGroup = CAAnimationGroup()
         animationGroup.animations = [scaleAnimation, xAnimation, yAnimation]
         animationGroup.duration = 0.3
-        animationGroup.fillMode = kCAFillModeForwards
+        animationGroup.fillMode = convertToCAMediaTimingFillMode(convertFromCAMediaTimingFillMode(CAMediaTimingFillMode.forwards))
         animationGroup.isRemovedOnCompletion = false
         
         logoBtn.layer.add(animationGroup, forKey: "anima.logo.group")
@@ -196,7 +196,7 @@ private class ATHomeMenuViewCell: UITableViewCell {
         return label
     }()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
@@ -224,3 +224,33 @@ private class ATHomeMenuViewCell: UITableViewCell {
 
 
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToCAMediaTimingFunctionName(_ input: String) -> CAMediaTimingFunctionName {
+	return CAMediaTimingFunctionName(rawValue: input)
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromCAMediaTimingFunctionName(_ input: CAMediaTimingFunctionName) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToCAAnimationCalculationMode(_ input: String) -> CAAnimationCalculationMode {
+	return CAAnimationCalculationMode(rawValue: input)
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromCAAnimationCalculationMode(_ input: CAAnimationCalculationMode) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToCAMediaTimingFillMode(_ input: String) -> CAMediaTimingFillMode {
+	return CAMediaTimingFillMode(rawValue: input)
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromCAMediaTimingFillMode(_ input: CAMediaTimingFillMode) -> String {
+	return input.rawValue
+}

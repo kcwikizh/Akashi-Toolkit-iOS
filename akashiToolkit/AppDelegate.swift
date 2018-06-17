@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ///新版本引导页
     var newVersionGuideVc: ATNewVersionGuideViewController?
     
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         ///检查用户是否是首次进入APP
         if ATUserSettingTool.getIsFirstTimeUse() {
             firstUseGuideVc = ATFirstUseGuideViewController()
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         if firstUseGuideVc != nil {
             window.rootViewController = firstUseGuideVc!

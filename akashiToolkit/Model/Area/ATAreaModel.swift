@@ -19,14 +19,18 @@ enum ATAreaType: Int32, ColumnCodable {
     
     // MARK: *** WCDB.ColumnCodable ***
     
-    typealias FundamentalType = Int32
-    
-    init?(with value: FundamentalType) {
-        self.init(rawValue: value)
+    static var columnType: ColumnType {
+        get {
+            return .integer32
+        }
     }
     
-    func archivedValue() -> FundamentalType? {
-        return self.rawValue
+    init?(with value: FundamentalValue) {
+        self.init(rawValue: value.int32Value)
+    }
+    
+    func archivedValue() -> FundamentalValue {
+        return FundamentalValue(self.rawValue)
     }
 }
 

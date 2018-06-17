@@ -16,7 +16,7 @@ private let ATTableViewDisclosureIndicatorWithLabelCellIdentifier = "ATTableView
 private let ATTableViewCheckmarkCellIdentifier = "ATTableViewCheckmarkCellIdentifier"
 
 class ATTableView: UITableView {
-    override init(frame: CGRect, style: UITableViewStyle) {
+    override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         
         backgroundColor = Constant.ui.color.lightBackground

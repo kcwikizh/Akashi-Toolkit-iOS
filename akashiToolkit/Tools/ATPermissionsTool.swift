@@ -50,8 +50,8 @@ extension ATPermissionsTool {
         case .denied:
             ///已拒绝
             let alert = UIAlertController(title: "无相册权限", message: "请在iPhone的\"设置-隐私-照片\"中允许访问照片。", preferredStyle: .alert)
-            let done = UIAlertAction(title: "确定", style: .default) { (action) in
-                UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+            let done = UIAlertAction(title: "确定", style: .default) { _ in
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
             }
             let cancle = UIAlertAction(title: "取消", style: .default)
             alert.addAction(done)

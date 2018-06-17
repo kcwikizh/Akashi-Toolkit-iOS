@@ -11,6 +11,6 @@ import UIKit
 extension String {
     func renderSize(font: UIFont) -> CGSize {
         let string = self as NSString
-        return string.size(withAttributes: [NSAttributedStringKey.font: font])
+        return string.size(withAttributes: [.font: font])
     }
 }

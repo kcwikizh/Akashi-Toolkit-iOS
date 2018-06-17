@@ -51,9 +51,9 @@ class ATFirstUseGuideViewController: ATViewController {
         button.backgroundColor = Constant.ui.color.theme
         button.layer.cornerRadius = 3.0
         button.layer.masksToBounds = true
-        button.setTitle("开始", for: .normal)
-        button.setTitleColor(Constant.ui.color.lightForeground, for: .normal)
-        button.addTarget(self, action: #selector(startDownloadBtnDidClick), for: .touchUpInside)
+        button.setTitle("开始", for: UIControl.State.normal)
+        button.setTitleColor(Constant.ui.color.lightForeground, for: UIControl.State.normal)
+        button.addTarget(self, action: #selector(startDownloadBtnDidClick), for: UIControl.Event.touchUpInside)
         
         return button
     }()
@@ -221,7 +221,7 @@ class ATFirstUseGuideViewController: ATViewController {
         enemyLoadView.transform = transform
         improveLoadView.transform = transform
         
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.shipLoadView.transform = .identity
             self.shipLoadView.titleLbl.alpha = 1.0
             self.shipLoadView.loadDaisy.alpha = 1.0
@@ -231,7 +231,7 @@ class ATFirstUseGuideViewController: ATViewController {
                 self.shipLoadView.dataInitCompleted = true
             })
         })
-        UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0.2, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.equipmentLoadView.transform = .identity
             self.equipmentLoadView.titleLbl.alpha = 1.0
             self.equipmentLoadView.loadDaisy.alpha = 1.0
@@ -241,7 +241,7 @@ class ATFirstUseGuideViewController: ATViewController {
                 self.equipmentLoadView.dataInitCompleted = true
             })
         })
-        UIView.animate(withDuration: 0.3, delay: 0.4, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0.4, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.areaLoadView.transform = .identity
             self.areaLoadView.titleLbl.alpha = 1.0
             self.areaLoadView.loadDaisy.alpha = 1.0
@@ -255,7 +255,7 @@ class ATFirstUseGuideViewController: ATViewController {
                 }
             })
         })
-        UIView.animate(withDuration: 0.3, delay: 0.6, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0.6, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.missionLoadView.transform = .identity
             self.missionLoadView.titleLbl.alpha = 1.0
             self.missionLoadView.loadDaisy.alpha = 1.0
@@ -265,7 +265,7 @@ class ATFirstUseGuideViewController: ATViewController {
                 self.missionLoadView.dataInitCompleted = true
             })
         })
-        UIView.animate(withDuration: 0.3, delay: 0.8, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0.8, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.expeditionLoadView.transform = .identity
             self.expeditionLoadView.titleLbl.alpha = 1.0
             self.expeditionLoadView.loadDaisy.alpha = 1.0
@@ -275,7 +275,7 @@ class ATFirstUseGuideViewController: ATViewController {
                 self.expeditionLoadView.dataInitCompleted = true
             })
         })
-        UIView.animate(withDuration: 0.3, delay: 1.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 1.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.enemyLoadView.transform = .identity
             self.enemyLoadView.titleLbl.alpha = 1.0
             self.enemyLoadView.loadDaisy.alpha = 1.0
@@ -285,7 +285,7 @@ class ATFirstUseGuideViewController: ATViewController {
                 self.enemyLoadView.dataInitCompleted = true
             })
         })
-        UIView.animate(withDuration: 0.3, delay: 1.2, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 1.2, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.improveLoadView.transform = .identity
             self.improveLoadView.titleLbl.alpha = 1.0
             self.improveLoadView.loadDaisy.alpha = 1.0

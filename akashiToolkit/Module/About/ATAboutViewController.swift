@@ -120,7 +120,7 @@ class ATAboutViewController: ATViewController {
     }
     @objc private func tapOnCopyrightTipsLbl() {
         if UIApplication.shared.canOpenURL(Constant.official.website) {
-            UIApplication.shared.openURL(Constant.official.website)
+            UIApplication.shared.open(Constant.official.website)
         }
     }
     
@@ -202,7 +202,7 @@ extension ATAboutViewController: UITableViewDelegate {
         if section == 0 {
             if row == 0 {
                 if UIApplication.shared.canOpenURL(Constant.official.weibo) {
-                    UIApplication.shared.openURL(Constant.official.weibo)
+                    UIApplication.shared.open(Constant.official.weibo)
                 }
             } else {
                 let alert = UIAlertController(title: "", message: "kcwiki舰娘百科公众号: \(Constant.official.weixin)", preferredStyle: .alert)
@@ -212,7 +212,7 @@ extension ATAboutViewController: UITableViewDelegate {
                     ATToastMessageTool.show("公众号已复制到剪贴板")
                     let wxURL = URL(string: "weixin://")!
                     if UIApplication.shared.canOpenURL(wxURL) {
-                        UIApplication.shared.openURL(wxURL)
+                        UIApplication.shared.open(wxURL)
                     }
                 })
                 let done = UIAlertAction(title: "取消", style: .default)
@@ -226,7 +226,7 @@ extension ATAboutViewController: UITableViewDelegate {
             
             let dataQuestion = UIAlertAction(title: "数据问题: 联系编辑组", style: .default, handler: { (action) in
                 if UIApplication.shared.canOpenURL(Constant.official.dataFeedback) {
-                    UIApplication.shared.openURL(Constant.official.dataFeedback)
+                    UIApplication.shared.open(Constant.official.dataFeedback)
                 }
             })
             let appQuestion = UIAlertAction(title: "软件问题: 联系开发者", style: .default, handler: { _ in
@@ -290,7 +290,7 @@ extension ATAboutViewControllerPresent: UIViewControllerAnimatedTransitioning {
         maskLayerAnimation.fromValue = startCycle.cgPath
         maskLayerAnimation.toValue = endCycle.cgPath
         maskLayerAnimation.duration = self.transitionDuration(using: transitionContext)
-        maskLayerAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        maskLayerAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         
         maskLayerAnimation.setValue(transitionContext, forKey: "transitionContext")
         maskLayer.add(maskLayerAnimation, forKey: "path")

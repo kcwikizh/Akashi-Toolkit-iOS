@@ -12,6 +12,7 @@ import WCDBSwift
 ///海域类型
 enum ATAreaMapCellType: Int32, ColumnCodable {
     
+    
     ///出发点 初期位置
     case start = 0
     ///空气点 蓝点 存在せず
@@ -37,14 +38,18 @@ enum ATAreaMapCellType: Int32, ColumnCodable {
     
     // MARK: *** WCDB.ColumnCodable ***
     
-    typealias FundamentalType = Int32
-    
-    init?(with value: FundamentalType) {
-        self.init(rawValue: value)
+    static var columnType: ColumnType {
+        get {
+            return .integer32
+        }
     }
     
-    func archivedValue() -> FundamentalType? {
-        return self.rawValue
+    init?(with value: FundamentalValue) {
+        self.init(rawValue: value.int32Value)
+    }
+    
+    func archivedValue() -> FundamentalValue {
+        return FundamentalValue(self.rawValue)
     }
 }
 
