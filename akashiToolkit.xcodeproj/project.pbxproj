@@ -26,6 +26,8 @@
 		1DCF2A4D20D652EE003ED875 /* RxMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCF2A4A20D652EE003ED875 /* RxMoya.framework */; };
 		1DCF2A4E20D652EE003ED875 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCF2A4B20D652EE003ED875 /* RxBlocking.framework */; };
 		1DCF2A5020D65A02003ED875 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCF2A4F20D65A02003ED875 /* RxSwift.framework */; };
+		1DCF2A5320D661CC003ED875 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCF2A5120D661CC003ED875 /* SDWebImage.framework */; };
+		1DCF2A5420D661CC003ED875 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCF2A5220D661CC003ED875 /* SnapKit.framework */; };
 		1DDB908F200BEDAF00396DE3 /* ATDBTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB908E200BEDAF00396DE3 /* ATDBTool.swift */; };
 		1DDB9094200BEF7E00396DE3 /* ATAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB9093200BEF7E00396DE3 /* ATAreaModel.swift */; };
 		47058B001FA36C2D00C8CECB /* ATImproveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */; };
@@ -99,6 +101,8 @@
 		1DCF2A4A20D652EE003ED875 /* RxMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxMoya.framework; sourceTree = "<group>"; };
 		1DCF2A4B20D652EE003ED875 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxBlocking.framework; sourceTree = "<group>"; };
 		1DCF2A4F20D65A02003ED875 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxSwift.framework; sourceTree = "<group>"; };
+		1DCF2A5120D661CC003ED875 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		1DCF2A5220D661CC003ED875 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		1DDB908E200BEDAF00396DE3 /* ATDBTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATDBTool.swift; sourceTree = "<group>"; };
 		1DDB9093200BEF7E00396DE3 /* ATAreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAreaModel.swift; sourceTree = "<group>"; };
 		47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATImproveViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DCF2A5320D661CC003ED875 /* SDWebImage.framework in Frameworks */,
 				1DCF2A4C20D652EE003ED875 /* RxCocoa.framework in Frameworks */,
 				1DCF2A4620D64E8F003ED875 /* Result.framework in Frameworks */,
 				1DCF2A5020D65A02003ED875 /* RxSwift.framework in Frameworks */,
@@ -155,6 +160,7 @@
 				1DCF2A4020D64CE8003ED875 /* Alamofire.framework in Frameworks */,
 				1DCF2A4D20D652EE003ED875 /* RxMoya.framework in Frameworks */,
 				1DCF2A4720D64E8F003ED875 /* ReactiveMoya.framework in Frameworks */,
+				1DCF2A5420D661CC003ED875 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +403,8 @@
 		47CC34CC1F8BB86200B7CFB1 /* Cartfile */ = {
 			isa = PBXGroup;
 			children = (
+				1DCF2A5120D661CC003ED875 /* SDWebImage.framework */,
+				1DCF2A5220D661CC003ED875 /* SnapKit.framework */,
 				1DCF2A4F20D65A02003ED875 /* RxSwift.framework */,
 				1DCF2A4B20D652EE003ED875 /* RxBlocking.framework */,
 				1DCF2A4920D652EE003ED875 /* RxCocoa.framework */,
