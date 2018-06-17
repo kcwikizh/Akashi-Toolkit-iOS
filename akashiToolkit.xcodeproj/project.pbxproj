@@ -18,6 +18,13 @@
 		1D93A5D020024BB900B65547 /* ATDataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A5CF20024BB900B65547 /* ATDataTool.swift */; };
 		1D93A60120029A5100B65547 /* ATResourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A60020029A5100B65547 /* ATResourceModel.swift */; };
 		1DCF2A4020D64CE8003ED875 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCF2A3F20D64CE8003ED875 /* Alamofire.framework */; };
+		1DCF2A4520D64E8F003ED875 /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCF2A4120D64E8E003ED875 /* Moya.framework */; };
+		1DCF2A4620D64E8F003ED875 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCF2A4220D64E8E003ED875 /* Result.framework */; };
+		1DCF2A4720D64E8F003ED875 /* ReactiveMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCF2A4320D64E8E003ED875 /* ReactiveMoya.framework */; };
+		1DCF2A4820D64E8F003ED875 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCF2A4420D64E8E003ED875 /* ReactiveSwift.framework */; };
+		1DCF2A4C20D652EE003ED875 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCF2A4920D652EE003ED875 /* RxCocoa.framework */; };
+		1DCF2A4D20D652EE003ED875 /* RxMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCF2A4A20D652EE003ED875 /* RxMoya.framework */; };
+		1DCF2A4E20D652EE003ED875 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCF2A4B20D652EE003ED875 /* RxBlocking.framework */; };
 		1DDB908F200BEDAF00396DE3 /* ATDBTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB908E200BEDAF00396DE3 /* ATDBTool.swift */; };
 		1DDB9094200BEF7E00396DE3 /* ATAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB9093200BEF7E00396DE3 /* ATAreaModel.swift */; };
 		47058B001FA36C2D00C8CECB /* ATImproveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */; };
@@ -83,6 +90,13 @@
 		1D93A5CF20024BB900B65547 /* ATDataTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATDataTool.swift; sourceTree = "<group>"; };
 		1D93A60020029A5100B65547 /* ATResourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATResourceModel.swift; sourceTree = "<group>"; };
 		1DCF2A3F20D64CE8003ED875 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		1DCF2A4120D64E8E003ED875 /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Moya.framework; sourceTree = "<group>"; };
+		1DCF2A4220D64E8E003ED875 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
+		1DCF2A4320D64E8E003ED875 /* ReactiveMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ReactiveMoya.framework; sourceTree = "<group>"; };
+		1DCF2A4420D64E8E003ED875 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ReactiveSwift.framework; sourceTree = "<group>"; };
+		1DCF2A4920D652EE003ED875 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = "<group>"; };
+		1DCF2A4A20D652EE003ED875 /* RxMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxMoya.framework; sourceTree = "<group>"; };
+		1DCF2A4B20D652EE003ED875 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxBlocking.framework; sourceTree = "<group>"; };
 		1DDB908E200BEDAF00396DE3 /* ATDBTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATDBTool.swift; sourceTree = "<group>"; };
 		1DDB9093200BEF7E00396DE3 /* ATAreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAreaModel.swift; sourceTree = "<group>"; };
 		47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATImproveViewController.swift; sourceTree = "<group>"; };
@@ -130,7 +144,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DCF2A4C20D652EE003ED875 /* RxCocoa.framework in Frameworks */,
+				1DCF2A4620D64E8F003ED875 /* Result.framework in Frameworks */,
+				1DCF2A4520D64E8F003ED875 /* Moya.framework in Frameworks */,
+				1DCF2A4E20D652EE003ED875 /* RxBlocking.framework in Frameworks */,
+				1DCF2A4820D64E8F003ED875 /* ReactiveSwift.framework in Frameworks */,
 				1DCF2A4020D64CE8003ED875 /* Alamofire.framework in Frameworks */,
+				1DCF2A4D20D652EE003ED875 /* RxMoya.framework in Frameworks */,
+				1DCF2A4720D64E8F003ED875 /* ReactiveMoya.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +394,13 @@
 		47CC34CC1F8BB86200B7CFB1 /* Cartfile */ = {
 			isa = PBXGroup;
 			children = (
+				1DCF2A4B20D652EE003ED875 /* RxBlocking.framework */,
+				1DCF2A4920D652EE003ED875 /* RxCocoa.framework */,
+				1DCF2A4A20D652EE003ED875 /* RxMoya.framework */,
+				1DCF2A4120D64E8E003ED875 /* Moya.framework */,
+				1DCF2A4320D64E8E003ED875 /* ReactiveMoya.framework */,
+				1DCF2A4420D64E8E003ED875 /* ReactiveSwift.framework */,
+				1DCF2A4220D64E8E003ED875 /* Result.framework */,
 				1DCF2A3F20D64CE8003ED875 /* Alamofire.framework */,
 			);
 			path = Cartfile;
