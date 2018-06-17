@@ -17,6 +17,7 @@
 		1D93A5571FF83BAD00B65547 /* ATNewVersionGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A5561FF83BAD00B65547 /* ATNewVersionGuideViewController.swift */; };
 		1D93A5D020024BB900B65547 /* ATDataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A5CF20024BB900B65547 /* ATDataTool.swift */; };
 		1D93A60120029A5100B65547 /* ATResourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A60020029A5100B65547 /* ATResourceModel.swift */; };
+		1DCF2A4020D64CE8003ED875 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCF2A3F20D64CE8003ED875 /* Alamofire.framework */; };
 		1DDB908F200BEDAF00396DE3 /* ATDBTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB908E200BEDAF00396DE3 /* ATDBTool.swift */; };
 		1DDB9094200BEF7E00396DE3 /* ATAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB9093200BEF7E00396DE3 /* ATAreaModel.swift */; };
 		47058B001FA36C2D00C8CECB /* ATImproveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */; };
@@ -81,6 +82,7 @@
 		1D93A5561FF83BAD00B65547 /* ATNewVersionGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATNewVersionGuideViewController.swift; sourceTree = "<group>"; };
 		1D93A5CF20024BB900B65547 /* ATDataTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATDataTool.swift; sourceTree = "<group>"; };
 		1D93A60020029A5100B65547 /* ATResourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATResourceModel.swift; sourceTree = "<group>"; };
+		1DCF2A3F20D64CE8003ED875 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		1DDB908E200BEDAF00396DE3 /* ATDBTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATDBTool.swift; sourceTree = "<group>"; };
 		1DDB9093200BEF7E00396DE3 /* ATAreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAreaModel.swift; sourceTree = "<group>"; };
 		47058AFF1FA36C2D00C8CECB /* ATImproveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATImproveViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DCF2A4020D64CE8003ED875 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +373,7 @@
 		47CC34CC1F8BB86200B7CFB1 /* Cartfile */ = {
 			isa = PBXGroup;
 			children = (
+				1DCF2A3F20D64CE8003ED875 /* Alamofire.framework */,
 			);
 			path = Cartfile;
 			sourceTree = "<group>";
