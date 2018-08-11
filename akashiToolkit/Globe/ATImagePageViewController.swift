@@ -79,7 +79,7 @@ class ATImagePageViewController: UIPageViewController {
         return button
     }()
     ///菊花
-    private lazy var chrysanthemum: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .white)
+    private lazy var chrysanthemum: UIActivityIndicatorView = UIActivityIndicatorView(style: .white)
     ///下载状态
     private var isDownloading: Bool = false {
         didSet {
