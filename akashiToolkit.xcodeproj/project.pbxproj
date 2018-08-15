@@ -16,7 +16,6 @@
 		1D8B6A112120745500AA6E50 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8B69FE211F9FD800AA6E50 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D8B6A132120745500AA6E50 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8B6A00211F9FF000AA6E50 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D8B6A152120745500AA6E50 /* SwiftDate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8B6A02211FA0A500AA6E50 /* SwiftDate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1D8B6A172120745500AA6E50 /* WCDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8B69FB211F9FBE00AA6E50 /* WCDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D8B6A192120745500AA6E50 /* WCDBSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8B69FA211F9FBD00AA6E50 /* WCDBSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D8B6A2E2120751200AA6E50 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8B6A2B212074F800AA6E50 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D8B6A482120758600AA6E50 /* Moya.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8B6A392120757800AA6E50 /* Moya.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -45,7 +44,6 @@
 		1D8B6A6C2120759600AA6E50 /* sqliterk.swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8B6A352120757500AA6E50 /* sqliterk.swift.framework */; };
 		1D8B6A6D2120759600AA6E50 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8B6A02211FA0A500AA6E50 /* SwiftDate.framework */; };
 		1D8B6A6E2120759600AA6E50 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8B6A362120757600AA6E50 /* SwiftyJSON.framework */; };
-		1D8B6A6F2120759600AA6E50 /* WCDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8B69FB211F9FBE00AA6E50 /* WCDB.framework */; };
 		1D8B6A702120759600AA6E50 /* WCDBSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8B69FA211F9FBD00AA6E50 /* WCDBSwift.framework */; };
 		1D93A5551FF83B9800B65547 /* ATFirstUseGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A5541FF83B9800B65547 /* ATFirstUseGuideViewController.swift */; };
 		1D93A5571FF83BAD00B65547 /* ATNewVersionGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93A5561FF83BAD00B65547 /* ATNewVersionGuideViewController.swift */; };
@@ -114,7 +112,6 @@
 				1D8B6A522120758600AA6E50 /* RxMoya.framework in Embed Frameworks */,
 				1D8B6A192120745500AA6E50 /* WCDBSwift.framework in Embed Frameworks */,
 				1D8B6A502120758600AA6E50 /* RxCocoa.framework in Embed Frameworks */,
-				1D8B6A172120745500AA6E50 /* WCDB.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,7 +126,6 @@
 		1D61FA971F9BC0CD0062FD60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D7BA9AD1FCB5CD7000BBC5B /* ATUserSettingTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATUserSettingTool.swift; sourceTree = "<group>"; };
 		1D8B69FA211F9FBD00AA6E50 /* WCDBSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WCDBSwift.framework; sourceTree = "<group>"; };
-		1D8B69FB211F9FBE00AA6E50 /* WCDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WCDB.framework; sourceTree = "<group>"; };
 		1D8B69FE211F9FD800AA6E50 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		1D8B6A00211F9FF000AA6E50 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		1D8B6A02211FA0A500AA6E50 /* SwiftDate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftDate.framework; sourceTree = "<group>"; };
@@ -211,7 +207,6 @@
 				1D8B6A6C2120759600AA6E50 /* sqliterk.swift.framework in Frameworks */,
 				1D8B6A6D2120759600AA6E50 /* SwiftDate.framework in Frameworks */,
 				1D8B6A6E2120759600AA6E50 /* SwiftyJSON.framework in Frameworks */,
-				1D8B6A6F2120759600AA6E50 /* WCDB.framework in Frameworks */,
 				1D8B6A702120759600AA6E50 /* WCDBSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,7 +465,6 @@
 				1D8B6A352120757500AA6E50 /* sqliterk.swift.framework */,
 				1D8B6A02211FA0A500AA6E50 /* SwiftDate.framework */,
 				1D8B6A362120757600AA6E50 /* SwiftyJSON.framework */,
-				1D8B69FB211F9FBE00AA6E50 /* WCDB.framework */,
 				1D8B69FA211F9FBD00AA6E50 /* WCDBSwift.framework */,
 			);
 			path = Cartfile;
