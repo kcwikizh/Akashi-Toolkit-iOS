@@ -1,5 +1,5 @@
 //
-//  ExtensionUIView.swift
+//  UIView+Additions.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2017/10/14.
@@ -10,13 +10,9 @@ import UIKit
 
 extension UIView {
     var width: CGFloat {
-        get {
-            return self.frame.width
-        }
+        return self.frame.width
     }
     var height: CGFloat {
-        get {
-            return self.frame.height
-        }
+        return self.frame.height
     }
 }

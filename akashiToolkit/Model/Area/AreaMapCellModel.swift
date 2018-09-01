@@ -1,5 +1,5 @@
 //
-//  ATAreaMapCellModel.swift
+//  AreaMapCellModel.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2018/1/19.
@@ -10,7 +10,7 @@ import UIKit
 import WCDBSwift
 
 ///海域类型
-enum ATAreaMapCellType: Int32, ColumnCodable {
+enum AreaMapCellType: Int32, ColumnCodable {
     
     
     ///出发点 初期位置
@@ -39,9 +39,7 @@ enum ATAreaMapCellType: Int32, ColumnCodable {
     // MARK: *** WCDB.ColumnCodable ***
     
     static var columnType: ColumnType {
-        get {
-            return .integer32
-        }
+        return .integer32
     }
     
     init?(with value: FundamentalValue) {
@@ -55,7 +53,7 @@ enum ATAreaMapCellType: Int32, ColumnCodable {
 
 // MARK: -
 
-class ATAreaMapCellModel: TableCodable, ATDictCreatable {
+struct AreaMapCellModel: TableCodable, DictCreatable {
     
     // MARK: *** 属性 ***
     
@@ -72,12 +70,11 @@ class ATAreaMapCellModel: TableCodable, ATDictCreatable {
     ///海图内编号
     var number: Int = 0
     ///类型
-    var type: ATAreaMapCellType = .normal
+    var type: AreaMapCellType = .normal
     
     // MARK: *** 构造 ***
     
-    convenience required init?(dict: [AnyHashable : AnyObject]) {
-        self.init()
+    init?(dict: [AnyHashable : AnyObject]) {
         if let serverId = dict["id"] as? Int {
             self.serverId = serverId
         }
@@ -94,7 +91,7 @@ class ATAreaMapCellModel: TableCodable, ATDictCreatable {
             self.number = number
         }
         if let typeCode = dict["color_no"] as? Int32 {
-            if let type = ATAreaMapCellType(rawValue: typeCode) {
+            if let type = AreaMapCellType(rawValue: typeCode) {
                 self.type = type
             } else {
                 self.type = .normal
@@ -105,7 +102,7 @@ class ATAreaMapCellModel: TableCodable, ATDictCreatable {
     // MARK: *** WCBD ***
     
     enum CodingKeys: String, CodingTableKey {
-        typealias Root = ATAreaMapCellModel
+        typealias Root = AreaMapCellModel
         static let objectRelationalMapping = TableBinding(CodingKeys.self)
         
         ///ID

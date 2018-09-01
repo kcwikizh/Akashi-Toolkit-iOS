@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         ///检查用户是否是首次进入APP
-        if ATUserSettingTool.getIsFirstTimeUse() {
+        if UserSettingTool.getIsFirstTimeUse() {
             firstUseGuideVc = ATFirstUseGuideViewController()
 //        } else if ATUserSettingTool.isUpdated() {
 //            newVersionGuideVc = ATNewVersionGuideViewController()

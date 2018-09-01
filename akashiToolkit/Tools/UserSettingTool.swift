@@ -1,5 +1,5 @@
 //
-//  ATUserSettingTool.swift
+//  UserSettingTool.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2017/11/27.
@@ -41,8 +41,8 @@ extension UserDefaultsSettable where defaultKeys.RawValue == String {
 
 // MARK: -
 
-struct ATUserSetting {
-    struct twitter {
+struct UserSetting {
+    struct Twitter {
         enum language: Int {
             
             case zh = 0
@@ -67,13 +67,13 @@ struct ATUserSetting {
 
 // MARK: -
 
-final class ATUserSettingTool {
+struct UserSettingTool {
     
 }
 
 // MARK: *** 用户基础设置 ***
 
-extension ATUserSettingTool {
+extension UserSettingTool {
     ///用户基础设置
     private struct Base: UserDefaultsSettable {
         enum defaultKeys: String {
@@ -83,23 +83,23 @@ extension ATUserSettingTool {
     }
     
     ///获取推特语言设置
-    class func getTwitterLanguage() -> ATUserSetting.twitter.language {
+    static func getTwitterLanguage() -> UserSetting.Twitter.language {
         let langValue = Base.integer(forKey: .twitterLanguage)
-        if let lang = ATUserSetting.twitter.language(rawValue: langValue) {
+        if let lang = UserSetting.Twitter.language(rawValue: langValue) {
             return lang
         } else {
             return .zh
         }
     }
     ///保存推特语言设置
-    class func setTwitterLanguage(_ lang: ATUserSetting.twitter.language) {
+    static func setTwitterLanguage(_ lang: UserSetting.Twitter.language) {
         Base.set(lang.rawValue, forKey: .twitterLanguage)
     }
 }
 
 // MARK: *** 数据版本管理 ***
 
-extension ATUserSettingTool {
+extension UserSettingTool {
     ///数据版本管理
     private struct DataVersion: UserDefaultsSettable {
         enum defaultKeys: String {
@@ -111,7 +111,7 @@ extension ATUserSettingTool {
 
 // MARK: *** APP描述 ***
 
-extension ATUserSettingTool {
+extension UserSettingTool {
     ///APP描述
     private struct AppDesc: UserDefaultsSettable {
         enum defaultKeys: String {
@@ -123,18 +123,18 @@ extension ATUserSettingTool {
     }
     
     ///获取用户是否首次进入APP
-    class func getIsFirstTimeUse() -> Bool {
+    static func getIsFirstTimeUse() -> Bool {
         let notFirstUse = AppDesc.bool(forKey: .notFirstUse)
         
         return !notFirstUse
     }
     ///设置用户是否首次进入APP为false
-    class func setIsFirstTimeUseToFalse() {
+    static func setIsFirstTimeUseToFalse() {
         AppDesc.set(true, forKey: .notFirstUse)
     }
     
     ///判断是否更新了版本
-    class func isUpdated() -> Bool {
+    static func isUpdated() -> Bool {
         let currentVersionString = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
         if let savedVersionString = AppDesc.string(forKey: .versionString) {
             if savedVersionString == currentVersionString {

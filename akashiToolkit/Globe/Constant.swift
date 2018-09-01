@@ -13,7 +13,7 @@ struct Constant {
     
     // MARK: *** 官方资料 ***
     
-    struct official {
+    struct Official {
         ///官博
         static let weibo = URL(string: "https://weibo.com/kcwikizh")!
         ///微信公众号
@@ -30,11 +30,11 @@ struct Constant {
     
     /// MARK: *** UI ***
     
-    struct ui {
+    struct UI {
         
         /// MARK: *** 尺寸 ***
         
-        struct size {
+        struct Size {
             ///状态栏高度
             static let statusBarHeight: CGFloat = {
                 if UIDevice.isFuckedX {
@@ -69,7 +69,7 @@ struct Constant {
         
         /// MARK: *** 色彩 ***
         
-        struct color {
+        struct Color {
             ///导航栏主色
             static let theme = UIColor(233.0, 71.0, 123.0)
             ///浅背景色
@@ -101,7 +101,7 @@ struct Constant {
     
     // MARK: *** Dictionary ***
     
-    struct path {
+    struct Path {
         static let home = NSHomeDirectory()
         static let temp = NSTemporaryDirectory()
         static let document = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
@@ -110,16 +110,16 @@ struct Constant {
     
     // MARK: *** 错误 ***
     
-    struct error {
+    struct Error {
         
         // MARK: *** 域 ***
         
-        struct domain {
-            static let base = "org.kcwiki."
+        struct Domain {
+            static let base = "org.kcwiki"
             ///数据库错误
-            static let database = base + "database"
+            static let database = base + ".database"
             ///网络错误
-            static let network = base + "network"
+            static let network = base + ".network"
         }
     }
 }

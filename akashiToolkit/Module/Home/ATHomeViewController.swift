@@ -12,29 +12,29 @@ class ATHomeViewController: ATViewController {
     
     /// MARK: *** 属性 ***
     
-    private var itemList: [ATHomeItemModel] = {
-        var list: [ATHomeItemModel] = []
+    private var itemList: [HomeItemModel] = {
+        var list: [HomeItemModel] = []
         
-        list.append(ATHomeItemModel(imageName: "sign", title: "主页"))
-        list.append(ATHomeItemModel(imageName: "sign", title: "官推"))
-        list.append(ATHomeItemModel(imageName: "sign", title: "活动"))
+        list.append(HomeItemModel(imageName: "sign", title: "主页"))
+        list.append(HomeItemModel(imageName: "sign", title: "官推"))
+        list.append(HomeItemModel(imageName: "sign", title: "活动"))
         
         return list
     }()
     
-    private var menuItemList: [ATHomeMenuItemModel] = {
-        var list: [ATHomeMenuItemModel] = []
+    private var menuItemList: [HomeMenuItemModel] = {
+        var list: [HomeMenuItemModel] = []
         
-        list.append(ATHomeMenuItemModel(imageName: "sign", title: "改修工厂", controller: ATImproveViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", title: "装备", controller: ATEquipmentViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", title: "舰娘", controller: ATShipViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", title: "海域", controller: ATAreaViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", title: "深海栖舰", controller: ATEnemyViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", title: "任务", controller: ATMissionViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", title: "远征", controller: ATExpeditionViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", title: "工具箱", controller: ATToolboxViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", title: "设置", controller: ATSettingViewController.self))
-        list.append(ATHomeMenuItemModel(imageName: "sign", title: "关于", controller: ATAboutViewController.self))
+        list.append(HomeMenuItemModel(imageName: "sign", title: "改修工厂", controller: ATImproveViewController.self))
+        list.append(HomeMenuItemModel(imageName: "sign", title: "装备", controller: ATEquipmentViewController.self))
+        list.append(HomeMenuItemModel(imageName: "sign", title: "舰娘", controller: ATShipViewController.self))
+        list.append(HomeMenuItemModel(imageName: "sign", title: "海域", controller: ATAreaViewController.self))
+        list.append(HomeMenuItemModel(imageName: "sign", title: "深海栖舰", controller: ATEnemyViewController.self))
+        list.append(HomeMenuItemModel(imageName: "sign", title: "任务", controller: ATMissionViewController.self))
+        list.append(HomeMenuItemModel(imageName: "sign", title: "远征", controller: ATExpeditionViewController.self))
+        list.append(HomeMenuItemModel(imageName: "sign", title: "工具箱", controller: ATToolboxViewController.self))
+        list.append(HomeMenuItemModel(imageName: "sign", title: "设置", controller: ATSettingViewController.self))
+        list.append(HomeMenuItemModel(imageName: "sign", title: "关于", controller: ATAboutViewController.self))
         
         return list
     }()
@@ -58,8 +58,8 @@ class ATHomeViewController: ATViewController {
     private lazy var pageTabView: LSPageTabView = {
         let view = LSPageTabView(type: .stationary)
         
-        view.tabBarColor = Constant.ui.color.theme
-        view.sliderColor = Constant.ui.color.lightForeground
+        view.tabBarColor = Constant.UI.Color.theme
+        view.sliderColor = Constant.UI.Color.lightForeground
         view.dataSource = self
         view.delegate = self
         
@@ -71,7 +71,7 @@ class ATHomeViewController: ATViewController {
         
         button.isHidden = true
         button.setTitle("历史头像", for: UIControl.State.normal)
-        button.setTitleColor(Constant.ui.color.lightForeground, for: UIControl.State.normal)
+        button.setTitleColor(Constant.UI.Color.lightForeground, for: UIControl.State.normal)
         button.titleLabel?.font = .subheadline
         button.addTarget(self, action: #selector(rightBtnDidClick), for: UIControl.Event.touchUpInside)
         
@@ -115,7 +115,7 @@ class ATHomeViewController: ATViewController {
 
         avatarListPageBtn.snp.makeConstraints { (make) in
             make.centerY.equalTo(rightBtn)
-            make.right.equalTo(-Constant.ui.size.navItemHorizontalPadding)
+            make.right.equalTo(-Constant.UI.Size.navItemHorizontalPadding)
         }
         pageTabView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalTo(0)
@@ -224,9 +224,9 @@ extension ATHomeViewController: LSPageTabViewDataSource {
         let view = UIView()
         
         if index % 2 == 0 {
-            view.backgroundColor = Constant.ui.color.lightBackground
+            view.backgroundColor = Constant.UI.Color.lightBackground
         } else {
-            view.backgroundColor = Constant.ui.color.darkBackground
+            view.backgroundColor = Constant.UI.Color.darkBackground
         }
         
         return view
@@ -237,7 +237,7 @@ extension ATHomeViewController: LSPageTabViewDataSource {
         
         imv.image = itemList[index].icon?.scaleImage(to: 0.2).withRenderingMode(.alwaysTemplate)
         imv.contentMode = .center
-        imv.tintColor = Constant.ui.color.lightForeground
+        imv.tintColor = Constant.UI.Color.lightForeground
         
         return imv
     }
@@ -246,7 +246,7 @@ extension ATHomeViewController: LSPageTabViewDataSource {
         
         imv.image = itemList[index].icon?.scaleImage(to: 0.2).withRenderingMode(.alwaysTemplate)
         imv.contentMode = .center
-        imv.tintColor = Constant.ui.color.lightForeground
+        imv.tintColor = Constant.UI.Color.lightForeground
         imv.alpha = 0.7
         
         return imv
@@ -276,26 +276,22 @@ extension ATHomeViewController: ATHomeMenuViewDelegate {
     }
 }
 
-fileprivate class ATHomeItemModel: NSObject {
+fileprivate struct HomeItemModel {
     var icon: UIImage?
     var title: String?
     
-    convenience init(imageName: String, title: String) {
-        self.init()
-        
+    init(imageName: String, title: String) {
         self.icon = UIImage(named: imageName)
         self.title = title
     }
 }
 
-class ATHomeMenuItemModel: NSObject {
+struct HomeMenuItemModel {
     var icon: UIImage?
     var title: String?
     var controller: ATViewController.Type?
     
-    convenience init(imageName: String, title: String, controller: ATViewController.Type) {
-        self.init()
-        
+    init(imageName: String, title: String, controller: ATViewController.Type) {
         self.icon = UIImage(named: imageName)
         self.title = title
         self.controller = controller

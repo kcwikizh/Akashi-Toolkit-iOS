@@ -1,5 +1,5 @@
 //
-//  ExtensionString.swift
+//  String+Additions.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2017/10/24.

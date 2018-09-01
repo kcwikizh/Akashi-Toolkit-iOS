@@ -13,9 +13,7 @@ class ATFirstUseGuideViewController: ATViewController {
     // MARK: *** 属性 ***
     
     override var prefersStatusBarHidden: Bool {
-        get {
-            return true
-        }
+        return true
     }
     
     private lazy var appLogoImv: UIImageView = UIImageView(image: UIImage(named: "appLogo")?.resizeImage(to: CGSize(width: 100.0, height: 100.0)))
@@ -25,7 +23,7 @@ class ATFirstUseGuideViewController: ATViewController {
         let label = UILabel()
         
         label.font = UIFont.title2
-        label.textColor = Constant.ui.color.theme
+        label.textColor = Constant.UI.Color.theme
         label.textAlignment = .center
         label.numberOfLines = 0
         label.text = "亲爱的提督\n欢迎您下载使用明石工具箱\n\n现在为您进行本地数据初始化\n这可能需要几分钟的时间"
@@ -37,7 +35,7 @@ class ATFirstUseGuideViewController: ATViewController {
         let label = UILabel()
         
         label.font = UIFont.footnote
-        label.textColor = Constant.ui.color.theme
+        label.textColor = Constant.UI.Color.theme
         label.textAlignment = .center
         label.numberOfLines = 0
         label.text = "* 建议在WiFi环境下操作"
@@ -48,11 +46,11 @@ class ATFirstUseGuideViewController: ATViewController {
     private lazy var startDownloadBtn: UIButton = {
         let button = UIButton(type: .custom)
         
-        button.backgroundColor = Constant.ui.color.theme
+        button.backgroundColor = Constant.UI.Color.theme
         button.layer.cornerRadius = 3.0
         button.layer.masksToBounds = true
         button.setTitle("开始", for: UIControl.State.normal)
-        button.setTitleColor(Constant.ui.color.lightForeground, for: UIControl.State.normal)
+        button.setTitleColor(Constant.UI.Color.lightForeground, for: UIControl.State.normal)
         button.addTarget(self, action: #selector(startDownloadBtnDidClick), for: UIControl.Event.touchUpInside)
         
         return button
@@ -70,7 +68,7 @@ class ATFirstUseGuideViewController: ATViewController {
     private lazy var animaBgView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = Constant.ui.color.lightBackground
+        view.backgroundColor = Constant.UI.Color.lightBackground
         view.alpha = 0.0
         
         return view
@@ -79,7 +77,7 @@ class ATFirstUseGuideViewController: ATViewController {
     private var loadProcess = 0 {
         didSet {
             if loadProcess == 7 {
-                ATUserSettingTool.setIsFirstTimeUseToFalse()
+                UserSettingTool.setIsFirstTimeUseToFalse()
                 UIView.animate(withDuration: 0.4, delay: 0.8, animations: {
                     self.appLogoImv.alpha = 0.0
                     self.organizationLogoImv.alpha = 0.0
@@ -107,7 +105,7 @@ class ATFirstUseGuideViewController: ATViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Constant.ui.color.lightForeground
+        view.backgroundColor = Constant.UI.Color.lightForeground
         navView.isHidden = true
         leftBtn.isHidden = true
         
@@ -150,7 +148,7 @@ class ATFirstUseGuideViewController: ATViewController {
         startDownloadBtn.snp.makeConstraints { (make) in
             make.left.equalTo(25.0)
             make.right.equalTo(-25.0)
-            make.bottom.equalTo(-(35.0 + Constant.ui.size.bottomSafePadding))
+            make.bottom.equalTo(-(35.0 + Constant.UI.Size.bottomSafePadding))
             make.height.equalTo(44.0)
         }
         shipLoadView.snp.makeConstraints { (make) in
@@ -184,7 +182,7 @@ class ATFirstUseGuideViewController: ATViewController {
         }
         
         ///初始化数据库
-        ATDBTool.initDatabase()
+        DBTool.initDatabase()
     }
     
     deinit {
@@ -246,13 +244,17 @@ class ATFirstUseGuideViewController: ATViewController {
             self.areaLoadView.titleLbl.alpha = 1.0
             self.areaLoadView.loadDaisy.alpha = 1.0
         }, completion: { (_) in
-            ATDataTool.initArea({ (error) in
-                if error != nil {
-                    print("larry sue : \(String(describing: error?.localizedDescription))")
-                } else {
-                    self.loadProcess += 1
-                    self.areaLoadView.dataInitCompleted = true
-                }
+//            DataTool.initArea({ (error) in
+//                if error != nil {
+//                    print("larry sue : \(String(describing: error?.localizedDescription))")
+//                } else {
+//                    self.loadProcess += 1
+//                    self.areaLoadView.dataInitCompleted = true
+//                }
+//            })
+            DispatchQueue.main.asyncAfter(deadline: .now() + 7, execute: {
+                self.loadProcess += 1
+                self.areaLoadView.dataInitCompleted = true
             })
         })
         UIView.animate(withDuration: 0.3, delay: 0.6, options: UIView.AnimationOptions.curveEaseOut, animations: {
@@ -260,7 +262,7 @@ class ATFirstUseGuideViewController: ATViewController {
             self.missionLoadView.titleLbl.alpha = 1.0
             self.missionLoadView.loadDaisy.alpha = 1.0
         }, completion: { (_) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 7, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4, execute: {
                 self.loadProcess += 1
                 self.missionLoadView.dataInitCompleted = true
             })
@@ -323,7 +325,7 @@ private class ATCategoryCheckView: UIView {
         let label = UILabel()
         
         label.font = UIFont.title2
-        label.textColor = Constant.ui.color.theme
+        label.textColor = Constant.UI.Color.theme
         label.textAlignment = .left
         label.alpha = 0.0
         
@@ -332,7 +334,7 @@ private class ATCategoryCheckView: UIView {
     lazy var loadDaisy: UIActivityIndicatorView = {
         let daisy = UIActivityIndicatorView()
         
-        daisy.color = Constant.ui.color.theme
+        daisy.color = Constant.UI.Color.theme
         daisy.startAnimating()
         daisy.alpha = 0.0
         
@@ -344,7 +346,7 @@ private class ATCategoryCheckView: UIView {
         image = image?.withRenderingMode(.alwaysTemplate)
         let imv = UIImageView(image: image)
         
-        imv.tintColor = Constant.ui.color.theme
+        imv.tintColor = Constant.UI.Color.theme
         imv.alpha = 0.0
         
         return imv

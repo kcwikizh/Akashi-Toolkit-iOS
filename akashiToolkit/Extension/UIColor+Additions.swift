@@ -1,5 +1,5 @@
 //
-//  ExtensionUIColor.swift
+//  UIColor+Additions.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2017/10/13.
@@ -18,12 +18,10 @@ extension UIColor {
     
     ///随机色
     class var random: UIColor {
-        get {
-            let r = akashiToolkit.random(from: 0, to: 255.0, decimal: 1)
-            let g = akashiToolkit.random(from: 0, to: 255.0, decimal: 1)
-            let b = akashiToolkit.random(from: 0, to: 255.0, decimal: 1)
-            
-            return UIColor(CGFloat(r), CGFloat(g), CGFloat(b))
-        }
+        let r = akashiToolkit.random(from: 0, to: 255.0, decimal: 1)
+        let g = akashiToolkit.random(from: 0, to: 255.0, decimal: 1)
+        let b = akashiToolkit.random(from: 0, to: 255.0, decimal: 1)
+        
+        return UIColor(CGFloat(r), CGFloat(g), CGFloat(b))
     }
 }

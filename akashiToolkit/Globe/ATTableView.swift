@@ -19,7 +19,7 @@ class ATTableView: UITableView {
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         
-        backgroundColor = Constant.ui.color.lightBackground
+        backgroundColor = Constant.UI.Color.lightBackground
         
         if #available(iOS 11.0, *) {
             estimatedRowHeight = 0
@@ -46,8 +46,8 @@ class ATTableViewCell: UITableViewCell {
     fileprivate class func cellForTableView(_ tableView: ATTableView, at indexPath: IndexPath, identifier: String) -> ATTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ATTableViewCell
         
-        cell.tintColor = Constant.ui.color.theme
-        cell.textLabel?.textColor = Constant.ui.color.majorText
+        cell.tintColor = Constant.UI.Color.theme
+        cell.textLabel?.textColor = Constant.UI.Color.majorText
         
         return cell
     }
@@ -80,7 +80,7 @@ class ATTableViewChrysanthemumCell: ATTableViewNoneCell {
     fileprivate lazy var chrysanthemum: UIActivityIndicatorView = {
         let crs = UIActivityIndicatorView()
         
-        crs.color = Constant.ui.color.auxiliaryText
+        crs.color = Constant.UI.Color.auxiliaryText
         
         self.contentView.addSubview(crs)
         
@@ -119,7 +119,7 @@ class ATTableViewChrysanthemumWithLabelCell: ATTableViewChrysanthemumCell {
         
         label.font = UIFont.subheadline
         label.textAlignment = .right
-        label.textColor = Constant.ui.color.auxiliaryText
+        label.textColor = Constant.UI.Color.auxiliaryText
         
         self.contentView.addSubview(label)
         
@@ -159,7 +159,7 @@ class ATTableViewDisclosureIndicatorWithLabelCell: ATTableViewDisclosureIndicato
         
         label.font = UIFont.subheadline
         label.textAlignment = .right
-        label.textColor = Constant.ui.color.auxiliaryText
+        label.textColor = Constant.UI.Color.auxiliaryText
         
         self.contentView.addSubview(label)
         

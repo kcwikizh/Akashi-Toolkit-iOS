@@ -19,8 +19,6 @@ class ATNavigationController: UINavigationController {
     
     ///状态栏颜色
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        get {
-            return .lightContent
-        }
+        return .lightContent
     }
 }

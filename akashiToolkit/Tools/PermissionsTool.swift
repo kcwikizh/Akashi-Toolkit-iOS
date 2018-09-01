@@ -1,5 +1,5 @@
 //
-//  ATPermissionsTool.swift
+//  PermissionsTool.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2017/10/21.
@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 import Photos
 
-enum ATPermissionsStatus {
+enum PermissionsStatus {
     ///已拒绝
     case denied
     ///无权 (例如家长控制等
@@ -34,16 +34,16 @@ enum ATPermissionsStatus {
     }
 }
 
-final class ATPermissionsTool {
-    typealias ATPermissionsCompletionHandler = (_ status: ATPermissionsStatus) -> Void
+struct PermissionsTool {
+    typealias PermissionsCompletionHandler = (_ status: PermissionsStatus) -> Void
 }
 
 // MARK: *** Photo ***
 
-extension ATPermissionsTool {
+extension PermissionsTool {
     
     ///获取相册权限
-    private class func getPhotoPermissions(_ handler: @escaping ATPermissionsCompletionHandler) {
+    private static func getPhotoPermissions(_ handler: @escaping PermissionsCompletionHandler) {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
         case .denied:
@@ -72,13 +72,13 @@ extension ATPermissionsTool {
         case .notDetermined:
             ///未选择
             PHPhotoLibrary.requestAuthorization({ (status) in
-                handler(ATPermissionsStatus(status))
+                handler(PermissionsStatus(status))
             })
         }
     }
     
     ///根据URL保存图片到本地相册
-    class func saveImage(with url: URL?, completed: @escaping (_ resultDescription: String) -> Void) {
+    static func saveImage(with url: URL?, completed: @escaping (_ resultDescription: String) -> Void) {
         getPhotoPermissions { (status) in
             if status == .authorized || status == .notDetermined {
                 SDWebImageManager.shared().imageDownloader?.downloadImage(with: url, options: [.continueInBackground, .progressiveDownload], progress: nil, completed: { (image, data, error, finished) in

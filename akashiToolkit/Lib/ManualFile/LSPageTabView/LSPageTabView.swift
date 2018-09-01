@@ -103,9 +103,7 @@ class LSPageTabView: UIView {
     
     ///移动距离
     public var contentOffset: CGPoint {
-        get {
-            return mainScrollView.contentOffset
-        }
+        return mainScrollView.contentOffset
     }
     
     ///固定式标签栏
@@ -116,8 +114,8 @@ class LSPageTabView: UIView {
         return view
     }()
     ///可滚动标签栏
-    private lazy var tabScrollBar: ATScrollView = {
-        let scrollView = ATScrollView()
+    private lazy var tabScrollBar: LSScrollView = {
+        let scrollView = LSScrollView()
         scrollView.backgroundColor = .white
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.layer.masksToBounds = true
@@ -127,9 +125,7 @@ class LSPageTabView: UIView {
     private var tabs: [UIButton] = []
     ///标签数量
     private var tabsCount: Int {
-        get {
-            return tabs.count
-        }
+        return tabs.count
     }
     ///标签宽度 仅可滑动模式下有效
     public var tabWidth: CGFloat = 100.0
@@ -189,9 +185,9 @@ class LSPageTabView: UIView {
         }
     }
     
-    ///主题ScrollView
-    private lazy var mainScrollView: ATScrollView = {
-        let scrollView = ATScrollView()
+    ///主体ScrollView
+    private lazy var mainScrollView: LSScrollView = {
+        let scrollView = LSScrollView()
         
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false

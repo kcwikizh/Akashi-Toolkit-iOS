@@ -16,9 +16,7 @@ class ATAvatarListViewController: ATViewController {
     private var avatarURLList: [URL?] = []
     
     private var is3DTouchEnabled: Bool {
-        get {
-            return self.traitCollection.forceTouchCapability == .available
-        }
+        return self.traitCollection.forceTouchCapability == .available
     }
     
     private lazy var collectionView: UICollectionView = {
@@ -28,7 +26,7 @@ class ATAvatarListViewController: ATViewController {
         layout.minimumInteritemSpacing = 1
         
         let collView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collView.backgroundColor = Constant.ui.color.lightBackground
+        collView.backgroundColor = Constant.UI.Color.lightBackground
         collView.showsVerticalScrollIndicator = false
         collView.dataSource = self
         collView.delegate = self
@@ -50,8 +48,10 @@ class ATAvatarListViewController: ATViewController {
         
         collectionView.register(ATAvatarListViewCell.self, forCellWithReuseIdentifier: ATAvatarListViewCellIdentifier)
         
-        ATDataTool.getAvatarList { (urlList, error) in
-            if let urlList = urlList {
+        DataTool.getAvatarList { (urlList, errorDesc) in
+            if let errorDesc = errorDesc {
+                print("larry sue DataTool.getAvatarList: \(errorDesc)")
+            } else {
                 self.avatarURLList = urlList
                 self.collectionView.reloadData()
             }
@@ -131,7 +131,7 @@ private class ATAvatarListViewCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let imv = UIImageView()
         
-        imv.backgroundColor = Constant.ui.color.lightForeground
+        imv.backgroundColor = Constant.UI.Color.lightForeground
         
         return imv
     }()

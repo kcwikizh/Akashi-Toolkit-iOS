@@ -1,5 +1,5 @@
 //
-//  ATAreaModel.swift
+//  AreaModel.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2018/1/15.
@@ -10,7 +10,7 @@ import Foundation
 import WCDBSwift
 
 ///海域类型
-enum ATAreaType: Int32, ColumnCodable {
+enum AreaType: Int32, ColumnCodable {
     
     ///普通海域
     case normal = 0
@@ -20,9 +20,7 @@ enum ATAreaType: Int32, ColumnCodable {
     // MARK: *** WCDB.ColumnCodable ***
     
     static var columnType: ColumnType {
-        get {
-            return .integer32
-        }
+        return .integer32
     }
     
     init?(with value: FundamentalValue) {
@@ -36,7 +34,7 @@ enum ATAreaType: Int32, ColumnCodable {
 
 // MARK: -
 
-class ATAreaModel: TableCodable, ATDictCreatable {
+struct AreaModel: TableCodable, DictCreatable {
     
     // MARK: *** 属性 ***
     
@@ -45,34 +43,32 @@ class ATAreaModel: TableCodable, ATDictCreatable {
     ///服务端ID
     var serverId: Int = 0
     ///海域类型
-    var type: ATAreaType = .normal
+    var type: AreaType = .event
     ///海域名称 (日文
-    var name: String = ""
+    var jpName: String = ""
     
-    // MARK: *** 构造 ***
-    
-    convenience required init?(dict: [AnyHashable : AnyObject]) {
-        self.init()
+    // MARK: ***
+    init?(dict: [AnyHashable : AnyObject]) {
         
         if let serverId = dict["id"] as? Int {
             self.serverId = serverId
         }
         if let type = dict["type"] as? Int32 {
-            if let type = ATAreaType(rawValue: type) {
+            if let type = AreaType(rawValue: type) {
                 self.type = type
             } else {
-                self.type = .normal
+                self.type = .event
             }
         }
-        if let name = dict["name"] as? String {
-            self.name = name
+        if let jpName = dict["name"] as? String {
+            self.jpName = jpName
         }
     }
     
     // MARK: *** WCBD ***
     
     enum CodingKeys: String, CodingTableKey {
-        typealias Root = ATAreaModel
+        typealias Root = AreaModel
         static let objectRelationalMapping = TableBinding(CodingKeys.self)
         
         ///ID
@@ -82,7 +78,7 @@ class ATAreaModel: TableCodable, ATDictCreatable {
         ///海域类型
         case type
         ///海域名称 (日文
-        case name
+        case jpName
         
         static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
             return [

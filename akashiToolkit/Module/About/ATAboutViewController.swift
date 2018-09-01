@@ -15,9 +15,7 @@ class ATAboutViewController: ATViewController {
     
     ///状态栏颜色
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        get {
-            return .lightContent
-        }
+        return .lightContent
     }
     private lazy var tableView: ATTableView = {
         let tableView = ATTableView(frame: .zero, style: .grouped)
@@ -68,7 +66,7 @@ class ATAboutViewController: ATViewController {
         let label = UILabel()
         
         label.font = UIFont.body
-        label.textColor = Constant.ui.color.auxiliaryText
+        label.textColor = Constant.UI.Color.auxiliaryText
         label.textAlignment = .center
         label.text = "Ver : \(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)"
         
@@ -119,8 +117,8 @@ class ATAboutViewController: ATViewController {
         dismiss(animated: true)
     }
     @objc private func tapOnCopyrightTipsLbl() {
-        if UIApplication.shared.canOpenURL(Constant.official.website) {
-            UIApplication.shared.open(Constant.official.website)
+        if UIApplication.shared.canOpenURL(Constant.Official.website) {
+            UIApplication.shared.open(Constant.Official.website)
         }
     }
     
@@ -132,20 +130,20 @@ class ATAboutViewController: ATViewController {
             mailVc.mailComposeDelegate = self
             
             mailVc.setSubject("明石工具箱 问题反馈")
-            mailVc.setToRecipients([Constant.official.developerEmail])
+            mailVc.setToRecipients([Constant.Official.developerEmail])
             mailVc.setMessageBody(" 设备型号: \(UIDevice.model) \n 系统版本: \(UIDevice.current.systemName) \(UIDevice.current.systemVersion) \n APP版本: \(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)", isHTML: false)
             
             present(mailVc, animated: true)
         } else {
-            let alert = UIAlertController(title: "错误", message: "无法自动生成邮件, 请手动发送邮件至邮箱: \(Constant.official.developerEmail), 或联系QQ: \(Constant.official.developerQQ)", preferredStyle: .alert)
+            let alert = UIAlertController(title: "错误", message: "无法自动生成邮件, 请手动发送邮件至邮箱: \(Constant.Official.developerEmail), 或联系QQ: \(Constant.Official.developerQQ)", preferredStyle: .alert)
             let copyEmail = UIAlertAction(title: "复制邮箱地址", style: .default, handler: { _ in
                 let pas = UIPasteboard.general
-                pas.string = Constant.official.developerEmail
+                pas.string = Constant.Official.developerEmail
                 ATToastMessageTool.show("邮箱地址已复制到剪贴板")
             })
             let copyQQ = UIAlertAction(title: "复制QQ", style: .default, handler: { _ in
                 let pas = UIPasteboard.general
-                pas.string = Constant.official.developerQQ
+                pas.string = Constant.Official.developerQQ
                 ATToastMessageTool.show("QQ已复制到剪贴板")
             })
             let done = UIAlertAction(title: "取消", style: .default)
@@ -201,14 +199,14 @@ extension ATAboutViewController: UITableViewDelegate {
         
         if section == 0 {
             if row == 0 {
-                if UIApplication.shared.canOpenURL(Constant.official.weibo) {
-                    UIApplication.shared.open(Constant.official.weibo)
+                if UIApplication.shared.canOpenURL(Constant.Official.weibo) {
+                    UIApplication.shared.open(Constant.Official.weibo)
                 }
             } else {
-                let alert = UIAlertController(title: "", message: "kcwiki舰娘百科公众号: \(Constant.official.weixin)", preferredStyle: .alert)
+                let alert = UIAlertController(title: "", message: "kcwiki舰娘百科公众号: \(Constant.Official.weixin)", preferredStyle: .alert)
                 let copyAndOpenWeixin = UIAlertAction(title: "复制公众号并跳转至微信", style: .default, handler: { _ in
                     let pas = UIPasteboard.general
-                    pas.string = Constant.official.weixin
+                    pas.string = Constant.Official.weixin
                     ATToastMessageTool.show("公众号已复制到剪贴板")
                     let wxURL = URL(string: "weixin://")!
                     if UIApplication.shared.canOpenURL(wxURL) {
@@ -225,8 +223,8 @@ extension ATAboutViewController: UITableViewDelegate {
             let alert = UIAlertController(title: "反馈", message: "请根据您遇到的问题类型选择", preferredStyle: .alert)
             
             let dataQuestion = UIAlertAction(title: "数据问题: 联系编辑组", style: .default, handler: { (action) in
-                if UIApplication.shared.canOpenURL(Constant.official.dataFeedback) {
-                    UIApplication.shared.open(Constant.official.dataFeedback)
+                if UIApplication.shared.canOpenURL(Constant.Official.dataFeedback) {
+                    UIApplication.shared.open(Constant.Official.dataFeedback)
                 }
             })
             let appQuestion = UIAlertAction(title: "软件问题: 联系开发者", style: .default, handler: { _ in
@@ -278,7 +276,7 @@ extension ATAboutViewControllerPresent: UIViewControllerAnimatedTransitioning {
         let containerView = transitionContext.containerView
         containerView.addSubview(toVC.view)
         //画两个圆路径
-        let startCycle = UIBezierPath(arcCenter: CGPoint(x: UIScreen.width * 0.5, y: Constant.ui.size.topHeight + 40.0 + 150.0 * 0.5), radius: 30.0, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
+        let startCycle = UIBezierPath(arcCenter: CGPoint(x: UIScreen.width * 0.5, y: Constant.UI.Size.topHeight + 40.0 + 150.0 * 0.5), radius: 30.0, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
         let endCycle = UIBezierPath(arcCenter: CGPoint(x: UIScreen.width * 0.5, y: UIScreen.height * 0.5), radius: UIScreen.height * 0.8, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
         //创建遮盖
         let maskLayer = CAShapeLayer()

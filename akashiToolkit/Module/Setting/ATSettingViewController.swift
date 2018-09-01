@@ -62,7 +62,7 @@ extension ATSettingViewController: UITableViewDataSource {
         if section == 0 {
             let cell = ATTableViewDisclosureIndicatorWithLabelCell.forTableView(tableView as! ATTableView, at: indexPath)
             cell.textLabel?.text = "官推语言"
-            cell.rightLabel.text = ATUserSettingTool.getTwitterLanguage().toString()
+            cell.rightLabel.text = UserSettingTool.getTwitterLanguage().toString()
             return cell
         } else {
             let cell = ATTableViewChrysanthemumWithLabelCell.forTableView(tableView as! ATTableView, at: indexPath)
@@ -83,7 +83,7 @@ extension ATSettingViewController: UITableViewDelegate {
         if section == 0 {
             if row == 0 {
                 let vc = ATSettingTwitterLanguageViewController()
-                vc.selectedLanguage = ATUserSettingTool.getTwitterLanguage()
+                vc.selectedLanguage = UserSettingTool.getTwitterLanguage()
                 vc.delegate = self
                 navigationController?.pushViewController(vc, animated: true)
             }

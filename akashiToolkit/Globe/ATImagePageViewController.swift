@@ -16,9 +16,7 @@ class ATImagePageViewController: UIPageViewController {
     
     ///状态栏颜色
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        get {
-            return .lightContent
-        }
+        return .lightContent
     }
     ///图片URL列表
     var avatarURLList: [URL?] = []
@@ -120,17 +118,17 @@ class ATImagePageViewController: UIPageViewController {
         view.addSubview(chrysanthemum)
         
         dismissBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(Constant.ui.size.statusBarHeight + 10)
+            make.top.equalTo(Constant.UI.Size.statusBarHeight + 10)
             make.left.equalTo(15.0)
             make.size.equalTo(CGSize(width: 40.0, height: 40.0))
         }
         indexLbl.snp.makeConstraints { (make) in
             make.left.equalTo(15.0)
-            make.bottom.equalTo(-Constant.ui.size.bottomSafePadding - 15.0)
+            make.bottom.equalTo(-Constant.UI.Size.bottomSafePadding - 15.0)
         }
         downloadImageBtn.snp.makeConstraints { (make) in
             make.right.equalTo(-15.0)
-            make.bottom.equalTo(-Constant.ui.size.bottomSafePadding - 15.0)
+            make.bottom.equalTo(-Constant.UI.Size.bottomSafePadding - 15.0)
             make.size.equalTo(CGSize(width: 40.0, height: 40.0))
         }
         chrysanthemum.snp.makeConstraints { (make) in
@@ -157,7 +155,7 @@ class ATImagePageViewController: UIPageViewController {
         isDownloading = true
         
         let url = self.avatarURLList[self.currentIndex]
-        ATPermissionsTool.saveImage(with: url) { (resultDescription) in
+        PermissionsTool.saveImage(with: url) { (resultDescription) in
             runInMain {
                 ATToastMessageTool.show(resultDescription)
                 self.isDownloading = false

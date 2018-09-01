@@ -1,5 +1,5 @@
 //
-//  ATTwitterModel.swift
+//  TwitterModel.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2017/10/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ATTwitterModel {
+struct TwitterModel {
     let jpContent: String = ""
     let zhContent: String = ""
     let dateStr: String = ""

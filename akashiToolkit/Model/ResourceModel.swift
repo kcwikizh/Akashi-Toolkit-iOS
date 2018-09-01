@@ -1,5 +1,5 @@
 //
-//  ATResourceModel.swift
+//  ResourceModel.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2018/1/8.
@@ -9,7 +9,7 @@
 import Foundation
 import WCDBSwift
 
-class ATResourceModel: ColumnCodable {
+struct ResourceModel: ColumnCodable {
 
     // MARK: *** 属性 ***
     
@@ -32,12 +32,10 @@ class ATResourceModel: ColumnCodable {
     // MARK: *** WCDB.ColumnCodable ***
     
     static var columnType: ColumnType {
-        get {
-            return .text
-        }
+        return .text
     }
     
-    required convenience init?(with value: FundamentalValue) {
+    init?(with value: FundamentalValue) {
         if let data = value.stringValue.data(using: .utf8) {
             do {
                 if let arr = try JSONSerialization.jsonObject(with: data) as? [Int], arr.count == 4 {

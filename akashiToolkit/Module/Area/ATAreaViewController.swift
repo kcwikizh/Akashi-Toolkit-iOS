@@ -15,8 +15,8 @@ class ATAreaViewController: ATViewController {
     private lazy var pageTabView: LSPageTabView = {
         let view = LSPageTabView(type: .stationary)
         
-        view.tabBarColor = Constant.ui.color.theme
-        view.sliderColor = Constant.ui.color.lightForeground
+        view.tabBarColor = Constant.UI.Color.theme
+        view.sliderColor = Constant.UI.Color.lightForeground
         view.dataSource = self
         view.delegate = self
         
@@ -39,9 +39,9 @@ extension ATAreaViewController: LSPageTabViewDataSource {
         let view = UIView()
         
         if index % 2 == 0 {
-            view.backgroundColor = Constant.ui.color.lightBackground
+            view.backgroundColor = Constant.UI.Color.lightBackground
         } else {
-            view.backgroundColor = Constant.ui.color.darkBackground
+            view.backgroundColor = Constant.UI.Color.darkBackground
         }
         
         return view

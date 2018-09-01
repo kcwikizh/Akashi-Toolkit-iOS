@@ -1,14 +1,14 @@
 //
-//  ATScrollView.swift
+//  LSScrollView.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2017/10/25.
-//  Copyright © 2017年 kcwikizh. All rights reserved.
+//  Copyright © 2017年 LarrySue. All rights reserved.
 //
 
 import UIKit
 
-class ATScrollView: UIScrollView {
+class LSScrollView: UIScrollView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -20,7 +20,7 @@ class ATScrollView: UIScrollView {
     }
 }
 
-extension ATScrollView: UIGestureRecognizerDelegate {
+extension LSScrollView: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if otherGestureRecognizer.isKind(of: UIScreenEdgePanGestureRecognizer.self) {
             gestureRecognizer.require(toFail: otherGestureRecognizer)

@@ -1,5 +1,5 @@
 //
-//  ATAreaMapModel.swift
+//  AreaMapModel.swift
 //  akashiToolkit
 //
 //  Created by LarrySue on 2018/1/18.
@@ -9,7 +9,7 @@
 import UIKit
 import WCDBSwift
 
-class ATAreaMapModel: TableCodable, ATDictCreatable {
+struct AreaMapModel: TableCodable, DictCreatable {
     
     // MARK: *** 属性 ***
     
@@ -30,7 +30,7 @@ class ATAreaMapModel: TableCodable, ATDictCreatable {
     ///描述信息 (日文
     var infoText: String = ""
     ///所获资源
-    var gainResource: ATResourceModel = ATResourceModel()
+    var gainResource: ResourceModel = ResourceModel()
     ///海域血量 若无则空
     var hp: Int?
     ///击破所需最少出击次数 若无则空
@@ -38,8 +38,7 @@ class ATAreaMapModel: TableCodable, ATDictCreatable {
     
     // MARK: *** 构造 ***
     
-    convenience required init?(dict: [AnyHashable : AnyObject]) {
-        self.init()
+    init?(dict: [AnyHashable : AnyObject]) {
         if let serverId = dict["id"] as? Int {
             self.serverId = serverId
         }
@@ -63,9 +62,9 @@ class ATAreaMapModel: TableCodable, ATDictCreatable {
         }
         if let gainResource = dict["item"] as? [Int] {
             if gainResource.count == 4 {
-                self.gainResource = ATResourceModel(oil: gainResource[0], ammunition: gainResource[1], steel: gainResource[2], aluminium: gainResource[3])
+                self.gainResource = ResourceModel(oil: gainResource[0], ammunition: gainResource[1], steel: gainResource[2], aluminium: gainResource[3])
             } else {
-                self.gainResource = ATResourceModel()
+                self.gainResource = ResourceModel()
             }
         }
         
@@ -76,7 +75,7 @@ class ATAreaMapModel: TableCodable, ATDictCreatable {
     // MARK: *** WCBD ***
     
     enum CodingKeys: String, CodingTableKey {
-        typealias Root = ATAreaMapModel
+        typealias Root = AreaMapModel
         static let objectRelationalMapping = TableBinding(CodingKeys.self)
         
         ///ID

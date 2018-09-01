@@ -16,7 +16,7 @@ class ATViewController: UIViewController {
     lazy var navView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = Constant.ui.color.theme
+        view.backgroundColor = Constant.UI.Color.theme
         
         return view
     }()
@@ -25,7 +25,7 @@ class ATViewController: UIViewController {
         let label = UILabel()
         
         label.font = .headline
-        label.textColor = Constant.ui.color.lightForeground
+        label.textColor = Constant.UI.Color.lightForeground
         label.textAlignment = .center
         
         return label
@@ -39,7 +39,7 @@ class ATViewController: UIViewController {
         let image = UIImage(named: "back")?.resizeImage(to: CGSize(width: 20.0, height: 20.0)).withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.imageView?.contentMode = .center
-        button.tintColor = Constant.ui.color.lightForeground
+        button.tintColor = Constant.UI.Color.lightForeground
         button.adjustsImageWhenHighlighted = false
         
         return button
@@ -49,7 +49,7 @@ class ATViewController: UIViewController {
         let button = UIButton(type: .custom)
         
         button.addTarget(self, action: #selector(rightBtnDidClick), for: .touchUpInside)
-        button.tintColor = Constant.ui.color.lightForeground
+        button.tintColor = Constant.UI.Color.lightForeground
         button.adjustsImageWhenHighlighted = false
         
         return button
@@ -64,7 +64,7 @@ class ATViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = Constant.ui.color.lightBackground
+        view.backgroundColor = Constant.UI.Color.lightBackground
         
         view.addSubview(navView)
         navView.addSubview(leftBtn)
@@ -73,20 +73,20 @@ class ATViewController: UIViewController {
         
         navView.snp.makeConstraints { (make) in
             make.left.top.right.equalTo(0)
-            make.height.equalTo(Constant.ui.size.topHeight)
+            make.height.equalTo(Constant.UI.Size.topHeight)
         }
         leftBtn.snp.makeConstraints { (make) in
             make.left.bottom.equalTo(0)
-            make.top.equalTo(Constant.ui.size.statusBarHeight)
+            make.top.equalTo(Constant.UI.Size.statusBarHeight)
             make.width.equalTo(55.0)
         }
         rightBtn.snp.makeConstraints { (make) in
             make.right.bottom.equalTo(0)
-            make.top.equalTo(Constant.ui.size.statusBarHeight)
+            make.top.equalTo(Constant.UI.Size.statusBarHeight)
             make.width.equalTo(55.0)
         }
         titleLbl.snp.makeConstraints { (make) in
-            make.top.equalTo(Constant.ui.size.statusBarHeight)
+            make.top.equalTo(Constant.UI.Size.statusBarHeight)
             make.bottom.equalTo(0)
             make.left.equalTo(leftBtn.snp.right)
             make.right.equalTo(rightBtn.snp.left)
