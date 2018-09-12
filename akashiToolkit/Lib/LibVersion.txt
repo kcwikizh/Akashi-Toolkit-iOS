@@ -1,4 +1,4 @@
-*** Checking out WCDB at "v1.0.6.2"
+*** Checking out WCDB at "v1.0.7"
 *** Checking out SDWebImage at "4.4.2"
 *** Checking out SwiftyJSON at "4.1.0"
 *** Checking out RxSwift at "4.2.0"
@@ -6,5 +6,6 @@
 *** Checking out Moya at "10.0.2"
 *** Checking out ReactiveSwift at "2.0.1"
 *** Checking out Alamofire at "4.7.3"
+*** Checking out PromiseKit at "6.4.0"
+*** Checking out SwiftDate at "5.0.7"
 *** Checking out Result at "3.2.4"
-*** Checking out SwiftDate at "5.0.5"

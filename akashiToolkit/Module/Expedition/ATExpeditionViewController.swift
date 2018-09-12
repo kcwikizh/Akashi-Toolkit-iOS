@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATExpeditionViewController: ATViewController {
+class ATExpeditionViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

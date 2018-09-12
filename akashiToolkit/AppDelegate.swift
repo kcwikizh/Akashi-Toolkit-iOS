@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else if newVersionGuideVc != nil {
             window.rootViewController = newVersionGuideVc!
         } else {
-            window.rootViewController = ATNavigationController(rootViewController:ATHomeViewController())
+            window.rootViewController = BaseNavigationController(rootViewController:HomeViewController())
         }
         window.makeKeyAndVisible()
         

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATFirstUseGuideViewController: ATViewController {
+class ATFirstUseGuideViewController: BaseViewController {
     
     // MARK: *** 属性 ***
     
@@ -93,7 +93,7 @@ class ATFirstUseGuideViewController: ATViewController {
                     self.animaBgView.alpha = 1.0
                 }, completion: { (finished) in
                     if finished {
-                        Constant.window.rootViewController = ATNavigationController(rootViewController: ATHomeViewController())
+                        Constant.window.rootViewController = BaseNavigationController(rootViewController: HomeViewController())
                     }
                 })
             }

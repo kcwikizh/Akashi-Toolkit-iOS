@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 protocol ATHomeMenuViewDelegate {
     func homeMenuView(_ homeMenuView: ATHomeMenuView, didSelectItemAt index: Int)
@@ -19,6 +21,11 @@ class ATHomeMenuView: UIView {
     // MARK: *** 属性 ***
     
     var itemList: [HomeMenuItemModel] = [] {
+        didSet {
+            observableItemList = Observable.from(itemList)
+        }
+    }
+    private var observableItemList: Observable<HomeMenuItemModel> = Observable.empty() {
         didSet {
             listView.reloadData()
         }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATAreaViewController: ATViewController {
+class ATAreaViewController: BaseViewController {
     
     // MARK: *** 属性 ***
     

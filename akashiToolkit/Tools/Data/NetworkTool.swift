@@ -42,6 +42,9 @@ extension NetworkTool {
             .subscribe(onSuccess: { (response) in
                 do {
                     let json = try JSON(data: response.data)
+                    let avatarURL = URL(string: json["latest"].string!)
+                    
+                    completionHandler(avatarURL, nil)
                 } catch {
                     completionHandler(nil, "NetworkTool.TwitterAPI.lastAvatar WRONG JSON : \(error)")
                 }

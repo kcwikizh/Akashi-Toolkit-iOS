@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATEquipmentViewController: ATViewController {
+class ATEquipmentViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

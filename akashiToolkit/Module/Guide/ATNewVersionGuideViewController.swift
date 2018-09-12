@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ATNewVersionGuideViewController: ATViewController {
+class ATNewVersionGuideViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

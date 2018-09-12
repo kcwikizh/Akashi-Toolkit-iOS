@@ -11,7 +11,7 @@ import SDWebImage
 
 private let ATAvatarListViewCellIdentifier = "ATAvatarListViewCellIdentifier"
 
-class ATAvatarListViewController: ATViewController {
+class ATAvatarListViewController: BaseViewController {
     
     private var avatarURLList: [URL?] = []
     
